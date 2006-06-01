@@ -1,0 +1,55 @@
+Module Copyright © Information
+PNphpBB2 © 2003-2004 The PNphpBB Group
+http://www.pnphpbb.com
+Version: 1.2g
+
+Description:
+
+Forum module for PostNuke (http://www.postnuke.com) based on phpBB 2.0.10 (http://www.phpbb.com)Copyright © 2003-2004 by the phpBB Group.
+
+Contributors: 
+
+Many people contributed to the development of this module including:
+
+Lead developer:
+
+Carl Slaughter (Carls)
+http://www.itsallbutstraw.com
+carls@pnphpbb.com
+
+Developer, Testing, HTML validation, and Support:
+
+Patrick Peay (Batpuppy)
+http://www.batpuppy.com
+
+language support, testing:
+Bjarne Varoystrand (Black_Skorpio)
+
+General Support, testing, and Finnish Language Support:
+
+upaja
+
+German Support:
+
+Lukas Alperowitz (lukas334e)
+http://www.kfgma.de 
+
+
+PNphpBB Contributers:
+
+Blacky - Multi-Block enhancements, Full page view and subforum swich fix
+
+In addition many phpbb2 mods and templates where adapted for use in the module including:
+
+Attachment-Mod - http://www.opentools.de
+Forum Images, FI NavSlices, FI Themes - http://www.forumimages.com
+eXtreme styles mod - http://www.trushkin.net
+Categories Hierarchy, Message Icons (MsgIconMod), Split Topic Type, Announces from forums on index - http://rpgnet.clanmckeen.com/demo
+
+Although the above mods were used in this module, most of them have been modified and/or customized for use with PNphpBB2.
+
+License: GNU/GPL
+Author's Name: The PNphpBB Group
+Author's Email: carls@pnphpbb.com
+Author's Home Page: http://www.pnphpbb.com
+Module's Download: http://www.pnphpbb.com/modules.php?op=modload&name=Downloads&file=index&req=viewdownload&cid=5

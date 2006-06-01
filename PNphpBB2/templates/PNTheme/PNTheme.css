@@ -1,0 +1,113 @@
+/* Based on the original Style Sheet for the PNTheme v2 Theme for phpBB version 2+
+Edited by Daz  - http://www.forumimages.com */
+
+/* The content of the posts (body of text) */
+body{background:#ecf0f6;color:#000000;font:12px Verdana,Arial,Helvetica,sans-serif;
+scrollbar-3dlight-color:#d1d7dc;
+scrollbar-arrow-color:#006699;
+scrollbar-darkshadow-color:#98aab1;
+scrollbar-face-color:#dee3e7;
+scrollbar-highlight-color:#ffffff;
+scrollbar-shadow-color:#dee3e7;
+scrollbar-track-color:#efefef}
+
+/* General font families for common tags */
+font,th,td,p{color:#000000;font:12px Verdana,Arial,Helvetica,sans-serif}
+
+/* General text */
+.gensmall{font-size:10px}
+.genmed{font-size:11px}
+
+/* General page style. The scroll bar colours only visible in IE5.5+ */
+a:link,a:active,a:visited,a.postlink{color:#006699;text-decoration:none}
+a:hover{color:#dd6900;text-decoration:underline}
+
+/* titles for the topics:could specify viewed link colour too */
+.topictitle{font-size:11px;font-weight:bold}
+a.topictitle:visited{color:#5493b4}
+a.topictitle:hover{color:#dd6900}
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name{font-size:11px;font-weight: bold}
+
+/* Added for Mozilla - still need to look at the black background problem though */
+iframe{border:0}
+
+hr{border: 0px solid #ffffff;border-top-width:1px;height:0px}
+
+/* Form elements */
+form{display:inline}
+
+input{margin-bottom:2px;margin-top:2px;text-indent:2px}
+
+input,textarea,select{border-color:#000000;color:#000000;
+font-size:11px}
+
+/* Fancy form styles for IE */
+input,textarea,select,input.button{border-width:1px;font:normal 11px Verdana,Arial,Helvetica,sans-serif}
+
+/* The buttons used for bbCode styling in message post */
+input.button{background:#fafafa;color:#000000}
+input.catbutton{background:#fafafa;color:#000000;font-size:10px}
+
+/* None-bold submit button */
+input.liteoption{background: #fafafa;color:#000000}
+/* The main submit button option */
+input.mainoption{background:#fafafa;color:#000000;font-weight:bold}
+/* The text input fields background colour */
+input.post,textarea.post,select{background: #ffffff;color:#000000}
+
+/* Category gradients*/
+td.cat{font-weight:bold;letter-spacing:1px;color:#000000;background:#d9e2ec url(images/cellpic1.gif);height:29px}
+
+/* Main table cell colours and backgrounds */
+td.row1{background:#eaedf4;color:#000000}
+td.row2{background:#d9e2ec;color:#000000}
+td.row3{background:#cad9ea;color:#000000}
+td.spacerow{background:#cad9ea;color:#000000}
+
+/* This is for the table cell above the Topics,Post & Last posts on the index.php */
+td.rowpic{background:url(images/cellpic2.jpg) #ffffff repeat-y}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th{background:url(images/cellpic3.gif) #005db0;color:#deeef3;font-size:11px;
+font-weight:bold;height:28px;white-space:nowrap;text-align:center}
+
+/* Code blocks */
+.code{background:#fafafa;border:1px solid #d1d7dc;color:#006600;
+font:11px Courier,"Courier New",sans-serif;padding:5px}
+
+/* This is for the error messages that pop up */
+.errorline{background:#add8e6;color:#000000;border:1px solid #006699}
+
+/* This is the border line & background colour round the entire page */
+.bodyline{background:#ffffff;color:#000000;border:1px solid #98aab1}
+
+/* This is the outline round the main forum tables */
+.forumline{background:#ffffff;color:#000000;border:1px solid #006699}
+
+/* This is the line in the posting page which shows the rollover
+help line. This is actually a text box,but if set to be the same
+colour as the background no one will know;)*/
+.helpline{background:#d9e2ec;border-style:none;color:#000000}
+
+/* The largest text used in the index page title and toptic title etc. */
+ .maintitle,h1{
+ font:bold 20px/120% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;text-decoration:none}
+
+/* Used for the navigation text,(Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav{font-size:11px;font-weight:bold}
+.postbody{font:12px/125% Verdana,Arial,Helvetica,sans-serif}
+
+/* Location,number of posts,post date etc */
+.postdetails{color:#000000;font-size:10px}
+
+/* Quote blocks */
+.quote{background:#fafafa;border:1px solid #d1d7dc;color:#444444;
+font:11px/125% Verdana,Arial,Helvetica,sans-serif}
+
+.subtitle,h2{color:#000000;font:bold 18px/180% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+text-decoration:none}
+
+/* This is the gradient background at the top of the page */
+.topbkg{background:url(images/cellpic_bkg.jpg) #f8f9fb repeat-x}
