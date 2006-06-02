@@ -6,38 +6,38 @@ Updated for use on PNphpBB2 by Carls */
 /* General text */
 .gensmall
 {
-  font-size:11px;
+  font-size: 11px;
 
 }
 
 .genmed
 {
-  font-size:10px;
+  font-size: 10px;
 }
 
 /* titles for the topics:could specify viewed link colour too */
 .topictitle
 {
-  font-size:11px;
-  font-weight:bold;
-  text-align:left;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
 
 }
 
 .topictitle:visited
 {
-  color:{CSS_VLINK};
+  color: {CSS_VLINK};
 }
 
 .topictitle:hover
 {
-  color:{CSS_HOVER};
+  color: {CSS_HOVER};
 }
 
 /* Name of poster in viewmsg.php and viewtopic.php and other places */
 .name
 {
-  font-size:11px;
+  font-size: 11px;
   font-weight: bold;
 }
 
@@ -60,7 +60,7 @@ Updated for use on PNphpBB2 by Carls */
 /* Added for Mozilla - still need to look at the black background problem though */
 iframe
 {
-  border:0;
+  border: 0;
 }
 
 hr{border: 0px solid {CSS_COLOR2};border-top-width:1px;height:0px}
@@ -68,65 +68,65 @@ hr{border: 0px solid {CSS_COLOR2};border-top-width:1px;height:0px}
 /* Form elements */
 form
 {
-  display:inline;
+  display: inline;
 }
 
 input
 {
-  margin-bottom:2px;
-  margin-top:2px;
-  text-indent:2px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  text-indent: 2px;
 }
 
 input,textarea,select
 {
-  border-color:{CSS_COLOR2};
-  color:{CSS_TEXT2};
-  font-size:11px;
+  border-color: {CSS_COLOR2};
+  color: {CSS_TEXT2};
+  font-size: 11px;
 }
 
 
 /* Fancy form styles for IE */
 input,textarea,select,input.button
 {
-  border-width:1px;
-  font:normal 11px Verdana,Arial,Helvetica,sans-serif;
+  border-width: 1px;
+  font: normal 11px Verdana,Arial,Helvetica,sans-serif;
 }
 
 /* The buttons used for bbCode styling in message post */
 input.button
 {
-  background:{CSS_COLOR1};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR1};
+  color: {CSS_TEXT1};
 }
 
 input.catbutton
 {
-  background:{CSS_COLOR1};
-  color:{CSS_TEXT1};
-  font-size:10px;
+  background-color:{CSS_COLOR1};
+  color: {CSS_TEXT1};
+  font-size: 10px;
 }
 
 /* None-bold submit button */
 input.liteoption
 {
-  background: {CSS_COLOR1};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR1};
+  color: {CSS_TEXT1};
 }
 
 /* The main submit button option */
 input.mainoption
 {
-  background:{CSS_COLOR1};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR1};
+  color: {CSS_TEXT1};
   font-weight:bold;
 }
 
 /* The text input fields background colour */
 input.post,textarea.post,select
 {
-  background: {CSS_COLOR1};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR1};
+  color: {CSS_TEXT1};
 }
 
 /* Category gradients*/
@@ -142,33 +142,33 @@ input.post,textarea.post,select
 /* Main table cell colours and backgrounds */
 .row1
 {
-  background:{CSS_COLOR1};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR1};
+  color: {CSS_TEXT1};
 }
 
 .row2
 {
-  background:{CSS_COLOR2};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR2};
+  color: {CSS_TEXT1};
 }
 
 .row3
 {
-  background:{CSS_COLOR3};
-  color:{CSS_TEXT1};
+  background-color: {CSS_COLOR3};
+  color: {CSS_TEXT1};
 }
 
 .spacerow
 {
-  background:{CSS_SEPCOLOR};
-  color:{CSS_TEXT1};
+  background-color: {CSS_SEPCOLOR};
+  color: {CSS_TEXT1};
 }
 
 /* This is for the table cell above the Topics,Post & Last posts on the index.php */
 .rowpic
 {
-  background-color:{CSS_COLOR2};
-  background:url(../cellpics/{CSS_THEMENAME}/cellpic2.jpg);
+  background-color: {CSS_COLOR3};
+  background-image: url('../cellpics/{CSS_THEMENAME}/cellpic2.jpg');
   background-repeat: repeat-y;
 }
 
@@ -274,38 +274,38 @@ colour as the background no one will know;)*/
 /* The largest text used in the index page title and toptic title etc. */
 .maintitle,h1
 {
-  font:bold 20px/120% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-  text-decoration:none;
-  text-align:left;
+  font: bold 20px/120% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+  text-decoration: none;
+  text-align: left;
 }
 
 /*logo size in header*/
 .mainlogo
 {
-  font:bold 24px/120% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-  text-decoration:none;
-  text-align:left;
+  font: bold 24px/120% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+  text-decoration: none;
+  text-align: left;
 }
 
 .logosmall
 {
-  font:bold 8px/100% "Tr;ebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-  text-decoration:none;
-  text-align:left;
+  font: bold 8px/100% "Tr;ebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+  text-decoration: none;
+  text-align: left;
 }
 
 .mainheader
 {
-  font:bold 16px/100%;
-  background: {CSS_COLOR4};
-  text-align:left;
+  font: bold 16px/100%;
+  background-color: {CSS_COLOR4};
+  text-align: left;
 }
 
 .authheader
 {
-  background:{CSS_COLOR4};
-  font-size:10px;
-  text-align:left;
+  background-color: {CSS_COLOR4};
+  font-size: 10px;
+  text-align: left;
 }
 
 /* Used for the navigation text,(Page 1,2,3 etc) and the navigation bar when in a forum */
@@ -332,24 +332,24 @@ a.nav:hover
 
 .postbody
 {
-  font:12px/125% Verdana,Arial,Helvetica,sans-serif;
-  text-align:left;
+  font: 12px/125% Verdana,Arial,Helvetica,sans-serif;
+  text-align: left;
 }
 
 /* Location,number of posts,post date etc */
 .postdetails
 {
-  color:{CSS_TEXT1};
-  font-size:10px;
-  text-align:left;
+  color: {CSS_TEXT1};
+  font-size: 10px;
+  text-align: left;
 }
 
 .subtitle,h2
 {
-  color:{CSS_TEXT1};
-  font:bold 18px/180% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
-  text-decoration:none;
-  text-align:left;
+  color: {CSS_TEXT1};
+  font: bold 18px/180% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+  text-decoration: none;
+  text-align: left;
 }
 
 /* This is the gradient background at the top of the page */
@@ -390,44 +390,44 @@ a.nav:hover
 {
 	background-color: {CSS_COLOR4};
 	border: 1px solid {CSS_TEXT1};
-	padding:1px 3px 1px 3px;
-	color: #000;
-  font-size:10px;
-	font-weight:normal;
-	margin-right:1px;
+	padding: 1px 3px 1px 3px;
+	color: {CSS_TEXT1};
+	font-size: 10px;
+	font-weight: normal;
+	margin-right: 1px;
 }
 
 .pi_link
 {
 	background-color: {CSS_COLOR2};
 	border: 1px solid {CSS_TEXT1};
-	padding:1px 3px 1px 3px;
-	color: #000;
-  font-size:10px;
-	font-weight:normal;
-	margin-right:1px;
+	padding: 1px 3px 1px 3px;
+	color: {CSS_TEXT1};
+	font-size: 10px;
+	font-weight: normal;
+	margin-right: 1px;
 }
 
 .pi_firstlast
 {
 	background-color: {CSS_COLOR3};
 	border: 1px solid {CSS_TEXT1};
-	padding:1px 3px 1px 3px;
-	color: #000;
-  font-size:10px;
-	font-weight:bold;
-	margin-right:1px;
+	padding: 1px 3px 1px 3px;
+	color: {CSS_TEXT1};
+	font-size: 10px;
+	font-weight: bold;
+	margin-right: 1px;
 }
 
 .pi_plain
 {
   background-color: {CSS_COLOR1};
 	border: 1px solid {CSS_TEXT1};
-	padding:1px 3px 1px 3px;
-	color: #000;
-  font-size:10px;
-	font-weight:normal;
-	margin-right:1px;
+	padding: 1px 3px 1px 3px;
+	color: {CSS_TEXT1};
+	font-size: 10px;
+	font-weight: normal;
+	margin-right: 1px;
 }
 
 .pi_current a:active,
@@ -466,8 +466,8 @@ a.nav:hover
 /* Code  */ 
 .codetitle,.code
 {
-  border:1px solid {CSS_COLOR3};
-  padding:2px 2px 3px 3px
+  border: 1px solid {CSS_COLOR3};
+  padding: 2px 2px 3px 3px
 } 
 
 .codetitle
@@ -484,16 +484,16 @@ a.nav:hover
   border-top-width: 0;
   color: #060; 
   font: 12px Courier,'Courier New',sans-serif;
-  overflow:auto;
-  height:40px; 
-  margin:0 20px 0 20px;
+  overflow: auto;
+  height: 40px; 
+  margin: 0 20px 0 20px;
 } 
 
 /* Quote blocks */ 
 .quotetitle,.quote
 {
   border: 1px solid {CSS_COLOR3};
-  padding:2px 2px 3px 3px;
+  padding: 2px 2px 3px 3px;
 } 
 
 .quotetitle
