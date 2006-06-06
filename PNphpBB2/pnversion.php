@@ -14,7 +14,7 @@ $modversion['old_table_prefix'] = "phpbb_";
 // Do NOT makes changes to anything below this line unless instructed by the 
 // support team at PNphpBB.com.
 $modversion['name'] = "PNphpBB2";
-$modversion['version'] = "1.2g.20";
+$modversion['version'] = "1.2i";
 $modversion['phpbb_version'] = ".0.20";
 $modversion['attach_version'] = "2.4.3";
 $modversion['copyrite'] = "&copy; 2003-2006";
