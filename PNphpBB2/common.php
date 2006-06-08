@@ -83,10 +83,11 @@ if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals
 
 	while (list($var,) = @each($input))
 	{
-		if (!in_array($var, $not_unset))
+		if (in_array($var, $not_unset))
 		{
-			unset($$var);
+			die('Hacking attempt!');
 		}
+		unset($$var);
 	}
 
 	unset($input);

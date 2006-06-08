@@ -58,9 +58,10 @@ $no_page_header = (!empty($HTTP_POST_VARS['send_file']) || $cancel) ? TRUE : FAL
 // Begin PNphpBB2 Module
 //require('./pagestart.' . $phpEx);
 require($phpbb_root_path . 'admin/pagestart.' . $phpEx);
-// $confirm = ( isset($HTTP_POST_VARS['confirm']) ) ? TRUE : FALSE;
-// $cancel = ( isset($HTTP_POST_VARS['cancel']) ) ? TRUE : FALSE;
 // End PNphpBB2 Module
+
+$confirm = ( isset($HTTP_POST_VARS['confirm']) ) ? TRUE : FALSE;
+$cancel = ( isset($HTTP_POST_VARS['cancel']) ) ? TRUE : FALSE;
 
 if ($cancel)
 {
@@ -869,7 +870,7 @@ switch( $mode )
 			// Set template files
 			//
 			$template->set_filenames(array(
-				"confirm" => "confirm_body.tpl")
+				"confirm" => "admin/confirm_body.tpl")
 			);
 
 			$template->assign_vars(array(

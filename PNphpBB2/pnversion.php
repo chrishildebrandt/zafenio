@@ -15,7 +15,7 @@ $modversion['old_table_prefix'] = "phpbb_";
 // support team at PNphpBB.com.
 $modversion['name'] = "PNphpBB2";
 $modversion['version'] = "1.2i";
-$modversion['phpbb_version'] = ".0.20";
+$modversion['phpbb_version'] = ".0.21";
 $modversion['attach_version'] = "2.4.3";
 $modversion['copyrite'] = "&copy; 2003-2006";
 $modversion['description'] = "The PostNuke Forum based on phpBB2";

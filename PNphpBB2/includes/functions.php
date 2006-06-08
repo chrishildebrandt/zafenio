@@ -348,7 +348,7 @@ function dss_rand()
 		$dss_seeded = true;
 	}
 
-	return substr($val, 16);
+	return substr($val, 4, 16);
 }
 //
 // Get Userdata, $user can be username or user_id. If force_str is true, the username will be forced.
@@ -541,7 +541,7 @@ function init_userprefs($userdata)
 //	global $board_config, $theme, $images;
 	global $board_config, $phpbb_theme, $images;
 // End PNphpBB2 Module
-	global $template, $lang, $phpEx, $phpbb_root_path;
+	global $template, $lang, $phpEx, $phpbb_root_path, $db;
 	global $nav_links;
 
 	if ( $userdata['user_id'] != ANONYMOUS )
@@ -550,7 +550,7 @@ function init_userprefs($userdata)
 /*
 		if ( !empty($userdata['user_lang']))
 		{
-			$board_config['default_lang'] = $userdata['user_lang'];
+			$default_lang = phpbb_ltrim(basename(phpbb_rtrim($userdata['user_lang'])), "'");
 		}
 
 		if ( !empty($userdata['user_dateformat']) )
@@ -565,12 +565,61 @@ function init_userprefs($userdata)
 */
 		$board_config['board_timezone'] = pnUserGetVar('timezone_offset') - 12;
 // End PNphpBB2 Module
-
+	}
+	else
+	{
+		$default_lang = phpbb_ltrim(basename(phpbb_rtrim($board_config['default_lang'])), "'");
 	}
 
-	if ( !file_exists(@phpbb_realpath($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . '/lang_main.'.$phpEx)) )
+	if ( !file_exists(@phpbb_realpath($phpbb_root_path . 'language/lang_' . $default_lang . '/lang_main.'.$phpEx)) )
 	{
-		$board_config['default_lang'] = 'english';
+		if ( $userdata['user_id'] != ANONYMOUS )
+		{
+			// For logged in users, try the board default language next
+			$default_lang = phpbb_ltrim(basename(phpbb_rtrim($board_config['default_lang'])), "'");
+		}
+		else
+		{
+			// For guests it means the default language is not present, try english
+			// This is a long shot since it means serious errors in the setup to reach here,
+			// but english is part of a new install so it's worth us trying
+			$default_lang = 'english';
+		}
+
+		if ( !file_exists(@phpbb_realpath($phpbb_root_path . 'language/lang_' . $default_lang . '/lang_main.'.$phpEx)) )
+		{
+			message_die(CRITICAL_ERROR, 'Could not locate valid language pack');
+		}
+	}
+
+	// If we've had to change the value in any way then let's write it back to the database
+	// before we go any further since it means there is something wrong with it
+	if ( $userdata['user_id'] != ANONYMOUS && $userdata['user_lang'] !== $default_lang )
+	{
+		$sql = 'UPDATE ' . USERS_TABLE . "
+			SET user_lang = '" . $default_lang . "'
+			WHERE user_lang = '" . $userdata['user_lang'] . "'";
+
+		if ( !($result = $db->sql_query($sql)) )
+		{
+			message_die(CRITICAL_ERROR, 'Could not update user language info');
+		}
+
+		$board_config['default_lang'] = $default_lang;
+		$userdata['user_lang'] = $default_lang;
+	}
+	elseif ( $board_config['default_lang'] !== $default_lang )
+	{
+		$sql = 'UPDATE ' . CONFIG_TABLE . "
+			SET config_value = '" . $default_lang . "'
+			WHERE config_name = 'default_lang'";
+
+		if ( !($result = $db->sql_query($sql)) )
+		{
+			message_die(CRITICAL_ERROR, 'Could not update user language info');
+		}
+
+		$board_config['default_lang'] = $default_lang;
 	}
 
 	include($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . '/lang_main.' . $phpEx);
@@ -663,9 +712,9 @@ function setup_style($style)
 	global $db, $board_config, $template, $images, $phpbb_root_path, $phpEx;
 // End PNphpBB2 Module
 
-	$sql = "SELECT *
-		FROM " . THEMES_TABLE . "
-		WHERE themes_id = $style";
+	$sql = 'SELECT *
+		FROM ' . THEMES_TABLE . '
+		WHERE themes_id = ' . (int) $style;
 	if ( !($result = $db->sql_query($sql)) )
 	{
 		message_die(CRITICAL_ERROR, 'Could not query database for theme info');
@@ -680,7 +729,7 @@ function setup_style($style)
 		{
 			$sql = 'SELECT *
 				FROM ' . THEMES_TABLE . '
-				WHERE themes_id = ' . $board_config['default_style'];
+				WHERE themes_id = ' . (int) $board_config['default_style'];
 			if ( !($result = $db->sql_query($sql)) )
 			{
 				message_die(CRITICAL_ERROR, 'Could not query database for theme info');
@@ -691,7 +740,7 @@ function setup_style($style)
 				$db->sql_freeresult($result);
 
 				$sql = 'UPDATE ' . USERS_TABLE . '
-					SET user_style = ' . $board_config['default_style'] . "
+					SET user_style = ' . (int) $board_config['default_style'] . "
 					WHERE user_style = $style";
 				if ( !($result = $db->sql_query($sql)) )
 				{
@@ -951,6 +1000,7 @@ function generate_pagination($base_url, $num_items, $per_page, $start_item, $add
 
 	$page_string = '';
 	if ( $total_pages > 10 )
+	{
 		$init_page_max = ( $total_pages > 3 ) ? 3 : $total_pages;
 
 		for($i = 1; $i < $init_page_max + 1; $i++)

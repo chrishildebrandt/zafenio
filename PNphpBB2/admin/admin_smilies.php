@@ -55,10 +55,21 @@ if( isset($HTTP_GET_VARS['export_pack']) )
 $phpbb_root_path = './modules/' . $ModName . '/';
 // End PNphpBB2 Module
 require($phpbb_root_path . 'extension.inc');
+
+$cancel = ( isset($HTTP_POST_VARS['cancel']) ) ? true : false;
+$no_page_header = $cancel;
+
 // Begin PNphpBB2 Module
 //require('./pagestart.' . $phpEx);
 require($phpbb_root_path . 'admin/pagestart.' . $phpEx);
 // End PNphpBB2 Module
+if ($cancel)
+{
+// Begin PNphpBB2 Module
+//	redirect('admin/' . append_sid("admin_smilies.$phpEx", true));
+	redirect($phpbb_root_path . 'admin/' . append_sid("admin_smilies.$phpEx", true));
+// End PNphpBB2 Module
+}
 
 //
 // Check to see what mode we should operate in.

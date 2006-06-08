@@ -39,10 +39,22 @@ define('IN_PHPBB', 1);
 $phpbb_root_path = './modules/' . $ModName . '/';
 // End PNphpBB2 Module
 require($phpbb_root_path . 'extension.inc');
+
+$cancel = ( isset($HTTP_POST_VARS['cancel']) ) ? true : false;
+$no_page_header = $cancel;
+
 // Begin PNphpBB2 Module
 //require('./pagestart.' . $phpEx);
 require($phpbb_root_path . 'admin/pagestart.' . $phpEx);
 // End PNphpBB2 Module
+
+if ($cancel)
+{
+// Begin PNphpBB2 Module
+//	redirect('admin/' . append_sid("admin_ranks.$phpEx", true));
+	redirect($phpbb_root_path . 'admin/' . append_sid("admin_ranks.$phpEx", true));
+// End PNphpBB2 Module
+}
 
 if( isset($HTTP_GET_VARS['mode']) || isset($HTTP_POST_VARS['mode']) )
 {
@@ -70,11 +82,8 @@ else
 
 // Restrict mode input to valid options
 $mode = ( in_array($mode, array('add', 'edit', 'save', 'delete')) ) ? $mode : '';
-// Begin PNphpBB2 Module
-$cancel = isset($HTTP_POST_VARS['cancel']);
 
-if( $mode != "" && !$cancel )
-// End PNphpBB2 Module
+if( $mode != "" )
 {
 	if( $mode == "edit" || $mode == "add" )
 	{

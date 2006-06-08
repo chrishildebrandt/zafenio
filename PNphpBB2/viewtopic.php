@@ -1360,11 +1360,10 @@ for($i = 0; $i < $total_posts; $i++)
 	//
 	if ($highlight_match)
 	{
-		// This was shamelessly 'borrowed' from volker at multiartstudio dot de
-		// via php.net's annotated manual
+		// This has been back-ported from 3.0 CVS
 // Begin PNphpBB2 Module
-/*		$message = str_replace('\"', '"', substr(@preg_replace('#(\>(((?>([^><]+|(?R)))*)\<))#se', "@preg_replace('#\b(" . str_replace('\\', '\\\\', addslashes($highlight_match)) . ")\b#i', '<span style=\"color:#" . $theme['fontcolor3'] . "\"><b>\\\\1</b></span>', '\\0')", '>' . $message . '<'), 1, -1)); */
-		$message = str_replace('\"', '"', substr(@preg_replace('#(\>(((?>([^><]+|(?R)))*)\<))#se', "@preg_replace('#\b(" . str_replace('\\', '\\\\', addslashes($highlight_match)) . ")\b#i', '<span style=\"color:#" . $phpbb_theme['fontcolor3'] . "\"><b>\\\\1</b></span>', '\\0')", '>' . $message . '<'), 1, -1)); 
+/*		$message = preg_replace('#(?!<.*)(?<!\w)(' . $highlight_match . ')(?!\w|[^<>]*>)#i', '<b style="color:#'.$theme['fontcolor3'].'">\1</b>', $message); */
+		$message = preg_replace('#(?!<.*)(?<!\w)(' . $highlight_match . ')(?!\w|[^<>]*>)#i', '<b style="color:#'.$phpbb_theme['fontcolor3'].'">\1</b>', $message);
 // End PNphpBB2 Module
 	}
 
