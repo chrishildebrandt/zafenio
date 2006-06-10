@@ -24,12 +24,12 @@ Updated for use on PNphpBB2 by Carls */
 
 }
 
-.topictitle:visited
+a.topictitle:visited
 {
   color: {CSS_VLINK};
 }
 
-.topictitle:hover
+a.topictitle:hover
 {
   color: {CSS_HOVER};
 }
@@ -42,7 +42,7 @@ Updated for use on PNphpBB2 by Carls */
 }
 
 /* Begin moving tword phpbb 2.2 style data */
-.breadcrumbs
+p.breadcrumbs
 {
   margin: 0px;
   float: left;
@@ -50,7 +50,7 @@ Updated for use on PNphpBB2 by Carls */
   white-space: normal;
 }
 
-.datetime
+p.datetime
 {
   margin: 0px;
   float: right;
@@ -130,42 +130,52 @@ input.post,textarea.post,select
 }
 
 /* Category gradients*/
-.cat
+td.cat
 {
-  letter-spacing: 1px;
+  font-weight:bold;
+  letter-spacing:1px;
   color: {CSS_TEXT1};
   background-color: {CSS_COLOR3};  
   background-image: url('../cellpics/{CSS_THEMENAME}/cellpic1.jpg');
-  height: 25px;
+  height:27px;
+}
+td.catRupt
+{
+  font-weight:bold;
+  letter-spacing: 1px;
+  color: {CSS_TEXT1};
+  background-color: {CSS_COLOR3};
+  background-image: url('../cellpics/{CSS_THEMENAME}/cellpic1.jpg');
+  height:27px;
 }
 
 /* Main table cell colours and backgrounds */
-.row1
+td.row1
 {
   background-color: {CSS_COLOR1};
   color: {CSS_TEXT1};
 }
 
-.row2
+td.row2
 {
   background-color: {CSS_COLOR2};
   color: {CSS_TEXT1};
 }
 
-.row3
+td.row3
 {
   background-color: {CSS_COLOR3};
   color: {CSS_TEXT1};
 }
 
-.spacerow
+td.spacerow
 {
   background-color: {CSS_SEPCOLOR};
   color: {CSS_TEXT1};
 }
 
 /* This is for the table cell above the Topics,Post & Last posts on the index.php */
-.rowpic
+td.rowpic
 {
   background-color: {CSS_COLOR3};
   background-image: url('../cellpics/{CSS_THEMENAME}/cellpic2.jpg');
@@ -173,14 +183,14 @@ input.post,textarea.post,select
 }
 
 /* Attach mod specific */
-.attachrow
+td.attachrow
 {
   font: normal 11px Verdana, Arial, Helvetica, sans-serif;
   color: {T_BODY_TEXT};
   border-color: {T_BODY_TEXT};
 }
 
-.attachheader
+td.attachheader
 {
   font: normal 11px Verdana, Arial, Helvetica, sans-serif;
   color: {T_BODY_TEXT};
@@ -188,7 +198,7 @@ input.post,textarea.post,select
   background-color: {T_TR_COLOR3};
 }
 
-.attachtable
+table.attachtable
 {
   font: normal 12px Verdana, Arial, Helvetica, sans-serif;
   color: {T_BODY_TEXT};
@@ -197,7 +207,7 @@ input.post,textarea.post,select
 }
 
 /* Header cells */
-.thc
+th.thc, th
 {
   background-color: {CSS_COLOR4};
   background-image: url('../cellpics/{CSS_THEMENAME}/cellpic3.jpg');
@@ -206,11 +216,25 @@ input.post,textarea.post,select
   font-weight: bold;
   white-space: nowrap;
   text-align: center;
-  height: 25px;
+  height: 27px;
   vertical-align: middle;
 }
 
-.thl
+th.thc a:link, th.thc a:active, th.thc a:visited, th a:link, th a:active, th a:visited
+{
+  color: {CSS_TEXT2};
+  font-size:11px;
+  font-weight:bold;
+}
+
+th.thc a:hover, th a:hover
+{
+  color: {CSS_HOVER};
+  font-size:11px;
+  font-weight:bold;
+}
+
+th.thl
 {
   background-color: {CSS_COLOR4};
   background-image: url('../cellpics/{CSS_THEMENAME}/cellpic3.jpg');
@@ -219,16 +243,16 @@ input.post,textarea.post,select
   font-weight: bold;
   white-space: nowrap;
   text-align: left;
-  height: 25px;
+  height: 27px;
   vertical-align: middle;
 }
 
-.thc a:link, .thc a:active, .thc a:visited, .thl a:link, .thl a:active, .thl a:visited
+th.thl a:link, th.thl a:active, th.thl a:visited
 {
   color: {CSS_VLINK};
 }
 
-.thc a:hover, .thl a:hover
+th.thl a:hover
 {
   color: {CSS_HOVER};
 }
@@ -360,30 +384,81 @@ a.nav:hover
   background-repeat: repeat-x;
 }
 
-/* Quote blocks
-.quote
-{
-  background-color: {CSS_COLOR2};
-  border: 1px solid {CSS_TEXT1};
-  color: {CSS_TEXT2};
-  font: 11px/125% Verdana,Arial,Helvetica,sans-serif;
-  text-align: left;
+/* BBCode
+ ------------ */
+.quotetitle, .attachtitle {
+	margin: 10px 5px 0px 5px;
+	padding: 4px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: {CSS_COLOR3};
+	color: {CSS_TEXT2};
+	background-color: {CSS_COLOR2};
+	font-size: 0.85em;
+	font-weight: bold;
 }
-*/
 
-/* Code blocks 
-.codetitle
-{
-  background-color: {CSS_COLOR2};
-  border: 1px solid {CSS_TEXT1};
-  padding: 5px;
-  width: 90%;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 10px;
-  text-align: left;
+.quotetitle .quotetitle {
+	font-size: 1em;
 }
-*/
+
+.quotecontent, .attachcontent {
+	margin: 0px 5px 10px 5px;
+	padding: 5px;
+	border-color: {CSS_COLOR3};
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 1.4em;
+	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
+	background-color: {CSS_COLOR1};
+	color: {CSS_TEXT2};
+}
+.attachcontent {
+	font-size: 0.85em;
+}
+.codetitle {
+	margin: 10px 5px 0px 5px;
+	padding: 2px 4px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: {CSS_COLOR3};
+	color: {CSS_TEXT2};
+	background-color: {CSS_COLOR2};
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 0.8em;
+}
+.codecontent {
+	margin: 0px 5px 10px 5px;
+	padding: 5px;
+	border-color: {CSS_COLOR3};
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	color: {CSS_TEXT2};
+	font-size: 0.85em;
+	font-family: Monaco, 'Courier New', monospace;
+	background-color: {CSS_COLOR1};
+}
+.syntaxbg {
+	color: #FFFFFF;
+}
+.syntaxcomment {
+	color: #FF8000;
+}
+.syntaxdefault {
+	color: #0000BB;
+}
+.syntaxhtml {
+	color: #000000;
+}
+.syntaxkeyword {
+	color: #007700;
+}
+.syntaxstring {
+	color: #DD0000;
+}
 
 /* Pagination */
 .pi_current
@@ -462,55 +537,3 @@ a.nav:hover
 	border-bottom: 2px solid {CSS_COLOR4};
 }
 
-/* FI DivExpand - Daz - ForumImages.com - START */ 
-/* Code  */ 
-.codetitle,.code
-{
-  border: 1px solid {CSS_COLOR3};
-  padding: 2px 2px 3px 3px
-} 
-
-.codetitle
-{
-  background-color: {CSS_COLOR3};
-  text-indent: 2px;
-  font-weight: bold;
-  margin: 10px 20px 0 20px;
-} 
-
-.code
-{
-  background-color: {CSS_COLOR1};
-  border-top-width: 0;
-  color: #060; 
-  font: 12px Courier,'Courier New',sans-serif;
-  overflow: auto;
-  height: 40px; 
-  margin: 0 20px 0 20px;
-} 
-
-/* Quote blocks */ 
-.quotetitle,.quote
-{
-  border: 1px solid {CSS_COLOR3};
-  padding: 2px 2px 3px 3px;
-} 
-
-.quotetitle
-{
-  background-color: {CSS_COLOR3};
-  text-indent: 2px;
-  font-weight: bold;
-  margin: 10px 20px 0 20px;
-} 
-
-.quote
-{
-  background-color: {CSS_COLOR1};
-  border-top-width: 0;
-  color: #444; 
-  overflow: auto;
-  height: 40px;
-  margin: 0 20px 10px 20px;
-} 
-/* FI DivExpand - Daz - ForumImages.com - END */
