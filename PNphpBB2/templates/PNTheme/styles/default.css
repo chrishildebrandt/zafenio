@@ -387,30 +387,79 @@ a.nav:hover
   background-repeat: repeat-x;
 }
 
-/* Quote blocks
-.quote
-{
-  background:#ffffff;
-  border:1px solid #ffffff;
-  color:#000000;
-  font:11px/125% Verdana,Arial,Helvetica,sans-serif;
-  text-align:left;
-}
-*/
-
-/* Code blocks 
-.codetitle
-{
-  background: #ffffff;
-  border:1px solid #ffffff;
-  padding:5px;
-  width:90%;
-  font-weight:bold;
-  text-align:left;
-  margin-top:10px;
-  text-align:left;
-}
-*/
+/* BBCode
+ ------------ */
+.quotetitle, .attachtitle {
+	margin: 10px 5px 0px 5px;
+	padding: 4px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #A9B8C2;
+	color: #333333;
+	background-color: #A9B8C2;
+	font-size: 0.85em;
+	font-weight: bold;
+	}
+.quotetitle .quotetitle {
+	font-size: 1em;
+	}
+.quotecontent, .attachcontent {
+	margin: 0px 5px 10px 5px;
+	padding: 5px;
+	border-color: #A9B8C2;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 1.4em;
+	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
+	background-color: #FAFAFA;
+	color: #4B5C77;
+	}
+.attachcontent {
+	font-size: 0.85em;
+	}
+.codetitle {
+	margin: 10px 5px 0px 5px;
+	padding: 2px 4px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #A9B8C2;
+	color: #333333;
+	background-color: #A9B8C2;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 0.8em;
+	}
+.codecontent {
+	margin: 0px 5px 10px 5px;
+	padding: 5px;
+	border-color: #A9B8C2;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	color: #006600;
+	font-size: 0.85em;
+	font-family: Monaco, 'Courier New', monospace;
+	background-color: #FAFAFA;
+	}
+.syntaxbg {
+	color: #FFFFFF;
+	}
+.syntaxcomment {
+	color: #FF8000;
+	}
+.syntaxdefault {
+	color: #0000BB;
+	}
+.syntaxhtml {
+	color: #000000;
+	}
+.syntaxkeyword {
+	color: #007700;
+	}
+.syntaxstring {
+	color: #DD0000;
+	}
 
 /* Pagination */
 .pi_current
@@ -489,56 +538,4 @@ a.nav:hover
 	border-bottom: 2px solid #eeeeee;
 }
 
-/* FI DivExpand - Daz - ForumImages.com - START */ 
-/* Code  */ 
-.codetitle,.code
-{
-  border:1px solid #ffffff;
-  padding:2px 2px 3px 3px
-} 
-
-.codetitle
-{
-  background: #ffffff;
-  text-indent:2px;
-  font-weight:bold;
-  margin:10px 20px 0 20px;
-} 
-
-.code
-{
-  background:#ffffff;
-  border-top-width:0;
-  color:#060; 
-  font: 12px Courier,'Courier New',sans-serif;
-  overflow:auto;
-  height:40px; 
-  margin:0 20px 0 20px;
-} 
-
-/* Quote blocks */ 
-.quotetitle,.quote
-{
-  border: 1px solid #ffffff;
-  padding:2px 2px 3px 3px;
-} 
-
-.quotetitle
-{
-  background:#ffffff;
-  text-indent:2px;
-  font-weight:bold;
-  margin:10px 20px 0 20px;
-} 
-
-.quote
-{
-  background:#ffffff;
-  border-top-width:0;
-  color:#444; 
-  overflow:auto;
-  height:40px;
-  margin:0 20px 10px 20px;
-} 
-/* FI DivExpand - Daz - ForumImages.com - END */
 
