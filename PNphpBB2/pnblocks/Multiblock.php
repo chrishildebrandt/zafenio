@@ -726,27 +726,38 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 
 					if ($uid == $uname[1])
 					{
+						$unread = 0;
+						$total = 0;
 						if ($vars['pn_pm'])
 						{
 							$column = &$pntable['priv_msgs_column'];
-							$result2 = $dbconn->Execute("SELECT count(*) FROM $pntable[priv_msgs] WHERE $column[read_msg] ='0' and $column[to_userid]=" . $uid);
-							list($unread) = $result2->fields;
-							$result4 = $dbconn->Execute("SELECT count(*) FROM $pntable[priv_msgs] WHERE $column[to_userid]=" . $uid);
-							list($total) = $result4->fields;
-							$result5 = $dbconn->Execute("SELECT pn_from_userid FROM $pntable[priv_msgs] WHERE $column[read_msg] ='0' and 
-							$column[to_userid]=" . $uid);
+							$sql = "SELECT count(*) FROM $pntable[priv_msgs] WHERE $column[read_msg] ='0' and $column[to_userid]=" . $uid;
+							if ( $result2 = $dbconn->Execute($sql) )
+							{
+								list($unread) = $result2->fields;
+							}
+							$sql = "SELECT count(*) FROM $pntable[priv_msgs] WHERE $column[to_userid]=" . $uid;
+							if ( $result4 = $dbconn->Execute($sql) )
+							{
+								list($total) = $result4->fields;
+							}
 						}
 						else
 						{
 							$column = &$pntable['priv_msgs_column'];
-							$result2 = $dbconn->Execute("SELECT count(*) FROM " . $table_prefix . "privmsgs WHERE (privmsgs_type='1' or privmsgs_type='5') and privmsgs_to_userid=" . $uid); 
-							list($unread) = $result2->fields;
-							$result4 = $dbconn->Execute("SELECT count(*) FROM " . $table_prefix . "privmsgs WHERE (privmsgs_type='0' or privmsgs_type='5' or privmsgs_type='1') and privmsgs_to_userid=" . $uid); 
-							list($total) = $result4->fields;
-							$result5 = $dbconn->Execute("SELECT pn_from_userid FROM " . $table_prefix . "privmsgs WHERE privmsgs_type='0' and privmsgs_to_userid=" . $uid);
+							$sql = "SELECT count(*) FROM " . $table_prefix . "privmsgs WHERE (privmsgs_type='1' or privmsgs_type='5') and privmsgs_to_userid=" . $uid;
+							if ( $result2 = $dbconn->Execute($sql) )
+							{ 
+								list($unread) = $result2->fields;
+							}
+							$sql = "SELECT count(*) FROM " . $table_prefix . "privmsgs WHERE (privmsgs_type='0' or privmsgs_type='5' or privmsgs_type='1') and privmsgs_to_userid=" . $uid;
+							if ( $result4 = $dbconn->Execute($sql) )
+							{ 
+								list($total) = $result4->fields;
+							}
 						}
 						$blockinfo['content'] .= '<td align="right">(';												     					 		
-						if ($unread >0 )
+						if ($unread > 0 )
 						{
 							// No sound file?
 							if (!empty($vars['pm_sound']))
@@ -803,6 +814,7 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 						// list($pn_uid) = $result->fields;
 						if ($vars['pn_pm'])
 						{
+							$blockinfo['content'] .= "<td align=\"right\"><a href=\"" . $pn_link_url . "Messages&amp;file=index";
 							$blockinfo['content'] .= "\" title=\"" . _UNREAD_PRIVATEMSG . "\"><img src=\"" . $phpbb_root_path . "pnimages/pm.gif\" title=\"" . _SEND_PM . "\" align=middle\" border=\"0\"></a></td>";
 						}
 						else
