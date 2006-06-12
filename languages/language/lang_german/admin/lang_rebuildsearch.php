@@ -21,16 +21,16 @@
 
 $lang_admin_wsr['Button_Rebuild'] = "Neu Erstellen";
 $lang_admin_wsr['Rebuild_Search_Title'] = "Such Index neu erstellen";
-$lang_admin_wsr['Rebuild_Search_Explaine'] = "Dieses Werkzeug erstellt die beidn Tabellen search_wordlist und search_wordmatch neu."; 
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Diese Tabellen werden f&uuml;r die Suchfunktion ben&ouml;tigt.";
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Abh&auml;ngig von der Menge der Beitr&auml;ge in der Datenbank kann diese Routine ein wenig Zeit in Anspruch nehmen ";
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "daher wird nach jeweils 100 Beitr&auml;gen eine Pause von etwa 3 Sekunden eingelegt.";
+$lang_admin_wsr['Rebuild_Search_Explaine'] = "Dieses Werkzeug erstellt die beiden Tabellen search_wordlist und search_wordmatch neu."; 
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Diese Tabellen werden für die Suchfunktion benötigt.";
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Abhängig von der Menge der Beiträge in der Datenbank kann diese Routine ein wenig Zeit in Anspruch nehmen ";
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "daher wird nach jeweils 100 Beiträgen eine Pause von etwa 3 Sekunden eingelegt.";
 $lang_admin_wsr['Error_Empty'] = "Konnte ";
 $lang_admin_wsr['Error_Table'] = " Tabelle nicht leeren .";
-$lang_admin_wsr['Error_Find_Posts'] = "Konnte keine Beitr&auml;ge finden.";
-$lang_admin_wsr['Posts_Complete'] = " Beitr&auml;ge fertiggestellt";
+$lang_admin_wsr['Error_Find_Posts'] = "Konnte keine Beiträge finden.";
+$lang_admin_wsr['Posts_Complete'] = " Beiträge fertiggestellt";
 $lang_admin_wsr['Click_Here'] = "Klick %sHier%s um weiterzumachen(oder warte 3 Sekunden)";
 $lang_admin_wsr['Rebuild_Successful'] = "Neuerstellung erfolgreich";
-$lang_admin_wsr['Return_Rebuild'] = "Klick %sHier%s um zum Punkt 'Such Index Neuerstellen' zur&uuml;ckzukehren";
-$lang_admin_wsr['Return_Index'] = "Klick %sHier%s um zum Admin Index zur&uuml;ckzukehren";
+$lang_admin_wsr['Return_Rebuild'] = "Klick %sHier%s um zum Punkt 'Such Index Neuerstellen' zurückzukehren";
+$lang_admin_wsr['Return_Index'] = "Klick %sHier%s um zum Admin Index zurückzukehren";
 ?>

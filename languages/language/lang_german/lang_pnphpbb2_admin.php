@@ -22,6 +22,7 @@
 /*********************************************************************************
  * German Translation by:
  * Michael Hille (mihil) web@xp-tipps-tricks.de || http://www.xp-tipps-tricks.de
+* Adapted for PNphpBB2 1.2i by Chris Hildebrandt auf http://kanotix.com
  ********************************************************************************/
 //
 // The format of this file is ---> $lang['message'] = 'text';
@@ -49,17 +50,17 @@ $lang['PNphpBB2_No_Updates'] =  "<h4>Keine Aktualisierung erforderlich</h4>";
 $lang['PNphpBB2_Update_Data'] = "<h4>Aktualisiere Daten</h4>";
 $lang['PNphpBB2_Attach'] = "Attachment Mod Version ";
 $lang['PNphpBB2_Updating_Paths'] = "<h4>Aktualisiere Konfigurationspfade</h4>";
-$lang['PNphpBB2_Delete_Themes'] = "<h4>Lï¿½che alte Themen/Style Datensï¿½ze</h4>";
+$lang['PNphpBB2_Delete_Themes'] = "<h4>Lösche alte Themen/Style Datensätze</h4>";
 $lang['PNphpBB2_Install_Themes'] = "<h4>Installiere neue Themen  (PNTheme-1, PNLite-2, subSilver-3)</h4>";
 $lang['PNphpBB2_Board_Theme'] = "<h4>Setze Forum Standardthema auf PNTheme</h4>";
 $lang['PNphpBB2_User_Theme'] = "<h4>Setze Thema fr alle Benutzer auf PNTheme</h4>";
-$lang['PNphpBB2_Clear_Sessions'] = "<h4>Lï¿½che ALLE Sessions von der Session Tabelle</h4>";
-$lang['PNphpBB2_Cant_SQL'] = "<p>KANN MSSQL-TABELLE NICHT ï¿½DERN. BITTE FOLGENDES MANUELL AUSFï¿½REN:<br />IN PHPBB_QUOTA_LIMITS, ï¿½dere QUOTA_LIMIT TO VON INT TO BIGINT.</p>";
-$lang['PNphpBB2_Update_Complete'] = "<p><b>NphpBB2 Aktualisierung ist nun vollstï¿½dig..<br /><br />";
-$lang['PNphpBB2_Update_Complete'] .= "Falls Du auf irgendwelche Fehler wï¿½rend der Aktualisierung gestossen bist, dann drucke diese Seite und besuch das Forum auf http://www.pnphpbb.com fr weitere Untersttzung.<br /><br />";
-$lang['PNphpBB2_Update_Complete'] .= "Bitte aktiviere dieses Modul, bevor Du fortfï¿½rst und berprfe dann die gesamte Konfigurationseinstellungen auf der Administration Seite.<br /><br />";
-$lang['PNphpBB2_Update_Complete'] .= "Wenn das Attachment Modul wï¿½rend dieses Prozesses installiert wurde, dann muï¿½ Du es aktivieren, wenn Du es benutzen mï¿½htest..<br /><br />";
-$lang['PNphpBB2_Update_Complete'] .= "Danke, dass Du Dich fr PNphpBB2 entschieden hast.</b></p>";
+$lang['PNphpBB2_Clear_Sessions'] = "<h4>Lösche ALLE Sessions von der Session Tabelle</h4>";
+$lang['PNphpBB2_Cant_SQL'] = "<p>KANN MSSQL-TABELLE NICHT ÄNDERN. BITTE FOLGENDES MANUELL AUSFÜHREN:<br />IN PHPBB_QUOTA_LIMITS, ändere QUOTA_LIMIT TO VON INT TO BIGINT.</p>";
+$lang['PNphpBB2_Update_Complete'] = "<p><b>PNphpBB2 Aktualisierung ist nun vollständig..<br /><br />";
+$lang['PNphpBB2_Update_Complete'] .= "Falls Du auf irgendwelche Fehler während der Aktualisierung gestossen bist, dann drucke diese Seite und besuch das Forum auf http://www.pnphpbb.com für weitere Untersttzung.<br /><br />";
+$lang['PNphpBB2_Update_Complete'] .= "Bitte aktiviere dieses Modul, bevor Du fortführst und überprüfe dann alle Konfigurationseinstellungen auf der Administration Seite.<br /><br />";
+$lang['PNphpBB2_Update_Complete'] .= "Wenn das Attachment Modul während dieses Prozesses installiert wurde, dann musst Du es aktivieren, wenn Du es benutzen möchtest..<br /><br />";
+$lang['PNphpBB2_Update_Complete'] .= "Danke, dass Du Dich für PNphpBB2 entschieden hast.</b></p>";
 $lang['PNphpBB2_phpBB_Tables_Found'] = "<h5>phpBB_* Tabellen wurden in deiner PostNuke Datenbank gefunden. Es ist sehr wichtig";
 $lang['PNphpBB2_phpBB_Tables_Found'] .= " dass du verstehst was dieses Script tut. </h5>";
 $lang['PNphpBB2_three_options'] = "Du Hast drei (3) Optionen zu diesem Zeitpunkt";
@@ -68,22 +69,22 @@ $lang['PNphpBB2_option_one'] .= " phpBB2pnmod-203-Attachments, oder phpBB2pnmod-
 $lang['PNphpBB2_option_two'] = "2) Upgrade von einer StandAlone phpBB2 (Version 2.0.1-2.0.4)";
 $lang['PNphpBB2_option_three'] = "3) Konvertierung abbrechen";
 $lang['PNphpBB2_Upgrade_Disclaimer'] = "Wichtig! Wenn du Option zwei (2) waehlst,werden ALLE User ";
-$lang['PNphpBB2_Upgrade_Disclaimer'] .= "in der Postnukedatenbank gloescht und durch die Userinformationen ";
-$lang['PNphpBB2_Upgrade_Disclaimer'] .= "in den phpBB2-tabellen ersetzt</br></br>Wenn dies durchgefhrt wurde, gibt es kein Zurck, darum ";
+$lang['PNphpBB2_Upgrade_Disclaimer'] .= "in der Postnukedatenbank geloescht und durch die Userinformationen ";
+$lang['PNphpBB2_Upgrade_Disclaimer'] .= "in den phpBB2-tabellen ersetzt</br></br>Wenn dies durchgeführt wurde, gibt es kein Zurück, darum ";
 $lang['PNphpBB2_Upgrade_Disclaimer'] .= "stelle sicher, dass eine aktuelle Sicherung deiner Postnuke und phpBB2 Datenbank vorhanden ist.";
 $lang['PNphpBB2_bad_version_1'] = "Du kannst nur von Version 2.0.1 oder hoeher upgraden. Deine Version ist 2";
-$lang['PNphpBB2_bad_version_2']  = "</br>Bitte berprfe die Versionsinformationen bevor du fortfï¿½rst.";
+$lang['PNphpBB2_bad_version_2']  = "</br>Bitte überprüfe die Versionsinformationen bevor du fortfährst.";
 $lang['PNphpBB2_bad_version_3'] = "Fuer diese Version ist kein Upgrade erforderlich, Die in der Datenbank gefundene Version ist X$version ";
 $lang['PNphpBB2_no_version'] = "Es konnten keine Versionsinformationen eingeholt werden.";
-$lang['PNphpBB2_Updating_links'] = "Updating post links";
+$lang['PNphpBB2_Updating_links'] = "Update Post Links";
 // Removal
 $lang['PNphpBB2_Remove_Prompt'] = "Entferne PNphpBB2";
-$lang['PNphpBB2_Remove_Text'] = "Du bist dabei PNphpBB2 und alle damit verbundene Datenbanken von PostNuke (" . $table_prefix . "*).<br /><br />Alle Daten gehen verloren. Bist Du sicher, dass Du das durchfhren mï¿½htest?";
+$lang['PNphpBB2_Remove_Text'] = "Du bist dabei PNphpBB2 und alle damit verbundene Datenbanken von PostNuke (" . $table_prefix . "*).<br /><br />Alle Daten gehen verloren. Bist Du sicher, dass Du das durchfhren möchtest?";
 $lang['PNphpBB2_Remove_Title'] = "<h4>Entferne PNphpBB2 Tabellen von " . $table_prefix . "*</h4>";
-$lang['PNphpBB2_Remove_Notes'] = "<p><b>Die PNphpBB2 Tabellen sind entfernt worden. Um die Entfernung vollstï¿½dig durchzufhren, gehe zurck zur Modul Administration und entferne PNphpBB2 erneut.</b></p>";
+$lang['PNphpBB2_Remove_Notes'] = "<p><b>Die PNphpBB2 Tabellen sind entfernt worden. Um die Entfernung vollständig durchzuführen, gehe zurück zur Modul Administration und entferne PNphpBB2 erneut.</b></p>";
 
 // General
-$lang['PNphpBB2_Running'] = "Laeuft";
+$lang['PNphpBB2_Running'] = "Läuft";
 $lang['PNphpBB2_Failed'] = "Fehlgeschlagen";
 $lang['PNphpBB2_ButOK'] = "ABER OK!";
 $lang['PNphpBB2_Completed'] = "Komplett";
@@ -91,7 +92,7 @@ $lang['PNphpBB2_Done'] = "Fertig";
 $lang['PNphpBB2_Aborted'] = "Abgebrochen";
 $lang['PNphpBB2_Cancel'] = "Abbrechen";
 $lang['PNphpBB2_Progress'] = "<h4>Fortschritt</h4>";
-$lang['PNphpBB2_Some_Failed'] = "<p><b>Einige Abfragen sind fehlgeschlagen. Die Abfragen und Fehler sind unten aufgefhrt:<br />(Einige Aktionen sind notwendig um Tabellen oder Datensï¿½ze hinzuzufgen, zu ï¿½dern oder zu lï¿½chen)</b></p><br />";
+$lang['PNphpBB2_Some_Failed'] = "<p><b>Einige Abfragen sind fehlgeschlagen. Die Abfragen und Fehler sind unten aufgeführt:<br />(Einige Aktionen sind notwendig um Tabellen oder Datensätze hinzuzufgen, zu ändern oder zu löschen)</b></p><br />";
 $lang['PNphpBB2_No_Errors'] = "<h4>Keine Fehler</h4>";
 $lang['PNphpBB2_Results'] = "<h4>Ergebnisse</h4>";
 $lang['PNphpBB2_Installing'] = "Installiere";
@@ -100,7 +101,7 @@ $lang['PNphpBB2_Important'] = "WICHTIG";
 
 // Additional administration links
 $lang['Users_aguide'] = "<a href=\"" . pnGetBaseURL() . "modules/PNphpBB2/docs/attach_user_guide.html\" target=\"_blank\">Users Guide</a>";
-$lang['Forum_Manual'] = "<a href=\"" . pnGetBaseURL() . "modules/PNphpBB2/docs/phpBB_2_0_Users_Guide.html\" target=\"_blank\">User Manual</a>";
+$lang['Forum_Manual'] = "<a href=\"" . pnGetBaseURL() . "modules/PNphpBB2/docs/PNphpBB2_Users_Guide.html\" target=\"_blank\">User Manual</a>";
 // PNphpBB2 config options
 $lang['pnphpbb2_settings'] = "PNphpBB2 Konfiguration";
 $lang['pnphpbb2_settings_explain'] = "Hier kannst du Optionen und Einstellungen des PNphpBB2-Modules vornehmen.";
@@ -110,30 +111,30 @@ $lang['pnphpbb2_quickreply_explain'] = "Aktiviere oder Deaktiviere das Schnelle 
 $lang['pnphpbb2_logo_on'] = "Zeige das PNphpBB2 Logo im Forum";
 $lang['pnphpbb2_logo_on_explain'] = "Aktiviere das PNphpBB2-Logo im Forum. (Falls du das Logo nicht anzeigen moechtest,behalte BITTE die Credits Information im Fuss des Forums bei)";
 $lang['pnphpbb2_shorturls'] = "Kurze URL's in Beitraegen";
-$lang['pnphpbb2_shorturls_explain'] = "Aktiviere oder Deaktiviere die Nutzung kurzer URL's in Beitrï¿½en.";
-$lang['pnphpbb2_post_order'] = "Art der Sortierung der Forum Beitrï¿½e";
+$lang['pnphpbb2_shorturls_explain'] = "Aktiviere oder Deaktiviere die Nutzung kurzer URL's in Beiträgen.";
+$lang['pnphpbb2_post_order'] = "Art der Sortierung der Forum Beiträge";
 $lang['pnphpbb2_post_order_explain'] = "Standardeinstellung der Anzeige von Beitraegen.";
 $lang['pnphpbb2_post_order_explain'] .= "<br>(Dies kann durch die Einstellungen im Forum berschrieben werden)";
 $lang['pnphpbb2_post_confirm'] = "Deaktiviere Beitragsbestaetigung";
 $lang['pnphpbb2_post_confirm_explain'] = "Dies deaktiviert den Beitragsbestaetigungbildschirm fuer alle Beitraege. Bei Deaktivierung wird der User automatisch zurck zum Thema und dem geschriebenen Beitrag geleitet.";
 
 $lang['pnphpbb2_allow_full_page'] = "Erlaube das Minimieren/Maximieren (Vollbildansicht) des Forums";
-$lang['pnphpbb2_allow_full_page_explain'] = "Gestattet Usern das Forum zur Vollbildansicht zu Maximieren/Minimieren unabhï¿½gig von den Themeinstellungenen";
+$lang['pnphpbb2_allow_full_page_explain'] = "Gestattet Usern das Forum zur Vollbildansicht zu Maximieren/Minimieren unabhängig von den Themeinstellungenen";
 
 $lang['pnphpbb2_full_page'] = "Voreinstellung Forum als Vollbild (Maximieren) Ansicht";
 $lang['pnphpbb2_full_page_explain'] = "Ermoeglicht dem Administrator die Ansicht des Forums entweder als Vollbildanzeige oder innerhalb des Postnuketheme.";
 $lang['pnphpbb2_pn_pm'] = "Benutze Postnuke's Private Messaging System";
-$lang['pnphpbb2_pn_pm_explain'] = "Ermï¿½licht das Postnuke's Private Messaging System durch das Forum Private Messaging System zu ersetzten.";
+$lang['pnphpbb2_pn_pm_explain'] = "Ermöglicht das Postnuke's Private Messaging System durch das Forum Private Messaging System zu ersetzen.";
 $lang['pnphpbb2_pn_link'] = "Link um User zurck zur Postnuke Seite zu leiten";
-$lang['pnphpbb2_pn_link_explain'] = "Dies muss ein gueltiger Html-Link sein der zurck zur Hauptseite fuehrt, bei Anzeige des Forums ausserhalb des Postnukethemes.";
+$lang['pnphpbb2_pn_link_explain'] = "Dies muss ein gueltiger html-Link sein der zurück zur Hauptseite fuehrt, bei Anzeige des Forums ausserhalb des Postnukethemes.";
 $lang['pnphpbb2_pn_text'] = "Text der fuer den Link agezeigt werden soll";
 $lang['pnphpbb2_pn_text_explain'] = "Dies ist der Text fuer den Link, es kann irgendein Text oder Html-Code sein. (Kann einen Image-Link enthalten).";
-$lang['pnphpbb2_members_online'] = "Deaktiviere Who's Online block im Forum index";
+$lang['pnphpbb2_members_online'] = "Deaktiviere Who's Online Block im Forum index";
 $lang['pnphpbb2_members_online_explain'] = "Gestattet dem Administrator den Who's Online Block im Fuss des Forumindex zu deaktivieren.";
 $lang['pnphpbb2_members_online_annon'] = "Verstecke den  Who's Online Block vor anonymen Usern";
 $lang['pnphpbb2_members_online_annon_explain'] = "Falls nicht deaktiviert, verhindert diese Einstellung die Anzeige des Who's Online Block fuer Anonyme User.";
 $lang['pnphpbb2_template_compiler'] = "Benutze den neuen template compiler";
-$lang['pnphpbb2_template_compiler_explain'] = "Benutze das eXtreme Styles mod von Vjacheslav Trushkin <slava@trushkin.net> </br>Dieses Modul ist eine stark optimierte Version des phpBB templates system und hat einige zusï¿½zliche Features. Es compiliert und fhrt Dateien viel schneller aus, besitzt ein Cache system welches Templates deutlich beschleunigt, erlaubt die Nutzung von php in Templates und einige andere neue Features. Dies ist eine Testversion und arbeitet evtl. mit manchen Modulen nicht korrekt zusammen.";
+$lang['pnphpbb2_template_compiler_explain'] = "Benutze das eXtreme Styles mod von Vjacheslav Trushkin <slava@trushkin.net> </br>Dieses Modul ist eine stark optimierte Version des phpBB templates system und hat einige zusätzliche Features. Es compiliert und führt Dateien viel schneller aus, besitzt ein Cache System das Templates deutlich beschleunigt, erlaubt die Nutzung von php in Templates und einige andere neue Features. Dies ist eine Testversion und arbeitet evtl. mit manchen Modulen nicht korrekt zusammen.";
 $lang['pnphpbb2_updated'] = "PNphpBB2 Konfiguration updated";
 $lang['pnphpbb2_click_return_config'] = "Klicke %sHier%s um zur PNphpBB2 Konfiguration zurckzukehren";
 
@@ -146,7 +147,7 @@ $lang['pnphpbb2_index_announce_explain'] = "Ermoeglicht die Anzeige von Ankuendi
 // Mod Version: 0.5
 // Author: Vjacheslav Trushkin <slava@trushkin.net>
 $lang['xs_warning'] = 'Warnung: Cache konnte nicht geschrieben werden!.';
-$lang['xs_warning_explain'] = 'ï¿½erpruefe ob der Ordner erstellt wurde in dem der Cache gespeichert wird und aendere die Berechtigung (chmod) auf 777 damit das Script den Cache dort anlegen kann. Falls der Server im safe mode lï¿½ft solltest du "." als Dateinamenseparator verwenden damit saemtlicher Cache im selben Verzeichnis gespeichert wird (siehe die Separatoreinstellungen unten).<br /><br />Falls der Cache aus irgendwelchen Gruenden auf deinem Server nicht arbeitet  keine Sorge - eXtreme Styles mod beschleinigt die Forumgeschwindigkeit haeufig ohne Cache.';
+$lang['xs_warning_explain'] = 'Überpruefe ob der Ordner erstellt wurde in dem der Cache gespeichert wird und aendere die Berechtigung (chmod) auf 777 damit das Script den Cache dort anlegen kann. Falls der Server im safe mode läuft solltest du "." als Dateinamenseparator verwenden damit saemtlicher Cache im selben Verzeichnis gespeichert wird (siehe die Separatoreinstellungen unten).<br /><br />Falls der Cache aus irgendwelchen Gruenden auf deinem Server nicht arbeitet  keine Sorge - eXtreme Styles mod beschleinigt die Forumgeschwindigkeit haeufig ohne Cache.';
 $lang['xs_updated'] = 'Konfiguration updated.';
 $lang['xs_updated_explain'] = 'Diese Seite muss aktualisiert werden bevor die neue Konfiguration wirksam wird. <a href="%s">Klick hier</a> zum aktualisieren.';
 // ACP navigation bar
@@ -171,15 +172,15 @@ $lang['xs_cache_dir'] = 'Cache Verzeichnis';
 $lang['xs_cache_dir_explain'] = 'Gesamter Cache wird in das Verzeichnis geschrieben (und/oder Unterverzeichnisse). Dateien mit gleichem Namen werden ueberschrieben. Benutze nicht "/" vor dem Verzeichnisnamen es sei denn der Verzeichnisname ist absolut. Absolut bedeutet Kompletter Pfad als Datei ist auf einer Server Hard disk (verwechsel es nicht mit der absoluten URL) Relativ bedeutet der Pfad startet mit dem PNphpBB Verzeichnis..';
 // xs_cache_dir_absolute
 $lang['xs_dir_absolute'] = 'Absoluter Pfad';
-$lang['xs_dir_absolute_explain'] = '(like "/home/some_website/htdocs/phpbb/cache")';
+$lang['xs_dir_absolute_explain'] = '(wie "/home/some_website/htdocs/phpbb/cache")';
 $lang['xs_dir_relative'] = 'Relativer Pfad';
 $lang['xs_dir_relative_explain'] = 'relativ zum phpBB Forum Pfad (z.B: "cache")';
 // xs_auto_compile
 $lang['xs_auto_compile'] = 'Automatisch Cache speichern';
-$lang['xs_auto_compile_explain'] = 'Dies Kompiliert automatisch Templates falls noetig und speichert im Cacheverzeichnis.';
+$lang['xs_auto_compile_explain'] = 'Dies kompiliert automatisch Templates falls nötig und speichert im Cacheverzeichnis.';
 // xs_auto_recompile
 $lang['xs_auto_recompile'] = 'Automatisch Cache re-kompilieren';
-$lang['xs_auto_recompile_explain'] = 'Dies Re-kompiliert automatisch den Cache wenn original Templatedateien geaendert wurden.';
+$lang['xs_auto_recompile_explain'] = 'Dies re-kompiliert automatisch den Cache wenn original Templatedateien geaendert wurden.';
 // xs_separator
 $lang['xs_separator'] = 'Dateinamen Separator';
 $lang['xs_separator_explain'] = 'Wenn gesetzt auf "/" wird der Cache in Unterverzeichnisse abhaengig vom Templatenamen gespeichert (z.B. "subSilver/admin/page_header.php" wird gespeichert im Cacheverzeichnis "subSilver/admin/page_header.php"), falls er gestzt wird wie z.B. "." wird der gesamte Cache in einem Verzeichnis gespeichert (z.B. "subSilver/admin/page_header.php" wird im Cacheverzeichnis gespeichert als "subSilver.admin.page_header.php")';
@@ -191,7 +192,7 @@ $lang['xs_def_template'] = 'Standard Template Verzeichnis';
 $lang['xs_def_template_explain'] = 'Falls die tpl Datei nicht im aktuellen Templateverzeichnis gefunden wurde (kann passieren wenn phpBB nicht korrekt gmodded wurde) sucht das Templatesystem nach gleichen Dateien in diesem Verzeichnis (wenn z.B das aktuelle Template "myTemplate" ist, erwartet das Script  "myTemplate/myfile.tpl"  und die Datei ist nicht dort, sucht das Templatesystem nach Dateien wie "subSilver/myfile.tpl"). Setze leer um dies Feature zu deaktivieren.';
 // xs_check_switches
 $lang['xs_check_switches'] = 'Checke Schalter waehrend des kompilierens';
-$lang['xs_check_switches_explain'] = 'Dieses Feature ueberprueft auf Fehler in Templates. Das Abschalten erhï¿½t das Tempo des Kompilierens, aber der Kompiler bersieht mï¿½liche Fehler in den Templates.<br /><br />Smart Check berprft Templates auf Fehler und repariert automatisch alle gefundenen Fehler (Es gibt einige bekannte Fehler in verschiedenen Mods). Arbeitet ein wenig langsamer als Simple Check.<br /><br />Aber manchmal sehen die Templates genauer aus wenn der Error Check deaktiviert ist. Dies geschieht bei schlechter html-codierung - Markiere wer auch immer tpl Dateien schreibt wenn du Fehler beheben willst.<br /><br />Falls das Cache-Feature deaktiviert ist, dann ist es besser, dies fuer eine schnellere Kompilierung abzuschalten.';
+$lang['xs_check_switches_explain'] = 'Dieses Feature ueberprueft auf Fehler in Templates. Das Abschalten erhöht das Tempo des Kompilierens, aber der Kompiler bersieht mögliche Fehler in den Templates.<br /><br />Smart Check überprüft Templates auf Fehler und repariert automatisch alle gefundenen Fehler (Es gibt einige bekannte Fehler in verschiedenen Mods). Arbeitet ein wenig langsamer als Simple Check.<br /><br />Aber manchmal sehen die Templates genauer aus wenn der Error Check deaktiviert ist. Dies geschieht bei schlechter html-codierung - Markiere wer auch immer tpl Dateien schreibt wenn du Fehler beheben willst.<br /><br />Falls das Cache-Feature deaktiviert ist, dann ist es besser, dies fuer eine schnellere Kompilierung abzuschalten.';
 $lang['xs_check_switches_0'] = 'Aus';
 $lang['xs_check_switches_1'] = 'Smart check';
 $lang['xs_check_switches_2'] = 'Simple check';
@@ -258,15 +259,15 @@ $lang['Rank_image'] = 'Rank Image';
 $lang['Rank_image_explain'] = 'Benutze dies um ein kleines Bild festzulegen zugehoerend zum Rang.';
 $lang['Rank_image_explain'] .= '<br/>Der Pfad ist relativ zum PNphpBB2 Root-Verzeichnis wenn du einen Pfad eingibst in dem die Grafiken gespeichert sind.<br/>(Beachte: Wenn nur der Imagename angegeben wird (image.gif), dann wird versucht ein Image zu benutzten basierend auf den Templatenamen, Postnuke theme, und language.)';
 // Enable-Disable theme matching functions
-$lang['theme_matching'] = "Enable Theme Matching";
-$lang['theme_matching_explain'] = "Enable or disable the use of the theme matching feature. Theme matching will attempt to create a style sheet and a set of cell pics for the current theme if a set is not already available. <br><b>Note:</b> With theme matching disabled the forum will uses default.css and cellpics found in the root of the cellpics directory.";
+$lang['theme_matching'] = "Theme Anpassung";
+$lang['theme_matching_explain'] = "Hier kann Theme Anpassung aus oder eingeschalten werden. Theme Anpassung versucht ein passendes Stylesheet und Zellenbilder zu kreieren, falls für das aktive Theme noch keine vorhanden sind. <br><b>Note:</b> Bei abgeschalteter Theme Anpassung verwendet das Forum default.css und die default Zellenbilder im cellpics Verzeichnis.";
 
 $lang['PNphpBB_Version'] = 'PNphpBB2 Version';
 $lang['phpBB_Version'] = 'phpBB Version';
 
 // limited post edit time MOD 
-$lang['edit_time'] = 'Post Edit time'; 
-$lang['edit_time_explain'] = 'The time (in minutes) the user has to edit his/her post. Setting this value to 0, the time is unlimited.'; 
+$lang['edit_time'] = 'Post Bearbeitungszeit'; 
+$lang['edit_time_explain'] = 'Die Zeit in Minuten die dem Benutzer zum Editieren seines Posts gegeben werdent. Wird der Wert auf 0 gesetzt, ist der Zeitraum unbegrenzt.'; 
 //
 // That's all Folks!
 // -------------------------------------------------

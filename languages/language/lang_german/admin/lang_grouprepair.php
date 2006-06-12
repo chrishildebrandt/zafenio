@@ -21,7 +21,7 @@
 
 $lang_admin['GroupPatched'] = "Gruppen Tabelle repariert";
 $lang_admin['NotUpdated'] = "Gruppen Tabelle <u>NICHT</u> erneuert";
-$lang_admin['AddingGroup'] = "User Gruppe wird hinzugef&uuml;gt";
+$lang_admin['AddingGroup'] = "User Gruppe wird hinzugefügt";
 $lang_admin['GroupRepairComplete'] = "User Gruppe wurde repariert.";
 $lang_admin['UsersUpdated'] = "User Daten wurden erneuert.";
 ?>

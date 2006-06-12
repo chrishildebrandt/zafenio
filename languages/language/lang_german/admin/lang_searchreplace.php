@@ -19,15 +19,15 @@
  *
  ***************************************************************************/
 
-$lang_admin['RecChanged'] = "Anzahl ge&auml;nderter Eintr&auml;ge: ";
-$lang_admin['RecFound'] = "Anzahl gefundener Eintr&auml;ge: ";
-$lang_admin['TextToChange'] = "Zu &Auml;ndernder Text: ";
+$lang_admin['RecChanged'] = "Anzahl geänderter Einträge: ";
+$lang_admin['RecFound'] = "Anzahl gefundener Einträge: ";
+$lang_admin['TextToChange'] = "Zu ändernder Text: ";
 $lang_admin['Before'] = "Vorher: ";
 $lang_admin['After'] = "Nachher: ";
-$lang_admin['SRTitle'] = "Suche und ersetze den Text innerhalb von Beitr&auml;gen ";
-$lang_admin['SRExplain'] = "Dies wird nach dem 'WIE' Text suchen und versuchen, ihn durch den Text deiner Wahl zu ersetzen.<b><u>Sei SEHR vorsichtig mit dieser Funktion.</u></b> Nutze zuerst den Test, um zu sehen was alles ersetzt wird und wie oft bevor du es wirklich laufen l&auml;sst!.<br />Wenn der Test durchl&auml;uft, wird dir angezeigt wie oft etwas ersetzt w&uuml;rde und auch 2 Beispiele, wo eine Vorher und Nachher Ansicht angezeigt.";
+$lang_admin['SRTitle'] = "Suche und ersetze den Text innerhalb von Beiträgen ";
+$lang_admin['SRExplain'] = "Dies wird nach dem 'WIE' Text suchen und versuchen, ihn durch den Text deiner Wahl zu ersetzen.<b><u>Sei SEHR vorsichtig mit dieser Funktion.</u></b> Nutze zuerst den Test, um zu sehen was alles ersetzt wird und wie oft bevor du es wirklich laufen lässt!.<br />Wenn der Test durchläuft, wird dir angezeigt wie oft etwas ersetzt würde und auch 2 Beispiele, wo eine Vorher und Nachher Ansicht angezeigt.";
 $lang_admin['SearchFor'] = "Suche nach";
-$lang_admin['SearchForExplain'] = "Dies ist der Text, den du finden m&ouml;chtest.";
+$lang_admin['SearchForExplain'] = "Dies ist der Text, den du finden möchtest.";
 $lang_admin['ReplaceWith'] = "Ersetze durch";
 $lang_admin['ReplaceWithExplain'] = "Dies ist der Text, der den anderen ersetzen wird.";
 $lang_admin['Text'] = "Test";
