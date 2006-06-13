@@ -45,24 +45,22 @@ if (!intval($attach_config['allow_ftp_upload']))
 {
 	if ( ($attach_config['upload_dir'][0] == '/') || ( ($attach_config['upload_dir'][0] != '/') && ($attach_config['upload_dir'][1] == ':') ) )
 	{
-// Begin PNphpBB2 Module
-//		$upload_dir = $attach_config['upload_dir'];
-		$upload_dir = $phpbb_root_path . $attach_config['upload_dir'];
-// End PNphpBB2 Module
+		$upload_dir = $attach_config['upload_dir'];
 	}
 	else
 	{
-		$upload_dir = '../' . $attach_config['upload_dir'];
+// Begin PNphpBB2 Module
+//		$upload_dir = '../' . $attach_config['upload_dir'];
+		$upload_dir = $phpbb_root_path . $attach_config['upload_dir'];
+// End PNphpBB2 Module
+
 	}
 }
 else
 {
-// Begin PNphpBB2 Module
-//	$upload_dir = $attach_config['download_path'];
-	$upload_dir = $phpbb_root_path . $attach_config['download_path'];
-// End PNphpBB2 Module
+	$upload_dir = $attach_config['download_path'];
 }
-
+		echo $upload_dir;
 include($phpbb_root_path . 'attach_mod/includes/functions_selects.' . $phpEx);
 include($phpbb_root_path . 'attach_mod/includes/functions_admin.' . $phpEx);
 

@@ -538,7 +538,7 @@ function display_upload_attach_box_limits($user_id, $group_id = 0)
 		'L_UPLOAD_QUOTA'	=> $lang['Upload_quota'],
 /* Begin PNphpBB2 Module */
 //		'U_UACP'			=> $phpbb_root_path . 'uacp.' . $phpEx . '?u=' . $user_id . '&amp;sid=' . $userdata['session_id'],
-		'U_UACP'			=> append_sid($phpbb_root_path . 'uacp.' . $phpEx . '?u=' . $user_id . '&amp;sid=' . $userdata['session_id']),
+		'U_UACP'			=> append_sid('uacp.' . $phpEx . '?u=' . $user_id . '&amp;sid=' . $userdata['session_id']),
 /* End PNphpBB2 Module */
 		'UPLOADED'			=> sprintf($lang['User_uploaded_profile'], $user_uploaded),
 		'QUOTA'				=> sprintf($lang['User_quota_profile'], $user_quota),

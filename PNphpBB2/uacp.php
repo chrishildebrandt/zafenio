@@ -257,7 +257,10 @@ $template->assign_vars(array(
 /* End PNphpBB2 Module */
 
 	'S_USER_HIDDEN'		=> $s_hidden,
-	'S_MODE_ACTION'		=> append_sid($phpbb_root_path . 'uacp.' . $phpEx),
+/* Begin PNphpBB2 Module */
+/*	'S_MODE_ACTION'		=> append_sid($phpbb_root_path . 'uacp.' . $phpEx), */
+	'S_MODE_ACTION'		=> append_sid('uacp.' . $phpEx),
+/* End PNphpBB2 Module */
 	'S_MODE_SELECT'		=> $select_sort_mode,
 	'S_ORDER_SELECT'	=> $select_sort_order)
 );
@@ -478,7 +481,7 @@ if ($do_pagination && $total_rows > $board_config['topics_per_page'])
 	);
 */
 // -- Add --
-	generate_pagination($phpbb_root_path . 'uacp.' . $phpEx . '?mode=' . $mode . '&order=' . $sort_order . '&' . POST_USERS_URL . '=' . $profiledata['user_id'] . '&sid=' . $userdata['session_id'], $total_rows, $board_config['topics_per_page'], $start).'&nbsp;';
+	generate_pagination('uacp.' . $phpEx . '?mode=' . $mode . '&order=' . $sort_order . '&' . POST_USERS_URL . '=' . $profiledata['user_id'] . '&sid=' . $userdata['session_id'], $total_rows, $board_config['topics_per_page'], $start).'&nbsp;';
 // End PNphpBB2 Module
 }
 
