@@ -66,7 +66,12 @@ else
 //
 // Begin program
 //
-if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) || isset($HTTP_GET_VARS[POST_USERS_URL]) || isset( $HTTP_POST_VARS[POST_USERS_URL]) ) )
+// Begin PNphpBB2 Module
+// When editing user profile 'username' won't be present in the POST because
+// PNphpBB2 doesn't allow changing the username from inside the admin CP.
+// We must check for 'id' otherwise the changes won't be commited to the DB.
+if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) || isset($HTTP_POST_VARS['id']) || isset($HTTP_GET_VARS[POST_USERS_URL]) || isset( $HTTP_POST_VARS[POST_USERS_URL]) ) )
+// End PNphpBB2 Module
 {
 //-- mod : File Attachment Mod v2 Version 2.4.3 ----------------------------------------------------
 	if (!intval($attach_config['disable_mod']))
