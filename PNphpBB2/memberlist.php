@@ -336,7 +336,7 @@ if ( $mode != 'topten' || $board_config['topics_per_page'] < 10 )
 // -- Remove --
 //		$pagination = generate_pagination("memberlist.$phpEx?mode=$mode&amp;order=$sort_order", $total_members, $board_config['topics_per_page'], $start). '&nbsp;';
 // -- Add --
-		generate_pagination("memberlist.$phpEx?mode=$mode&order=$sort_order", $total_members, $board_config['topics_per_page'], $start);
+		$pagination = generate_pagination("memberlist.$phpEx?mode=$mode&order=$sort_order", $total_members, $board_config['topics_per_page'], $start);
 // End PNphpBB2 Module
 	}
 	$db->sql_freeresult($result);
