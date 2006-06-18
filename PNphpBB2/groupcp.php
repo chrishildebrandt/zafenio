@@ -522,6 +522,7 @@ else if ( $group_id )
 			{
 // Begin PNphpBB2 Module
 //				$username = ( isset($HTTP_POST_VARS['username']) ) ? phpbb_clean_username($HTTP_POST_VARS['username']) : '';
+				$username = ( isset($HTTP_POST_VARS['username']) ) ? $HTTP_POST_VARS['username'] : '';
 // End PNphpBB2 Module
 
 // Begin PNphpBB2 Module
