@@ -287,6 +287,7 @@ $lang['Max_sig_length_explain'] = 'Maximum number of characters in user signatur
 $lang['Allow_name_change'] = 'Allow Username changes';
 
 $lang['Avatar_settings'] = 'Avatar Settings';
+$lang['Allow_gravatars'] = 'Enable Gravatars';
 $lang['Allow_local'] = 'Enable gallery avatars';
 $lang['Allow_remote'] = 'Enable remote avatars';
 $lang['Allow_remote_explain'] = 'Avatars linked to from another website';

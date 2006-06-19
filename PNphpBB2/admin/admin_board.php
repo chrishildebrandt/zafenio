@@ -252,6 +252,9 @@ $template->assign_vars(array(
 	"L_MAX_SIG_LENGTH_EXPLAIN" => $lang['Max_sig_length_explain'],
 	"L_ALLOW_NAME_CHANGE" => $lang['Allow_name_change'],
 	"L_AVATAR_SETTINGS" => $lang['Avatar_settings'],
+/* Begin PNphpBB2 Module */
+	"L_ALLOW_GRAVATARS" => $lang['Allow_gravatars'],
+/* End PNphpBB2 Module */
 	"L_ALLOW_LOCAL" => $lang['Allow_local'],
 	"L_ALLOW_REMOTE" => $lang['Allow_remote'],
 	"L_ALLOW_REMOTE_EXPLAIN" => $lang['Allow_remote_explain'],
