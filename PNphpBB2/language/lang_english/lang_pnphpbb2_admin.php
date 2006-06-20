@@ -59,6 +59,7 @@ if ( defined('PNPHPBB_INSTALL') )
   $lang['Current_Location'] = "You have it located in: ";
   $lang['Write_Perm_Good'] = "Everything looks good! Please click <u>Continue</u>.";
   $lang['Please_Correct'] = "Please correct the problem(s) and <u>Re-Check</u>.";
+  $lang['No_GD'] = "Your server configuration does not seem to have the GD images library installed. Cellpic image creation during theme matching will be disabled.";
 
   // Update
   $lang['PNphpBB2_Upgrade'] = "PNphpBB2 Update";
@@ -150,7 +151,7 @@ $lang['pnphpbb2_logo_on_explain'] = "Enable the PNphpBB2 in the forum. (If you d
 $lang['pnphpbb2_shorturls'] = "Short URL's in posts";
 $lang['pnphpbb2_shorturls_explain'] = "Enable or disable the use of the short URL's in posts.";
 
-$lang['pnphpbb2_post_order'] = "Forum post sort order";
+$lang['pnphpbb2_post_order'] = "Topic post sort order";
 $lang['pnphpbb2_post_order_explain'] = "Default order in which post are displayed in while viewing topics.";
 $lang['pnphpbb2_post_order_explain'] .= "<br>(You can override this within the forum management section)";
 
@@ -316,8 +317,10 @@ $lang['Rank_image_explain'] = 'Use this to define a small image associated with 
 $lang['Rank_image_explain'] .= '<br/>This is relative to PNphpBB2 root path if you include a path relative to the where the images are located.<br/>(NOTE: If only the image is specified (image.gif), then an attempt will be made to use the image based on the template name, PostNuke theme, and language.)'; 
 $lang['Admin_intro'] = 'Thank you for choosing PNphpBB as your forum solution. This screen will give you a quick overview of all the various statistics of your board. You can get back to this page by clicking on the <u>Admin Index</u> link in the left pane. To return to the index of your board, click the PNphpBB logo also in the left pane. The other links on the left hand side of this screen will allow you to control every aspect of your forum experience. Each screen will have instructions on how to use the tools.';
 
-$lang['PNphpBB_Version'] = 'PNphpBB2 Version';
+$lang['PNphpBB_Version'] = 'PNphpBB Version';
 $lang['phpBB_Version'] = 'phpBB Version';
+$lang['PNphpBB_Config'] = 'PNphpBB Config';
+$lang['Utility'] = 'Utilities';
 
 // limited post edit time MOD 
 $lang['edit_time'] = 'Post Edit time'; 
@@ -335,6 +338,8 @@ $lang['Exclude_global_announce_explain'] = 'If this option is selected this foru
 $lang['Support_forum'] = 'This is a support forum';
 $lang['Support_forum_explain'] = 'If this forum will be sued as a support forum, you can choose this option to display a list of user defined status flags on the topic level to indicate the status of the service request. This item can be updated by the administrator or moderator of the forum.';
 
+// Gravatars
+$lang['Allow_gravatars'] = "Allow <a href=\"http://www.gravtar.com\">Gravatars</a>";
 //
 // That's all Folks!
 // -------------------------------------------------

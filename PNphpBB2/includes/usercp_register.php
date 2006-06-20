@@ -160,6 +160,10 @@ if (
 		$allowhtml = ( isset($HTTP_POST_VARS['allowhtml']) ) ? ( ($HTTP_POST_VARS['allowhtml']) ? TRUE : 0 ) : $board_config['allow_html'];
 		$allowbbcode = ( isset($HTTP_POST_VARS['allowbbcode']) ) ? ( ($HTTP_POST_VARS['allowbbcode']) ? TRUE : 0 ) : $board_config['allow_bbcode'];
 		$allowsmilies = ( isset($HTTP_POST_VARS['allowsmilies']) ) ? ( ($HTTP_POST_VARS['allowsmilies']) ? TRUE : 0 ) : $board_config['allow_smilies'];
+// Begin PNphpBB2 Module
+		$use_gravatar = ( isset($HTTP_POST_VARS['usegravatar']) ) ? ( ( $HTTP_POST_VARS['usegravatar']) ? TRUE : 0 ) : $board_config['allow_gravatars'];
+// End PNphpBB2 Module
+
 	}
 	else
 	{
@@ -168,6 +172,10 @@ if (
 		$allowhtml = ( isset($HTTP_POST_VARS['allowhtml']) ) ? ( ($HTTP_POST_VARS['allowhtml']) ? TRUE : 0 ) : $userdata['user_allowhtml'];
 		$allowbbcode = ( isset($HTTP_POST_VARS['allowbbcode']) ) ? ( ($HTTP_POST_VARS['allowbbcode']) ? TRUE : 0 ) : $userdata['user_allowbbcode'];
 		$allowsmilies = ( isset($HTTP_POST_VARS['allowsmilies']) ) ? ( ($HTTP_POST_VARS['allowsmilies']) ? TRUE : 0 ) : $userdata['user_allowsmile'];
+// Begin PNphpBB2 Module
+		$use_gravatar = ( isset($HTTP_POST_VARS['usegravatar']) ) ? ( ($HTTP_POST_VARS['usegravatar']) ? TRUE : 0 ) : ( ( $userdata['user_avatar_type'] == 5) ? TRUE : 0);
+// End PNphpBB2 Module
+
 	}
 
 	$user_style = ( isset($HTTP_POST_VARS['style']) ) ? intval($HTTP_POST_VARS['style']) : $board_config['default_style'];
@@ -548,11 +556,22 @@ if ( isset($HTTP_POST_VARS['submit']) )
 
 	$avatar_sql = '';
 
-	if ( isset($HTTP_POST_VARS['avatardel']) && $mode == 'editprofile' )
+// Begin PNphpBB2 Module
+//	if ( isset($HTTP_POST_VARS['avatardel']) && $mode == 'editprofile' )
+	if ( ( isset($HTTP_POST_VARS['avatardel']) || ( $userdata['user_avatar_type'] == 5 && !$use_gravatar ) ) && $mode == 'editprofile' )
+// End PNphpBB2 Module
 	{
 		$avatar_sql = user_avatar_delete($userdata['user_avatar_type'], $userdata['user_avatar']);
 	}
 	else
+// Begin PNphpBB2 Module
+	if ( $use_gravatar )
+	{
+		$avatar_sql = ", user_avatar = '', user_avatar_type = " . USER_AVATAR_GRAVATAR;
+	}
+	else
+	{
+// End PNphpBB2 Module
 	if ( ( !empty($user_avatar_upload) || !empty($user_avatar_name) ) && $board_config['allow_avatar_upload'] )
 	{
 		if ( !empty($user_avatar_upload) )
@@ -578,7 +597,10 @@ if ( isset($HTTP_POST_VARS['submit']) )
 		user_avatar_delete($userdata['user_avatar_type'], $userdata['user_avatar']);
 		$avatar_sql = user_avatar_gallery($mode, $error, $error_msg, $user_avatar_local, $user_avatar_category);
 	}
-
+// Begin PNphpBB2 Module
+ 	}
+// End PNphpBB2 Module
+  
 	if ( !$error )
 	{
 		if ( $avatar_sql == '' )
@@ -940,6 +962,9 @@ else if ( $mode == 'editprofile' && !isset($HTTP_POST_VARS['avatargallery']) && 
 	$user_lang = $userdata['user_lang'];
 	$user_timezone = $userdata['user_timezone'];
 	$user_dateformat = $userdata['user_dateformat'];
+// Begin PNphpBB2 Module
+	$use_gravatar = ( $userdata['user_avatar_type'] == 5) ? TRUE : 0;
+// End PNphpBB2 Module
 }
 
 //
@@ -1008,8 +1033,13 @@ else
 				{
 					$avatar_img = ( $board_config['allow_avatar_local'] ) ? '<img src="' . $board_config['avatar_gallery_path'] . '/' . $user_avatar . '" alt="" />' : '';
 				}
-// End PNphpBB2 Module (PostNuke avatar patch)
 				break;
+// End PNphpBB2 Module (PostNuke avatar patch)
+// Begin PNphpBB2 Module
+			case USER_AVATAR_GRAVATAR:
+				$avatar_img = ( $board_config['allow_gravatars'] ) ? '<img src="' . 'http://www.gravatar.com/avatar.php?gravatar_id=' . md5($userdata['user_email']) . '" alt="" />' : '';
+				break;
+// End PNphpBB2 Module
 		}
 	}
 
@@ -1179,6 +1209,10 @@ else
 		'ALLOW_AVATAR' => $board_config['allow_avatar_upload'],
 		'AVATAR' => $avatar_img,
 		'AVATAR_SIZE' => $board_config['avatar_filesize'],
+/* Begin PNphpBB2 Module */
+		'USE_GRAVATAR_YES' => ( $use_gravatar ) ? 'checked="checked"' : '',
+		'USE_GRAVATAR_NO' => ( !$use_gravatar ) ? 'checked="checked"' : '',
+/* End PNphpBB2 Module */
 		'LANGUAGE_SELECT' => language_select($user_lang, 'language'),
 		'STYLE_SELECT' => style_select($user_style, 'style'),
 		'TIMEZONE_SELECT' => tz_select($user_timezone, 'timezone'),
@@ -1227,6 +1261,9 @@ else
 		'L_LINK_REMOTE_AVATAR_EXPLAIN' => $lang['Link_remote_Avatar_explain'],
 		'L_DELETE_AVATAR' => $lang['Delete_Image'],
 		'L_CURRENT_IMAGE' => $lang['Current_Image'],
+/* Begin PNphpBB2 Module */
+		'L_USE_GRAVATAR' => $lang['Use_Gravatar'],
+/* End PNphpBB2 Module */
 
 		'L_SIGNATURE' => $lang['Signature'],
 		'L_SIGNATURE_EXPLAIN' => sprintf($lang['Signature_explain'], $board_config['max_sig_chars']),
@@ -1271,7 +1308,13 @@ else
 		if ( $userdata['user_allowavatar'] && ( $board_config['allow_avatar_upload'] || $board_config['allow_avatar_local'] || $board_config['allow_avatar_remote'] ) )
 		{
 			$template->assign_block_vars('switch_avatar_block', array() );
-
+// Begin PNphpBB2 Module
+			if ( $board_config['allow_gravatars'] )
+			{
+				$template->assign_block_vars('switch_avatar_block.switch_allow_gravatars', array());
+			}
+// End PNphpBB2 Module
+      
 			if ( $board_config['allow_avatar_upload'] && file_exists(@phpbb_realpath('./' . $board_config['avatar_path'])) )
 			{
 				if ( $form_enctype != '' )

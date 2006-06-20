@@ -1423,7 +1423,7 @@ if (defined("ATTACH_INSTALL"))
 if (defined("ATTACH_UPDATE") && !defined("ATTACH_INSTALL"))
 {
   //
-	// Update File for updating Attachment Mod V2.x.x to V2.3.10
+	// Update File for updating Attachment Mod
 	//
 
 	$available_dbms = array(
@@ -1498,12 +1498,12 @@ if (defined("ATTACH_UPDATE") && !defined("ATTACH_INSTALL"))
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'display_order', '0');
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'img_imagick', '');
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'show_apcp', '1');
-	    insert_into_config(ATTACH_CONFIG_TABLE, 'attach_version', '2.3.10');
+	    insert_into_config(ATTACH_CONFIG_TABLE, 'attach_version', $modversion['attach_version']);
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'default_upload_quota', '0');
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'default_pm_quota', '0');
 	    insert_into_config(ATTACH_CONFIG_TABLE, 'ftp_pasv_mode', '1');
 
-	    $sql_query = "UPDATE phpbb_attachments_config SET config_value = '2.3.10' WHERE config_name = 'attach_version';";
+	    $sql_query = "UPDATE phpbb_attachments_config SET config_value = '" . $modversion['attach_version'] . "' WHERE config_name = 'attach_version';";
 	    $result = evaluate_statement($sql_query, "", true, true, false);
 
 	    if (($dbms == 'mysql') || ($dbms == 'mysql4'))
@@ -1621,7 +1621,7 @@ if (defined("ATTACH_UPDATE") && !defined("ATTACH_INSTALL"))
   if ( $attach_update == true )
   {
 
-    $sql_query = "UPDATE phpbb_attachments_config SET config_value = '" . ATTACH_VERSION . "' WHERE config_name = 'attach_version';";
+    $sql_query = "UPDATE phpbb_attachments_config SET config_value = '" . $modversion['attach_version'] . "' WHERE config_name = 'attach_version';";
     $result = evaluate_statement($sql_query, "", true, true, false);
 
     echo "              <tr>\n";
@@ -1811,25 +1811,20 @@ switch ($pnphpbb_version)
 }
 
 // Check for some new config table items if they are not there add them
-$sql = "SELECT config_value FROM " . CONFIG_TABLE . " WHERE config_name = 'edit_time';";
-if (!($result = $db->sql_query($sql)))
-{
-  insert_into_config(CONFIG_TABLE, 'edit_time', 0);
-}
+insert_into_config(CONFIG_TABLE, 'edit_time', 0);
 
-$sql = "SELECT config_value FROM " . CONFIG_TABLE . " WHERE config_name = 'theme_matching';";
-if (!($result = $db->sql_query($sql)))
-{
-  insert_into_config(CONFIG_TABLE, 'theme_matching', 0);
-}
+insert_into_config(CONFIG_TABLE, 'theme_matching', 0);
+
+// Gravatars
+insert_into_config(CONFIG_TABLE, 'allow_gravatars', 0);
+
+// Turn off theme matching to prevent update issues (maybe just for now)
+update_config('theme_matching', 0);
 
 // Remove old config vars from config table
-$sql = "SELECT config_value FROM " . CONFIG_TABLE . " WHERE config_name = 'pnphpbb2_forum_announce_exclude';";
-if ( $result = $db->sql_query($sql) )
-{
-  drop_from_config(CONFIG_TABLE, 'pnphpbb2_forum_announce_exclude');
-}
+drop_from_config(CONFIG_TABLE, 'pnphpbb2_forum_announce_exclude');
 
+// Support Forum Mod & Exclude from global announcments
 $sql = "SELECT * FROM " . FORUMS_TABLE . " WHERE support_forum LIMIT 1";
 if (!($result = $db->sql_query($sql)))
 {
@@ -1918,25 +1913,26 @@ else
 	 page_common_text($lang['PNphpBB2_No_Errors'], "left", true);
 }
 
+// Change module state and update version because of the way we perform the install/upgrade
 $id = pnModGetIDFromName($ModName);
 if (pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_INACTIVE)))
 {
- 	 // Success
-  pnSessionSetVar('statusmsg', $lang['PNphpBB2_Installed']);
+	// Success
+	pnSessionSetVar('statusmsg', $lang['PNphpBB2_Installed']);
 
-  // Get the new version information...
-  // Code taken from Postnuke Modules API function modules_adminapi_upgrade
-  // Since we do not return to the module init code in Postnuke it is
-  // Nesasary for us to manualy update the module version.
-  $modulestable = $pntable['modules'];
-  $modulescolumn = &$pntable['modules_column'];
-  $sql = "UPDATE $modulestable
+	// Get the new version information...
+	// Code taken from Postnuke Modules API function modules_adminapi_upgrade
+	// Since we do not return to the module init code in Postnuke it is
+	// Nesasary for us to manualy update the module version.
+	$modulestable = $pntable['modules'];
+	$modulescolumn = &$pntable['modules_column'];
+	$sql = "UPDATE $modulestable
 		SET $modulescolumn[version] = '" . pnVarPrepForStore($modversion['version']) . "',
 			$modulescolumn[admin_capable] = '" . pnVarPrepForStore($modversion['admin']) . "',
 			$modulescolumn[description] = '" . pnVarPrepForStore($modversion['description']) . "'
 		WHERE $modulescolumn[id] = " . pnVarPrepForStore($id);
-  $dbconn->Execute($sql);
-  pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_ACTIVE));
+	$dbconn->Execute($sql);
+	pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_ACTIVE));
 }
 
 page_common_text($lang['PNphpBB2_Update_Complete'], "left");

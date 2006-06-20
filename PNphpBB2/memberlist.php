@@ -205,6 +205,11 @@ if ( $row = $db->sql_fetchrow($result) )
 				}
 // End PNphpBB2 Module (PostNuke avatar patch)
 					break;
+// Begin PNphpBB2 Module
+				case USER_AVATAR_GRAVATAR:
+					$poster_avatar = ( $board_config['allow_gravatars'] ) ? '<img src="' . 'http://www.gravatar.com/avatar.php?gravatar_id=' . md5($row['user_email']) . '" alt="" />' : '';
+					break;
+// End PNphpBB2 Module
 			}
 		}
 
@@ -336,7 +341,7 @@ if ( $mode != 'topten' || $board_config['topics_per_page'] < 10 )
 // -- Remove --
 //		$pagination = generate_pagination("memberlist.$phpEx?mode=$mode&amp;order=$sort_order", $total_members, $board_config['topics_per_page'], $start). '&nbsp;';
 // -- Add --
-		$pagination = generate_pagination("memberlist.$phpEx?mode=$mode&order=$sort_order", $total_members, $board_config['topics_per_page'], $start);
+		generate_pagination("memberlist.$phpEx?mode=$mode&order=$sort_order", $total_members, $board_config['topics_per_page'], $start);
 // End PNphpBB2 Module
 	}
 	$db->sql_freeresult($result);
@@ -347,12 +352,16 @@ else
 	$total_members = 10;
 }
 
+// -- Remove --
+/*
 $template->assign_vars(array(
 	'PAGINATION' => $pagination,
 	'PAGE_NUMBER' => sprintf($lang['Page_of'], ( floor( $start / $board_config['topics_per_page'] ) + 1 ), ceil( $total_members / $board_config['topics_per_page'] )), 
 
 	'L_GOTO_PAGE' => $lang['Goto_page'])
 );
+*/
+// End PNphpBB2 Module
 
 $template->pparse('body');
 

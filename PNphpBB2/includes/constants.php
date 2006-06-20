@@ -26,8 +26,8 @@ if ( !defined('IN_PHPBB') )
 }
 
 // Debug Level
-// define('DEBUG', 1); // Debugging on
- define('DEBUG', 0); // Debugging off
+define('DEBUG', 1); // Debugging on
+// define('DEBUG', 0); // Debugging off
 
 
 // User Levels <- Do not change the values of USER or ADMIN
@@ -50,6 +50,7 @@ define('USER_AVATAR_REMOTE', 2);
 define('USER_AVATAR_GALLERY', 3);
 // Begin PNphpBB2 Module
 define('USER_AVATAR_POSTNUKE', 4);
+define('USER_AVATAR_GRAVATAR', 5);
 // End PNphpBB2 Module
 
 

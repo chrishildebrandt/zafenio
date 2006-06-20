@@ -70,6 +70,11 @@ function generate_user_info(&$row, $date_format, $group_mod, &$from, &$posts, &$
 				}
 // End PNphpBB2 Module (PostNuke avatar patch)
 				break;
+// Begin PNphpBB2 Module
+			case USER_AVATAR_GRAVATAR:
+				$poster_avatar = ( $board_config['allow_gravatars'] ) ? '<img src="' . 'http://www.gravatar.com/avatar.php?gravatar_id=' . md5($row['user_email']) . '" alt="" />' : '';
+				break;
+// End PNphpBB2 Module        
 		}
 	}
 

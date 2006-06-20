@@ -107,6 +107,11 @@ if ( $profiledata['user_avatar_type'] && $profiledata['user_allowavatar'] )
 			}
 // End PNphpBB2 Module (PostNuke avatar patch)
 			break;
+// Begin PNphpBB2 Module
+		case USER_AVATAR_GRAVATAR:
+			$avatar_img = ( $board_config['allow_gravatars'] ) ? '<img src="' . 'http://www.gravatar.com/avatar.php?gravatar_id=' . md5($profiledata['user_email']) . '" alt="" />' : '';
+			break;
+// End PNphpBB2 Module
 	}
 }
 

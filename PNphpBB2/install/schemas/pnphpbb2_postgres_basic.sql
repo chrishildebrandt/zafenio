@@ -46,6 +46,9 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('xs_def_template', 
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('xs_use_isset', 1);
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('xs_check_switches', 1);
 
+/* Gravatars */
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('allow_gravatars', 1); 
+
 -- Topic and Post icons
 ALTER TABLE phpbb_posts ADD COLUMN post_icon int2;
 ALTER TABLE phpbb_topics	ADD COLUMN topic_icon int2;

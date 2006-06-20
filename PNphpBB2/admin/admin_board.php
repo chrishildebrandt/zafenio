@@ -123,11 +123,15 @@ $activation_none = ( $new['require_activation'] == USER_ACTIVATION_NONE ) ? "che
 $activation_user = ( $new['require_activation'] == USER_ACTIVATION_SELF ) ? "checked=\"checked\"" : "";
 $activation_admin = ( $new['require_activation'] == USER_ACTIVATION_ADMIN ) ? "checked=\"checked\"" : "";
 
+// Begin PNphpBB2 Module
+/*
 $confirm_yes = ($new['enable_confirm']) ? 'checked="checked"' : '';
 $confirm_no = (!$new['enable_confirm']) ? 'checked="checked"' : '';
 
 $allow_autologin_yes = ($new['allow_autologin']) ? 'checked="checked"' : '';
 $allow_autologin_no = (!$new['allow_autologin']) ? 'checked="checked"' : '';
+*/
+// End PNphpBB2 Module
 
 $board_email_form_yes = ( $new['board_email_form'] ) ? "checked=\"checked\"" : "";
 $board_email_form_no = ( !$new['board_email_form'] ) ? "checked=\"checked\"" : "";
@@ -150,6 +154,10 @@ $sig_no = ( !$new['allow_sig'] ) ? "checked=\"checked\"" : "";
 $namechange_yes = ( $new['allow_namechange'] ) ? "checked=\"checked\"" : "";
 $namechange_no = ( !$new['allow_namechange'] ) ? "checked=\"checked\"" : "";
 
+// Begin PNphpBB2 Module
+$allow_gravatars_yes = ( $new['allow_gravatars'] ) ? "checked=\"checked\"" : "";
+$allow_gravatars_no = ( !$new['allow_gravatars'] ) ? "checked=\"checked\"" : "";
+// End PNphpBB2 Module
 $avatars_local_yes = ( $new['allow_avatar_local'] ) ? "checked=\"checked\"" : "";
 $avatars_local_no = ( !$new['allow_avatar_local'] ) ? "checked=\"checked\"" : "";
 $avatars_remote_yes = ( $new['allow_avatar_remote'] ) ? "checked=\"checked\"" : "";
@@ -192,12 +200,16 @@ $template->assign_vars(array(
 	"L_NONE" => $lang['Acc_None'], 
 	"L_USER" => $lang['Acc_User'], 
 	"L_ADMIN" => $lang['Acc_Admin'], 
+/* Begin PNphpBB2 Module */
+/*	
 	"L_VISUAL_CONFIRM" => $lang['Visual_confirm'], 
 	"L_VISUAL_CONFIRM_EXPLAIN" => $lang['Visual_confirm_explain'], 
 	"L_ALLOW_AUTOLOGIN" => $lang['Allow_autologin'],
 	"L_ALLOW_AUTOLOGIN_EXPLAIN" => $lang['Allow_autologin_explain'],
 	"L_AUTOLOGIN_TIME" => $lang['Autologin_time'],
 	"L_AUTOLOGIN_TIME_EXPLAIN" => $lang['Autologin_time_explain'],
+*/
+/* End PNphpBB2 Module */
 	"L_COOKIE_SETTINGS" => $lang['Cookie_settings'], 
 	"L_COOKIE_SETTINGS_EXPLAIN" => $lang['Cookie_settings_explain'], 
 	"L_COOKIE_DOMAIN" => $lang['Cookie_domain'],
@@ -220,12 +232,16 @@ $template->assign_vars(array(
 	"L_SEARCH_FLOOD_INTERVAL" => $lang['Search_Flood_Interval'],
 	"L_SEARCH_FLOOD_INTERVAL_EXPLAIN" => $lang['Search_Flood_Interval_explain'], 
 
+/* Begin PNphpBB2 Module */
+/*	
 	'L_MAX_LOGIN_ATTEMPTS'			=> $lang['Max_login_attempts'],
 	'L_MAX_LOGIN_ATTEMPTS_EXPLAIN'	=> $lang['Max_login_attempts_explain'],
 	'L_LOGIN_RESET_TIME'			=> $lang['Login_reset_time'],
 	'L_LOGIN_RESET_TIME_EXPLAIN'	=> $lang['Login_reset_time_explain'],
 	'MAX_LOGIN_ATTEMPTS'			=> $new['max_login_attempts'],
 	'LOGIN_RESET_TIME'				=> $new['login_reset_time'],
+*/
+/* End PNphpBB2 Module */
 
 	"L_BOARD_EMAIL_FORM" => $lang['Board_email_form'], 
 	"L_BOARD_EMAIL_FORM_EXPLAIN" => $lang['Board_email_form_explain'], 
@@ -298,6 +314,8 @@ $template->assign_vars(array(
 /* End PNphpBB2 Module */
 	"S_DISABLE_BOARD_YES" => $disable_board_yes,
 	"S_DISABLE_BOARD_NO" => $disable_board_no,
+/* Begin PNphpBB2 Module */
+/*
 	"ACTIVATION_NONE" => USER_ACTIVATION_NONE, 
 	"ACTIVATION_NONE_CHECKED" => $activation_none,
 	"ACTIVATION_USER" => USER_ACTIVATION_SELF, 
@@ -309,6 +327,8 @@ $template->assign_vars(array(
 	'ALLOW_AUTOLOGIN_YES' => $allow_autologin_yes,
 	'ALLOW_AUTOLOGIN_NO' => $allow_autologin_no,
 	'AUTOLOGIN_TIME' => (int) $new['max_autologin_time'],
+*/
+/*  End PNphpBB2 Module */
 	"BOARD_EMAIL_FORM_ENABLE" => $board_email_form_yes, 
 	"BOARD_EMAIL_FORM_DISABLE" => $board_email_form_no, 
 	"MAX_POLL_OPTIONS" => $new['max_poll_options'], 
@@ -351,6 +371,10 @@ $template->assign_vars(array(
 	"SIG_SIZE" => $new['max_sig_chars'], 
 	"NAMECHANGE_YES" => $namechange_yes,
 	"NAMECHANGE_NO" => $namechange_no,
+/* Begin PNphpBB2 Module */
+	"ALLOW_GRAVATARS_YES" => $allow_gravatars_yes,
+	"ALLOW_GRAVATARS_NO" => $allow_gravatars_no,
+/* End PNphpBB2 Module */
 	"AVATARS_LOCAL_YES" => $avatars_local_yes,
 	"AVATARS_LOCAL_NO" => $avatars_local_no,
 	"AVATARS_REMOTE_YES" => $avatars_remote_yes,

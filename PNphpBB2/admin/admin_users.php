@@ -655,7 +655,6 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 											}
 										}
 // Begin PNphpBB2 Module
-//										@copy($tmp_filename, "./../" . $board_config['avatar_path'] . "/$avatar_filename");
 										@copy($tmp_filename, "../" . $board_config['avatar_path'] . "/$avatar_filename");
 // End PNphpBB2 Module
 										@unlink($tmp_filename);
@@ -1129,6 +1128,11 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 					}
 // End PNphpBB2 Module (PostNuke avatar patch)
 					break;
+// Begin PNphpBB2 Module
+				case USER_AVATAR_GRAVATAR:
+					$avatar = ( $board_config['allow_gravatars'] ) ? '<img src="' . 'http://www.gravatar.com/avatar.php?gravatar_id=' . md5($this_userdata['user_email']) . '" alt="" />' : '';
+					break;
+// End PNphpBB2 Module
 			}
 		}
 		else

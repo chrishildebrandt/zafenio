@@ -253,13 +253,19 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
 	$avatar_dir_size = 0;
 
-	if ($avatar_dir = @opendir($phpbb_root_path . $board_config['avatar_path']))
+// Begin PNphpBB2 Module
+//	if ($avatar_dir = @opendir($phpbb_root_path . $board_config['avatar_path']))
+	if ($avatar_dir = @opendir($board_config['avatar_path']))
+// End PNphpBB2 Module
 	{
 		while( $file = @readdir($avatar_dir) )
 		{
 			if( $file != "." && $file != ".." )
 			{
-				$avatar_dir_size += @filesize($phpbb_root_path . $board_config['avatar_path'] . "/" . $file);
+// Begin PNphpBB2 Module
+//				$avatar_dir_size += @filesize($phpbb_root_path . $board_config['avatar_path'] . "/" . $file);
+				$avatar_dir_size += @filesize($board_config['avatar_path'] . "/" . $file);
+// End PNphpBB2 Module
 			}
 		}
 		@closedir($avatar_dir);
