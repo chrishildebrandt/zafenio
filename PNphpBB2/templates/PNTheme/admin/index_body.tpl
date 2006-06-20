@@ -51,6 +51,11 @@
 <td class="row2"><strong>{GZIP_COMPRESSION}</strong></td>
 </tr>
 </table>
+<h1>{L_VERSION_INFORMATION}</h1>
+
+{VERSION_INFO}
+
+<br />
 <table width="100%" border="0" cellpadding="3" cellspacing="1" border="0" class="forumline" bgcolor=""#ffffff">
 <tr>
 <td class="row2" align="center">

@@ -665,19 +665,28 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 		);
 	}
 
-// Begin PNphpBB2 Module
-/*
 	// Check for new version
-	$current_version = explode('.', '2' . $board_config['version']);
-	$minor_revision = (int) $current_version[2];
+// Begin PNphpBB2 Module
+//	$current_version = explode('.', '2' . $board_config['version']);
+//	$minor_revision = (int) $current_version[2];
+	$current_version = explode('.', $modversion['version']);
+	$minor_revision = $current_version[1];
+// End PNphpBB2 Module
 
 	$errno = 0;
 	$errstr = $version_info = '';
 
-	if ($fsock = @fsockopen('www.phpbb.com', 80, $errno, $errstr, 10))
+// Begin PNphpBB2 Module
+//	if ($fsock = @fsockopen('www.phpbb.com', 80, $errno, $errstr, 10))
+	if ($fsock = @fsockopen('www.pnphpbb.com', 80, $errno, $errstr, 10))
+// End PNphpBB2 Module
 	{
-		@fputs($fsock, "GET /updatecheck/20x.txt HTTP/1.1\r\n");
-		@fputs($fsock, "HOST: www.phpbb.com\r\n");
+// Begin PNphpBB2 Module
+//		@fputs($fsock, "GET /updatecheck/20x.txt HTTP/1.1\r\n");
+//		@fputs($fsock, "HOST: www.phpbb.com\r\n");
+		@fputs($fsock, "GET /updatecheck/12x.txt HTTP/1.1\r\n");
+		@fputs($fsock, "HOST: www.pnphpbb.com\r\n");
+// End PNphpBB2 Module
 		@fputs($fsock, "Connection: close\r\n\r\n");
 
 		$get_info = false;
@@ -699,17 +708,24 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
 		$version_info = explode("\n", $version_info);
 		$latest_head_revision = (int) $version_info[0];
-		$latest_minor_revision = (int) $version_info[2];
-		$latest_version = (int) $version_info[0] . '.' . (int) $version_info[1] . '.' . (int) $version_info[2];
+// Begin PNphpBB2 Module
+//		$latest_minor_revision = (int) $version_info[2];
+//		$latest_version = (int) $version_info[0] . '.' . (int) $version_info[1] . '.' . (int) $version_info[2];
+		$latest_minor_revision = $version_info[1];
+		$latest_version = (int) $version_info[0] . '.' . $version_info[1];
+// End PNphpBB2 Module
 
-		if ($latest_head_revision == 2 && $minor_revision == $latest_minor_revision)
+		if ($latest_head_revision == 1 && $minor_revision == $latest_minor_revision)
 		{
 			$version_info = '<p style="color:green">' . $lang['Version_up_to_date'] . '</p>';
 		}
 		else
 		{
 			$version_info = '<p style="color:red">' . $lang['Version_not_up_to_date'];
-			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], '2' . $board_config['version']) . '</p>';
+// Begin PNphpBB2 Module
+//			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], '2' . $board_config['version']) . '</p>';
+			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], $modversion['version']) . '</p>';
+// End PNphpBB2 Module
 		}
 	}
 	else
@@ -731,8 +747,6 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 		'VERSION_INFO'	=> $version_info,
 		'L_VERSION_INFORMATION'	=> $lang['Version_information'])
 	);
-*/
-// End PNphpBB2 Module
 
 	$template->pparse("body");
 
