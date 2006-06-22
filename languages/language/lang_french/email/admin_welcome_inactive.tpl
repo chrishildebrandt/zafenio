@@ -1,4 +1,4 @@
-Subject: Bienvenue sur les forums {SITENAME}
+Subject: Bienvenue sur les forums de {SITENAME}
 Charset: iso-8859-1
 
 {WELCOME_MSG}

@@ -514,7 +514,7 @@ $lang['Click_return_wordadmin'] = 'Cliquez %sici%s pour revenir à l\'Administrat
 //
 // Mass Email
 //
-$lang['Mass_email_explain'] = 'Ici, vous pouvez envoyer le même e-mail à tous les utilisateurs du forum ou seulement à ceux d\'un groupe donné. Pour ce faire, un e-mail sera envoyé en copie cachée à partir de l\'adresse e-mail d\'administration vers ses destinataires. L\'envoi massif d\'e-mail prend un certain temps, soyez patients après l\'envoi et n\'interrompez pas le chargement de la page, vous serez averti automatiquement de la fin de l\'opération.';
+$lang['Mass_email_explain'] = 'Ici, vous pouvez envoyer le même e-mail à tous les utilisateurs du forums ou seulement à ceux d\'un groupe donné. Pour ce faire, un e-mail sera envoyé en copie cachée à partir de l\'adresse e-mail d\'administration vers ses destinataires. L\'envoi massif d\'e-mail prend un certain temps, soyez patients après l\'envoi et n\'interrompez pas le chargement de la page, vous serez averti automatiquement de la fin de l\'opération.';
 $lang['Compose'] = 'Composer';
 
 $lang['Recipients'] = 'Destinataires';

@@ -1,4 +1,4 @@
-Subject: Bienvenue sur les forums du {SITENAME}
+Subject: Bienvenue sur les forums de {SITENAME}
 Charset: iso-8859-1
  
 {WELCOME_MSG}
@@ -6,11 +6,11 @@ Charset: iso-8859-1
 Veuillez conserver cet email dans vos archives. Les informations concernant votre compte:
 
 ----------------------------
-Nom d'utilisateur / Login: {USERNAME}
-Mot de passe / Password: {PASSWORD}
+Nom d'utilisateur: {USERNAME}
+Mot de passe: {PASSWORD}
 ----------------------------
 
-Votre compte est actuellement inactif. Vous ne pouvez pas l'utiliser tant que vous n'aurez pas visité le lien suivant:
+Votre compte est actuellement inactif. Vous ne pouvez pas l'utiliser tant que vous n'aurez pas visiter le lien suivant:
 
 {U_ACTIVATE}
 

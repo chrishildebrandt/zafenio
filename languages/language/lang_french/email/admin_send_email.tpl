@@ -1,4 +1,3 @@
-Subject: Email envoyé par l'Administrateur
 Charset: iso-8859-1
 
 Ce qui suit est un email qui vous a été envoyé par un administrateur de "{SITENAME}". Si ce message est du spam, contient des commentaires abusifs ou autre chose que vous trouvez offensif, veuillez contacter le webmestre de ce forum à l'adresse suivante:

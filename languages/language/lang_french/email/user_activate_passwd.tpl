@@ -1,4 +1,4 @@
-Subject: Activation de votre nouveau mot de passe
+Subject: Activation du nouveau mot de passe
 Charset: iso-8859-1
 
 Bonjour {USERNAME}

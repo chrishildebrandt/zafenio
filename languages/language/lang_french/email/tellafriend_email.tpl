@@ -1,4 +1,3 @@
-Subject: Message envoyé par un membre du site
 Charset: iso-8859-1 
 
 {MESSAGE} 

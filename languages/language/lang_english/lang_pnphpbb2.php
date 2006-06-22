@@ -148,6 +148,8 @@ $lang['support_status'][7] = 'More Input Needed';
 $lang['support_status'][8] = 'Already Reported';
 $lang['support_status'][9] = 'Abandoned';
 $lang['support_status'][10] = 'Answered';
+$lang['support_status'][11] = 'Completed';
+
 $lang['support_color'][1] = 'blue';
 $lang['support_color'][2] = 'red';
 $lang['support_color'][3] = 'magenta';
@@ -158,7 +160,18 @@ $lang['support_color'][7] = 'orange';
 $lang['support_color'][8] = 'gray';
 $lang['support_color'][9] = 'black';
 $lang['support_color'][10] = 'green';
+$lang['support_color'][11] = 'green';
 
+// Pagination
+$lang['Navigation'] = 'Navigation';
+$lang['First_Post'] = 'First post';
+$lang['Jump_Page'] = 'Enter the page number you wish to goto';
+
+// Replace existing phpBB language entries
+$lang['Search_new'] = 'View new posts';
+
+// Gravatrs
+$lang['Use_gravatar'] = "Use your <a href=\"http://www.gravatar.com\">Gravatar</a>";
 //
 // That's all Folks!
 // -------------------------------------------------

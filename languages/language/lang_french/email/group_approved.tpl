@@ -1,4 +1,4 @@
-Subject: Votre demande d'adhésion a été approuvée
+Subject: Votre demande a été approuvée
 Charset: iso-8859-1
 
 Félicitations,

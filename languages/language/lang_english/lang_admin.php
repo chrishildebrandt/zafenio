@@ -287,6 +287,7 @@ $lang['Max_sig_length_explain'] = 'Maximum number of characters in user signatur
 $lang['Allow_name_change'] = 'Allow Username changes';
 
 $lang['Avatar_settings'] = 'Avatar Settings';
+$lang['Allow_gravatars'] = 'Enable Gravatars';
 $lang['Allow_local'] = 'Enable gallery avatars';
 $lang['Allow_remote'] = 'Enable remote avatars';
 $lang['Allow_remote_explain'] = 'Avatars linked to from another website';
@@ -742,13 +743,13 @@ $lang['Install_No_PCRE'] = 'PNphpBB2 Requires the Perl-Compatible Regular Expres
 //
 // Version Check
 //
-$lang['Version_up_to_date'] = 'Your installation is up to date, no updates are available for your version of phpBB.';
-$lang['Version_not_up_to_date'] = 'Your installation does <b>not</b> seem to be up to date. Updates are available for your version of phpBB, please visit <a href="http://www.phpbb.com/downloads.php" target="_new">http://www.phpbb.com/downloads.php</a> to obtain the latest version.';
-$lang['Latest_version_info'] = 'The latest available version is <b>phpBB %s</b>.';
-$lang['Current_version_info'] = 'You are running <b>phpBB %s</b>.';
-$lang['Connect_socket_error'] = 'Unable to open connection to phpBB Server, reported error is:<br />%s';
+$lang['Version_up_to_date'] = 'Your installation is up to date, no updates are available for your version of PNphpBB.';
+$lang['Version_not_up_to_date'] = 'Your installation does <b>not</b> seem to be up to date. Updates are available for your version of PNphpBB, please visit <a href="http://www.pnphpbb.com" target="_new">http://www.pnphpbb.com</a> to obtain the latest version.';
+$lang['Latest_version_info'] = 'The latest available version is <b>PNphpBB %s</b>.';
+$lang['Current_version_info'] = 'You are running <b>PNphpBB %s</b>.';
+$lang['Connect_socket_error'] = 'Unable to open connection to PNphpBB Server, reported error is:<br />%s';
 $lang['Socket_functions_disabled'] = 'Unable to use socket functions.';
-$lang['Mailing_list_subscribe_reminder'] = 'For the latest information on updates to phpBB, why not <a href="http://www.phpbb.com/support/" target="_new">subscribe to our mailing list</a>.';
+$lang['Mailing_list_subscribe_reminder'] = 'For the latest information on updates to PNphpBB, please visit <a href="http://www.pnphpbb.com" target="_new">http://www.pnphpbb.com</a>.';
 $lang['Version_information'] = 'Version Information';
 
 //

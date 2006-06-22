@@ -106,7 +106,7 @@ $lang['Attach_sync_finished'] = 'Synchronisation des fichiers joints Terminée.';
 
 // Extensions -> Extension Control
 $lang['Manage_extensions'] = 'Gestions des Extensions';
-$lang['Manage_extensions_explain'] = 'Ici vous pouvez gérer les extensions de vos fichiers. Si vous voullez autoriser/interdire l\'upload d\'une extension, veuillez utiliser le panneau Extensions Interdites.';
+$lang['Manage_extensions_explain'] = 'Ici vous pouvez gérer les extensions de vos fichiers. Si vous voullez autoriser/interdire l\'upload d\'une extension, veuillez utilisé le panneau Extensions Interdites.';
 $lang['Explanation'] = 'Descriptions';
 $lang['Extension_group'] = 'Groupe d\'extension ';
 $lang['Invalid_extension'] = 'Extension Invalide';
@@ -115,7 +115,7 @@ $lang['Unable_add_forbidden_extension'] = 'L\'extension %s est interdite, vous n
 
 // Extensions -> Extension Groups Management
 $lang['Manage_extension_groups'] = 'Gérer des groupes d\'extensions';
-$lang['Manage_extension_groups_explain'] = 'Ici, vous pouvez ajouter, supprimer et modifier vos groupes d\'extension. Vous pouvez aussi désactiver un groupe d\'extensions, lui assigner une categorie spéciale, changer le mode de téléchargement et définir une icone qui sera affichée devant tous les fichiers joints du groupe.';
+$lang['Manage_extension_groups_explain'] = 'Ici, vous pouvez ajouter, supprimer et modifier vos groupes d\'extension. Vous pouvez aussi désactiver un groupe d\'extension, lui assigner une categorie spéciale, changer le mode de téléchargement et definir une icone qui sera affiché devant tous les fichiers joints du groupe.';
 $lang['Special_category'] = 'Option spéciale';
 $lang['Category_images'] = 'Images';
 $lang['Category_stream_files'] = 'Fichiers Stream';
@@ -137,18 +137,18 @@ $lang['Settings_cat_images'] = 'Options spéciales pour les Images';
 $lang['Settings_cat_streams'] = 'Options spéciales pour les fichiers Stream';
 $lang['Settings_cat_flash'] = 'Options spéciales pour les fichiers Flash';
 $lang['Display_inlined'] = 'Afficher les images dans le sujet';
-$lang['Display_inlined_explain'] = 'Choississez la maniére d\'afficher les images: dans le sujet (oui) ou à l\'aide d\'un lien?';
-$lang['Max_image_size'] = 'Dimensions maximales des images';
-$lang['Max_image_size_explain'] = 'Ici vous pouvez definir la dimension maximun autorisée pour les images uploadées. (Largeur x Hauteur en pixels).<br />Si 0x0 est entré, cette option est désactivée. Avec certaines images cette option ne fonctionnera pas à cause des limitations du PHP installé sur le serveur.';
+$lang['Display_inlined_explain'] = 'Choississez la maniéré d\'afficher les images: dans le sujet (oui) ou à l\'aide d\'un lien?';
+$lang['Max_image_size'] = 'Dimensions maximun des images';
+$lang['Max_image_size_explain'] = 'Ici vous pouvez definir la dimension maximun autorisée pour les images uploadées. (Largeur x Hauteur en pixels).<br />Si 0x0 est entré, cette option est désactivée. Avec certaines images cette option ne fonctionnera pas dûe aux limitations du PHP installé sur le serveur.';
 $lang['Image_link_size'] = 'Dimensions de l\'image affichée avec un lien';
-$lang['Image_link_size_explain'] = 'Si la dimension des images est definie elle sera affichée en lien.<br />Si la vue dans le post a été sélectionnée (Largeur x Hauteur en pixels).<br />Si 0x0 est entré, cette option est désactivée. Avec certaines images cette options ne fonctionnera pas, à cause des limitations du PHP installé sur le serveur.';
+$lang['Image_link_size_explain'] = 'Si la dimension des images est definie elle sera affichée en lien.<br />Si la vue dans le post a été sélectionnée (Largeur x Hauteur en pixels).<br />Si 0x0 est entré, cette option est désactivée. Avec certaines images cette options ne fonctionnera pas, dûe au limitation du PHP installé sur le serveur.';
 $lang['Assigned_group'] = 'Groupe assigné';
 
 $lang['Image_create_thumbnail'] = 'Créer une miniature';
-$lang['Image_create_thumbnail_explain'] = 'Toujours créer une miniature. Cette option prend le pas sur tout ce qui pourrait être defini dans les options spéciales excepté la taille maximun de l\'image. Avec ceci une miniature sera affichée dans le sujet, l\'utilisateur devra cliquer sur cette miniature pour afficher l\'image.<br />Noter que ceci nécessite que Imagick soit installé, si ce n\'est pas le cas ou si PHP est en Safe mode cette option sera desactivée.';
-$lang['Image_min_thumb_filesize'] = 'Taille minimale des miniatures';
-$lang['Image_min_thumb_filesize_explain'] = 'Si un fichier image envoyé a une taille plus petite que la Taille minimale des miniatures, aucune miniature ne sera créée, car l\'image est trop petite.';
-$lang['Image_imagick_path'] = 'Image par Imagick (adresse complète jusqu\'au dossier).'; 
+$lang['Image_create_thumbnail_explain'] = 'Toujours créer une miniature. Cette option prends le pas sur tout ce qui pourrait être defini dans les options spéciales excepté la taille maximun de l\'image. Avec ceci une miniature sera affichée dans le sujet, l\'utilisateur devra cliquer sur cette miniature pour afficher l\'image.<br />Noter que ceci nécessite que Imagick soit installé, si ce n\'est pas le cas ou si PHP est en Safe mode cette options sera desactivé.';
+$lang['Image_min_thumb_filesize'] = 'Taille minimun des miniatures';
+$lang['Image_min_thumb_filesize_explain'] = 'Si un fichier image envoyé a une taille plus petite que la taille minimun des miniatures, aucune miniature ne sera créé, car l\'image est trop petite.';
+$lang['Image_imagick_path'] = 'Image par Imagick (adresse complete jusqu\'au dossier).'; 
 $lang['Image_imagick_path_explain'] = 'Entrez le dossier où se trouve le programme imagick, normallement /usr/bin/convert (dans windows: c:/imagemagick/convert.exe).'; 
 $lang['Image_search_imagick'] = 'Rechercher Imagick';
 
@@ -190,7 +190,7 @@ $lang['No_attach_search_match'] = 'Aucun fichier joint ne correspond à vos critè
 // Control Panel -> Statistics
 $lang['Number_of_attachments'] = 'Nombre de fichiers joints';
 $lang['Total_filesize'] = 'Taille totale';
-$lang['Number_posts_attach'] = 'Nombre de messages avec fichier joint';
+$lang['Number_posts_attach'] = 'Nombre de messages avec fichier joints';
 $lang['Number_topics_attach'] = 'Nombre de sujets avec fichiers joints';
 $lang['Number_users_attach'] = 'Nombre d\'utilisateurs ayant joint un fichier';
 $lang['Number_pms_attach'] = 'Nombre total de fichiers joints dans les messages privés';
