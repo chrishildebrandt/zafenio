@@ -92,7 +92,7 @@
           <td>
             <span class="postdetails">{postrow.POSTER_RANK}<br />
             {postrow.RANK_IMAGE}{postrow.POSTER_AVATAR}<br /><br />
-            <span style="border-top-style: solid; border-top-width: 1">{postrow.POSTER_JOINED}</span><br />
+            <span style="border-top-style: solid; border-top-width: 1px">{postrow.POSTER_JOINED}</span><br />
             {postrow.POSTER_POSTS}<br />
             {postrow.POSTER_FROM}<br />
             {postrow.POSTER_STATUS}</span>
