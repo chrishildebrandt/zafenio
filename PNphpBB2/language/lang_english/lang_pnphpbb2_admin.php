@@ -36,7 +36,7 @@ if ( defined('PNPHPBB_INSTALL') )
   $lang['PNphpBB2_Installed'] = "PNphpBB2 Installed & Activated.";
   $lang['PNphpBB2_Install_Title'] = "Installing PNphpBB2 tables to %s*";
   $lang['PNphpBB2_Install_Complete']  = "<b>PNphpBB2 basic installation is now complete.</b><br /><br />";
-  $lang['PNphpBB2_Install_Complete'] .= "Click on the " . $lang['Finish_Install'] . " to return to the PN module administration page, and activate PNphpBB2.<br /><br />";
+  $lang['PNphpBB2_Install_Complete'] .= "Click on Finish Installation to return to the PN module administration page, and activate PNphpBB2.<br /><br />";
   $lang['PNphpBB2_Install_Complete'] .= "You can access the forum administration page through the PN administration page or with the link located in the forum.<br /><br />";
   $lang['PNphpBB2_Install_Complete'] .= "Please be sure to check the General Configuration details and make any required changes. <br /><br /><b>Thank you for choosing PNphpBB2.</b>";
   $lang['Populate_DB_phpBB'] = "Populating tables with default data";
