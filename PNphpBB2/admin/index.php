@@ -669,7 +669,9 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 // Begin PNphpBB2 Module
 //	$current_version = explode('.', '2' . $board_config['version']);
 //	$minor_revision = (int) $current_version[2];
-	$current_version = explode('.', $modversion['version']);
+	/* Strip patch level from minor version */
+	$modvers = preg_replace("/-patch\d+/", "", $modversion['version']);
+	$current_version = explode('.', $modvers);
 	$minor_revision = $current_version[1];
 // End PNphpBB2 Module
 
