@@ -665,6 +665,8 @@ else if ( $submit || $confirm )
 // Begin PNphpBB2 Module
 		if ($board_config['pnphpbb2_post_confirm'] == 1)
 		{
+			/* Fixup &amp; in redirect header */
+			$return_meta = str_replace("&amp;", '&', $return_meta);
 			redirect($return_meta);
 		}
 // End PNphpBB2 Module
