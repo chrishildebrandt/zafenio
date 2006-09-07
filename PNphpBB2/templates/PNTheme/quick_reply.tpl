@@ -75,25 +75,28 @@ function openPostImages(){
 }
 
 function quoteSelection() {
-	theSelection = false;
-	theSelection = document.selection.createRange().text; // Get text selection
-	if (theSelection) {
-		// Add tags around selection
-		text = '[quote]\n' + theSelection + '\n[/quote]\n';
-	  if (document.post.message.createTextRange && document.post.message.caretPos) {
-		  var caretPos = document.post.message.caretPos;
-		  caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
-		  document.post.message.focus();
-	  }else{
-		  document.post.message.value  += text;
-		  document.post.message.focus();
-	  }
-    document.post.message.focus();
-		theSelection = '';
+	if (document.selection) {
+		/* IE 5/6 */
+		selection = document.selection.createRange().text;
+	} else if (window.getSelection) {
+		/* Safary / Firefox / others */
+		selection = window.getSelection();
+	} else if (document.getSelection) {
+		/* Opera / Firefox / Mozilla */
+		selection = document.getSelection();
+	} else {
 		return;
-	}else{
-		alert('{L_NO_TEXT_SELECTED}');
 	}
+
+	if (selection == '') {
+		alert('{L_NO_TEXT_SELECTED}');
+		return;
+	}
+
+	text = '[quote]\n' + selection + '\n[/quote]\n';
+
+	document.post.message.value += text;
+	document.post.message.focus();
 }
 
 function storeCaret(textEl) {
@@ -287,7 +290,7 @@ function mozWrap(txtarea, open, close)
         <td>
           <input type="button" class="button" value="{L_POST_IMAGE}" accesskey="m" name="post_images" onclick="openPostImages();">&nbsp;
           <input type="button"  class="button" value="{L_ADD_SMILIES}" name="smiles_all" onclick="openAllSmiles();">&nbsp;
-          <input type="button" class="button" value="{L_QUOTE_SELECTED}" name="quoteselected" onclick="javascript:quoteSelection();">
+          <input type="button" class="button" value="{L_QUOTE_SELECTED}" name="quoteselected" onmousedown="javascript:quoteSelection();">
         </td>
       </tr>
       <tr align="center" >
