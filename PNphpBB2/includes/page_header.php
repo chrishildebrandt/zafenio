@@ -579,8 +579,9 @@ $template->assign_vars(array(
 /* Begin PNphpBB2 Module */
 /*	'U_PRIVATEMSGS' => append_sid('privmsg.'.$phpEx.'?folder=inbox'), */
 	'U_PRIVATEMSGS' => (($board_config['pnphpbb2_pn_pm']) ? 'modules.'.$phpEx.'?op=modload&name=Messages&file=index' : append_sid('privmsg.'.$phpEx.'?folder=inbox')),
+/*	'U_PRIVATEMSGS_POPUP' => append_sid('privmsg.'.$phpEx.'?mode=newpm'),*/
+	'U_PRIVATEMSGS_POPUP' => append_sid('privmsg.'.$phpEx.'?mode=newpm', true),
 /* End PNphpBB2 Module */
-	'U_PRIVATEMSGS_POPUP' => append_sid('privmsg.'.$phpEx.'?mode=newpm'),
 	'U_SEARCH' => append_sid('search.'.$phpEx),
 	'U_MEMBERLIST' => append_sid('memberlist.'.$phpEx),
 	'U_MODCP' => append_sid('modcp.'.$phpEx),
