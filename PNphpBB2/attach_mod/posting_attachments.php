@@ -1050,7 +1050,10 @@ class attach_parent
 				}
 				else
 				{
-					$download_link = append_sid($phpbb_root_path . 'download.' . $phpEx . '?id=' . $this->attachment_id_list[$i]);
+// Begin PNphpBB2 Module
+//					$download_link = append_sid($phpbb_root_path . 'download.' . $phpEx . '?id=' . $this->attachment_id_list[$i]);
+					$download_link = append_sid('download.' . $phpEx . '?id=' . $this->attachment_id_list[$i]);
+// End PNphpBB2 Module
 				}
 
 				$template->assign_block_vars('attach_row', array(
