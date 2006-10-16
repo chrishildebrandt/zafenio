@@ -24,34 +24,38 @@
 $ModName = basename( dirname( __FILE__ ) );
 $phpbb_root_path = './modules/' . $ModName . '/';
 
-if ( isset($HTTP_POST_VARS['qmode']) || isset($HTTP_GET_VARS['qmode']) ) 
-{ 
-   $mode = ( isset($HTTP_POST_VARS['qmode']) ) ? $HTTP_POST_VARS['qmode'] : $HTTP_GET_VARS['qmode']; 
-   $mode = htmlspecialchars($mode); 
-} 
-else 
-{ 
-   $mode = ''; 
-}
-
-if ( $mode == 'smilies' || $mode == 'postimages' )
-{
+/* Begin PNphpBB2 Module */
+if (!defined('IN_PHPBB')) {
+	/* This code path is used only to create the popup with the smilies
+	 * common.php must be included at this point since HTTP_POST_VARS
+	 * may be unavailable
+	 */
 	define('IN_PHPBB', true);
-	$starttime = 0;
 	include($phpbb_root_path . 'extension.inc');
 	include($phpbb_root_path . 'common.'.$phpEx);
-	include($phpbb_root_path . 'includes/functions_post.'.$phpEx);
-	if ( $mode == 'smilies' )
-	{
-	 	 generate_smilies('window', PAGE_POSTING);
-	}
-	else
-	{
-	 	 generate_post_images('window', PAGE_POSTING);
+
+	if (isset($HTTP_POST_VARS['qmode']) || isset($HTTP_GET_VARS['qmode'])) {
+		$mode = ( isset($HTTP_POST_VARS['qmode']) ) ? $HTTP_POST_VARS['qmode'] : $HTTP_GET_VARS['qmode'];
+		$mode = htmlspecialchars($mode);
+	} else {
+		$mode = '';
 	}
 
-	exit;
+	if ( $mode == 'smilies' || $mode == 'postimages' ) {
+		$starttime = 0;
+		include($phpbb_root_path . 'includes/functions_post.'.$phpEx);
+		if ( $mode == 'smilies' ) {
+			generate_smilies('window', PAGE_POSTING);
+		} else {
+       			generate_post_images('window', PAGE_POSTING);
+		}
+
+		exit;
+	}
+
+	die('Hacking attempt1');
 }
+/* End PNphpBB2 Module */
 
 if ( !defined('IN_PHPBB') )
 {
