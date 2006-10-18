@@ -49,6 +49,24 @@ if (@phpversion() >= '5.0.0' && (!@ini_get('register_long_arrays') || @ini_get('
 	}
 }
 
+/* Begin PNphpBB2 Module */
+if (!isset($HTTP_POST_VARS) || !isset($HTTP_GET_VARS)) {
+	/* PN .763 emulates register_long_arrays = Off */
+	$HTTP_POST_VARS = $_POST;
+	$HTTP_GET_VARS = $_GET;
+	$HTTP_SERVER_VARS = $_SERVER;
+	$HTTP_COOKIE_VARS = $_COOKIE;
+	$HTTP_ENV_VARS = $_ENV;
+	$HTTP_POST_FILES = $_FILES;
+
+	// _SESSION is the only superglobal which is conditionally set
+	if (isset($_SESSION))
+	{
+		$HTTP_SESSION_VARS = $_SESSION;
+	}
+}
+/* End PNphpBB2 Module */
+
 // Protect against GLOBALS tricks
 if (isset($HTTP_POST_VARS['GLOBALS']) || isset($HTTP_POST_FILES['GLOBALS']) || isset($HTTP_GET_VARS['GLOBALS']) || isset($HTTP_COOKIE_VARS['GLOBALS']))
 {
