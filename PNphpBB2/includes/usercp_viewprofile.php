@@ -150,7 +150,7 @@ else
 // $temp_url = append_sid("privmsg.$phpEx?mode=post&amp;" . POST_USERS_URL . "=" . $profiledata['user_id']);
 if ($board_config['pnphpbb2_pn_pm'])
 {
-	$temp_url = ("modules.php?op=modload&name=Messages&file=replypmsg&send=1&uname=" .urlencode($profiledata['username'])); 
+	$temp_url = "index.php?module=Messages&amp;func=compose&amp;uname=" . urlencode($profiledata['username']); 
 }
 else
 {
