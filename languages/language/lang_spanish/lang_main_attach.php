@@ -18,6 +18,14 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
+// 2006-09-16 gnrx   -   Translated update to spanish
+/**
+* DO NOT CHANGE
+*/
+if (!isset($lang) || !is_array($lang))
+{
+	$lang = array();
+}
 
 //
 // Attachment Mod Main Language Variables
@@ -31,7 +39,7 @@ $lang['Rules_download_cannot'] = '<b>No Puede</b> descargar archivos de este for
 $lang['Sorry_auth_view_attach'] = 'Lo sentimos pero no tiene autorizacion para ver este archivo adjunto';
 
 // Viewtopic -> Display of Attachments
-$lang['Description'] = 'Descripcion'; // used in Administration Panel too...
+$lang['Description'] = 'Descripción'; // used in Administration Panel too...
 $lang['Downloaded'] = 'Descargado';
 $lang['Download'] = 'Descargar'; // this Language Variable is defined in lang_admin.php too, but we are unable to access it from the main Language File
 $lang['Filesize'] = 'Tamaño';

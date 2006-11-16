@@ -3,17 +3,17 @@ Charset: iso-8859-1
 
 {WELCOME_MSG}
 
-Please keep this email for your records. Your account information is as follows:
+Por favor, guarde este email para sus datos. Tu información de cuenta es la siguiente:
 
 ----------------------------
 Username: {USERNAME}
 Password: {PASSWORD}
 ----------------------------
 
-Your account is currently inactive, the administrator of the board will need to activate it before you can log in. You will receive another email when this has occured.
+Tu cuenta esta actualmente inactiva, el administrador del foro requiere que la active y después puede hacer login. Recibirás otro email cuando haya sucedido esto.
 
-Please do not forget your password as it has been encrypted in our database and we cannot retrieve it for you. However, should you forget your password you can request a new one which will be activated in the same way as this account.
+Por favor, no pierda su contraseña, esta encriptada en nuestra base de datos y nosotros no podemos recuperarla para usted. Sin embargo, si tú te olvidaste de tu contraseña puedes solicitar una nueva que será activada de la misma forma que esta cuenta.
 
-Thank you for registering.
+Gracias por tu registro.
 
 {EMAIL_SIG}

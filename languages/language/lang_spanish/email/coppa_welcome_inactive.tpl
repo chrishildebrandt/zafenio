@@ -3,13 +3,13 @@ Charset: iso-8859-1
 
 {WELCOME_MSG}
 
-In compliance with the COPPA act your account is currently inactive.
+De acuerdo con COPPA tu cuenta esta actualmente inactiva.
 
-Please print this message out and have your parent or guardian sign and date it. Then fax it to:
+Por favor, imprime este mensaje y que tu padre o tutor la firme añadiendo la fecha. Luego, enviala por fax a:
 
 {FAX_INFO}
 
-OR mail it to:
+O mail a:
 
 {MAIL_INFO}
 
@@ -29,19 +29,19 @@ From: {FROM}
 Occupation: {OCC}
 Interests: {INTERESTS}
 
-I HAVE REVIEWED THE INFORMATION PROVIDED BY MY CHILD AND HEREBY GRANT PERMISSION TO {SITENAME} TO STORE THIS INFORMATION. 
-I UNDERSTAND THIS INFORMATION CAN BE CHANGED AT ANY TIME BY ENTERING A PASSWORD. 
-I UNDERSTAND THAT I MAY REQUEST FOR THIS INFORMATION TO BE REMOVED FROM {SITENAME} AT ANY TIME.
+HE REPASADO LA INFORMACIÓN PROPORCIONADA POR MI HIJO/A Y CONCEDO POR ESTE MEDIO EL PERMISO A {SITENAME} PARA GUARDAR ESTA INFORMACIÓN. 
+ENTIENDO QUE ESTA INFORMACIÓN PUEDE SER CAMBIADA EN CUALQUIER MOMENTO USANDO UNA CONTRASEÑA . 
+ENTIENDO QUE PUEDO SOLICITAR ESTA INFORMACIÓN PARA SER QUITADO DE {SITENAME} EN CUALQUIER MOMENTO.
 
 
-Parent or Guardian 
-(print your name here): _____________________
+Padre o Tutor 
+(escribe tu nombre aquí): _____________________
 
-(sign here): __________________ 
+(firma aquí): __________________ 
 
-Date: _______________
+Fecha: _______________
 
------------------------------- CUT HERE ------------------------------
+------------------------------ CORTAR AQUÍ ------------------------------
 
 
 Once the administrator has recived the above form via fax or regular mail your account will be activated.

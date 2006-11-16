@@ -1,10 +1,10 @@
 Subject: Your request has been approved
 Charset: iso-8859-1
 
-Congratulations,
+Enhorabuena,
 
-Your request to join the "{GROUP_NAME}" group on {SITENAME} has been approved.
-Click on the following link to see your group membership.
+Tu petición para entrar al "{GROUP_NAME}" grupo en {SITENAME} a sido aprobada.
+Clicka en el siguiente link para ver tu grupo.
 
 {U_GROUPCP}
 

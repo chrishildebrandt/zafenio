@@ -11,7 +11,7 @@
  *   			    Mariano Martene (correo@webfactory.com)
  *                          Patricio Marín (pmarin@hotmail.com)
  *
- *   $Id: lang_bbcode.php,v 0.9 2002/03/05 01:53:26 Pato[100%Q]
+ *   $Id: lang_bbcode.php,v 1.1 2004/07/13 19:16:08 carls Exp $
  *
  *
  ***************************************************************************/
@@ -66,7 +66,7 @@ $faq[] = array("--", "Publicando imágenes en los mensajes");
 $faq[] = array("Agregando una imagen al mensaje", "Para poner una imagen simplemente escriba [img]URL[/img] donde URL es la dirección en donde está su imagen, por ejemplo [img]http://www.phpbb.com/images/phplogo.gif[/img], tambien puede generar enlaces de la siguiente forma: [url=][/url] así [url=http://www.phpbb.com/][img]http://www.phpbb.com/images/phplogo.gif[/img][/url]");
 
 $faq[] = array("--", "Otros");
-$faq[] = array("¿Puedo agregar mis propias etiquetas?", "No, no en esta version de phpBB (2), seguramente será en versiones posteriores a esta");
+$faq[] = array("¿Puedo agregar mis propias etiquetas?", "No, no en esta version de phpBB 2.0, seguramente será en versiones posteriores a esta");
 
 //
 // Todo por hoy :)

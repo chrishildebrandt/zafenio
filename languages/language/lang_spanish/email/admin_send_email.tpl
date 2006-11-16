@@ -1,12 +1,12 @@
 Charset: iso-8859-1
 
-The following is an email sent to you by an administrator of "{SITENAME}". If this message is spam, contains abusive or other comments you find offensive please contact the webmaster of the board at the following address:
+Lo siguiente es un email enviado a ti por un administrador de "{SITENAME}". Si este mensaje es spam, o contiene comentarios abusivos o que te resultan ofensivos, por favor contacta al webmaster de los foros en esta dirección:
 
 {BOARD_EMAIL}
 
-Include this full email (particularly the headers). 
+Incluye este email completo (particularmente los headers). 
 
-Message sent to you follows:
+El mensaje enviado a ti es el siguiente:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {MESSAGE}

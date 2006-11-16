@@ -19,9 +19,9 @@
  *
  ***************************************************************************/
 
-$lang_admin['GroupPatched'] = "Group table patched";
-$lang_admin['NotUpdated'] = "Group table <u>NOT</u> updated";
-$lang_admin['AddingGroup'] = "adding user group";
-$lang_admin['GroupRepairComplete'] = "User group repair complete.";
-$lang_admin['UsersUpdated'] = "user records updated.";
+$lang_admin['GroupPatched'] = "Tabla de grupo corregida";
+$lang_admin['NotUpdated'] = "Tabla de Grupo <u>NO</u> actualizada";
+$lang_admin['AddingGroup'] = "añadiendo grupo de usuario";
+$lang_admin['GroupRepairComplete'] = "Reparación de grupo de usuario completada.";
+$lang_admin['UsersUpdated'] = "records de usuarios actualizados.";
 ?>

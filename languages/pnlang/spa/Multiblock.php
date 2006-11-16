@@ -23,13 +23,13 @@ define("_NUMBER_OF_POSTS","Número de mensajes");
 define("_PTS","Mensajes:");
 define("_POSTS_PER_DAY","Mensajes por día");
 define("_PD","por día:");
+define("_TOTAL", "Total");
 define("_NUMBER_TOPICS","Número de temas");
 define("_TOP", "Temas:");
 define("_TOPICS_PER_DAY","Temas por día");
 define("_NUMBER_USERS","Número de usuarios");
 define("_USR","Usuarios:");
 define("_USERS_PER_DAY","Usuarios por día");
-
 
 // Members Online
 define("_DISPLAY_MEMBERS","Muestra a los usuarios en linea en el bloque (no disponible para el bloque central)");
@@ -59,6 +59,7 @@ define("_UNREAD_PRIVATEMSG","¡Mensaje(s) privado(s) no leido(s)!");
 define("_SEND_PM","¡Envia un mensaje privado!");
 define("_USE_PM_SOUND", "Sonido para mensaje personal (pnimages/)");
 define("_INFO_ICON", "Imagen para mostrar en bloque anonimo (pnimages/)");
+define("_NUM_USERS", "Máximo número de usuarios para mostrar online");
 
 // Login prompt
 define("_DISPLAY_LOGIN","Muestra entrada de usuario en el bloque");
@@ -94,21 +95,27 @@ define("_TOPIC_VIEWS","Lecturas");
 define("_POSTER","Autor");
 define("_POST_DATE","Fecha");
 define("_POST_TIME","Hora");
+define("_RE","Re");
 
 define("_LAST_X_POSTS","Número de entradas a mostrar");
+define("_LAST_X_SCROLL","Scroll foro mensajes en bloque");
+define("_SCROLL_HEIGHT","Altura del area de Scroll");
+define("_SCROLL_IMAGES","Mostrar imagenes siguientes a mensajes");
 define("_GROUP_TOPICS","Sólo muestra los últimos mensajes de cada tema");
+define("_DISPLAY_REPLIES","Muestra respuesta en el asunto (RE:) si es disponible, como último mensaje");
+define("_LINE_COLOR","Color de linea de separador");
 define("_TITLE_STRING_LENGTH","Número de caracteres máximos para los títulos de temas y categorías (0 = sin límite)");
-define("_SCROLL_IMAGES","Display images next to topics");
-define("_GROUP_TOPICS","Show only the last post of every topic");
-define("_TITLE_STRING_LENGTH","Maximal character length of topic titles & categories (0 = full length)");
 
 define("_EXCLUDE_FORUMS","No mostrar mensajes de los siguientes foros (CTRL+CLICK para seleccionar)");
 define("_MODULE_NAME","Nombre modulo PostNuke (nombre del directorio) Por defecto=PNphpBB2");
+define("_MODULE_LINKS", "Usar llamada de módulo para los links al foro.");
+define("_MODULE_LINKS_EXPLAIN", "(Ejemplo: http://www.host.com/modules.php?op=modload&name=)");
 define("_MODULE_ERROR","Nombre/ruta del modulo invalida, o el modulo no esta instalado. Por favor corregir.");
 define("_PREFIX_ERROR","Error en el prefix de tablas del foro, no es posible localizarlas en la base de datos.");
 define("_TEMPLATE_ERROR","¡Configuración invalida en Estilos!");
 define("_POSTINFO_ERROR","imposible obtener información de mensajes desde la base de datos!");
-define("_SCROLL_SPEED", "Scroll Speed");
-define("_DISPLAY_DATE", "Display Date");
-define("_DISPLAY_TIME", "Display Time");
+
+define("_SCROLL_SPEED", "Velocidad de Scroll");
+define("_DISPLAY_DATE", "Mostrar Fecha");
+define("_DISPLAY_TIME", "Mostrar Hora");
 ?>

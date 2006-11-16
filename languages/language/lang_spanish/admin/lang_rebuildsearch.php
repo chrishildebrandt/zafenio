@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
- *                         lang_reduildsearch.php [English]
+ *                         lang_reduildsearch.php [Spanish]
  *                         --------------------------------
  *     begin                : 08/28/2003
  *     copyright            : (C) 2003 The PNphpBB Group
@@ -19,18 +19,18 @@
  *
  ***************************************************************************/
 
-$lang_admin_wsr['Button_Rebuild'] = "Rebuild";
-$lang_admin_wsr['Rebuild_Search_Title'] = "Rebuild Search Index";
-$lang_admin_wsr['Rebuild_Search_Explaine'] = "This utility rebuilds the two tables search_wordlist and search_wordmatch."; 
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "These tables are used for the search function.";
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Depending on the number of posts in the database this routine could take some time to complete ";
-$lang_admin_wsr['Rebuild_Search_Explaine'] .= "therefore it will pause after every 100 posts for 3 seconds.";
-$lang_admin_wsr['Error_Empty'] = "Could not empty ";
-$lang_admin_wsr['Error_Table'] = " table.";
-$lang_admin_wsr['Error_Find_Posts'] = "Could not find posts.";
-$lang_admin_wsr['Posts_Complete'] = " posts completed";
-$lang_admin_wsr['Click_Here'] = "Click %sHere%s to continue (or wait 3 seconds)";
-$lang_admin_wsr['Rebuild_Successful'] = "Rebuild successful";
-$lang_admin_wsr['Return_Rebuild'] = "Click %sHere%s to return to 'Rebuild Search Index'";
-$lang_admin_wsr['Return_Index'] = "Click %sHere%s to return to the Admin Index";
+$lang_admin_wsr['Button_Rebuild'] = "Reconstruir";
+$lang_admin_wsr['Rebuild_Search_Title'] = "Reconstrucción de Búsqueda";
+$lang_admin_wsr['Rebuild_Search_Explaine'] = "Esta utilidad reconstruye las dos tablas búsqueda_listapalabra y búsqueda_palabraencontrada."; 
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Estas tablas se utilizan para la función de búsqueda.";
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "Dependiendo del numero de mensajes en la base de datos, esta rutina podría tomar un cierto tiempo para terminar ";
+$lang_admin_wsr['Rebuild_Search_Explaine'] .= "por lo tanto se detendrá brevemente después de cada 100 mensajes durante 3 segundos.";
+$lang_admin_wsr['Error_Empty'] = "No se pudo vaciar ";
+$lang_admin_wsr['Error_Table'] = " tabla.";
+$lang_admin_wsr['Error_Find_Posts'] = "No se encontraron mensajes.";
+$lang_admin_wsr['Posts_Complete'] = " mensajes completados";
+$lang_admin_wsr['Click_Here'] = "Haz Click %sAquí%s para continuar (o espera 3 segundos)";
+$lang_admin_wsr['Rebuild_Successful'] = "Reconstrucción exitosa";
+$lang_admin_wsr['Return_Rebuild'] = "Haz click %sAquí%s para regresar al 'Índice de la Reconstrucción de Búsqueda'";
+$lang_admin_wsr['Return_Index'] = "Haz Click %sAquí%s para regresar al Índice de Administrador";
 ?>

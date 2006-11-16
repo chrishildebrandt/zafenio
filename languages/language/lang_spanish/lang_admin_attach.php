@@ -1,23 +1,22 @@
 <?php
-/***************************************************************************
- *                            lang_admin_attach.php [Spanish]
- *                              -------------------
- *     begin                : Thu Feb 07 2002
- *     copyright            : (C) 2002 Meik Sievertsen
- *     email                : acyd.burn@gmx.de
- *
- *     $Id: lang_admin_attach.php,v 1.1 2003/02/21 06:18:30 bob Exp $
- *
- ****************************************************************************/
+/** 
+*
+* attachment mod admin [Spanish]
+*
+* @package attachment_mod
+* @version $Id: lang_admin_attach.php,v 1.3 2005/11/20 13:38:55 acydburn Exp $
+* @copyright (c) 2002 Meik Sievertsen
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
+*
+*/
 
-/***************************************************************************
- *
- *   This program is free software; you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation; either version 2 of the License, or
- *   (at your option) any later version.
- *
- ***************************************************************************/
+/**
+* DO NOT CHANGE
+*/
+if (!isset($lang) || !is_array($lang))
+{
+	$lang = array();
+}
 
 //
 // Attachment Mod Admin Language Variables
@@ -44,7 +43,7 @@ $lang['Upload_directory'] = 'Directorio para los adjuntos';
 $lang['Upload_directory_explain'] = 'Ingrese la direccion para guardar los archivos subidos, la direccion es relativa a la de la instalacion del phpBB2. Por ejemplo, ingrese \'files\' si la instalacion fue en http://www.sudominio.com/phpBB2 y su directorio de subida esta en http://www.sudominio.com/phpBB2/files.';
 $lang['Attach_img_path'] = 'Icono de los Adjuntos';
 $lang['Attach_img_path_explain'] = 'Esta imagen es mostrada al lado de los enlaces de los adjuntos en los mensajes. Deja este campo en blanco si no quieres ningun imagen. Esta opcion es sobreescrita por la que se encuentra en la administracion de grupos de extensiones';
-$lang['Attach_topic_icon'] = 'Icono de adjunto en tena';
+$lang['Attach_topic_icon'] = 'Icono de adjunto en tema';
 $lang['Attach_topic_icon_explain'] = 'Esta imagen es mostrada en los foros antes de el titulo de los temas que contienen adjuntos. Deja este dialogo en blanco si no quieres ningun icono';
 $lang['Attach_display_order'] = 'Orden de muestra de los adjuntos';
 $lang['Attach_display_order_explain'] = 'Aqui puedes elegir como mostrar los adjuntos en mensajes/MPs Ordenamiento descendiente (Adjuntos mas nuevos primero) o Ordenamiento ascendente (Archivos mas viejos primero).';
@@ -65,8 +64,8 @@ $lang['Max_attachments_explain'] = 'Cantidad maxima de adjuntos por mensaje.';
 $lang['Max_attachments_pm'] = 'Cantidad maxima de adjuntos en un mensaje privado';
 $lang['Max_attachments_pm_explain'] = 'Define el numero maximo de adjuntos que puede incluir un usuario en un mensaje privado.';
 
-$lang['Disable_mod'] = 'Deshabilitar Attachmente mod';
-$lang['Disable_mod_explain'] = 'Esta opcion es basicamente para probar estilos, deshabilita todo el attachment mod excepto el panel de control';
+$lang['Disable_mod'] = 'Deshabilitar Attachment mod';
+$lang['Disable_mod_explain'] = 'Esta opción es basicamente para probar estilos, deshabilita todo el attachment mod excepto el panel de control';
 $lang['PM_Attachments'] = 'Permitir adjuntos en mensajes privados';
 $lang['PM_Attachments_explain'] = 'habilita/deshabilita adjuntos en mensajes privados';
 $lang['Ftp_upload'] = 'Habilitar FTP';
@@ -87,14 +86,18 @@ $lang['Ftp_passive_mode_explain'] = 'El comando PASV pide al servidor remoto abr
 $lang['No_ftp_extensions_installed'] = 'No puedes usar el FTP para subir archivos porque las extension de subida de archivos por FTP no estan instaladas en tu PHP';
 
 // Attachments -> Shadow Attachments
-$lang['Shadow_attachments_explain'] = 'Here you can delete attachment data from postings when the files are missing from your filesystem, and delete files that are no longer attached to any postings. You can download or view a file if you click on it; if no link is present, the file does not exist.';
-$lang['Shadow_attachments_file_explain'] = 'Delete all attachments files that exist on your filesystem and are not assigned to an existing post.';
-$lang['Shadow_attachments_row_explain'] = 'Delete all posting attachment data for files that don\'t exist on your filesystem.';
+$lang['Shadow_attachments_explain'] = 'Aquí tú puedes eliminar los datos de los adjuntos de los mensajes cuando faltan de tu sistema de archivos, y eliminar los archivos que no estan unidos a ningun mensaje. Tú puedes descargar o ver el archivo si tú clicas en el; si no hay link presente, el archivo no existe.';
+$lang['Shadow_attachments_file_explain'] = 'Eliminar todos los archivos adjuntos que existen en tu sistema de archivos y no estan asignados a ningun mensaje existente.';
+$lang['Shadow_attachments_row_explain'] = 'Eliminar todos los datos de adjuntos para los archivos que no existen en tu sistema de archivos.';
 $lang['Empty_file_entry'] = 'Entrada del archivo vacia';
 
 // Attachments -> Sync
 $lang['Sync_thumbnail_resetted'] = 'Imagen previa regenerada para: %s'; // replace %s with physical Filename
 $lang['Attach_sync_finished'] = 'Sincronizacion de Adjuntos terminada.';
+$lang['Sync_topics'] = 'Sincronizar Temas';
+$lang['Sync_posts'] = 'Sincronizar Mensajes';
+$lang['Sync_thumbnails'] = 'Sincronizar Thumbnails';
+
 
 // Extensions -> Extension Control
 $lang['Manage_extensions'] = 'Adminitrar Extensiones';
@@ -129,7 +132,7 @@ $lang['Settings_cat_images'] = 'Configuraciones para la categoria: Images';
 $lang['Settings_cat_streams'] = 'Configuraciones para la categoria: Stream Files';
 $lang['Settings_cat_flash'] = 'Configuraciones para la categoria: Flash Files';
 $lang['Display_inlined'] = 'Mostrar imagenes en linea';
-$lang['Display_inlined_explain'] = 'Choose whether to display images directly within the post (yes) or to display images as a link ?';
+$lang['Display_inlined_explain'] = 'Elegir si mostrar las imagenes directamente dentro del mensaje (si) o mostrar las imagenes como un link?';
 $lang['Max_image_size'] = 'Dimensiones maximas de las imagenes';
 $lang['Max_image_size_explain'] = 'Aqui puedes definir el tamaño maximo de las imagenes a adjuntar(Ancho x Alto en pixeles).<br />Si pones 0x0 esta funcion se deshabilita. Con algunas imagenes esto puede no funcionar debido a limitaciones de PHP';
 $lang['Image_link_size'] = 'Dimensiones para enlazarlas';
@@ -137,12 +140,16 @@ $lang['Image_link_size_explain'] = 'Si la imagen alcanza esta medida sera mostra
 $lang['Assigned_group'] = 'Grupo Asignado';
 
 $lang['Image_create_thumbnail'] = 'Crear imagen previa';
-$lang['Image_create_thumbnail_explain'] = 'Siempre crear imagen previa. This feature overrides nearly all Settings within this Special Category, except of the Maximum Image Dimensions. With this Feature a Thumbnail will be displayed within the post, the User can click it to open the real Image.<br />Please Note that this feature requires Imagick to be installed, if it\'s not installed or if Safe-Mode is enabled the GD-Extension of PHP will be used. If the Image-Type is not supported by PHP, this Feature will be not used.';
+$lang['Image_create_thumbnail_explain'] = 'Siempre crear imagen previa. Esta característica elimina casi todos los ajustes dentro de esta categoría especial, excepto el Dimensiones Maximas de Imagen. Con esta caracteristica un Thumbnail será mostrado dentro del mensaje, el Usuario puede clicar para abrir la imagen real.<br />Por favor, tenga en cuenta que esta característica requiere tener instalado Imagick, si no esta instalado o si Safe-Mode esta activado el GD-Extension de PHP será usado. Si la Image-Type no es soportado por PHP, esta característica no será usada.';
 $lang['Image_min_thumb_filesize'] = 'Tamaño minimo para crear imagen previa';
-$lang['Image_min_thumb_filesize_explain'] = 'Si la imagen pesa menos del tamaño definido, no se crear imagen previa porque la imagen ya es muy chica.';
+$lang['Image_min_thumb_filesize_explain'] = 'Si la imagen pesa menos del tamaño definido, no se creará imagen previa porque la imagen ya es muy pequeña.';
 $lang['Image_imagick_path'] = 'Imagick (Ruta complera)';
-$lang['Image_imagick_path_explain'] = 'Enter the Path to the convert program of imagick, normally /usr/bin/convert (on windows: c:/imagemagick/convert.exe).';
+$lang['Image_imagick_path_explain'] = 'Entre la ruta del programa convertidor de imagick, normalmente /usr/bin/convert (en windows: c:/imagemagick/convert.exe).';
 $lang['Image_search_imagick'] = 'Buscar Imagick';
+
+$lang['Use_gd2'] = 'Usar extensión GD2';
+$lang['Use_gd2_explain'] = 'PHP puede ser compilado con la Extensión GD1 o GD2 para manipulación de imagen. Para crear correctamente Thumbnails sin imagemagick el Attachment Mod usa dos metodos diferentes, basados en tu selección de aquí. Si tus thumbnails estan en mala calidad o fijados arriba, prueba a cambiar estos ajustes.';
+$lang['Attachment_version'] = 'Versión Attachment Mod %s'; // %s is the version number
 
 // Extensions -> Forbidden Extensions
 $lang['Manage_forbidden_extensions'] = 'Administrar extensiones prohibidas';
@@ -156,11 +163,11 @@ $lang['Group_permissions_explain'] = 'Aqui puede restringir extensiones del foro
 $lang['Note_admin_empty_group_permissions'] = 'NOTA:<br />Within the below listed Forums your Users are normally allowed to attach files, but since no Extension Group is allowed to be attached there, your Users are unable to attach anything. If they try, they will receive Error Messages. Maybe you want to set the Permission \'Post Files\' to ADMIN at these Forums.<br /><br />';
 $lang['Add_forums'] = 'Agregar foros';
 $lang['Add_selected'] = 'Agregar seleccionados';
-$lang['Perm_all_forums'] = 'TODOS';
+$lang['Perm_all_forums'] = 'TODOS LOS FOROS';
 
 // Attachments -> Quota Limits
 $lang['Manage_quotas'] = 'Administrar Cuotas';
-$lang['Manage_quotas_explain'] = 'Here you are able to add/delete/change Quota Limits. You are able to assign these Quota Limits to Users and Groups later. To assign a Quota Limit to a User, you have to go to Users->Management, select the User and you will see the Options at the bottom. To assign a Quota Limit to a Group, go to Groups->Management, select the Group to edit it, and you will see the Configuration Settings. If you want to see, which Users and Groups are assigned to a specific Quota Limit, click on \'View\' at the left of the Quota Description.';
+$lang['Manage_quotas_explain'] = 'Aquí tu puedes añadir/borrar/cambiar los Limites de Quota. Tú puedes asignar estos Limites de Quotas a Usuarios y Grupos más adelante. Para asignar un Limite de Quota a un Usuario, tú tienes que ir a Usuarios->Administración, seleccionar el Usuario y puedes ver las Opciones en el fondo. Para asignar un Limite de Quota a un Grupo, ves a Grupos->Administración, selecciona el Grupo a editar, y verás los Ajustes de Configuración. Si deseas ver, que Usuarios y Grupos estan asignados a un Limite de Quota especifico, clica en \'Ver\' a la izquierda de la Descripción de Quota.';
 $lang['Assigned_users'] = 'Usuarios asignados';
 $lang['Assigned_groups'] = 'Grupos asignados';
 $lang['Quota_limit_exist'] = 'El limite de couta %s ya existe.'; // Replace %s with the Quota Description
@@ -177,44 +184,44 @@ $lang['Size_greater_than'] = 'Tamaño mayor que (bytes)';
 $lang['Count_smaller_than'] = 'Contador de bajadas menor a';
 $lang['Count_greater_than'] = 'Contador de bajadas mayor a';
 $lang['More_days_old'] = 'Que tenga mas de esta cantidad de dias de viejo';
-$lang['No_attach_search_match'] = 'No se han encontrado ningun adjunto con las carateristicas que busco';
+$lang['No_attach_search_match'] = 'No se a encontrado ningun adjunto con las carateristicas que busco';
 
 // Control Panel -> Statistics
-$lang['Number_of_attachments'] = 'Cantidad de Archivos Adjuntos';
-$lang['Total_filesize'] = 'Espacio total utilizado';
-$lang['Number_posts_attach'] = 'Numero de mensajes con adjuntos';
-$lang['Number_topics_attach'] = 'Numero de temas con adjuntos';
-$lang['Number_users_attach'] = 'Cantidad de usuarios que han publicado adjuntos';
-$lang['Number_pms_attach'] = 'Adjuntos totales en mensajes privados';
+$lang['Number_of_attachments'] = 'Número de adjuntos';
+$lang['Total_filesize'] = 'Tamaño del archivo';
+$lang['Number_posts_attach'] = 'Número de mensajes con adjuntos';
+$lang['Number_topics_attach'] = 'Número de Temas con adjuntos';
+$lang['Number_users_attach'] = 'Usuarios independientes postearon Adjuntos';
+$lang['Number_pms_attach'] = 'Total de adjuntos en Mensajes Privados';
 
-// Control Panel -> Attachments
-$lang['Statistics_for_user'] = 'Estadisticas de %s'; // replace %s with username
+// Control Panel -> Adjuntos
+$lang['Statistics_for_user'] = 'Estadísticas de Attachment para %s'; // replace %s with username
 $lang['Size_in_kb'] = 'Tamaño (KB)';
-$lang['Downloads'] = 'Bajadas';
-$lang['Post_time'] = 'Hora del mensaje';
-$lang['Posted_in_topic'] = 'Publicado en el tema';
-$lang['Submit_changes'] = 'Enviar cambios';
+$lang['Downloads'] = 'Descargas';
+$lang['Post_time'] = 'Hora de mensaje';
+$lang['Posted_in_topic'] = 'Posteado en Tema';
+$lang['Submit_changes'] = 'Enviar Cambios';
 
 // Sort Types
 $lang['Sort_Attachments'] = 'Adjuntos';
 $lang['Sort_Size'] = 'Tamaño';
-$lang['Sort_Filename'] = 'Nombre del Archivo';
+$lang['Sort_Filename'] = 'Nombre de archivo';
 $lang['Sort_Comment'] = 'Comentario';
-$lang['Sort_Extension'] = 'Extension';
-$lang['Sort_Downloads'] = 'Bajadas';
-$lang['Sort_Posttime'] = 'Hora de los mensajes';
+$lang['Sort_Extension'] = 'Extensión';
+$lang['Sort_Downloads'] = 'Descargas';
+$lang['Sort_Posttime'] = 'Hora de mensaje';
 $lang['Sort_Posts'] = 'Mensajes';
 
 // View Types
-$lang['View_Statistic'] = 'Estadisticas';
+$lang['View_Statistic'] = 'Estadísticas';
 $lang['View_Search'] = 'Buscar';
-$lang['View_Username'] = 'Usuario';
+$lang['View_Username'] = 'Nombre de Usuario';
 $lang['View_Attachments'] = 'Adjuntos';
 
 // Successfully updated
-$lang['Attach_config_updated'] = 'Configuracion de los adjuntos actualizada con exito';
-$lang['Click_return_attach_config'] = 'Clickea %saqui%s para volver a la configuracion de los adjuntos';
-$lang['Test_settings_successful'] = 'Prueba finalizada, todo parece estar bien.';
+$lang['Attach_config_updated'] = 'Configuración de Adjuntos Actualizada Exitosamente';
+$lang['Click_return_attach_config'] = 'Haz click aqui %sAquí%s para regresar a la Configuración de Adjuntos';
+$lang['Test_settings_successful'] = 'Test de ajustes finalizado, la configuración parece correcta.';
 
 // Some basic definitions
 $lang['Attachments'] = 'Adjuntos';
@@ -224,6 +231,6 @@ $lang['Extension'] = 'Extension';
 
 // Auth pages
 $lang['Auth_attach'] = 'Subir Archivos';
-$lang['Auth_download'] = 'Descargar';
+$lang['Auth_download'] = 'Descargar Archivos';
 
 ?>

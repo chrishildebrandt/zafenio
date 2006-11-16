@@ -1,8 +1,8 @@
 Subject: Account Activated
 Charset: iso-8859-1
 
-Hello {USERNAME},
+Hola {USERNAME},
 
-Your account on "{SITENAME}" has now been activated, you may login using the username and password you received in a previous email.
+Tu cuenta en "{SITENAME}" a sido correctamente activada, tú puedes hacer login usando el nombre de usuario y contraseña que recibiste en el anterior mail.
 
 {EMAIL_SIG}

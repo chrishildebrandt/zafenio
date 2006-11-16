@@ -1,12 +1,12 @@
 Subject: You have been added to this usergroup
 Charset: iso-8859-1
 
-Congratulations,
+Enhorabuena,
 
-You have been added to the "{GROUP_NAME}" group on {SITENAME}.
-This action was done by the group moderator or the site administrator, contact them for more information.
+Tú has sido añadido al "{GROUP_NAME}" grupo en {SITENAME}.
+Esta acción fué realizada por el moderador del grupo o el administrador del site, contacta con ellos para más información.
 
-You can view your groups information here:
+Tú puedes ver tu información de grupo aquí:
 {U_GROUPCP}
 
 {EMAIL_SIG}

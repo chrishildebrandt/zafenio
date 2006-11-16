@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
- *                         lang_searchreplace.php [English]
+ *                         lang_searchreplace.php [Spanish]
  *                         --------------------------------
  *     begin                : 08/22/2003
  *     copyright            : (C) 2001 The PNphpBB Group
@@ -19,16 +19,16 @@
  *
  ***************************************************************************/
 
-$lang_admin['RecChanged'] = "Total records changed: ";
-$lang_admin['RecFound'] = "Total records found: ";
-$lang_admin['TextToChange'] = "Text to be changed: ";
-$lang_admin['Before'] = "Before: ";
-$lang_admin['After'] = "After : ";
-$lang_admin['SRTitle'] = "Search and replace text within posts";
-$lang_admin['SRExplain'] = "This will search for 'LIKE' text and attempt to replace it with text of your choosing. <b><u>Be VERY careful with this utility.</u></b> Use the test first to see exactly what its going to replace and how many occurrences before running it for real!.<br />When a test is run you will be shown the total records found as well as 2 sample texts showing a before and after view of what will be changed.";
-$lang_admin['SearchFor'] = "Search for";
-$lang_admin['SearchForExplain'] = "This is the text you are wanting to find.";
-$lang_admin['ReplaceWith'] = "Replace with";
-$lang_admin['ReplaceWithExplain'] = "This is the replacement text";
-$lang_admin['Text'] = "Test";
+$lang_admin['RecChanged'] = "Total entradas modificadas: ";
+$lang_admin['RecFound'] = "Total entradas encontradas: ";
+$lang_admin['TextToChange'] = "Texto a ser modificado: ";
+$lang_admin['Before'] = "Antes: ";
+$lang_admin['After'] = "Despues : ";
+$lang_admin['SRTitle'] = "Buscar y reemplazar texto dentro de mensajes";
+$lang_admin['SRExplain'] = "Esto buscará 'COMO' texto y será reemplazado con el texto que tú elijas. <b><u>Ten MUCHO cuidado con esta utilidad.</u></b> ¡Utilizar el test primero para ver exactamente lo que va a sustituir y cuántas ocurrencias antes de hacerlo funcionar verdaderamente!.<br />Cuando se ejecuta el test, mostrará las entradas totales encontradas asi como dos ejemplos de texto mostrando el antes y como quedaran después del cambio.";
+$lang_admin['SearchFor'] = "Buscar:";
+$lang_admin['SearchForExplain'] = "Este es el texto que tu deseas encontrar.";
+$lang_admin['ReplaceWith'] = "Reemplazar con:";
+$lang_admin['ReplaceWithExplain'] = "Este es el texto de reemplazo.";
+$lang_admin['Text'] = "Texto";
 ?>

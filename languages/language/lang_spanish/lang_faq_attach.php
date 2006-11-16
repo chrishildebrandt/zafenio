@@ -18,6 +18,13 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
+ /**
+* DO NOT CHANGE
+*/
+if (!isset($faq) || !is_array($faq))
+{
+	$faq = array();
+}
 
 $faq[] = array("--","Adjuntos");
 
