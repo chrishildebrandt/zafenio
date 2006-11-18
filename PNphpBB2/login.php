@@ -261,7 +261,8 @@ else
 // Begin PNphpBB2 Module
 //		$s_hidden_fields = '<input type="hidden" name="redirect" value="' . $forward_page . '" />';
 	 	$s_hidden_fields = '<input type="hidden" name="url" value="' . append_sid($forward_page) . '">';
-		$s_hidden_fields .= '<input type="hidden" name="module" value="NS-User">';
+		//$s_hidden_fields .= '<input type="hidden" name="module" value="NS-User">';
+		$s_hidden_fields .= '<input type="hidden" name="module" value="User">';
 		$s_hidden_fields .= '<input type="hidden" name="op" value="login">';
 // End PNphpBB2 Module
 		$s_hidden_fields .= (isset($HTTP_GET_VARS['admin'])) ? '<input type="hidden" name="admin" value="1" />' : '';
