@@ -278,7 +278,8 @@ else
 			
 /* Begin PNphpBB2 Module */
 /*			'U_SEND_PASSWORD' => append_sid("profile.$phpEx?mode=sendpassword"), */
-			'U_SEND_PASSWORD' => "user.$phpEx?op=lostpassscreen&amp;module=NS-LostPassword",
+			//'U_SEND_PASSWORD' => "user.$phpEx?op=lostpassscreen&amp;module=NS-LostPassword",
+			'U_SEND_PASSWORD' => "user.$phpEx?op=lostpassscreen&amp;module=LostPassword",
 	 		'S_LOGIN_ACTION' => "user.$phpEx",
 /* End PNphpBB2 Module */
 
