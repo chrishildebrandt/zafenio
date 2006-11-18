@@ -1630,6 +1630,27 @@ function forum_mod_status ($forum_id)
 	}
 	return $moderators;
 }
+
+function get_pndb_config() {
+	if (defined('PN_VERSION_NUM') && !strcmp(PN_VERSION_NUM, "0.8.", 4)) {
+		/* PN 0.8 */
+		return array(	$GLOBALS['PNConfig']['DBInfo']['default']['dbtype'],
+				$GLOBALS['PNConfig']['DBInfo']['default']['dbhost'],
+				$GLOBALS['PNConfig']['DBInfo']['default']['dbuname'],
+				$GLOBALS['PNConfig']['DBInfo']['default']['dbpass'],
+				$GLOBALS['PNConfig']['DBInfo']['default']['dbname']
+		);
+	} else {
+		/* Older versions */
+		return array(	pnConfigGetVar('dbtype'),
+				pnConfigGetVar('dbhost'),
+				pnConfigGetVar('dbuname'),
+				pnConfigGetVar('dbpass'),
+				pnConfigGetVar('dbname')
+		);
+	}
+}
+
 // End PNphpBB2 Module
 
 ?>
