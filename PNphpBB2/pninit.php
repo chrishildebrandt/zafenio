@@ -103,12 +103,8 @@ function PNphpBB2_init()
 
   // Check for the existance of the PNphpBB2 forum database if it does not 
   // exist then create it.
-  $dbms = pnConfigGetVar('dbtype');
-  $dbhost = pnConfigGetVar('dbhost');
-  $dbname = pnConfigGetVar('dbname');
-  $dbuser = pnConfigGetVar('dbuname');
-  $dbpasswd = pnConfigGetVar('dbpass');
- 	$id = pnModGetIDFromName($ModName);
+  list($dbms, $dbhost, $dbuser, $dbpasswd, $dbname) = get_pndb_config();
+  $id = pnModGetIDFromName($ModName);
 
   // Determin if the user already has an older version of the forum installed
   // in phpbb_ rather than the new way.

@@ -197,11 +197,8 @@ $gen_simple_header = FALSE;
 
 // Begin PNphpBB2 Module
 // include($phpbb_root_path . 'config.'.$phpEx);
-$dbms = pnConfigGetVar('dbtype');
-$dbhost = pnConfigGetVar('dbhost');
-$dbname = pnConfigGetVar('dbname');
-$dbuser = pnConfigGetVar('dbuname');
-$dbpasswd = pnConfigGetVar('dbpass');
+
+list($dbms, $dbhost, $dbuser, $dbpasswd, $dbname) = get_pndb_config();
 $table_prefix = pnConfigGetVar('prefix') . "_phpbb_";
 
 list($dbconn) = pnDBGetConn(); 

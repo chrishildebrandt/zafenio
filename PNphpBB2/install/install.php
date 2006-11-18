@@ -86,12 +86,8 @@ $available_dbms = array(
 		'COMMENTS'		=> 'remove_comments'
 	)
 );
-$dbms=pnConfigGetVar('dbtype');
 
-$dbhost = pnConfigGetVar('dbhost');
-$dbuser = pnConfigGetVar('dbuname');
-$dbpasswd = pnConfigGetVar('dbpass');
-$dbname = pnConfigGetVar('dbname');
+list($dbms, $dbhost, $dbuser, $dbpasswd, $dbname) = get_pndb_config();
 
 $error = false;
 
@@ -123,7 +119,7 @@ if (isset($dbms))
 			break;
 
 		case 'mysql':
-			case 'mysql4':
+		case 'mysql4':
 			$check_exts = 'mysql';
 			$check_other = 'mysql';
 			break;
@@ -243,16 +239,27 @@ if ($errored)
 }
 
 $id = pnModGetIDFromName($ModName);
-if (pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_INACTIVE)))
-{
- 	 // Success
-  pnSessionSetVar('statusmsg', $lang['PNphpBB2_Installed']);
-  pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_ACTIVE));
+
+if (defined('PN_VERSION_NUM') && !strcmp(PN_VERSION_NUM, "0.8.", 4)) {
+	/* Set module state to 'inactive', this script will terminate execution */
+	pnModAPIFunc('Modules', 'admin', 'setstate', array('id' => $id, 'state' => PNMODULE_STATE_INACTIVE));
+	/* Cannot auto activate the module */
+	page_common_text("<b>Please manually activate the module</b>", "center");
+} else {
+	if (pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_INACTIVE))) {
+		/* Success */
+		pnSessionSetVar('statusmsg', $lang['PNphpBB2_Installed']);
+		pnModAPIFunc('Modules', 'admin', 'setstate', array('mid' => $id, 'state' => _PNMODULE_STATE_ACTIVE));
+	}
 }
 
 page_common_text("-", "center");
 page_common_text($lang['PNphpBB2_Install_Complete'], "left");
 page_common_form('', $lang['Finish_Install']);
 page_footer();
+
+/* Terminate execution. pnMod will try a redirect which will fails since we 
+ * have already printed stuff on the page.
+ */
 exit;
 ?>
