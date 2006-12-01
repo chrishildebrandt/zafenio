@@ -198,6 +198,8 @@ $gen_simple_header = FALSE;
 // Begin PNphpBB2 Module
 // include($phpbb_root_path . 'config.'.$phpEx);
 
+include($phpbb_root_path . 'includes/functions.'.$phpEx);
+
 list($dbms, $dbhost, $dbuser, $dbpasswd, $dbname) = get_pndb_config();
 $table_prefix = pnConfigGetVar('prefix') . "_phpbb_";
 
@@ -228,7 +230,9 @@ include($phpbb_root_path . 'includes/constants.'.$phpEx);
 // End PNphpBB2 Module
 include($phpbb_root_path . 'includes/sessions.'.$phpEx);
 include($phpbb_root_path . 'includes/auth.'.$phpEx);
-include($phpbb_root_path . 'includes/functions.'.$phpEx);
+// Begin PNphpBB2 Module
+// include($phpbb_root_path . 'includes/functions.'.$phpEx);
+// End PNphpBB2 Module
 include($phpbb_root_path . 'includes/db.'.$phpEx);
 
 // We do not need this any longer, unset for safety purposes
