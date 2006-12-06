@@ -3,7 +3,7 @@ Charset: iso-8859-1
 
 Hallo {USERNAME}!
 
-Du erhältst diese E-Mail, weil du über Antworten im Thema "{TOPIC_TITLE}" auf {SITENAME} benachrichtigt werden wolltest. Dieses Thema hat Antworten seit deinem letzten Besuch bekommen. Du kannst den folgenden Link benutzen, um direkt zum Thema zu gelanden:
+Du erhältst diese E-Mail, weil du über Antworten im Thema "{TOPIC_TITLE}" auf {SITENAME} benachrichtigt werden wolltest. Dieses Thema hat Antworten seit deinem letzten Besuch bekommen. Du kannst den folgenden Link benutzen, um direkt zum Thema zu gelangen:
 
 {U_TOPIC}
 
