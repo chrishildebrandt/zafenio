@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: functions_admin.php,v 1.3 2006/04/28 17:49:44 adrianc602 Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

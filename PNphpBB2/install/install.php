@@ -6,7 +6,7 @@
  *   copyright            : (C) 2003 The PNphpBB Group
  *   email                : support@pnphpbb.com
  *
- *   $Id: install.php,v 1.7 2004/10/26 15:18:18 carls Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

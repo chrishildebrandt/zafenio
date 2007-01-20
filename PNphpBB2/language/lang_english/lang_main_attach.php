@@ -4,7 +4,7 @@
 * attachment mod main [English]
 *
 * @package attachment_mod
-* @version $Id: lang_main_attach.php,v 1.1 2005/11/05 10:25:02 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

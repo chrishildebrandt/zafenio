@@ -7,7 +7,7 @@
  *     copyright            : (C) 2003-2004 the PNphpBB Group
  *     email                : support@pnphpbb.com
  *
- *     $Id: lang_pnphpbb2_admin.php,v 1.14 2004/10/15 20:56:40 carls Exp $
+ *     $Id$
  *
  ****************************************************************************/
 

@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: pm_attachments.php,v 1.2 2005/11/06 18:35:43 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

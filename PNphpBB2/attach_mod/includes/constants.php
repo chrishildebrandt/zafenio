@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: constants.php,v 1.5 2006/04/22 16:21:09 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : supportphpbb.com
  *
- *   $Id: mssql.php,v 1.22.2.4 2006/03/09 19:57:37 grahamje Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

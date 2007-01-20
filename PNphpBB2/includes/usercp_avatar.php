@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_avatar.php,v 1.1 2006/04/25 15:35:49 aboensis Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

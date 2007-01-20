@@ -8,7 +8,7 @@
  * Contact          : support@pnphpbb.com
  *                  : http://www.pnphpbb.com
  *
- * $Id: functions_styles.php,v 1.6 2004/10/18 19:47:28 carls Exp $
+ * $Id$
  *
  ***************************************************************************/
 

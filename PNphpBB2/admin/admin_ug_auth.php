@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_ug_auth.php,v 1.1 2006/04/25 15:32:02 aboensis Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: attachment_mod.php,v 1.6 2005/11/06 18:35:43 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

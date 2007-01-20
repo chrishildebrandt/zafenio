@@ -8,7 +8,7 @@
  *   original work by     : Smartor <smartor_xp@hotmail.com>
  *   and                  : RustyDragon <dev@RustyDragon.com>, http://www.RustyDragon.com
  *
- *   $Id: quick_reply.php,v 1.5 2004/09/05 01:54:51 carls Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

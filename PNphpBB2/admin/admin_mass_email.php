@@ -6,7 +6,7 @@
 *     copyright            : (C) 2001 The phpBB Group
 *     email                : support@phpbb.com
 *
-*     $Id: admin_mass_email.php,v 1.3 2004/10/26 15:19:35 carls Exp $
+*     $Id$
 *
 ****************************************************************************/
 

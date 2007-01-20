@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: msaccess.php,v 1.8.2.2 2002/09/28 12:50:59 psotfx Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

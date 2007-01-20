@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewforum.php,v 1.5 2004/10/06 19:44:25 carls Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

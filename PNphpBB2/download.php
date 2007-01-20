@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: download.php,v 1.5 2006/04/13 14:48:50 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

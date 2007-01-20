@@ -6,7 +6,7 @@
  * Contact       : support@pnphpbb.com
  *               : http://www.pnphpbb.com
  *
- * $Id: functions_install.php,v 1.5 2004/10/06 19:50:45 carls Exp $
+ * $Id$
  *
  ***************************************************************************/
 

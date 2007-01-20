@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: mysql.php,v 1.16.2.1 2005/09/18 16:17:20 acydburn Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

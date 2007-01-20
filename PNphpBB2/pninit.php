@@ -8,7 +8,7 @@
  *
  * Initialize the PNphpBB2 module and setup datasets
  *
- * $Id: pninit.php,v 1.12 2004/10/18 13:42:20 carls Exp $
+ * $Id$
  *
  ***************************************************************************/
  

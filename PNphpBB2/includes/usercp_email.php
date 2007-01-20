@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_email.php,v 1.2 2004/09/25 18:00:27 carls Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

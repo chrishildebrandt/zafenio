@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: functions_thumbs.php,v 1.3 2005/11/15 21:26:47 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

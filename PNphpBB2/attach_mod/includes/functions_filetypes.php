@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: functions_filetypes.php,v 1.1 2005/11/05 12:30:57 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

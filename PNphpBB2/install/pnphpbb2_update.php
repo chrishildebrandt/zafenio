@@ -12,7 +12,7 @@
  *   copyright            : (C) 2002-2004 The PNphpBB Group
  *   email                : support@pnphpbb.com
  *
- *   $Id: pnphpbb2_update.php,v 1.13 2004/10/18 13:49:38 carls Exp $
+ *   $Id$
  *
  *   Revision history:
  * 	 

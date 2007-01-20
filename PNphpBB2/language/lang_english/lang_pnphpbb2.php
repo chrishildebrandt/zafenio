@@ -7,7 +7,7 @@
  *     copyright            : (C) 2003-2004 the PNphpBB Group
  *     email                : support@itsallbutstraw.com
  *
- *     $Id: lang_pnphpbb2.php,v 1.7 2004/10/15 20:55:21 carls Exp $
+ *     $Id$
  *
  ****************************************************************************/
 

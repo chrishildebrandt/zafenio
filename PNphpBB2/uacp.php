@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: uacp.php,v 1.3 2005/11/06 18:35:43 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

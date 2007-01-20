@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_footer_admin.php,v 1.2 2006/04/28 17:49:43 adrianc602 Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

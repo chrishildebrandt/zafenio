@@ -6,7 +6,7 @@
 *     copyright            : (C) 2001 The phpBB Group
 *     email                : support@phpbb.com
 *
-*     $Id: sql_parse.php,v 1.1 2004/07/13 19:16:07 carls Exp $
+*     $Id$
 *
 ****************************************************************************/
 

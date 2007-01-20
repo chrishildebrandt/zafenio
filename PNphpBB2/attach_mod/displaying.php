@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: displaying.php,v 1.4 2005/11/06 16:28:14 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *

@@ -6,7 +6,7 @@
  *     copyright            : (C) 2001 The PNphpBB Group
  *     email                : support@pnphpbb.com
  *
- *     $Id: lang_grouprepair.php,v 1.1 2004/07/13 19:16:08 carls Exp $
+ *     $Id$
  *
  ****************************************************************************/
 

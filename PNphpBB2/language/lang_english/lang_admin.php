@@ -7,7 +7,7 @@
  *     copyright            : (C) 2001 The phpBB Group
  *     email                : support@phpbb.com
  *
- *     $Id: lang_admin.php,v 1.2 2006/05/03 12:40:48 adrianc602 Exp $
+ *     $Id$
  *
  ****************************************************************************/
 

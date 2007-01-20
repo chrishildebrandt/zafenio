@@ -6,7 +6,7 @@
  *   copyright            : (C) 2003 The PNphpBB Group
  *   email                : support@pnphpbb.com
  *
- *   $Id: remove_pnphpbb2.php,v 1.8 2004/10/20 18:27:11 carls Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

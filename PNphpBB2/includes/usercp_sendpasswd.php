@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_sendpasswd.php,v 1.6.2.13 2005/09/14 18:14:30 acydburn Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

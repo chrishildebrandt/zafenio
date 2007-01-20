@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: common.php,v 1.2 2006/05/03 19:29:26 adrianc602 Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

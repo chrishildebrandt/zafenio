@@ -6,7 +6,7 @@
  *   copyright            : (C) 2003 The PNphpBB Group
  *   email                : support@pnphpbb.com
  *
- *   $Id: admin_groups_reapir.php,v 1.2 2004/09/25 19:21:22 carls Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

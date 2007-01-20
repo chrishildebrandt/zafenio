@@ -2,7 +2,7 @@
 /** 
 *
 * @package attachment_mod
-* @version $Id: functions_selects.php,v 1.2 2005/12/14 13:08:23 acydburn Exp $
+* @version $Id$
 * @copyright (c) 2002 Meik Sievertsen
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
