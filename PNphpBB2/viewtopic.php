@@ -57,6 +57,7 @@ if ( isset($HTTP_GET_VARS[POST_POST_URL]))
 
 
 $start = ( isset($HTTP_GET_VARS['start']) ) ? intval($HTTP_GET_VARS['start']) : 0;
+$start = ($start < 0) ? 0 : $start;
 
 // Begin PNphpBB2 Module (Support Status Mod)
 $ssu = ( isset($HTTP_GET_VARS['ssu']) ) ? intval($HTTP_GET_VARS['ssu']) : intval($HTTP_POST_VARS['ssu']);

@@ -14,10 +14,10 @@ $modversion['old_table_prefix'] = "phpbb_";
 // Do NOT makes changes to anything below this line unless instructed by the 
 // support team at PNphpBB.com.
 $modversion['name'] = "PNphpBB2";
-$modversion['version'] = "1.2j";
-$modversion['phpbb_version'] = ".0.21";
+$modversion['version'] = "1.2i-p2";
+$modversion['phpbb_version'] = ".0.22";
 $modversion['attach_version'] = "2.4.3";
-$modversion['copyrite'] = "&copy; 2003-2006";
+$modversion['copyrite'] = "&copy; 2003-2007";
 $modversion['description'] = "The PostNuke Forum based on phpBB2";
 $modversion['credits'] = "docs/credits.txt";
 $modversion['help'] = "docs/help.txt";

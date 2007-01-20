@@ -152,6 +152,7 @@ if (
 	$notifyreply = ( isset($HTTP_POST_VARS['notifyreply']) ) ? ( ($HTTP_POST_VARS['notifyreply']) ? TRUE : 0 ) : 0;
 	$notifypm = ( isset($HTTP_POST_VARS['notifypm']) ) ? ( ($HTTP_POST_VARS['notifypm']) ? TRUE : 0 ) : TRUE;
 	$popup_pm = ( isset($HTTP_POST_VARS['popup_pm']) ) ? ( ($HTTP_POST_VARS['popup_pm']) ? TRUE : 0 ) : TRUE;
+	$sid = (isset($HTTP_POST_VARS['sid'])) ? $HTTP_POST_VARS['sid'] : 0;
 
 	if ( $mode == 'register' )
 	{
@@ -351,6 +352,13 @@ if ( isset($HTTP_POST_VARS['submit']) )
 {
 	include($phpbb_root_path . 'includes/usercp_avatar.'.$phpEx);
 
+	// session id check
+	if ($sid == '' || $sid != $userdata['session_id'])
+	{
+		$error = true;
+		$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $lang['Session_invalid'];
+	}
+
 	$passwd_sql = '';
 	if ( $mode == 'editprofile' )
 	{
@@ -392,7 +400,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 					AND session_id = '" . $userdata['session_id'] . "'";
 			if (!($result = $db->sql_query($sql)))
 			{
-				message_die(GENERAL_ERROR, 'Could not obtain confirmation code', __LINE__, __FILE__, $sql);
+				message_die(GENERAL_ERROR, 'Could not obtain confirmation code', '', __LINE__, __FILE__, $sql);
 			}
 
 			if ($row = $db->sql_fetchrow($result))
@@ -409,7 +417,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 							AND session_id = '" . $userdata['session_id'] . "'";
 					if (!$db->sql_query($sql))
 					{
-						message_die(GENERAL_ERROR, 'Could not delete confirmation code', __LINE__, __FILE__, $sql);
+						message_die(GENERAL_ERROR, 'Could not delete confirmation code', '', __LINE__, __FILE__, $sql);
 					}
 				}
 			}
@@ -1044,6 +1052,7 @@ else
 	}
 
 	$s_hidden_fields = '<input type="hidden" name="mode" value="' . $mode . '" /><input type="hidden" name="agreed" value="true" /><input type="hidden" name="coppa" value="' . $coppa . '" />';
+	$s_hidden_fields .= '<input type="hidden" name="sid" value="' . $userdata['session_id'] . '" />';
 	if( $mode == 'editprofile' )
 	{
 		$s_hidden_fields .= '<input type="hidden" name="user_id" value="' . $userdata['user_id'] . '" />';

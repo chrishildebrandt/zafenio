@@ -877,6 +877,19 @@ if (defined("PNPHPBB2_UPGRADE") && !($errored))
 			}
 
 			break;
+
+		case '.0.21':
+			
+			// MySQL only change
+			switch (SQL_LAYER)
+			{
+				case 'mysql':
+				case 'mysql4':
+					$sql_query = "ALTER TABLE " . SEARCH_TABLE . "
+						MODIFY COLUMN search_array MEDIUMTEXT NOT NULL";
+			}
+
+			break;
 	}
 
 if ($sql_query <> "")
@@ -1059,7 +1072,7 @@ switch ($current_phpbb_version)
 			if (preg_match("#^lang_#i", $file) && !is_file($phpbb_root_path . $dirname . "/" . $file) && !is_link($phpbb_root_path . $dirname . "/" . $file) && file_exists($phpbb_root_path . $dirname . "/" . $file . '/search_stopwords.txt'))
 			{
 
-				$stopword_list = trim(preg_replace('#([\w\.\-_\+\'±µ-ÿ\\\]+?)[ \n\r]*?(,|$)#', '\'\1\'\2', str_replace("'", "\'", implode(', ', file($phpbb_root_path . $dirname . "/" . $file . '/search_stopwords.txt')))));
+				$stopword_list = trim(preg_replace('#([\w\.\-_\+\'-\\\]+?)[ \n\r]*?(,|$)#', '\'\1\'\2', str_replace("'", "\'", implode(', ', file($phpbb_root_path . $dirname . "/" . $file . '/search_stopwords.txt')))));
 
 				$sql_query = "SELECT word_id 
 					FROM " . SEARCH_WORD_TABLE . " 
@@ -1336,7 +1349,8 @@ switch (SQL_LAYER)
 {
 	case 'mysql':
 	case 'mysql4':
-		$sql_query = 'OPTIMIZE TABLE ' . $table_prefix . 'auth_access, ' . $table_prefix . 'banlist, ' . $table_prefix . 'categories, ' . $table_prefix . 'config, ' . $table_prefix . 'disallow, ' . $table_prefix . 'forum_prune, ' . $table_prefix . 'forums, ' . $table_prefix . 'groups, ' . $table_prefix . 'posts, ' . $table_prefix . 'posts_text, ' . $table_prefix . 'privmsgs, ' . $table_prefix . 'privmsgs_text, ' . $table_prefix . 'ranks, ' . $table_prefix . 'search_results, ' . $table_prefix . 'search_wordlist, ' . $table_prefix . 'search_wordmatch, ' . $table_prefix . 'smilies, ' . $table_prefix . 'themes, ' . $table_prefix . 'themes_name, ' . $table_prefix . 'topics, ' . $table_prefix . 'topics_watch, ' . $table_prefix . 'user_group, ' . $table_prefix . 'users, ' . $table_prefix . 'vote_desc, ' . $table_prefix . 'vote_results, ' . $table_prefix . 'vote_voters, ' . $table_prefix . 'words;';
+		$sql = 'OPTIMIZE TABLE ' . $table_prefix . 'auth_access, ' . $table_prefix . 'banlist, ' . $table_prefix . 'categories, ' . $table_prefix . 'config, ' . $table_prefix . 'disallow, ' . $table_prefix . 'forum_prune, ' . $table_prefix . 'forums, ' . $table_prefix . 'groups, ' . $table_prefix . 'posts, ' . $table_prefix . 'posts_text, ' . $table_prefix . 'privmsgs, ' .
+		$table_prefix . 'privmsgs_text, ' . $table_prefix . 'ranks, ' . $table_prefix . 'search_results, ' . $table_prefix . 'search_wordlist, ' . $table_prefix . 'search_wordmatch, ' . $table_prefix . 'sessions_keys, ' . $table_prefix . 'smilies, ' . $table_prefix . 'themes, ' . $table_prefix . 'themes_name, ' . $table_prefix . 'topics, ' . $table_prefix . 'topics_watch, ' . $table_prefix . 'user_group, ' . $table_prefix . 'users, ' . $table_prefix . 'vote_desc, ' . $table_prefix . 'vote_results, ' . $table_prefix . 'vote_voters, ' . $table_prefix . 'words';
 		evaluate_statement($sql_query, $lang['PNphpBB2_Optimize_Analyze']);
 		break;
 
