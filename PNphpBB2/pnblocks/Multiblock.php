@@ -23,13 +23,13 @@ function PNphpBB2_MultiBlockblock_init()
 function PNphpBB2_MultiBlockblock_info()
 {
 	// Values
-	return array( 'text_type' => 'PNphpBB2',
-								'module' => 'PNphpBB2',
-								'text_type_long' => 'Multi-Block',
-								'allow_multiple' => true,
-								'form_content' => false,
-								'form_refresh' => false,
-								'show_preview' => true);
+	return array(	'text_type' => 'PNphpBB2',
+			'module' => 'PNphpBB2',
+			'text_type_long' => 'Multi-Block',
+			'allow_multiple' => true,
+			'form_content' => false,
+			'form_refresh' => false,
+			'show_preview' => true);
 }
 
 function PNphpBB2_MultiBlockblock_display($blockinfo)
@@ -128,12 +128,12 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 
 		//list of forums user can look into if private
 		$readforums = "";
-		
+
 		//list of forums where user is moderator
 		$modforums  = "";
 
 		//just for guests
-		$userstate  = 0; 
+		$userstate  = 0;
 
 		if (pnUserLoggedIn())
 		{
@@ -154,8 +154,8 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 			else
 			{
 				$query = "SELECT " . AUTH_ACCESS_TABLE . ".forum_id,
-						max(" . AUTH_ACCESS_TABLE . ".auth_view), 
-						max(" . AUTH_ACCESS_TABLE . ".auth_read), 
+						max(" . AUTH_ACCESS_TABLE . ".auth_view),
+						max(" . AUTH_ACCESS_TABLE . ".auth_read),
 						max(" . AUTH_ACCESS_TABLE . ".auth_mod)
 					FROM " . USER_GROUP_TABLE . " INNER JOIN " . AUTH_ACCESS_TABLE . " ON " . USER_GROUP_TABLE . ".group_id = " . AUTH_ACCESS_TABLE . ".group_id
 					WHERE  " . USER_GROUP_TABLE . ".user_id = $uid
@@ -168,16 +168,27 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 					$result->MoveNext();
 
 					//let's make a nice list of forums the user is allowed to view, read and moderate
-					if($auth_read | $auth_mod) $readforums .= empty($readforums) ? $forum_id : ", " . $forum_id;
-					if($auth_view | $auth_mod) $viewforums .= empty($viewforums) ? $forum_id : ", " . $forum_id;", " . $forum_id;
-					if($auth_mod) $modforums  .= empty($modforums)  ? $forum_id : ", " . $forum_id;", " . $forum_id;
+					if ($auth_read || $auth_mod)
+						$readforums .= empty($readforums) ? $forum_id : ", " . $forum_id;
+					if ($auth_view || $auth_mod)
+						$viewforums .= empty($viewforums) ? $forum_id : ", " . $forum_id;", " . $forum_id;
+					if ($auth_mod)
+						$modforums  .= empty($modforums)  ? $forum_id : ", " . $forum_id;", " . $forum_id;
 				}
 			}
- 		}
+		}
 
 		//let's see if we can optimize the query
-		$view_private = !empty($viewforums) ? " OR (" . FORUMS_TABLE . ".auth_view = ". AUTH_ACL . " AND " . TOPICS_TABLE . ".forum_id IN ($viewforums)) " : "";
-		$read_private = !empty($readforums) ? " OR (" . FORUMS_TABLE . ".auth_read = ". AUTH_ACL . " AND " . TOPICS_TABLE . ".forum_id IN ($readforums)) " : "";
+		if (!empty($viewforums))
+			$view_private = " OR (" . FORUMS_TABLE . ".auth_view = ". AUTH_ACL . " AND " . TOPICS_TABLE . ".forum_id IN ($viewforums)) ";
+		else
+			$view_private = "";
+
+		if (!empty($readforums))
+			$read_private = " OR (" . FORUMS_TABLE . ".auth_read = ". AUTH_ACL . " AND " . TOPICS_TABLE . ".forum_id IN ($readforums)) ";
+		else
+			$read_private = "";
+
 		if (!empty($modforums))
 		{
 			$view_mod = " OR (" . FORUMS_TABLE . ".auth_view = ". AUTH_MOD . " AND " . TOPICS_TABLE . ".forum_id IN ($modforums)) ";
@@ -756,7 +767,7 @@ function PNphpBB2_MultiBlockblock_display($blockinfo)
 								list($total) = $result4->fields;
 							}
 						}
-						$blockinfo['content'] .= '<td align="right">(';												     					 		
+						$blockinfo['content'] .= '<td align="right">(';
 						if ($unread > 0 )
 						{
 							// No sound file?
@@ -1031,7 +1042,7 @@ function PNphpBB2_MultiBlockblock_modify($blockinfo)
 		$settings[] = array('optiontitle' => $output->Text(_FORUM_DRILLDOWN), 'optioncontent' => $output->FormCheckbox('forum_drilldown',pnVarPrepForDisplay($vars['forum_drilldown'])));
 		$settings[] = array('optiontitle' => $output->Text(_FORUM_DRILLDOWN_MAX), 'optioncontent' => $output->FormText('forum_drilldown_max',pnVarPrepForDisplay($vars['forum_drilldown_max']),2,2) );
 		$settings[] = array('optiontitle' => $output->BoldText("____________________________"));
-		$settings[] = array('optiontitle' => $output->BoldText(_DISPLAY_MEMBERS), 'optioncontent' => $output->FormCheckbox('display_members',pnVarPrepForDisplay($vars['display_members'])) );	 
+		$settings[] = array('optiontitle' => $output->BoldText(_DISPLAY_MEMBERS), 'optioncontent' => $output->FormCheckbox('display_members',pnVarPrepForDisplay($vars['display_members'])) );
 		$settings[] = array('optiontitle' => $output->Text(_SEP_BAR), 'optioncontent' => $output->FormCheckbox('sep_bar_members',pnVarPrepForDisplay($vars['sep_bar_members'])));
 		$settings[] = array('optiontitle' => $output->Text(_SHOW_TITLE), 'optioncontent' => $output->FormCheckbox('title_members',pnVarPrepForDisplay($vars['title_members'])));
 		$settings[] = array('optiontitle' => $output->Text(_INFO_ICON), 'optioncontent' => $output->FormText('info_icon',pnVarPrepForDisplay($vars['info_icon']),15,30) );
@@ -1086,7 +1097,7 @@ function PNphpBB2_MultiBlockblock_update($blockinfo)
 				$vars['group_topics'],
 				$vars['display_replies'],
 				$vars['line_color'],
-				$vars['display_cat_posts'], 
+				$vars['display_cat_posts'],
 				$vars['title_string_length'],
 				$vars['user_string_length'],
 				$vars['excluded_forums'],
