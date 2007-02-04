@@ -4,5 +4,5 @@
 // By          : carls - The PNphpBB Group (C)2004
 // Description : This file is used to set the defualt size of the post icons.
 //
-$board_config['posticons_size'] = 'width="15" height="15"';
+$board_config['posticons_size'] = 'width="16" height="16"';
 ?>
