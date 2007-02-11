@@ -474,11 +474,7 @@ function PNphpBB2_delete()
     }
   }
   
-  $dbms = pnConfigGetVar('dbtype');
-  $dbhost = pnConfigGetVar('dbhost');
-  $dbname = pnConfigGetVar('dbname');
-  $dbuser = pnConfigGetVar('dbuname');
-  $dbpasswd = pnConfigGetVar('dbpass');
+  list($dbms, $dbhost, $dbuser, $dbpasswd, $dbname) = get_pndb_config();
 
  	$id = pnModGetIDFromName($ModName);
 
