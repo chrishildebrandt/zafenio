@@ -31,6 +31,9 @@
 
 if ( defined('PNPHPBB_INSTALL') )
 {
+  if (!is_array($lang))
+    unset($lang);
+
   // Installation
   $lang['PNphpBB2_Install'] = "PNphpBB2 Installation";
   $lang['PNphpBB2_Installed'] = "PNphpBB2 Installed & Activated.";
