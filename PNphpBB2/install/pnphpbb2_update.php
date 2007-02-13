@@ -1336,7 +1336,7 @@ if ( $data_update )
 } 
 
 // Very last thing, update the version
-if ( $prev_version <> $modversion['phpbb_version'] )
+if ( $current_version != $modversion['phpbb_version'] )
 {
   $sql_query = "UPDATE " . CONFIG_TABLE . "	SET config_value = '" . $modversion['phpbb_version'] . "'	WHERE config_name = 'version';";
   evaluate_statement($sql_query, "", true);
