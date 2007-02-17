@@ -667,12 +667,15 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
 	// Check for new version
 // Begin PNphpBB2 Module
-//	$current_version = explode('.', '2' . $board_config['version']);
-//	$minor_revision = (int) $current_version[2];
-	/* Strip patch level from minor version */
-	$modvers = preg_replace("/-p\d+/", "", $modversion['version']);
-	$current_version = explode('.', $modvers);
-	$minor_revision = $current_version[1];
+	define('PHPBB_VERSION_MATCH', '/^([0-9])\.([0-9]+)([a-z])(?:-p([0-9]+))?$/');
+	
+	if (!preg_match(PHPBB_VERSION_MATCH, $modversion['version'], $matches))
+		message_die(GENERAL_ERROR, "Internal error: Invalid module version.");
+
+	$major = $matches[1];
+	$minor = $matches[2];
+	$letter = $matches[3];
+	$patch = $matches[4];
 // End PNphpBB2 Module
 
 	$errno = 0;
@@ -708,27 +711,47 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 		}
 		@fclose($fsock);
 
-		$version_info = explode("\n", $version_info);
-		$latest_head_revision = (int) $version_info[0];
 // Begin PNphpBB2 Module
-//		$latest_minor_revision = (int) $version_info[2];
-//		$latest_version = (int) $version_info[0] . '.' . (int) $version_info[1] . '.' . (int) $version_info[2];
-		$latest_minor_revision = $version_info[1];
-		$latest_version = (int) $version_info[0] . '.' . $version_info[1];
-// End PNphpBB2 Module
 
-		if ($latest_head_revision == 1 && $minor_revision == $latest_minor_revision)
+		/* Search correct version info */
+		$version_info = explode("\r\n", $version_info);
+		foreach($version_info as $i => $tmp) {
+			if ($tmp == $major) {
+				$version_string = $major . "." . $version_info[$i + 1];
+				break;
+			}
+		}
+
+		if (!preg_match(PHPBB_VERSION_MATCH, $version_string, $matches)) {
+			/* Remote version may be invalid (e.g. server is down), so ignore any error.
+			 * Override with a valid string (current version).
+			 */
+			preg_match(PHPBB_VERSION_MATCH, $modversion['version'], $matches);
+		}
+
+		$must_update = false;
+		if ($minor < $matches[2]) {
+			$must_update = true;
+		} else if ($minor == $matches[2]) {
+			if ($letter < $matches[3]) {
+				$must_update = true;
+			} else if ($letter == $matches[3]) {
+				if (is_null($patch) || $patch < $matches[4])
+					$must_update = true;
+			}
+		}
+
+		if ($must_update)
 		{
 			$version_info = '<p style="color:green">' . $lang['Version_up_to_date'] . '</p>';
 		}
 		else
 		{
 			$version_info = '<p style="color:red">' . $lang['Version_not_up_to_date'];
-// Begin PNphpBB2 Module
 //			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], '2' . $board_config['version']) . '</p>';
 			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], $modversion['version']) . '</p>';
-// End PNphpBB2 Module
 		}
+// End PNphpBB2 Module
 	}
 	else
 	{
