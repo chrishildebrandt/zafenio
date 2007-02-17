@@ -71,7 +71,7 @@ function image_getdimension($file)
 		return $size;
 	}
 	
-	$error = faöse;
+	$error = false;
 
 	// BMP - IMAGE
 
