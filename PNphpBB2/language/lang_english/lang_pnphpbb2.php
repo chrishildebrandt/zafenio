@@ -168,7 +168,7 @@ $lang['First_Post'] = 'First post';
 $lang['Jump_Page'] = 'Enter the page number you wish to goto';
 
 // Replace existing phpBB language entries
-$lang['Search_new'] = 'View new posts';
+$lang['Search_new'] = 'View unread posts';
 
 // Gravatrs
 $lang['Use_gravatar'] = "Use your <a href=\"http://www.gravatar.com\">Gravatar</a>";
