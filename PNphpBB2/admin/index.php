@@ -741,7 +741,7 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 			}
 		}
 
-		if ($must_update)
+		if (!$must_update)
 		{
 			$version_info = '<p style="color:green">' . $lang['Version_up_to_date'] . '</p>';
 		}
