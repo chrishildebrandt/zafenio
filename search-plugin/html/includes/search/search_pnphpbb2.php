@@ -25,7 +25,7 @@ function search_pnphpbb2_opt($vars)
 		$output = new pnHTML();
     $output->SetInputMode(_PNH_VERBATIMINPUT);
 
-		$output->Text("<table border=\"0\" width=\"100%\"><tr bgcolor=\"$bgcolor2\"><td><font class=\"pn-normal\" style=\"text-color:$textcolor1\"><input type=\"checkbox\" name=\"active_pnphpbb2\" id=\"active_pnphpbb2\" value=\"1\" unchecked>&nbsp;<label for=\"active_pnphpbb2\">"._SEARCH_FORUMS."</label></font></td></tr></table>");
+		$output->Text("<table border=\"0\" width=\"100%\"><tr bgcolor=\"$bgcolor2\"><td><font class=\"pn-normal\" style=\"text-color:$textcolor1\"><input type=\"checkbox\" name=\"active_pnphpbb2\" id=\"active_pnphpbb2\" value=\"1\" checked>&nbsp;<label for=\"active_pnphpbb2\">"._SEARCH_FORUMS."</label></font></td></tr></table>");
 		return $output->GetOutput();
 }
 
