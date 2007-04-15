@@ -46,32 +46,32 @@
       <table class="navbar" width="100%" cellspacing="1" cellpadding="2" border="0">
         <tr align="center">
           <td>
-            <a href="{U_FAQ}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_faq.gif" {MINISIZE} border="0" alt="{L_FAQ}" title="{L_FAQ}" /> {L_FAQ}</a>&nbsp; &#8226;&nbsp;
-            <a href="{U_SEARCH}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_search.gif" {MINISIZE} border="0" alt="{L_SEARCH}" title="{L_SEARCH}" /> {L_SEARCH}</a>&nbsp; &#8226;&nbsp;
+            <a href="{U_FAQ}"> {L_FAQ}</a>&nbsp; &#8226;&nbsp;
+            <strong><a href="{U_SEARCH}"> {L_SEARCH}</a></strong>&nbsp; &#8226;&nbsp;
             <!-- BEGIN switch_user_logged_in -->
-            <a href="{U_MEMBERLIST}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_members.gif" {MINISIZE} border="0" alt="{L_MEMBERLIST}" title="{L_MEMBERLIST}" /> {L_MEMBERLIST}</a>&nbsp; &#8226;&nbsp; 
-            <a href="{U_GROUP_CP}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_groups.gif" {MINISIZE} border="0" alt="{L_USERGROUPS}" title="{L_USERGROUPS}" /> {L_USERGROUPS}</a>&nbsp; &#8226;&nbsp;
+            <a href="{U_MEMBERLIST}"> {L_MEMBERLIST}</a>&nbsp; &#8226;&nbsp; 
+            <a href="{U_GROUP_CP}"> {L_USERGROUPS}</a>&nbsp; &#8226;&nbsp;
             <!-- END switch_user_logged_in -->
             <!-- BEGIN switch_user_logged_out -->
-            <a href="user.php"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_register.gif" {MINISIZE} border="0" alt="{L_REGISTER}" title="{L_REGISTER}" /> {L_REGISTER}</a>&nbsp; &#8226;&nbsp;
+            <a href="user.php"> {L_REGISTER}</a>&nbsp; &#8226;&nbsp;
             <!-- END switch_user_logged_out -->
             <!-- BEGIN switch_user_logged_in -->
-            <a href="{U_PROFILE}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_profile.gif" {MINISIZE} border="0" alt="{L_PROFILE}" title="{L_PROFILE}" /> {L_PROFILE}</a>&nbsp; &#8226;&nbsp;
+            <a href="{U_PROFILE}"> {L_PROFILE}</a>&nbsp; &#8226;&nbsp;
             <!-- END switch_user_logged_in -->
-            <a href="{U_PRIVATEMSGS}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_message.gif" {MINISIZE} border="0" alt="{PRIVATE_MESSAGE_INFO}" title="{PRIVATE_MESSAGE_INFO}" /> {PRIVATE_MESSAGE_INFO}</a>
+            <a href="{U_PRIVATEMSGS}"> {PRIVATE_MESSAGE_INFO}</a>
           </td>
         </tr>
         <tr align="center">
           <td>
-            <a href="{U_LOGIN_LOGOUT}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_login.gif" {MINISIZE} border="0" alt="{L_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" /> {L_LOGIN_LOGOUT}</a>
+            <a href="{U_LOGIN_LOGOUT}"> {L_LOGIN_LOGOUT}</a>
             <!-- BEGIN switch_allow_sub_change -->
-            &nbsp;&#8226; &nbsp;<a href="{U_SUBFORUM}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}{L_SUBFORUM_IMAGE}" {MINISIZE} border="0" alt="{L_SUBFORUM}" title="{L_SUBFORUM}" /> {L_SUBFORUM}</a>
+            &nbsp;&#8226; &nbsp;<a href="{U_SUBFORUM}"> {L_SUBFORUM}</a>
             <!-- END switch_allow_sub_change -->
             <!-- BEGIN switch_allow_full_page -->
-            &nbsp;&#8226; &nbsp;<a href="{U_MIN_MAX}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}{L_MIN_MAX_IMAGE}" {MINISIZE} border="0" alt="{L_MIN_MAX}" title="{L_MIN_MAX}" /> {L_MIN_MAX}</a>
+            &nbsp;&#8226; &nbsp;<a href="{U_MIN_MAX}"> {L_MIN_MAX}</a>
             <!-- END switch_allow_full_page -->
             <!-- BEGIN switch_admin -->
-            &nbsp;&#8226; &nbsp;<a href="{U_ADMIN_LINK}"><img class="inlineimg" src="templates/{T_THEME_NAME}/images/{THEME_IMAGES}icon_mini_admin.gif" {MINISIZE} border="0" alt="{L_ADMIN_INFO}" title="{L_ADMIN_INFO}" /> {L_ADMIN_INFO}</a>
+            &nbsp;&#8226; &nbsp;<a href="{U_ADMIN_LINK}"> {L_ADMIN_INFO}</a>
             <!-- END switch_admin -->
           </td>
         </tr>
