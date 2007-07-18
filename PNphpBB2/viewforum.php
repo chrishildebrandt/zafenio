@@ -385,9 +385,10 @@ $sort_list .= '</select>';
 $order_list_desc = $lang['Order']; 
 $order_list_parm = array('ASC' => $lang['Sort_Ascending'], 'DESC' => $lang['Sort_Descending']); 
 
-if ( isset($HTTP_GET_VARS['order']) || isset($HTTP_POST_VARS['order']) ) 
-{ 
-	 $sort_order = isset($HTTP_GET_VARS['order']) ? $HTTP_GET_VARS['order'] : $HTTP_POST_VARS['order']; 
+if ( isset($HTTP_GET_VARS['order']) || isset($HTTP_POST_VARS['order']) )
+{
+  $sort_order = isset($HTTP_GET_VARS['order']) ? $HTTP_GET_VARS['order'] : $HTTP_POST_VARS['order'];
+  $sort_order = ($sort_order == "DESC") ? "DESC" : "ASC";
 } 
 // 
 // set the order menu 
