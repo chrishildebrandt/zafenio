@@ -64,7 +64,7 @@ if ( isset($HTTP_GET_VARS['subforum']) || isset($HTTP_POST_VARS['subforum']) && 
 } 	 
 // End PNphpBB2 Module - Sub-Category/forum switch mod
 
-$viewcat = ( !empty($HTTP_GET_VARS[POST_CAT_URL]) ) ? intval($HTTP_GET_VARS[POST_CAT_URL]) : -1;
+$viewcat = ( !empty($HTTP_GET_VARS[POST_CAT_URL]) && is_numeric($HTTP_GET_VARS[POST_CAT_URL]) ) ? $HTTP_GET_VARS[POST_CAT_URL] : -1;
 
 if( isset($HTTP_GET_VARS['mark']) || isset($HTTP_POST_VARS['mark']) )
 {
