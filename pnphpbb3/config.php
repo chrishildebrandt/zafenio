@@ -21,5 +21,6 @@ $load_extensions = '';
 @define('DEBUG_EXTRA', true);
 
 $modname = basename(dirname( __FILE__ ));
+@define('PHPBB_MODULE_NAME', $modname);
 @define('PHPBB_ROOT_PATH', 'modules/' . $modname . '/');
 ?>
