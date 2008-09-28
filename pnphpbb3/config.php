@@ -2,12 +2,15 @@
 // phpBB 3.0.x configuration file
 // Adapted for use in PNphpBB3
 // Do not change anything in this file!
-$dbms = pnConfigGetVar('dbtype');
-$dbhost = pnConfigGetVar('dbhost');
+
+$info = DBConnectionStack::getConnectionInfo();
+
+$dbms = $info['dbtype'];
+$dbhost = $info['dbhost'];
 $dbport = '';
-$dbname = pnConfigGetVar('dbname');
-$dbuser = pnConfigGetVar('dbuname');
-$dbpasswd = pnConfigGetVar('dbpass');
+$dbname = $info['dbname'];
+$dbuser = $info['dbuname'];
+$dbpasswd = $info['dbpass'];
 
 $table_prefix = pnConfigGetVar('prefix') . '_phpbb_';
 $acm_type = 'file';
@@ -17,4 +20,6 @@ $load_extensions = '';
 @define('DEBUG', true);
 @define('DEBUG_EXTRA', true);
 
+$modname = basename(dirname( __FILE__ ));
+@define('PHPBB_ROOT_PATH', 'modules/' . $modname . '/');
 ?>
