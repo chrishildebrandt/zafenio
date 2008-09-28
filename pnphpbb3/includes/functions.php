@@ -3350,6 +3350,11 @@ function page_header($page_title = '', $display_online_list = true)
 	}
 
 	define('HEADER_INC', true);
+	
+	PageUtil::setVar('title', $page_title);
+	
+	/* buffers are stackable */
+	ob_start();
 
 	// gzip_compression
 	if ($config['gzip_compress'])
@@ -3547,6 +3552,9 @@ function page_header($page_title = '', $display_online_list = true)
 	header('Cache-Control: private, no-cache="set-cookie"');
 	header('Expires: 0');
 	header('Pragma: no-cache');
+	
+	/* Zikula header */
+	Loader::includeOnce('header.php');
 
 	return;
 }
@@ -3681,10 +3689,13 @@ function exit_handler()
 		}
 	}
 
-	// As a pre-caution... some setups display a blank page if the flush() is not there.
-	(!$config['gzip_compress']) ? @flush() : @ob_flush();
+	if ($config['gzip_compress'])
+		@ob_flush();
 
-	exit;
+	ob_end_flush();
+	
+	/* Zikula footer */
+	Loader::includeOnce('footer.php');
 }
 
 /**
