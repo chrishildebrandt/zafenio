@@ -1,7 +1,7 @@
 <?php
 
 $modversion['name']			= 'Zafenio';
-$modversion['oldnames']			= array'PNphpBB2';
+$modversion['oldnames']			= array('PNphpBB2');
 $modversion['displayname']		= 'Zafenio';
 $modversion['description']		= 'Zafenio';
 $modversion['version']			= '2.9.0';
