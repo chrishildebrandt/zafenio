@@ -1,0 +1,176 @@
+<!--
+/*
+  The original subSilver Theme for phpBB version 2+
+  Created by subBlue design
+  http://www.subBlue.com
+
+  NOTE: These CSS definitions are stored within the main page body so that you can use the phpBB2
+  theme administration centre. When you have finalised your style you could cut the final CSS code
+  and place it in an external file, deleting this section to save bandwidth.
+*/
+
+
+
+/* General font families for common tags */
+hr	{ height: 0px; border-top-width: 1px;}
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: <?php echo '#'.$phpbb_theme['td_color2']; ?>; border: 1px <?php echo '#'.$phpbb_theme['th_color1']; ?> solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: <?php echo '#'.$phpbb_theme['td_color2']; ?>; border: 2px <?php echo '#'.$phpbb_theme['th_color2']; ?> solid; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: <?php echo '#'.$phpbb_theme['tr_color1']; ?>; }
+td.row2	{ background-color: <?php echo '#'.$phpbb_theme['tr_color2']; ?>; }
+td.row3	{ background-color: <?php echo '#'.$phpbb_theme['tr_color3']; ?>; }
+
+/*
+  This is for the table cell above the Topics, Post & Last posts on the index.php page
+  By default this is the fading out gradiated silver background.
+  However, you could replace this with a bitmap specific for each forum*/
+td.rowpic {
+		background-color: <?php echo '#'.$phpbb_theme['td_color2']; ?>;
+		background-image: url(<?php echo $cellpic2; ?>);
+		background-repeat: repeat-y;
+}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th	{
+	color: <?php echo '#'.$phpbb_theme['fontcolor3']; ?>; font-size: <?php echo $phpbb_theme['fontsize2']; ?>px; font-weight : bold; 
+	background-color: <?php echo '#'.$phpbb_theme['body_link']; ?>; height: 25px;
+	background-image: url(<?php echo $cellpic3;?>);
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			background-image: url(<?php echo $cellpic1; ?>);
+			background-color:<?php echo '#'.$phpbb_theme['tr_color3'];?>; border: <?php echo '#'.$phpbb_theme['th_color3']; ?>; border-style: solid; height: 28px;
+}
+
+/*
+  Setting additional nice inner borders for the main table cells.
+  The names indicate which sides the border will be on.
+  Don't worry if you don't understand this, just ignore it :-)
+*/
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: <?php echo '#'.$phpbb_theme['td_color2'];?>; border-style: solid; height: 28px;
+}
+td.row3Right,td.spaceRow {
+	background-color: <?php echo '#'.$phpbb_theme['tr_color3'];?>; border: <?php echo '#'.$phpbb_theme['th_color3'];?>; border-style: solid;
+}
+
+th.thHead,td.catHead { font-size: <?php echo $phpbb_theme['fontsize3'];?>px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+	font-weight: bold; font-size: 22px; font-family: "<?php echo $phpbb_theme['fontface2'];?>",<?php echo $phpbb_theme['fontface1'];?>;
+	text-decoration: none; line-height : 120%; color : <?php echo '#'.$phpbb_theme['body_text'];?>;
+}
+
+/* General text */
+
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : <?php echo $phpbb_theme['fontsize2'];?>px; }
+a.mainmenu		{ text-decoration: none; }
+a.mainmenu:hover{ text-decoration: underline; }
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: <?php echo $phpbb_theme['fontsize3'];?>px ; letter-spacing: 1px;}
+a.cattitle		{ text-decoration: none; }
+a.cattitle:hover{ text-decoration: underline; }
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: <?php echo $phpbb_theme['fontsize3'];?>px;}
+a.forumlink 	{ text-decoration: none;}
+a.forumlink:hover{ text-decoration: underline;}
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: <?php echo $phpbb_theme['fontsize2'];?>px; color : <?php echo '#'.$phpbb_theme['body_text'];?>;}
+a.nav			{ text-decoration: none; color : <?php echo '#'.$phpbb_theme['body_link'];?>; }
+a.nav:hover		{ text-decoration: underline; }
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle,h1,h2	{ font-weight: bold; font-size: <?php echo $phpbb_theme['fontsize2'];?>px;}
+a.topictitle:link   { text-decoration: none;}
+a.topictitle:visited { text-decoration: none; }
+a.topictitle:hover	{ text-decoration: underline; }
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : <?php echo $phpbb_theme['fontsize2'];?>px; color : <?php echo '#'.$phpbb_theme['body_text'];?>;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : <?php echo $phpbb_theme['fontsize1'];?>px; color : <?php echo '#'.$phpbb_theme['body_text'];?>; }
+
+/* The content of the posts (body of text) */
+.postbody { font-size : <?php echo $phpbb_theme['fontsize3'];?>px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : <?php echo '#'.$phpbb_theme['body_link'];?> }
+a.postlink:visited { text-decoration: none; color : <?php echo '#'.$phpbb_theme['body_vlink'];?>; }
+a.postlink:hover { text-decoration: underline; color : <?php echo '#'.$phpbb_theme['body_hlink'];?>}
+
+/* Quote & Code blocks */
+.code { 
+	font-family: <?php echo $phpbb_theme['fontface3'];?>; font-size: <?php echo $phpbb_theme['fontsize2'];?>px; color: <?php echo '#'.$phpbb_theme['fontcolor2'];?>;
+	background-color: <?php echo '#'.$phpbb_theme['td_color1'];?>; border: <?php echo '#'.$phpbb_theme['tr_color3'];?>; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+.quote {
+	font-family: <?php echo $phpbb_theme['fontface1'];?>; font-size: <?php echo $phpbb_theme['fontsize2'];?>px; color: <?php echo '#'.$phpbb_theme['fontcolor1'];?>; line-height: 125%;
+	background-color: <?php echo '#'.$phpbb_theme['td_color1'];?>; border: <?php echo '#'.$phpbb_theme['tr_color3'];?>; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+
+/* Form elements */
+input,textarea, select {
+	color : <?php echo '#'.$phpbb_theme['body_text'];?>;
+	font: normal <?php echo $phpbb_theme['fontsize2'];?>px <?php echo $phpbb_theme['fontface1'];?>;
+	border-color : <?php echo '#'.$phpbb_theme['body_text'];?>;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : <?php echo '#'.$phpbb_theme['td_color2'];?>;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : <?php echo '#'.$phpbb_theme['tr_color1'];?>;
+	color : <?php echo '#'.$phpbb_theme['body_text'];?>;
+	font-size: <?php echo $phpbb_theme['fontsize2'];?>px; font-family: <?php echo $phpbb_theme['fontface1'];?>;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : <?php echo '#'.$phpbb_theme['td_color1'];?>;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : <?php echo '#'.$phpbb_theme['td_color1'];?>;
+	font-weight : normal;
+}
+
+/* This is the line in the posting page which shows the rollover
+  help line. This is actually a text box, but if set to be the same
+  colour as the background no one will know ;)
+*/
+.helpline { background-color:  <?php echo '#'.$phpbb_theme['tr_color2'];?>; border-style: none; }
+
+
+-->

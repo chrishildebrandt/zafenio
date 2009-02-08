@@ -1,0 +1,444 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<BASE target="_blank">
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>PNphpBB2 Installation and Users Guide</title>
+<style type="text/css">
+<!--
+/*
+  The original subSilver Theme for phpBB version 2+
+  Created by subBlue design
+  http://www.subBlue.com
+*/
+
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;}
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;	border-collapse : collapse; }
+
+.nav	{ font-weight: bold; font-size: 11px; color : #000000;}
+.postbody { font-size : 12px;}
+
+.sampleurl { font-size : 12px; color: green ;}
+
+input, textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
+
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699;}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+td.cat, td.catHead, td.catSides, td.catLeft, td.catRight, td.catBottom {
+			background-image: url('images/cellpic1.gif');
+			background-color:#D1D7DC; border: medium solid #FFFFFF; height: 28px
+;}
+
+td.cat, td.catHead, td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+
+
+.maintitle, h1, h2	{
+			font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #000000;
+}
+
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+u { color: #006699; text-decoration: none; }
+
+a:link, a:active, a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+
+font, th, td, p { font-family: Verdana, Arial, Helvetica, sans-serif ;}
+
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url('images/cellpic3.gif');
+}
+th.thHead, th.thSides, th.thTop, th.thLeft, th.thRight, th.thBottom, th.thCornerL, th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px; }
+td.row3Right, td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid; }
+
+th.thHead, td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides, td.catSides, td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight, td.catRight, td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft, td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom, td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen, .genmed, .gensmall { color : #000000; }
+a.gen, a.genmed, a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover, a.genmed:hover, a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+p, ul, li, td {font-size:10pt;}
+h2 {font-size:15pt; font-weight:bold; color:red;}
+h3 {font-size:12pt;color:blue;}
+
+input, textarea, select {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+input { text-indent : 2px; }
+
+input.button {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+//-->
+</style>
+</head>
+
+<BODY bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
+	<tr> 
+		<td class="bodyline"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+</HEAD>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+<CENTER>
+<TABLE width="877">
+  <TBODY>
+    <TR>
+      <TD rowspan="2" align="center" width="219">
+      <IMG src="logo.gif" width="200" height="69" border="0" align="left"></TD>
+      <TD align="center" width="648"><B><FONT size="5">PNphpBB2 Installation </FONT></B> </TD>
+    </TR>
+    <TR>
+      <TD align="center" width="648"><B><FONT size="5">Users Guide</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<BR>
+<font color="#000080">PNphpBB2 is a module form of phpbb2.0.x designed to work within Postnuke.
+The users manual is divided into four main parts:</font><blockquote>
+  <blockquote>
+    <p align="left"><font color="#000080">Part 1:<A href="PNphpBB2_INSTALL.html" target="_blank"> Introduction and installation guide.</A><br>
+            Part 2: <A href="PNphpBB2_mods.html" target="_blank">Guide to the theme mod and other phpbb2 mods added to the module.</A><br>
+            Part 3: <A href="attach_user_guide.html" target="_blank">Guide to the attachment mod.</A><br>
+            Part 4: <A href="PNphpBB2_Users_Guide.html" target="_blank">The PNphpBB2 Users guide.</A><BR>
+    </font>
+<BR>
+    </p>
+  </blockquote>
+</blockquote>
+<h2>Part 1 : Installation guide</h2>
+<ol>
+  <li><a href="PNphpBB2_INSTALL.html#Intro">Introduction</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#PN760 Notes">Using PNphpBB in PostNuke .76x</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.2i features">PNphpBB2 1.2i features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.2g features">PNphpBB2 1.2g features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.2a features">PNphpBB2 1.2a features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.2 features">PNphpBB2 1.2 features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.1 features">PNphpBB2 1.1 features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#1.0 features">PNphpBB2 1.0 features</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#Before you start">Before you start</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#Requirements">Requirements</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#Quick Install">Quick Install</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#New Installations">New Installations</a>
+    <ol type="a">
+    <li><a href="PNphpBB2_INSTALL.html#Turn off compression in Postnuke">Turn off compression in Postnuke</a></li>
+      <li><a href="PNphpBB2_INSTALL.html#Changing the file extension">Changing the file extension</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Setting file permissions">Setting file permissions</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Initialize PNphpBB2">Initialize PNphpBB2 </a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Activate PNphpBB2">Activate PNphpBB2</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Remove the Install directory">Remove the install directory</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Add a menu item">Add a menu item</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Configure your forum_install">Configure your forum</a></li>
+     <li><a href="PNphpBB2_INSTALL.html#Install Multi-Block_install">Install Multi-Block (Optional)</a></li>
+    </ol>
+  </li>
+  <li><a href="PNphpBB2_INSTALL.html#Before you convert">Before you convert</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#Converting to PNphpBB2">Converting to PNphpBB2</a></li>
+   <ol type="a">
+   <li><a href="PNphpBB2_INSTALL.html#Backup your databases">Backup your databases</a></li>
+      <li><a href="PNphpBB2_INSTALL.html#Remove existing forum blocks">Remove existing forum blocks</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Deactivate and remove your existing forum module">Deactivate and remove your existing forum module</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Remove the config.php file">Remove the config.php file</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Verify you current installation prefix">Verify you current installation prefix</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Copy attachment/uploaded avatars to a safe place">Copy attachment/uploaded avatars to a safe place</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Obtain additional language files">Obtain additional language files</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Set permissions">Set permissions</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Replace the changeinfo.php file">Replace the changeinfo.php file</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Initialize the module">Initialize the module</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Activate PNphpBB2">Activate PNphpBB2</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Remove the install directory">Remove the install directory</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Restore attachment and avatars">Restore attachment and avatars</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Remove old modules">Remove old modules</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Configure your forum_upgrade">Configure your forum</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Add menu item">Add menu item</a></li>
+    <li><a href="PNphpBB2_INSTALL.html#Install Multi-Block_upgrade">Install Multi-Block (Optional)</a></li>
+  </ol>
+ <li><a href="PNphpBB2_INSTALL.html#Updating from a previous version">Updating from a previous version</a></li>
+   <ol type="a">
+    <li><a href="PNphpBB2_INSTALL.html#Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a></li>
+   <li><a href="PNphpBB2_INSTALL.html#Upgrade the PNphpBB2 in Postnuke">Upgrade the PNphpBB2 in Postnuke</a></li>
+   <li><a href="PNphpBB2_INSTALL.html#Activate PNphpBB2">Activate PNphpBB2</a></li>
+   <li><a href="PNphpBB2_INSTALL.html#Remove the install directory">Remove the install directory</a></li>
+  </ol>
+ <li><a href="PNphpBB2_INSTALL.html#Removal">Removal</a></li>
+  <li><a href="PNphpBB2_INSTALL.html#General Support">General Support</a></li>
+  <li><a href="PNphpBB2_INSTALL.html#Credits">Credits</a></li>
+ <li><a href="PNphpBB2_INSTALL.html#Copyright and disclaimer">Copyright and disclaimer</a></li>
+</ol>
+<BR><h2>Part 2 : PNTheme and other mods</h2>
+<UL>
+  <LI><A name="TOC1" href="PNphpBB2_mods.html#SEC1" target="_blank">1.0 PNTheme (PNLite)</A>
+  <UL>
+    <LI><A name="TOC2" href="PNphpBB2_mods.html#SEC2" target="_blank">1.1 Functions</A>
+    <LI><A name="TOC3" href="PNphpBB2_mods.html#SEC3" target="_blank">1.2. How to use</A>
+    <LI><A name="TOC4" href="PNphpBB2_mods.html#SEC4" target="_blank">1.3 Tips on using PNTheme</A>
+    <LI><A name="TOC5" href="PNphpBB2_mods.html#SEC5" target="_blank">1.4 New</A>
+    <LI><A name="TOC6" href="PNphpBB2_mods.html#SEC6" target="_blank">1.5 Revisions</A>
+    <LI><A name="TOC7" href="PNphpBB2_mods.html#SEC7" target="_blank">1.6 PNTheme Support</A>
+  </UL>
+  <LI><A name="TOC8" href="PNphpBB2_mods.html#SEC8" target="_blank">2.0 eXtreme Styles mod</A>
+  <LI><A name="TOC9" href="PNphpBB2_mods.html#SEC9" target="_blank">3.0 Categories Hierarchy</A>
+</UL>
+<BR>
+<BR>
+<h2>Part 3 : The Attachment Mod</h2>
+<p>PNphpBB2 incorporates (and will keep up to date with) the Attachment Mod
+            from DSCS Opentools <A href="http://www.opentools.de/">
+http://www.opentools.de/</A>. Documentation for using this mod can be found here 
+(<A href="PNphpBB2/PNphpBB2/docs/attach_user_guide.html">Attachment Mod User Guide</A>). Or from DSCS 
+Opentools site. <u><b>Please omit the installation sections 3.1 &amp; 3.2 of the 
+guide.</b></u> The mod is already installed into PNphpBB2.</p>
+<p>Direct all support question to PNphpBB2 <A href="http://www.pnphpbb.com">
+http://www.pnphpbb.com</A> as DSCS Opentools will not support installations that 
+are not using the core phpBB2 forum.</p>
+<P><B>Note:</B> The complete Attachment mod user guild is included but most of  3 and 9 do not apply to the PNphpBB2 module.</P>
+<OL>
+<LI><A href="attach_user_guide.html#introduction" target="_blank">Introduction</A> 
+<LI><A href="attach_user_guide.html#features" target="_blank">Feature List</A> 
+<LI><A href="attach_user_guide.html#installation" target="_blank">Installation</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#basicthings" target="_blank">Basic things to keep in mind</A> 
+<LI><A href="attach_user_guide.html#readinstall" target="_blank">How to read the Installation Instructions</A> 
+<LI><A href="attach_user_guide.html#needed" target="_blank">What do you need in order to run certain features</A> 
+<LI><A href="attach_user_guide.html#othertemplates" target="_blank">How to install with templates other than 
+subSilver</A> </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#adminrights" target="_blank">Admin Rights or 'Why do you need a User Account' 
+?</A> 
+<LI><A href="attach_user_guide.html#adminpanels" target="_blank">The Attachment Administration Panels</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#controlpanel" target="_blank">Control Panel</A> 
+<LI><A href="attach_user_guide.html#management" target="_blank">Management</A> 
+<LI><A href="attach_user_guide.html#quotalimits" target="_blank">Quota Limits</A> 
+<LI><A href="attach_user_guide.html#shadowattachments" target="_blank">Shadow Attachments</A> 
+<LI><A href="attach_user_guide.html#syncattachments" target="_blank">Synchronize Attachments</A> </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#extensionsadmin" target="_blank">The Extensions Administration Panels</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#extensioncontrol" target="_blank">Extension Control</A> 
+<LI><A href="attach_user_guide.html#extgroupcontrol" target="_blank">Extension Groups Control</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#extgroupperms" target="_blank">Extension Groups Forum Permissions</A> </LI>
+    </OL>
+<LI><A href="attach_user_guide.html#forbiddenextensions" target="_blank">Forbidden Extensions</A> 
+<LI><A href="attach_user_guide.html#specialcategories" target="_blank">Special Categories</A> </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#generalsettings" target="_blank">General Administrative Settings and Features 
+(HowTo's)</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#permissions" target="_blank">How to set up Permissions for Attaching and 
+Downloading</A> 
+<LI><A href="attach_user_guide.html#quotasystem" target="_blank">The Quota System</A> 
+<LI><A href="attach_user_guide.html#defaultquotas" target="_blank">How to set up Default quotas</A> 
+<LI><A href="attach_user_guide.html#usergroupquotas" target="_blank">How to set up User and Group quotas</A> 
+<LI><A href="attach_user_guide.html#quotalimitaffect" target="_blank">How Quota Limit Changes will affect User and 
+Group Quotas</A> 
+<LI><A href="attach_user_guide.html#howthumbs" target="_blank">How to get Thumbnails working</A> </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#howtouse" target="_blank">How to use the Attachment Mod</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#postingattachments" target="_blank">Posting and Editing Attachments - Posts and 
+Private Messages</A> 
+<LI><A href="attach_user_guide.html#viewableareas" target="_blank">Additional Viewable Areas</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#userprofiles" target="_blank">User Profiles</A> 
+<LI><A href="attach_user_guide.html#userattachcp" target="_blank">User Attachment Control Panel</A> 
+</LI>
+    </OL>
+    </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#lookandfeel" target="_blank">How to change the 'look &amp; feel'</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#tplbasics" target="_blank">Some basics about the Template Engine</A> 
+<LI><A href="attach_user_guide.html#viewtopicattachbody" target="_blank">The viewtopic_attach_body.tpl file</A> 
+</LI>
+  </OL>
+<LI><A href="attach_user_guide.html#commonproblems" target="_blank">Common Problems attaching Files</A> 
+<OL type=i>
+<LI><A href="attach_user_guide.html#errpostmode" target="_blank">Filesize too big / Post Mode not specified / Blank 
+Page</A> 
+<LI><A href="attach_user_guide.html#errfilesizezero" target="_blank">Could not attach File, but Post has been stored / 
+Filesize is 0 all over the time</A> 
+<LI><A href="attach_user_guide.html#errgeneralerror" target="_blank">General Error: Could not Attach File</A> 
+<LI><A href="attach_user_guide.html#errcannotattach" target="_blank">I am able to attach files in Private Messages, 
+but with normal Posts i cannot Attach files</A> 
+<LI><A href="attach_user_guide.html#errnoattachments" target="_blank">No Attachments are displayed</A> </LI>
+  </OL>
+<LI><A href="attach_user_guide.html#disclaimer" target="_blank">Copyright and Disclaimer</A> </LI>
+</OL>
+<BR>
+<h2>Part 4 : The PNphpBB2 Users Guide </h2>
+This guide is based on the phpbb2 users guide.<BR>
+<HR>
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC2" name="TOC2">1.0 Administration</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC3" name="TOC3">1.1 Attachments</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC4" name="TOC4">1.2 Attachment Extensions</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC5" name="TOC5">1.3 Forum Admin</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC6" name="TOC6">1.3.1- Forum Management</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC7" name="TOC7">1.3.2 Forum Permissions</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC8" name="TOC8">1.3.3 Pruning</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC9" name="TOC9">1.4 General Admin</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC10" name="TOC10">1.4.1 Database Backup and Restore</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC11" name="TOC11">1.4.2 General Configuration</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC12" name="TOC12">1.4.3 Mass Email</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC13" name="TOC13">1.4.4 Smiles Admin</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC15" name="TOC15">1.4.5 Word Censors</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC16" name="TOC16">1.5 Group Admin</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC17" name="TOC17">1.5.1 Group Management</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC18" name="TOC18">1.5.2 Group Permissions</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC19" name="TOC19">1.6 PNphpBB2 Config</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC20" name="TOC20">1.7 Styles Admin</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC21" name="TOC21">1.7.1 Managing Styles</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC22" name="TOC22">1.8 User Admin</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC23" name="TOC23">1.8.1 Ban Control</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC24" name="TOC24">1.8.2 Disallowed Username</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC25" name="TOC25">1.8.3 User Management</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC26" name="TOC26">1.8.4 User Permissions</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC27" name="TOC27">1.8.4 Ranks</A> </LI>
+    </UL>
+    </LI>
+  </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC28" name="TOC28">2.0 Using PNphpBB</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC29" name="TOC29">2.1 User Accounts</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC30" name="TOC30">2.2 Posting</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC31" name="TOC31">2.2.1 Posting Form</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC32" name="TOC32">2.2.2 Quick Reply</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC33" name="TOC33">2.2.2 Announcements</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC34" name="TOC34">2.2.3 Sticky Topics</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC35" name="TOC35">2.2.4 Polls</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC36" name="TOC36">2.2.5 BBCode</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC37" name="TOC37">2.2.6 Smilies</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC38" name="TOC38">2.2.7 Quoting Messages</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC39" name="TOC39">2.2.8 Editing Posts</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC40" name="TOC40">2.3 Private Messages</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC41" name="TOC41">2.4 Usergroups</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC42" name="TOC42">2.5 Searching</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC43" name="TOC43">2.5.1 Search Query</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC44" name="TOC44">2.5.2 Search Options</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC45" name="TOC45">2.6 Watching Topics</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC46" name="TOC46">2.7 Profile Settings</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC47" name="TOC47">2.7.1 PNphpBB2 Profile settings</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC48" name="TOC48">2.7.2 Avatars</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC49" name="TOC49">2.8 Moderating</A> 
+<UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC50" name="TOC50">2.8.1 Moderator Control Panel</A> 
+<LI><A href="PNphpBB2_Users_Guide.html#SEC51" name="TOC51">2.8.2 Moderator Quick Actions</A> </LI>
+    </UL>
+<LI><A href="PNphpBB2_Users_Guide.html#SEC52" name="TOC52">2.9 Reporting Bugs</A> </LI>
+  </UL>
+  </LI>
+</UL>
+</td>
+</tr>
+</table>
+
+</TABLE></BODY>
+</html>

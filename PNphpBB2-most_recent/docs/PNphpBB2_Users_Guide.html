@@ -1,0 +1,2190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>PNphpBB2 Users Guide</title>
+<style type="text/css">
+<!--
+/*
+  The original subSilver Theme for phpBB version 2+
+  Created by subBlue design
+  http://www.subBlue.com
+*/
+
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;}
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;	border-collapse : collapse; }
+
+.nav	{ font-weight: bold; font-size: 11px; color : #000000;}
+.postbody { font-size : 12px;}
+
+.sampleurl { font-size : 12px; color: green ;}
+
+input, textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
+
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699;}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+td.cat, td.catHead, td.catSides, td.catLeft, td.catRight, td.catBottom {
+			background-image: url('images/cellpic1.gif');
+			background-color:#D1D7DC; border: medium solid #FFFFFF; height: 28px
+;}
+
+td.cat, td.catHead, td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+
+
+.maintitle, h1, h2	{
+			font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #000000;
+}
+
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+u { color: #006699; text-decoration: none; }
+
+a:link, a:active, a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+
+font, th, td, p { font-family: Verdana, Arial, Helvetica, sans-serif ;}
+
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url('images/cellpic3.gif');
+}
+th.thHead, th.thSides, th.thTop, th.thLeft, th.thRight, th.thBottom, th.thCornerL, th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px; }
+td.row3Right, td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid; }
+
+th.thHead, td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides, td.catSides, td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight, td.catRight, td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft, td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom, td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen, .genmed, .gensmall { color : #000000; }
+a.gen, a.genmed, a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover, a.genmed:hover, a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+p, ul, li, td {font-size:10pt;}
+h2 {font-size:15pt; font-weight:bold; color:red;}
+h3 {font-size:12pt;color:blue;}
+
+input, textarea, select {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+input { text-indent : 2px; }
+
+input.button {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+//-->
+</style>
+</head>
+
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
+	<tr> 
+		<td class="bodyline"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+				
+<TABLE width="877">
+  <TBODY>
+    <TR>
+      <TD align="center" width="1">
+	    <A href="#TOC1" name="SEC1">
+        <IMG src="logo.gif" width="200" height="69" border="0" align="left"></A></TR>
+      
+                  
+                  
+                  
+                  
+                  
+                  
+                  <TD align="center" width="559">
+	    <h1><A href="#TOC1" name="SEC1">&nbsp;PNphpBB2 Users Guide</A></H1>
+    </TD>
+                </TR>
+  </TBODY>
+</TABLE>
+
+&nbsp;<p align="center"><BR>
+This document has been adapted from the phpbb2 users guide for the postnuke
+module PnphpBB2.<BR>
+</p>
+<HR>
+<UL>
+  <LI><A name="TOC2" href="#SEC2">1.0 Administration</A>
+  <UL>
+    <LI><A name="TOC3" href="#SEC3">1.1 Attachments</A>
+    <LI><A name="TOC4" href="#SEC4">1.2 Attachment Extensions</A>
+    <LI><A name="TOC5" href="#SEC5">1.3 Forum Admin</A>
+    <UL>
+      <LI><A name="TOC6" href="#SEC6">1.3.1- Forum Management</A>
+      <LI><A name="TOC7" href="#SEC7">1.3.2 Forum Permissions</A>
+      <LI><A name="TOC8" href="#SEC8">1.3.3 Pruning</A>
+    </UL>
+    <LI><A name="TOC9" href="#SEC9">1.4 General Admin</A>
+    <UL>
+      <LI><A name="TOC10" href="#SEC10">1.4.1 Database Backup and Restore</A>
+      <LI><A name="TOC11" href="#SEC11">1.4.2 General Configuration</A>
+      <LI><A name="TOC12" href="#SEC12">1.4.3 Mass Email</A>
+      <LI><A name="TOC13" href="#SEC13">1.4.4 Smiles Admin</A>
+      <LI><A name="TOC15" href="#SEC15">1.4.5 Word Censors</A>
+    </UL>
+    <LI><A name="TOC16" href="#SEC16">1.5 Group Admin</A>
+    <UL>
+      <LI><A name="TOC17" href="#SEC17">1.5.1 Group Management</A>
+      <LI><A name="TOC18" href="#SEC18">1.5.2 Group Permissions</A>
+    </UL>
+    <LI><A name="TOC19" href="#SEC19">1.6 PNphpBB2 Config</A>
+    <LI><A name="TOC20" href="#SEC20">1.7 Styles Admin</A>
+    <UL>
+      <LI><A name="TOC21" href="#SEC21">1.7.1 Managing Styles</A>
+    </UL>
+    <LI><A name="TOC22" href="#SEC22">1.8 User Admin</A>
+    <UL>
+      <LI><A name="TOC23" href="#SEC23">1.8.1 Ban Control</A>
+      <LI><A name="TOC24" href="#SEC24">1.8.2 Disallowed Username</A>
+      <LI><A name="TOC25" href="#SEC25">1.8.3 User Management</A>
+      <LI><A name="TOC26" href="#SEC26">1.8.4 User Permissions</A>
+      <LI><A name="TOC27" href="#SEC27">1.8.4 Ranks</A>
+    </UL>
+  </UL>
+  <LI><A name="TOC28" href="#SEC28">2.0 Using PNphpBB</A>
+  <UL>
+    <LI><A name="TOC29" href="#SEC29">2.1 User Accounts</A>
+    <LI><A name="TOC30" href="#SEC30">2.2 Posting</A>
+    <UL>
+      <LI><A name="TOC31" href="#SEC31">2.2.1 Posting Form</A>
+      <LI><A name="TOC32" href="#SEC32">2.2.2 Quick Reply</A>
+      <LI><A name="TOC33" href="#SEC33">2.2.2 Announcements</A>
+      <LI><A name="TOC34" href="#SEC34">2.2.3 Sticky Topics</A>
+      <LI><A name="TOC35" href="#SEC35">2.2.4 Polls</A>
+      <LI><A name="TOC36" href="#SEC36">2.2.5 BBCode</A>
+      <LI><A name="TOC37" href="#SEC37">2.2.6 Smilies</A>
+      <LI><A name="TOC38" href="#SEC38">2.2.7 Quoting Messages</A>
+      <LI><A name="TOC39" href="#SEC39">2.2.8 Editing Posts</A>
+    </UL>
+    <LI><A name="TOC40" href="#SEC40">2.3 Private Messages</A>
+    <LI><A name="TOC41" href="#SEC41">2.4 Usergroups</A>
+    <LI><A name="TOC42" href="#SEC42">2.5 Searching</A>
+    <UL>
+      <LI><A name="TOC43" href="#SEC43">2.5.1 Search Query</A>
+      <LI><A name="TOC44" href="#SEC44">2.5.2 Search Options</A>
+    </UL>
+    <LI><A name="TOC45" href="#SEC45">2.6 Watching Topics</A>
+    <LI><A name="TOC46" href="#SEC46">2.7 Profile Settings</A>
+    <UL>
+      <LI><A name="TOC47" href="#SEC47">2.7.1 PNphpBB2 Profile settings</A>
+      <LI><A name="TOC48" href="#SEC48">2.7.2 Avatars</A>
+    </UL>
+    <LI><A name="TOC49" href="#SEC49">2.8 Moderating</A>
+    <UL>
+      <LI><A name="TOC50" href="#SEC50">2.8.1 Moderator Control Panel</A>
+      <LI><A name="TOC51" href="#SEC51">2.8.2 Moderator Quick Actions</A>
+    </UL>
+    <LI><A name="TOC52" href="#SEC52">2.9 Reporting Bugs</A>
+  </UL>
+</UL>
+<BR>
+<HR>
+<h1><A href="#TOC2" name="SEC2">1.0 Administration</A></h1>
+<P>PNphpBB2 1.2x is highly configurable.&nbsp; Most configurations are done
+            in the administration panel.&nbsp; To get to the administration panel,
+            log in with an Administrator username and click the link that says <U>Go to Administration 
+Panel</U> at the bottom of any page or click on the PNphpBB2 link in postnuke admin.<BR>The admin panel uses two frames.&nbsp; The narrow navigation frame on the left shows 
+the sub-panels available.&nbsp; The main frame shows the panel you are currently 
+using. <BR>
+<BR>There are three uncategorized links at the top of the navigation 
+frame: <BR>
+<BR>
+<B><U>Admin Index</U></B> is the default admin page.&nbsp; It shows 
+<B>Forum Statistics</B> and <B>Who's Online</B>.&nbsp; <BR>
+<BR>
+<B><U>Forum 
+Index</U></B> will take you to <B>index.php</B> in the PNphpBB2 1.2x root, which shows the list of forums. <BR>
+<BR>
+<B><U>Preview Forum</U></B> will also take you 
+to the forum index, but will keep the navigation frame, making it easier to 
+return to other parts of the admin panel.<BR>
+
+<h2><A href="#TOC3" name="SEC3">1.1 Attachments</A></h2>
+The attachment information is in a seperate document. Click here!
+<BR>
+<h2><A href="#TOC4" name="SEC4">1.2 Attachment Extensions</A></h2>
+<P>This information is in a seperate document. Click here!</P>
+<h2><A href="#TOC5" name="SEC5">1.3 Forum Admin</A></h2>
+<BLOCKQUOTE><h3><A href="#TOC6" name="SEC6">1.3.1- Forum Management</A></h3>
+The Forum Management panel is where most forum configuration is done.&nbsp;
+Here you will control the organization of forums and categories.&nbsp;
+Configuration of a forum's name, description, and auto-prune settings is
+also handled here.</BLOCKQUOTE>
+<OL>
+  <LI><B>Adding Forums</B> - To create a new forum, look to the bottom of the category you want your
+  new forum to be in.&nbsp; Enter the desired forum name in the text box
+  at the bottom, and click <B>Create New Forum</B>.&nbsp; You will be taken to the <B>General Forum 
+Settings</B> panel.&nbsp;
+  <LI><B>Editing Forums</B> - To edit a forum, look in that forum's row and click <B><U>Edit</U></B>.&nbsp; You 
+will be taken to the <B>General Forum Settings</B> panel.&nbsp; Here you may adjust 
+the following settings: <B>Forum Name</B> - This is the name of the forum.&nbsp; 
+(e.g. General Chat, Movie Reviews, Support, etc.) <br><br>
+  <B>Description</B> - Describes your forum. This is the smaller text that appears under each forum name on the Forum Index. <br><br><B>Category</B> - A dropdown list box that will allow you to choose what category a forum is contained in. Forum Status - A dropdown list box that will allow you to lock or unlock a forum. A locked forum may not be posted to except by moderators and administrators.<br><br> <B>Auto-Pruning</B> - Here you can enable/disable auto-pruning. (For more information, see
+  Auto-Prune or 3.1.3 Pruning).
+  <LI><B>Moving Forums</B> - A forum's location can be described in two ways.&nbsp; A forum is in
+  a category, and has a location relative to other forums in that category.&nbsp;
+  To change the category that a forum is in, use the <B>General Forum Settings </B>panel, as 
+described in <B>3 Editing Forums</B>. <BR>
+  <BR>To change a forum's position 
+relative to other forums in its category, use the <U>Move Up</U> and <U>Move 
+Down</U> links in the <B>General Forum Settings</B> panel.&nbsp; <U>Move Up</U> will 
+swap the position of the desired forum with the forum above it.&nbsp; <U>Move 
+Down</U> will swap the position of the desired forum with the forum below it.&nbsp; 
+<U>Move Up</U> has no effect on the top forum in a category, and, likewise, 
+<U>Move Down</U> has no effect on the bottom forum.
+  <LI><B>Resync</B> - Some information in the database is contained it multiple tables.&nbsp;
+  This makes the board run faster by reducing the number of database queries
+  on some pages.&nbsp; Sometimes the information in different tables of the
+  database gets out of sync.&nbsp; This usually is caused by a connection
+  problem which interrupts updating of the database. <BR>
+  <BR>
+  When this happens, your forum may 
+start behaving in a strange way.&nbsp; Links to topics or posts that don't exist are 
+common symptoms of this problem. <BR>
+  <BR>
+  If you are having this problem, you can 
+fix it by clicking <U>Resync</U> in the <B>General Forum Settings</B> Panel.&nbsp; 
+This will recalculate the forum information based on the actual posts that 
+exist.&nbsp; This operation has no harmful effect on the forums, just generates a 
+small amount of overhead while you are doing it.&nbsp; This is a good thing to try if 
+you are not sure what is causing a problem on your board.
+  <LI><B>Auto-prune</B> - Auto-prune is a feature that will cause a forum to prune itself.&nbsp;
+  (For more information on what pruning is, see Pruning).&nbsp; To enable
+  auto-prune, make sure the checkbox is checked. <BR>
+  <BR>You may set the age of 
+posts to prune.&nbsp; All posts older than the set age will be pruned.&nbsp; You may also 
+set the frequency of pruning.&nbsp; For example, you could have the forums prune 
+themselves once a day, or once every seven days
+  <LI><B>Adding Categories</B> - To add a new category, look at the bottom of the forum/category listing.&nbsp;
+  Enter the desired category name into the text box and click <B><U>Create New Category</U></B>.
+  <LI><B>Editing Categories</B> - To move a category, click <U>Move Up</U> or <U>Move Down</U> in 
+the category's row.&nbsp; <U>Move up</U> will swap the position of the desired 
+category with the category above it.&nbsp; <U>Move Down</U> will swap the position of 
+the desired category with the category below it.&nbsp; <U>Move Up</U> has no effect 
+on the top category, and, likewise, <U>Move Down</U> has no effect on the bottom 
+category.
+  <LI><B>Moving Categories</B> - To move a category, click <U>Move Up</U> or <U>Move Down</U> in 
+the category's row.&nbsp; <U>Move up</U> will swap the position of the desired 
+category and the category above it.&nbsp; <U>Move Down</U> will swap the position of 
+the desired category and the category below it.&nbsp; <U>Move Up</U> has no effect on 
+the top category, likewise <U>Move Down</U> has no effect on the bottom 
+category.
+              <LI><B>Sub Categories </B>- To create a sub-category, you first create the category as you normally would and then you edit it to move it under another category.
+            </OL>
+<BLOCKQUOTE><h3><A href="#TOC7" name="SEC7">1.3.2 Forum Permissions</A></h3>
+In this panel you can control the forum permissions.&nbsp; You can restrict
+the behavior of different types of users on a per-forum basis.&nbsp; Here
+you can control who can read and post in a forum.&nbsp; You can also control
+who can make special posts, like Sticky topics or announcements.&nbsp;
+To edit a forum's permissions, select the forum in the dropdown box and
+click <B>Look Up 
+Forum</B>.<BR>
+            <BR>
+            <B>Note: </B>You also have two permissions that you can set for the attachment mod if you use it. They are post(upload files) and<BR>
+            download files.
+            <OL>
+  <LI><B>Setting Simple Permissions</B> -
+  <DIV class=body4>There are seven simple permission levels in phpBB 2.0.0.&nbsp; For 
+more information, see <A class="linkage" href="#perlevel">Permission Levels</A> 
+and <A class="linkage" href="#pertype">Permission Types</A>.&nbsp; Here is a description of the behaviors allowed by each of 
+the simple settings. <BR>
+  <BR>
+  <BR>
+  <B>Public</B> - Anonymous users can read and post.&nbsp; Registered Users can 
+additionally edit their posts, and create and vote in polls.&nbsp; Moderators and 
+administrators can make stickies and announcements. <BR>
+  <BR>
+  <B>Registered</B> - 
+Anonymous users can read the forum.&nbsp; Registered Users can additionally post, 
+reply, edit their posts, and create and vote in polls.&nbsp; Moderators and 
+administrators can make stickies and announcements. 
+<BR>
+  <BR>
+  <B>Registered[Hidden]</B> - Anonymous users may only register.&nbsp; 
+Registered Users can read, post, edit their posts, and create and vote in 
+polls.&nbsp; Moderators and administrators can make stickies and announcements. 
+<BR>
+  <BR>
+  <B>Private</B> - Non-Private users may only see the forum.&nbsp; Private 
+Users can read, post, reply, edit their posts, and create and vote in polls.&nbsp; 
+Moderators and administrators can make stickies and announcements. 
+<BR>
+  <BR>
+  <B>Private[Hidden]</B> - Only Private Users may see the forum.&nbsp; Private 
+Users can read, post, reply, edit their posts, and create and vote in polls.&nbsp; 
+Moderators and administrators can make stickies and announcements. 
+<BR>
+  <BR>
+  <B>Moderators</B> - Anonymous and Normal users can only see the forum.&nbsp; 
+Moderators and administrators can read, post, reply, edit their posts, create 
+polls, vote in polls, and make stickies and announcements. 
+<BR>
+  <BR>
+  <B>Moderators[Hidden]</B> - Normal users cannot see the forum.&nbsp; 
+Moderators and administrators can read, post, reply, edit their posts, create 
+polls, vote in polls, and make stickies and announcements. <BR>
+  <BR>
+  This table 
+shows the equivalent <B>Advanced Permissions</B> for each <B>Simple 
+Permissions</B> setting. <BR>
+  <BR>
+  </DIV>
+  <TABLE cellSpacing=0 cellPadding=2 border=3>
+    <TBODY>
+      <TR>
+        <TD class=perm>&nbsp;</TD>
+        <TD class=perm>Public</TD>
+        <TD class=perm>Registered</TD>
+        <TD class=perm>Registered<BR>
+        [Hidden]</TD>
+        <TD class=perm>Private</TD>
+        <TD class=perm>Private<BR>
+        [Hidden]</TD>
+        <TD class=perm>Moderators</TD>
+        <TD class=perm>Moderators<BR>
+        [Hidden]</TD>
+      </TR>
+      <TR>
+        <TD class=perm>View</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Read</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Post</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Reply</TD>
+        <TD class=perm>ALL</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Edit</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Delete</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Sticky</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Announce</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Vote</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+      <TR>
+        <TD class=perm>Poll create</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>REG</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>PRIVATE</TD>
+        <TD class=perm>MOD</TD>
+        <TD class=perm>MOD</TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <br>
+  <LI><B>Setting Advanced Permissions</B> - Advanced Permissions allow you to precisely control all behaviors in
+  a forum.&nbsp; To set advance permissions for your forum, click <U>Advanced Mode</U> after choosing the forum to edit.&nbsp; You are presented with a 
+table that has each permission type with a dropdown box underneath it.&nbsp; You may 
+set each of these permissions to any level you like by using the dropdown 
+boxes.&nbsp; <BR>
+  <BR>
+  For more information on permission types and levels, see <A class="linkage" href="#pertype">Permission Types</A> and <A class="linkage" href="#perlevel">Permission Levels</A>.
+  <LI><B><A name="pertype">Permission Types</A></B>
+  <DIV class=body4>There are ten <B>Permission Types</B>.&nbsp; Each of these types 
+refers to a specific behavior within a forum.&nbsp; This is the behavior that each of 
+these permissions grants: <BR>
+  <BR>
+  <B>View</B> - The user may see the forum on 
+the forum index page. <B>Read</B> - The user may view topics in a forum, and 
+read posts in those topics. <BR>
+  <BR>
+  <B>Post</B> - The user may post new topics 
+in the forum. <BR>
+  <BR>
+  <B>Reply</B> - The user may post replies to existing 
+topics in the forum. <BR>
+  <BR>
+  <B>Edit</B> - The user may edit his/her own posts 
+in the forum.&nbsp; It is not recommended that this be set to "ALL", because that 
+will allow any anonymous post to be edited by any anonymous user. 
+<BR>
+  <BR>
+  <B>Delete</B> - The user may delete his/her own posts in the forum.&nbsp; A 
+post can only be deleted by a non-moderator if it has not been replied to. It is 
+not recommended that this be set to "ALL", because that will allow any anonymous 
+post to be deleted by any anonymous user. <BR>
+  <BR>
+  <B>Sticky</B> - The user may 
+make sticky Topics (for more information, see <A class="linkage" href="#SEC34">Sticky Topics</A>) 
+<BR>
+  <BR>
+  <B>Announce</B> - The user may make Announcements (for more information, 
+see <A class="linkage" href="#SEC33">Announcements</A>) <BR>
+  <BR>
+  <B>Vote</B> - The user may vote in Polls (for more 
+information, see <A class="linkage" href="#SEC35">Polls</A>). It is not 
+recommended that this be set to "ALL", because that will allow an anonymous user 
+to vote more than once. <BR>
+  <BR>
+  <B>Poll create</B> - The user may create Polls 
+(for more information, see <A class="linkage" href="#SEC35">Polls</A>)</DIV>
+  <LI><B><A name="perlevel">Permission Levels</A></B>
+  <DIV class=body4>There are five permission levels.&nbsp; A user may be a member of 
+more than one permission level.&nbsp; To be in each of the permission levels: 
+<BR>
+  <BR>
+  <B>ALL</B> - Every user in the board is in this permission level.&nbsp; This 
+level is used particularly to grant permissions to users who are not registered 
+and/or logged in. <BR>
+  <BR>
+  <B>REG</B> - A user is in this permission level if 
+he/she is both registered at the board, and is currently logged in. 
+<BR>
+  <BR>
+  <B>PRIVATE</B> - There are two parts to being a private member of a 
+forum.&nbsp; In the forum permissions, there must be at least one permission type set 
+to the permission level <B>PRIVATE</B>.&nbsp; Additionally, in the User Permissions 
+or Group Permissions panel, the user or group must be "Allowed Access" to the 
+private forum (or have permission types set to "ON" in advanced mode.)&nbsp; For more 
+information, see <A class="linkage" href="#SEC16"> Group Admin</A>. 
+<BR>
+  <BR>
+  <B>MOD</B> - Someone is in this permission level if they are a moderator 
+of the forum. <BR>
+  <BR>
+  <B>ADMIN</B> - Board administrators (and no one else) are 
+in this permission level.</DIV>
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE><h3><A href="#TOC8" name="SEC8">1.3.3 Pruning</A></h3></BLOCKQUOTE>
+<BLOCKQUOTE>
+<DIV class="body3">To prune a forum, select it (or "All Forums") from the dropdown 
+box and click <U>Look up Forum</U>.&nbsp; Specify a number of days in the text 
+field.&nbsp; All posts with no replies to them in the range specified will be 
+removed. <BR>
+<BR>
+<B>Pruning</B> is typically done to remove old unneeded posts 
+and to save space.&nbsp; If you like, you can set a forum to prune itself 
+automatically.&nbsp; For more information, see <A class="linkage" href="#sec6">Editing Forums</A>.<BR></DIV>
+</BLOCKQUOTE>
+<h2><A href="#TOC9" name="SEC9">1.4 General Admin</A></h2>
+<DIV class=body2>The General Administration will allow you to perform general 
+board administration tasks.&nbsp; This includes database backup, general board 
+settings, smilies, word censors, and will let you send mass emails to members of 
+your board.</DIV>
+            <BLOCKQUOTE>
+<h3><A href="#TOC11" name="SEC11">1.4.2 General Configuration</A></h3>
+<DIV class=body3>This panel is where most of the boards settings and preferences can be
+changed. A seperate PNphpBB2 Config which controls some PNphpBB2 specific
+settings is discussed futher down the page.<BR>
+<B>General Board Settings</B><BR>
+<OL>
+  <LI><B>Disable board</B> - When <B>Yes</B>, the board is disabled and will not 
+display to anyone.&nbsp; Do not log out before you re-enable the board, or you will 
+not be able to log back in. 
+  <LI><B>User email via board</B> - When enabled, users may email each other through a 
+special form on the board.&nbsp; This keeps a user's email private, and prevents spam 
+bots from gathering email addresses.&nbsp; When this is disabled, user's email 
+address will be shown. 
+  <LI><B>Flood Interval</B> - This is the number of seconds a user must wait after 
+posting before he can post again.&nbsp; This feature is meant to prevent 
+users/scripts from flooding the board with posts
+  <LI><B>Topics Per Page</B> - This controls how many topics of a forum will be 
+displayed on the View Forum page.&nbsp; Additional topics can be seen by advancing to 
+the next page of the forum. 
+  <LI><B>Posts Per Page</B> - This controls how many posts of a topic will be 
+displayed on the <B>View Topic</B> page.&nbsp; Additional posts can be seen by 
+advancing to the next page of the topic. 
+  <LI><B>Posts for Popular Threshold</B> - When a topic gets many posts, the topic 
+icon will change to indicate that the topic is <B>popular</B>.&nbsp; This setting 
+will allow you to set the number of posts a topic must have to be considered 
+<B>popular</B>.
+  <LI><B>Default Style</B> - this is the default style when a new user registers.&nbsp; It 
+will also be the style for anonymous users. 
+  <LI><B>Override user style</B> - When enabled, the user's style setting will not 
+apply.&nbsp; All users will see the default style. 
+  <LI><B>Enable Forum Pruning</B> - Forum auto-pruning will only work when this is 
+enabled (for more information, see <A class="linkage" href="#SEC6"> Auto-Prune</A>).&nbsp; 
+Normal pruning will always work (for more information, see <A class="linkage" href="#SEC8"> Pruning</A>).
+</OL>
+</DIV>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B>Cookie Settings</B><BR>
+<OL>
+  <LI><B>Cookie domain</B> - The domain of the cookie your board creates.&nbsp; Leaving 
+this field blank will often work correctly; if not, you need to determine the 
+correct cookie domain and enter it. 
+  <LI><B>Cookie name</B> - The name of the cookie used by the board.&nbsp; Make sure the 
+name is not the same as any other cookies used on your site.
+  <LI><B>Cookie path</B> - The cookie path.&nbsp; Leaving this field with the value "/" 
+will often work correctly; if not, determine the correct cookie path and enter 
+it. 
+  <LI><B>Cookie secure</B> - If your board is running on a Secure Socket Layer (SSL), 
+this setting should be enabled.&nbsp; If not, leave it disabled.
+  <LI><B>Session length</B> - Allows you to set the session length, in seconds.&nbsp; The 
+session length is how long a user will remain logged in while they are idle.&nbsp; 
+For example, suppose you had the session length set to 3600 seconds (one hour). 
+&nbsp;If a user logs in and keeps his/her browser open, he/she will not be logged out 
+automatically until they have been idle (with respect to the board) for longer 
+than an hour.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B>Private Messaging</B>
+<OL>
+  <LI><B>Private Messaging</B> - This setting will allow you to enable or disable 
+private messages on your board. 
+  <LI><B>Max posts in Inbox</B> - A number that indicates the maximum number of posts 
+allowed in any user's Inbox.&nbsp; If this number is exceeded, old posts will be 
+removed as new ones come in.
+  <LI><B>Max posts in Sentbox</B> - A number that indicates the maximum number of 
+posts allowed in any user's Sentbox. 
+  <LI><B>Max posts in Savebox</B> - A number that indicates the maximum number of 
+posts allowed in any user's SaveBox.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B>User and Forum basic settings</B>
+<OL>
+  <LI><B>Max number of poll options</B> - You may specify the maximum number of poll 
+options to prevent poll abuse. 
+  <LI><B>Allow HTML</B> - Here you may enable or disable HTML for the entire board.&nbsp; 
+If enabled, users may still choose to disable it in their posts. 
+  <LI><B>Allowed HTML tags</B> - If HTML is enabled, you may specify which tags may be 
+used.&nbsp; This will help prevent users from destroying your page layout with 
+dangerous HTML.&nbsp; You only need to specify the base tag (without angle brackets 
+or closing tags) in order to enable that tag's use on the board.&nbsp; For example;&nbsp; 
+to allow a user to use <B>&lt;span color="red"&gt;</B>Red 
+Text<B>&lt;/span&gt;</B>, you would add <I>span</I> to the list of allowed tags.
+  <LI><B>Allow BBCode</B> - Here you may enable or disable BBCode for the entire 
+board.&nbsp; If enabled, users may still choose to disable it in their posts. 
+  <LI><B>Allow Smilies</B> - Here you may enable or disable Smilies for the entire 
+board.&nbsp; If enabled, users may still choose to disable it in their posts. 
+  <LI><B>Smilies Storage Path</B> - To use smilies, you must specify their location in relation to the PNphpBB2
+  root directory.&nbsp; This usually should be left at the default of <I>images/smilies</I>.
+  <LI><B>Allow Signatures</B> - Here you may choose to allow users to include a 
+signature on each of their posts.&nbsp; If this setting is enabled, users may still 
+choose whether or not to include a signature on each of their posts. 
+  <LI><B>Maximum signature length</B> - You may specify the max length of a user's 
+signature, in characters.&nbsp; The default value is 255 characters.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B>Avatar Settings</B> - See also avatars below.
+<OL>
+  <LI><B>Enable gallery avatars</B> - Here you may enable or disable the use of 
+gallery avatars on the board.
+  <LI><B>Enable remote avatars</B> - Here you may enable or disable the use of gallery 
+avatars on the board.&nbsp;
+  <LI><B>Enable avatar uploading</B> - Here you may enable or disable the use of 
+gallery avatars on the board.&nbsp; For more information, see 
+  <LI><B>Maximum Avatar File Size</B> - You may specify the maximum size of uploaded avatars on your board.&nbsp;
+  The size specified is measured in Bytes, and the default is 6144 (6 kB).
+  Note: Does not affect remote avatars.
+  <LI><B>Maximum Avatar Dimensions</B> - You may specify the maximum dimesions for uploaded avatar images on
+  your board.&nbsp; The size specified is in pixels, and the default is 80
+  x 80.Note: Does not affect remote avatars.
+  <LI><B>Avatar Storage Path</B> - This is the directory (relative to the PNphpBB2 root directory) that
+  uploaded avatars are stored to.&nbsp; This should usually be left at the
+  default &quot;images/avatars/upload&quot;. Also made sure that this folder
+  has been created in your site and is Chmod correctly ie 777 in most cases.
+  <LI><B>Avatar Gallery Path</B> - This is the directory (relative to the PNphpBB 2.0.0 root directory)
+  that your avatar gallery is located. This is usually left at the default
+  of &quot;&nbsp;images/avatars/gallery&quot;<br><br>Within this folder, you should
+  have subfolders, each of which represents a gallery category.&nbsp; Your
+  gallery avatars should each be located in the proper folder, so that they
+  appear in the proper gallery.&nbsp; Suppose you wanted the avatars <I>limburger.gif</I>, <I>colby.gif</I>, <I>chedder.gif</I> in category 
+<I>Cheese Types</I>.&nbsp; Suppose you also want avatars <I>wheel.gif</I>, 
+<I>cube.gif</I>, <I>log.gif</I> in category <I>Cheese Shapes</I>.&nbsp; Within your 
+avatar gallery path you should have subfolders <I>Cheese Types</I> and <I>Cheese 
+Shapes</I>, with the appropriate avatar image files within each subfolder.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE><B>Email Settings</B>
+<OL>
+  <LI><B>Admin Email Address</B> - The email address that any emails from the board 
+will come from.&nbsp; These include registration emails, forgotten password emails, 
+topic notification emails, private message notification emails, and mass board 
+emails.
+  <LI><B>Email Signature</B> - The email signature will appear at the bottom of every 
+email sent by the board. 
+  <LI><B>Use SMTP Server for email</B> - Enabled this setting if you wish to use an 
+SMTP server for outgoing email.
+  <LI><B>SMTP Server Address</B> - Enter the hostname or IP of your SMTP server.&nbsp; This 
+setting is only needed if SMTP email is enabled. 
+  <LI><B>SMTP Username</B> - If your SMTP server requires authentication, enter the 
+username here<B>.</B>
+  <LI><B>SMTP Password</B> - If your SMTP server requires authentication, enter the 
+password here.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<h3><A href="#TOC12" name="SEC12">1.4.3 Mass Email</A></h3>
+<DIV class=body3>In the mass email panel, you may send an email to every user on 
+your board.&nbsp; You may also use this forum to send email to every member of a 
+usergroup. <BR>
+<BR>
+<B>Recipients</B> - You may select <B>All Users</B>, or any 
+of the Usergroups on your board to receive the email. <BR>
+<BR>Enter the email 
+subject and body into the form, and click <U>Email</U> to send the mass 
+email.</DIV>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC13" name="SEC13">1.4.4 Smiles Admin</A></H3>
+<DIV class=body3>In the smilie administration panel you may edit or delete 
+existing smilies, and add new ones.&nbsp; <BR>
+<BR>To delete a smilie, click 
+<U>Delete</U> in the smilie's row. <BR>To edit a smilie, click <U>Edit</U> in 
+the smilies's row.&nbsp; You will be taken to <B>Smilie Configuration</B>.&nbsp; Change 
+the settings you like and click <U>Submit</U>. <BR>
+<BR>To create a new smiley, 
+click <U>Add a new Smilie</U> (in the lower left corner).&nbsp; You will be taken to 
+<B>Smilie Configuration</B>.&nbsp; Input the settings you like and click 
+<U>Submit</U>. <BR>
+<BR>
+<B>Smilie Code</B> - The series of characters used to insert a smilie into a post.&nbsp;
+Examples of this are :) (happy face ) or :wink: (winking face ). <BR>
+<BR>
+<B>Smilie Image File</B> - Select the smilie image you wish to use from 
+the dropdown list.&nbsp; The selected smilie will be displayed on the right, so you 
+can be sure you selected the correct one. <BR>
+<BR>
+<B>Smilie Emotion</B> - Enter 
+the emotion to be associated with the smilie.&nbsp; This emotion text will be display 
+in a smilie's tool tip, which appears when you hove the mouse cursor over the 
+smilie. <BR>
+<BR>
+<FONT face="Verdana, Arial, Helvetica, sans-serif"><BR>
+</FONT></DIV>
+<B>Importing 
+Smile Packs</B>
+<DIV class=body4>You may import packs of smilies into your board.&nbsp; The pack 
+should come in a .zip file.&nbsp; First extract the contents of the .zip file to the 
+<B>Smilies Storage Path</B> (for more information, see <A class="linkage" href="#sec11">User and Forum Basic Settings</A>).&nbsp; Next, go to smilie administration and click <U>Import Smilie 
+Pack</U> at the bottom of the page.&nbsp; You will be taken to the <B>Smilie Pack 
+Import</B> panel.&nbsp; Change the settings as you wish, and click <U>Submit</U> to 
+import the smilies. <BR>
+<BR>
+<B>Choose a Smilie Pack .pak file</B> - select the 
+.pak file you want to import from the dropdown box. <BR>
+<BR>
+<B>Delete existing 
+smilies before import</B> - If selected, all of the smilies on your board will 
+be removed.&nbsp; The new smilies will then be added to your board. 
+<BR>
+<BR>
+<B>Replace Existing Smilie</B> - When this is selected, if any of the 
+new smilies have smilie codes that are the same as any of your existing smilies; 
+the existing smilie will be removed, with the new smilie taking its place. 
+<BR>
+<BR>
+<B>Keep Existing Smilie</B> - When this is selected, if any of the new 
+smilies have smilie codes that are the same as any of your existing smilies; the 
+new smilie will not be imported, the existing smilie will remain in 
+place.</DIV>
+<H3><A href="#TOC14" name="SEC14"><FONT face="Verdana, Arial, Helvetica, sans-serif"><BR>
+</FONT></A></H3>
+<B>Creating Smile 
+Packs</B>
+<DIV class=body4>To make a smilie pack, first make the .pak file.&nbsp; To do this, 
+click <U>Create Smilie Pack</U> at the bottom of the Smilie Administration 
+Panel.&nbsp; Click the <U>Here</U> link to download the .pak file and save it. 
+<BR>
+<BR>After creating the .pak file, create a .zip or .tar.gz archive that 
+contains both the .pak file and the smilie images.&nbsp; You may now distribute this 
+smilie pack to others.</DIV>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC15" name="SEC15">1.4.5 Word Censors</A></H3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+
+You may have the board automatically censor words for you.&nbsp; To 
+do this, go to the 
+<B>Word Censor</B> panel. <BR>
+<BR>
+To delete an existing word 
+censor, click <U>Delete</U> in the censor's row. <BR>
+<BR>
+To edit a word censor, 
+click <U>Edit</U> in the appropriate row. <BR>
+<BR>
+To create a new censor, click 
+<U>Add New Word</U>. <BR>
+<BR>
+Each word censor has two parts.&nbsp; The first part is 
+the text to be censored.&nbsp; You may use the asterisk (*) wildcard to broaden your 
+search.&nbsp; The asterisk (*) will match any number of characters.&nbsp; There is also a 
+replacement string for each censor.&nbsp; Each spot where a censor is found will be 
+replaced by the appropriate replacement string.
+</BLOCKQUOTE>
+<h2><A href="#TOC16" name="SEC16">1.5 Group Admin</A></h2>
+This panel will allow you to create and modify groups and their properties.&nbsp; It 
+will also allow you to control <B>Group Permissions</B>.&nbsp; For more information, 
+see <A class="linkage" href="#sec14">Usergroups</A>.<BR>
+<BLOCKQUOTE>
+<h3><A href="#TOC17" name="SEC17">1.5.1 Group Management</A></h3>
+<OL>
+  <LI><B>Creating Groups</B>- To create a group, go the <B><U>Group Management</U></B> panel 
+and click <U>Create New Group</U>.&nbsp; Here you may input the properties of your new group.&nbsp; 
+  <LI><B>Editing Groups</B> - In this panel you can change the properties of a group.&nbsp; You may
+  control the name and description of the group, how membership is handled,
+  and who is in charge of the group. <BR>
+  <BR>
+  <B>Group Name</B> - Short name, 
+uniquely identifies the group. <BR>
+  <BR>
+  <B>Group Description</B> - Text that 
+describes the group.&nbsp; The description is seen when the group's details are 
+viewed. <BR>
+  <BR>
+  <B>Group Moderator</B> - Username of the user in charge of the 
+group.&nbsp; The group moderator can add/remove users from the group.&nbsp; The group 
+moderator may also control the group status. (For more information, see <A class="linkage" href="#sec14"> Usergroups</A>) 
+<BR>
+  <BR>
+  <B>Group Status</B> - May be one of three settings: <B>Open</B>, 
+<B>Closed</B>, or <B>Hidden</B>.&nbsp; For more information, see <A class="linkage" href="#grtype"> Group Types (Open, Hidden, Closed)</A>. <BR>
+  <BR>
+  <B>Delete the old group moderator?</B> - When you 
+change the group moderator, check this to remove the old group moderator from 
+the group.&nbsp; If this is unchecked when the moderator is changed, the old group 
+moderator will become a normal member of the group. <BR>
+  <BR>
+  <B>Delete group</B> 
+- Check this box and click <U>Submit</U> to delete the group.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<h3><A href="#TOC18" name="SEC18">1.5.2 Group Permissions</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<DIV class=body3>This panel will allow you to control a group's access to 
+private forums.&nbsp; It will also let you specify groups as moderators of a forum.&nbsp; 
+If a group is moderator of a forum, then each of the group's members is 
+considered a moderator of that forum. <BR>
+<BR>
+To edit a group's permissions, 
+select the group name from the dropdown box, and click <U>Look Up Group</U>.&nbsp; To 
+grant moderator access to a group, look in the desired forum's row.&nbsp; In the last 
+dropdown box in the list, choose <B>Is Moderator</B>.
+<OL>
+  <LI><B>Simple Group Permissions</B>
+  <DIV class=body4>To grant a group access to a private forum using Simple 
+Permissions, Choose <B>Allowed Access</B> in the <B>Simple Permissions</B> for 
+that forum.&nbsp; Choosing <B>Allowed Access</B> is the same as setting all 
+<B>Advanced Group Permissions </B>to <B>ON</B>. <BR>
+  <BR>
+  </DIV>
+  <LI><B>Advanced Group Permissions</B>
+  <DIV class=body4><B>Advanced Permissions</B> will allow you to grant specific 
+behaviors to a group.&nbsp; In the Advanced Permissions panel, there will be a 
+dropdown box for each Permission type that is set to <B>PRIVATE</B> in the<B> 
+Forum Permissions</B> panel (for more information, see <A class="linkage" href="#sec7"> Forum Permissions</A>).&nbsp; To 
+grant the group a specific <B>PRIVATE </B>permission in a forum, simply set the 
+appropriate dropdown box to <B>ON</B>.&nbsp; To grant all <B>PRIVATE</B> permissions 
+of a forum to a group, use <B>Allowed Access</B> in simple mode. <BR>
+  <BR>
+  &nbsp;</DIV>
+</OL>
+</DIV>
+</BLOCKQUOTE>
+<H2><A href="#TOC19" name="SEC19">1.6 PNphpBB2 Config</A></H2>
+In this section you can control many of the features added to the PNphpBB2
+Module.<BR>
+            <BLOCKQUOTE><h3>1.6.1 Configuration</h3></BLOCKQUOTE>
+            <P><B>PNphpBB2 Options/Mods</B></P>
+<OL>
+  <LI><B>Disable Who's Online block on forum index</B><BR>
+  This will allow the 
+administrator to disable the Who's Online block at the bottom of the forum 
+index.
+  <LI><B>Hide Who's Online block from anonymous users</B><BR>
+  If not disabled, setting 
+this option will prevent anonymous users from seeing the Who's Online block.
+  <LI><B>Display PNphpBB2 Logo in forum</B><BR>
+  Enable the PNphpBB2 in the forum. (If 
+you do not whish to display the PNphpBB2 logo, 
+  <LI><B>Use Quick reply</B><BR>Enable or disable the use of the quick reply feature.<br>
+  Here you have three choices - Use the advance quick reply, use the regular quick reply, or disable the quick reply.
+  <LI><B>Short URL's in posts</B><BR>
+  Enable or disable the use of the short URL's in posts. 
+  <LI><B>Forum post sort order</B><BR>
+  Default order in which post are displayed in 
+while viewing topics.<BR>
+  (You can override this within the forum management 
+section)
+  <LI><B>Disable post confirmation</B><BR>
+  This will disable the posting confirmation 
+screen for ALL posts. Disabling this will result in the user being taken back to 
+the forum topic and the post that they made.
+  <LI><B>Allow users to minimize/maximize full page view of forum</B><BR>
+  While in the 
+forum, allow users to minimize and maximize forum to full page width outside of 
+the Postnuke theme.
+  <LI><B>Default forum to full page (maximize) view</B><BR>
+  Allows administrator to 
+display forum in either full page view or within the Postnuke theme.
+              <LI><B>Use phpBB2 Compatibility mode</B><BR>
+              This will set the forum to full page 
+mode and allow you to utilize most phpBB2 templates/styles without minimal 
+modifications. It uses the standard phpBB2 style sheets and resides outside of 
+the Postnuke header and footers.
+              <LI><B>Use Postnuke's Private messaging system</B><br>
+              This will switch ALL the links to the private messaging system over to
+              the ones used in Postnuke rather than use the forums PM system.
+  <LI><B>Link to return users back to your Postnuke site</B><BR>
+  This will be a valid html link that will return your used back to your
+  main site, if they are using a out of Postnuke style/theme. Leave this
+  blank if you do not wish to use this option.
+  <LI><B>Text to display for above link</B><BR>
+  This will be the text for the above link, it can be any text or html code.
+  (Can contain a image link). Leave this blank if you do not wish to use
+  this option.
+  <LI><B>Use the NEW template compiler</B><BR>
+  Use the eXtreme Styles mod by Vjacheslav 
+Trushkin <BR>This mod is heavily optimized version of phpBB 
+templates system and has some additional features. It compiles and executes 
+files much faster, has cache system that speeds up templates many times, allows 
+to use php in templates and few other new features to style designers. This is a 
+test version and might not work with some mods.
+</OL>
+<P><B>Categories Hierarchy settings</B></P>
+<OL>
+  <LI><B>Allow users to switch category/sub-forum mode</B><BR>
+  This will allow you to 
+give your users the option of switching between sub-category, or sub-forum view. 
+If you do not wish to use the sub-category/forum mod simply do not add 
+sub-category/forums to your site.
+  <LI><B>Display the sub-categories as forums</B><BR>Allows administrator to default 
+to sub-forum view or sub-category view (vBulletin-like).
+</OL>
+<P><B>Announcement Settings</B></P>
+<OL>
+  <LI><B>Display forum announcements on index</B><BR>
+  This will enable or disable forum 
+announcements on index page.
+  <LI><B>Do <U>NOT</U> show announcements for following forums (CTRL+LEFT CLICK 
+sets/clears selections)</B>
+  <LI><B>Announce duration on the index</B><BR>
+  Number of <STRONG>days</STRONG> to 
+display forum announcements on index page.<BR>
+  (Entering <B>0 (Zero)</B> will 
+display announcements indefinitely)
+  <LI><B>Split announcement within forums</B>
+  <LI><B>Split sticky within forums</B>
+</OL>
+<P><B>eXtreme Styles mod v1.01 settings</B></P>
+<OL>
+  <LI><B>Default template directory</B><BR>
+  If tpl file is not found in current 
+template directory (that might happen if you modded phpBB incorrectly) then 
+template system will look for same file in this directory (like if current 
+template is "myTemplate" and script requires file "myTemplate/myfile.tpl" and 
+that file isn't there template system will look for that file as 
+"subSilver/myfile.tpl"). Set to empty to disable this feature.
+  <LI><B>Check switches while compiling</B><BR>
+  This feature checks for errors in templates. Turning it off will speed
+  up compilation, but compiler might skip some errors in templates if template
+  has errors.<br>Smart check will check templates for errors and automatically
+  fix all known errors (there are few known typos in different mods). Works
+  little bit slower than simple check.<BR>
+  <BR>
+  But sometimes template looks properly only when error 
+check is disabled. This happens because of bad html coding - contact whoever 
+wrote tpl file if you want to fix errors.<BR>
+  <BR>
+  If cache feature is disabled 
+then for faster compilation it is better to turn this off.
+  <LI><B>Check variables with isset() in compiled code</B>
+</OL>
+<P><B>eXtreme Styles mod Cache configuration</B></P>
+<OL>
+  <LI><B>Use cache</B><BR>
+  Cache is saved to disk and it will speed up templates system 
+many times because there would be no need to compile template every time it is 
+shown.
+  <LI><B>Cache directory</B><BR>
+  All cache will be written in that directory (and/or 
+sub directories). Files with same filenames will be overwritten. Do not put "/" 
+before directory name unless directory name is absolute. Absolute means complete 
+path as file is in server hard disk (do not mistake it for absolute URL). 
+Relative means path starting with phpBB directory.
+  <LI><B>Automatically save cache</B><BR>
+  This will automatically compile templates if 
+needed and save to cache directory.
+  <LI><B>Automatically re-compile cache</B><BR>
+  This will automatically re-compile 
+cache if original template file was changed.
+  <LI><B>Filename separator</B><BR>
+  If set to "/" then cache will be saved in sub 
+directories by template name (like file "subSilver/admin/page_header.php" would 
+be saved to cache directory as "subSilver/admin/page_header.php"), if set to 
+something else like "." then all cache will be saved to one directory (like file 
+"subSilver/admin/page_header.php" would be saved to cache directory as 
+"subSilver.admin.page_header.php")
+  <LI><B>Extension of cache filenames</B><BR>This is extension of cached files. Files 
+are stored in php format so default extension is "php". Do not include dot
+</OL>
+At the bottom of this page in admin is debug information for the eXtreme
+Styles mod Cache configuration, this will be of use if you are having any
+problems with it.<BR>
+            <BLOCKQUOTE>
+            <H3>1.6.1 Post text replace</h3>
+            This will search for 'LIKE' text and attempt to replace it 
+with text of your choosing. <B><U>Be VERY careful with this utility.</U></B> Use 
+the test first to see exactly what its going to replace and how many occurrences 
+before running it for real!.<BR>
+            When a test is run you will be shown the total 
+records found as well as 2 sample texts showing a before and after view of what 
+will be changed.<BR>
+            This utility is mainly for repairing internal links in posts after an upgrade
+            from a standalone phpbb2 forum or the phpbb2pnmod.<BR>
+            </BLOCKQUOTE>
+            <BLOCKQUOTE>
+            <h3>1.6.2 Repair Groups</h3>
+            </BLOCKQUOTE>
+            <h2><A href="#TOC20" name="SEC20">1.7 Styles Admin</A></h2>
+<P>The Theme Mod handles most of this function in PNphpBB2. Please read the docs on the <A href="PNphpBB2_mods.html" target="_blank">Theme Mod</A>. <BR>
+            <B>Note: </B>This part of the module is under going revision, so for the most current information check the support forums.</P>
+<DIV class=body2>Themes are the color/graphic information for a style.&nbsp; This includes
+the font colors, background color and/or image, and much more.&nbsp; <BR>
+<BR>
+Templates are the HTML-like files that are used to generate the output
+HTML of PNphpBB2.&nbsp; They control the layout and organization of all
+of the pages, using basic HTML and special template variables. <BR>
+<BR>
+So for a given template, you may have many themes.&nbsp; This results in
+having many styles, each Style = Template + Theme.<BR>
+            The PNphpBB2 Theme mod adds many functions in this area. <B><BR>
+            PNTheme</B> - (included in the module) At default it uses an automatic color matching Theme in the forum that works to match the colors of the forum to the postnuke theme being used. You can also use custom themes in the forum that you match to corresponding postnuke themes or a special custom theme that uses the data from Styles management edit. In addition to better match postnuke themes, you can use custom cellpics, custom images or icons, custom posticons, and custom ranks. Although it may seem complicated at first its really simple to use. Read the <A href="PNphpBB2_mods.html" target="_blank">Theme Mod docs</A> for more details.<BR>
+            <BR>
+            For more information please the read the docs on the <A href="PNphpBB2_mods.html" target="_blank">theme mod</A>.<BR>
+<OL>
+  <LI><B>Adding Styles</B> - This panel will allow you to add new styles.&nbsp; To add a new style,
+  simply click <U>Install</U> in the appropriate row.&nbsp; This panel automatically detects uninstalled
+  styles in your template directory. In PNphpBB2 this panel is mainly used
+  to add new adapted templates or in the case of the out of postnuke templates
+  - new phpbb2 styles.<br><br><B>Important: </B>When installing a new template(e.g. one that you downloaded), 
+be sure that your new template directory is nested correctly in the 
+<B>templates</B> directory.&nbsp; It also must have the correct name (case 
+sensitive).&nbsp; For instance, if you had a new template named <I>subCheese</I>, 
+then in the <B>templates</B> directory you should have a folder called 
+"subCheese" (not "subcheese"), and in that folder will be all of your template 
+files (*.tpl files).
+  <LI><B>Creating Styles</B> -This part of the module is under going revision. In future version the
+              ability to edit style sheets online and to preview them online will be
+              added among with many other features. Currently as stated below this panel
+              does not currently have much use in the module.
+              <DIV class=body3><I><B>This panel does not seem to be that useful for PNphpBB2 but is left in
+  from phpbb2 in case it is of some use in creating</B> <B>custom themes or adapted templates.</B></I></DIV>
+  <DIV class=body3>This panel allows you to create new Themes for any template you 
+have installed.&nbsp; This creates a new style, since a Style = Template + Theme.&nbsp; 
+<BR>
+  <BR>
+  <B>Theme Name:</B> The name as it will appear in the style dropdown selection box in the
+  Edit Profile panel or General Configuration panel . <BR>
+  <BR>
+  <B>Template: </B>Drop down box that contains all of the currently 
+installed templates.&nbsp; Choose the template that you want the new theme to apply 
+to. <BR>
+  <BR>
+  All of the settings below <B>Template</B> are self-explanatory.&nbsp; 
+Color settings must be 6-digit hex codes (as used in HTML).&nbsp; Class settings must 
+be a valid CSS class name.&nbsp; <BR>
+  <BR>
+  All settings below <B>Hover Link Color</B> 
+are template-dependent.&nbsp; If these template-dependent settings are not explained 
+by the <B>Simple Name</B>, check the documentation included with the template 
+you have questions about.</DIV>
+  <LI><B>Exporting Styles</B>
+  <DIV class=body3>
+  <DIV class=body3><I><B>This panel does not seem to be that useful for PNphpBB2 but is left in
+  from phpbb2 in case it is of some use in creating</B> <B>custom themes or adapted templates. </B></I></DIV>
+  </DIV>
+  <DIV class=body3>When you create a style according to the instructions in <B>Creating Styles</B>, the new information is entered into the database, but is not written to any files.&nbsp; The <B>Style Export</B> panel will export the information from 
+the database into the theme_info.cfg file in the appropriate template 
+directory.&nbsp; Once the data has been exported, you can copy/distribute your 
+template directory, and you will not lose the theme/style information. 
+<BR>
+  <BR>
+  To export style info for a template, select the template from the 
+dropdown box and click <U>Submit</U>.&nbsp; It will then write the data from the 
+database into the theme_info.cfg in the appropriate template directory.&nbsp; If it 
+has trouble writing to that file, follow the instructions if gives you.&nbsp; Your 
+template should then be ready to be copied/distributed with all of its 
+themes.</DIV>
+</OL>
+</DIV>
+<BLOCKQUOTE>
+<h3><A href="#TOC21" name="SEC21">1.7.1 Managing Styles</A></h3>
+In <B>Style Management</B> you can edit or delete styles that are installed on 
+your board.&nbsp;<BR>
+Note: The edit function only works for the custom themes that use the database
+information. See the Theme mod docs for more information.</BLOCKQUOTE>
+<BLOCKQUOTE><B>Editing Styles</B> - To edit a style, go to Style Management and click <U>Edit</U> in the appropriate 
+row.&nbsp; You are then presented with a form that will allow you to change all of 
+the theme information for that style. <BR>
+            Note: This part of the module is under going revision. See creating styles
+            above.<BR>
+<OL>
+  <LI><B>Theme Name:</B> The name as it will appear in the style selection box in the Edit Profile
+  panel  or General Configuration panel. 
+  <LI><B>Template: </B>Drop down box that contains all of the currently installed 
+templates.&nbsp; Choose the template that you want the theme to apply to. 
+  <LI>All of the settings below <B>Template</B> are self-explanatory.&nbsp; Color settings 
+must be 6-digit hex codes (as used in HTML).&nbsp; Class settings must be a valid CSS 
+class name. <BR>
+  <BR>
+  All settings below <B>Hover Link Color</B> are 
+template-dependent.&nbsp; If these template-dependent settings are not explained by 
+the <B>Simple Name</B>, check the documentation included with that template.
+  <LI>
+  <DIV class=body5><B>Simple Names</B> are short descriptions of what the different theme variables correspond to.&nbsp; Theme variables with Simple Names are template-dependent; similarly Simple Names are template dependent.</DIV>
+</OL>
+</BLOCKQUOTE>
+<h2><A href="#TOC22" name="SEC22">1.8 User Admin</A></h2>
+<BLOCKQUOTE>
+<h3><A href="#TOC23" name="SEC23">1.8.1 Ban Control</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>This panel allows you to ban users using several methods.&nbsp; This panel
+also makes it easy to remove bans.
+<OL>
+  <LI><B>Banning by username</B>
+  <DIV class=body4>When a username is banned, that user may no longer login to 
+your board.&nbsp; When they login, they will be informed that they have been banned.&nbsp; 
+The user may still view and read the board as a <B>Guest</B> (Anonymous User).&nbsp; 
+To prevent a user from seeing your board at all, you must ban them by IP.&nbsp; For 
+more information, see <A class="linkage" href="#banip"> Banning by IP or Hostname</A>. <BR>
+  <BR>To ban by username, simply select the username(s) to ban 
+in the <B>Ban one or more specific users</B> listbox.&nbsp; To ban more than one 
+username at once, simply select all of the usernames you are trying to ban.&nbsp; 
+This is normally accomplished by holding the <B>CTRL</B> key and clicking each 
+name.&nbsp; When all of the desired names are selected, press <U>Submit</U> to add 
+the ban information to the database. <BR>
+  <BR>Similarly, to un-ban usernames, 
+simply select the banned username(s) from the <B>Un-ban one or more specific 
+users</B> listbox and press <U>Submit</U>.</DIV>
+  <LI><A name="banip"><B>Banning by IP or Hostname</B></A>
+  <DIV class=body4>When an IP or hostname is banned, your board's content will be 
+blocked from any connection coming from that IP or host.&nbsp; Users from a banned IP 
+will be informed of the ban, but may not view the board at all. <BR>
+  <BR>To ban 
+by IP or hostname, simply enter the IP address or hostname to ban and click 
+<U>Submit</U>.&nbsp; To specify multiple IPs or hostnames, you may separate the 
+multiple entries with commas (,).&nbsp; For instance, to ban the IP 
+<I>192.168.8.19</I> and the hostname <I>banned.cheese.com</I>, you would enter 
+<I>192.168.8.19,banned.cheese.com</I> <BR>
+  <BR>You may also ban multiple IPs or 
+hostnames using ranges and wildcard characters.&nbsp; To ban a range of IPs, use 
+-(hyphen) (e.g. <I>192.168.8.19-124</I>).&nbsp; Banning a range of IPs will cause 
+each IP in that range to be added to the list, so using specific IPs or 
+wildcards is preferred.&nbsp; The wildcard *(asterisk) will match any characters, so 
+to ban all IPs that begin with 192.168, use <I>192.168.*.*</I>&nbsp;&nbsp; This also works 
+with hostnames.&nbsp; For example <I>*.cheese.com</I> will ban all hostnames that end 
+with ".cheese.com" <BR>
+  <BR>To un-ban IPs and hostnames, simply select the banned 
+IP or hostname from the <B>Un-ban one or more IP addresses</B> listbox and press 
+<U>Submit</U>.</DIV>
+  <LI><B>Banning by email address</B>
+  <DIV class=body4>Banning an email address prevents anyone from registering using 
+that banned email address.&nbsp; Any users currently using a banned email will not be 
+affected.&nbsp; To deny the user access to the board, you must still ban their 
+username or delete their account.&nbsp; When someone tries to register with a banned 
+email address, the registration will fail, and they will be informed that it 
+failed due to a banned email address. <BR>
+  <BR>To ban an email address, simply 
+enter the email address to ban into the text field and click <U>Submit</U>.&nbsp; You 
+may ban multiple addresses by separating them by commas.&nbsp; You may also use the 
+wildcard *(asterisk) to ban email addresses meeting certain criteria.&nbsp; For 
+instance, to ban all email addresses at hotmail.com, you would enter 
+<I>*@hotmail.com</I> into the field. <BR>
+  <BR>To un-ban email addresses, simply 
+select the banned email address from the <B>Un-ban one or more email 
+addresses</B> listbox and press <U>Submit</U>.</DIV>
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<h3><A href="#TOC24" name="SEC24">1.8.2 Disallowed Username</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+This panel will allow you to specify usernames that you do not 
+want other people to use.&nbsp; This is commonly used to prevent users from using 
+profanity in their usernames.&nbsp; Another use is preventing users from 
+impersonating board administrators by registering similar usernames.&nbsp; When 
+someone tries to register using a name that has been disallowed, the 
+registration will fail, and they will be informed that the username has been 
+disallowed. 
+<BR>
+<BR>
+To disallow a username, simply enter it into the text field 
+and click 
+<U>Add</U>.&nbsp; You may use the wildcard *(asterisk) to match any 
+character.&nbsp; For instance, to disallow all usernames that contain "cheese" (with 
+any characters before and/or after), simple disallow <I>*cheese*</I> <BR>
+<BR>
+To 
+re-allow usernames, simply select the disallowed username(s) from the dropdown 
+list and click <U>Delete</U>.
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<h3><A href="#TOC25" name="SEC25">1.8.3 User Management</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>This panel will allow you to change settings and information for any user on 
+your board.&nbsp; To use it, simply enter a username into the text field and click 
+<U>Submit</U>.&nbsp; <BR>
+<BR>
+This panel will allow you to edit any part of a user's 
+profile.&nbsp; The panel is identical to the standard profile panel, with a few extra 
+settings at the end.&nbsp; For more information, see <A class="linkage" href="#sec46">Profile Settings</A>. 
+<BR>
+<BR>
+At the bottom of this panel there are <B>Special admin-only fields</B> 
+that are not part of the standard profile settings.
+<OL>
+  <LI><B><SPAN class=gen>Upload Quota</SPAN></B>
+  <LI><B><SPAN class=gen>PM Quota</SPAN></B>
+  <LI><B>User is Active</B> - You may deactivate/activate a user.&nbsp; This is most often 
+used to activate a user who is having trouble with email activation.&nbsp; A user may 
+not log in while their account is inactive.
+  <LI><B>Can send Private Messages/Can display Avatar</B> - Both of these may be 
+turned on or off for each user. 
+  <LI><B>Rank Title</B> - Allows you to specify a <B>Special Rank</B> for a user.&nbsp; If 
+"No special rank assigned" is selected, the user's rank will be determined by 
+the normal rank system.&nbsp; For more information, see <A class="linkage" href="#sec27"> Ranks</A>.<B><SPAN class=gen></SPAN></B>
+  <LI><B>Delete this user?</B> - To delete a user, check this box and click 
+<U>Submit</U>.&nbsp; A deleted user's posts are converted to <I>Anonymous</I> posts with their old username as the name specified. Currently in PNphpBB2
+  you must delete a user here if you have deleted the user in postnuke.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC26" name="SEC26">1.8.4 User Permissions</A></H3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>This panel will allow you to control a user's level, and their access to private 
+forums.&nbsp; You can also specify users as moderators of a forum. <BR>
+<BR>
+To edit a 
+user's permissions, select the group name from the dropdown box, and click 
+<U>Look Up User</U>.&nbsp; To grant moderator access to a user, look in the desired 
+forum's row.&nbsp; In the last dropdown box in the list, choose <B>Is Moderator</B>.
+<OL>
+  <LI><B>User Level</B>
+  <DIV class=body4><B>User</B> - The user is a normal user.&nbsp; They may have special 
+permissions such as group membership or moderation privileges, but they have no 
+access to the administration panel. <BR>
+  <BR>
+  <B>Administrator</B> - The user is a 
+board Administrator.&nbsp; This means that they have access to the administration 
+panel, and they have moderator permissions in every forum and group.</DIV>
+  <LI><B>Simple User Permissions</B>
+  <DIV class=body4>To grant a user access to a private forum using Simple 
+Permissions, Choose <B>Allowed Access</B> in the <B>Simple Permissions</B> for 
+that forum.&nbsp; Choosing <B>Allowed Access</B> is the same as setting all 
+<B>Advanced Group Permissions </B>to <B>ON</B>. <BR>
+  </DIV>
+  <LI><B>Advanced User Permissions</B>
+  <DIV class=body4><B>Advanced Permissions</B> will allow you to grant specific 
+behaviors to a user.&nbsp; In the Advanced Permissions panel, there will be a 
+dropdown box for each Permission type that is set to <B>PRIVATE</B> in the<B> 
+Forum Permissions</B> panel (for more information, see <A class="linkage" href="#sec7"> Forum Permissions</A>).&nbsp; To 
+grant the user a specific <B>PRIVATE </B>permission in a forum, simply set the 
+appropriate dropdown box to <B>ON</B>.&nbsp; To grant all <B>PRIVATE</B> permissions 
+of a forum to a user, use <B>Allowed Access</B> in simple mode. <BR>
+  <BR>
+  &nbsp;</DIV>
+</OL>
+<h3><A href="#TOC27" name="SEC27">1.8.4 Ranks</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>A <B>Rank</B> is a special title that appears next to each user's username when 
+they post.&nbsp; It also appears in their profile.&nbsp; Ranks are a way to show how long 
+someone has been posting to your board, or how active they are.&nbsp; Ranks are also 
+a way to indicate something special about a member or a group of members. 
+<BR>
+<BR>
+There are two types of Ranks, normal <B>Ranks</B> and <B>Special 
+Ranks</B>.&nbsp; Normal Ranks are granted to all users based on their post count.&nbsp; 
+Special Ranks are granted to specific users in the <B>User Management Panel</B> 
+(for more information, see <A class="linkage" href="#sec25"> User Management</A>). 
+<BR>
+<BR>
+To create a rank, click <U>Add New Rank</U>.&nbsp; Enter the appropriate 
+information and click <U>Submit</U>.&nbsp; For more information on the settings, see 
+<A class="linkage" href="#sec27">Editing Ranks</A> below.</BLOCKQUOTE>
+<BLOCKQUOTE><B>Editing Ranks</B> - To edit a Rank, click <U>Edit</U> in the appropriate row.&nbsp; There are several 
+settings to edit for a Rank. <BR>
+<OL>
+  <LI><B>Title</B> - The title the Rank grants to a user of that Rank.&nbsp; The title 
+normally shows up below the user's name in his/her profile and each of his/her 
+posts.
+  <LI><B>Special Rank</B> - If this is set to yes, then the Rank must be granted 
+specifically to users through the <B>User Management Panel</B>.&nbsp; If this is set 
+to yes, then the <B>Minimum Posts</B> field does not apply to this rank. 
+  <LI><B>Minimum Posts</B> - The lowest number of posts a user must have to obtain 
+this Rank (if it is not a <B>Special Rank</B>).&nbsp; If there are multiple Ranks on 
+a board, a user's Rank will be the Rank he/she qualifies for with the highest 
+minimum post setting.&nbsp; For example, if a user has 70 posts, and there are Ranks: 
+<BR>
+  <BR>
+  <I>Bite-Size Cheese</I> (Min Post <B>10</B>) <BR>
+  <BR>
+  <I>Cheese Cube</I> 
+(Min Post <B>25</B>) <BR>
+  <BR>
+  <I>Cheese Wheel</I> (Min Post <B>50</B>) 
+<BR>
+  <BR>
+  <I>The Big Cheese</I> (Min Post <B>100</B>) <BR>
+  <BR>
+  Although the user 
+qualifies for ranks <I>Bite-Size Cheese</I>, <I>Cheese Cube</I>, <I>Cheese 
+Wheel</I>; he/she's title will be <I>Cheese Wheel</I>, because that is the 
+highest rank he/she qualifies for. 
+  <LI><B>Rank Image</B> - This is a small image that is normally shown directly beneath the rank
+  title.&nbsp; The image must be a png, gif, or jpg image. <SPAN class=gensmall><BR>This is relative to PNphpBB2 root path if you include a path 
+relative to the where the images are located.<BR>(NOTE: If only the image is 
+specified (image.gif), then an attempt will be made to use the image based on 
+the template name, Postnuke theme, and language.)</SPAN>
+</OL>
+</BLOCKQUOTE>
+<h1><A href="#TOC28" name="SEC28">2.0 Using PNphpBB</A></h1>
+<P>PNphpBB2 is a postnuke forum module based on phpBB2 .&nbsp; It allows people
+to post ideas, opinions, and information in an organized way.&nbsp; Posts
+are organized in a way that makes it easy for people to find the information
+they are interested in, but without having to wade through unrelated information.
+<BR>
+<BR>
+Postings in PNphpBB2 are organized into three subdivisions: <BR>
+<BR>
+<B>Post</B> - A post is a piece of 
+information submitted by a single user.&nbsp; It may be a new post, which starts a 
+new topic, or a reply to an existing post.&nbsp; Posts are typically a sentence, 
+paragraph, or a few paragraphs. <BR>
+<BR>
+<B>Topic</B> - A topic is a collection 
+of posts.&nbsp; The posts are organized in chronological order.&nbsp; The idea of a topic 
+is that there is a single post that contains the topic of discussion.&nbsp; The rest 
+of the posts in the topic are replies to this first post and to other replies.&nbsp; 
+Topics are sort of like conversations, allowing many people to state their 
+opinions about an idea, or debate an issue. <BR>
+<BR>
+<B>Forum</B> - A forum is a 
+container for topics.&nbsp; Forums often have a general subject that the topics 
+within are about.&nbsp; For instance, you might have a <I>Movie Reviews</I> forum, 
+which would contain topics in which people would discuss movies and their 
+opinions about them. <BR>
+<BR>
+Navigating through posts in PNphpBB2 is based on the idea of posts, topics
+and forums.&nbsp; Generally, a user will start at the <B>Forum Index </B>(index.php).&nbsp; The <B>Forum Index</B> shows a list of forums.&nbsp; 
+If you click on one of the forums, you will be shown the <B>View Forum</B> page, 
+which is a listing of the topics in the forum (viewforum.php).&nbsp; By default they 
+are sorted in chronological order by the most recent post in each topic.&nbsp; If you 
+click on a topic, you will be shown the <B>View Topic</B> page, which is a 
+listing of the posts in that topic (viewtopic.php).&nbsp; The posts in a topic are 
+organized chronologically, with the oldest post first.</P>
+<h2><A href="#TOC29" name="SEC29">2.1 User Accounts</A></h2>
+<P>The user accounts in PNphpBB2 are handled by postnuke. Registration and
+logging in is by way of postnuke. The user information from postnuke is
+added to PNphpBB2 the first time a member accesses the forum and is updated
+at the start of each session in PNphpBB2. PNphpBB2 does have a limited
+profile itself which deals with forum specific user preferences. See profile
+below for more information.<BR>
+</P>
+<h2><A href="#TOC30" name="SEC30">2.2 Posting</A></h2>
+<DIV class=body2>There are two primary ways to create a post.&nbsp; In the <B>View 
+Forum</B> and <B>View Topic</B> pages, you may click <U>New Topic</U>.&nbsp; This 
+will take you to the posting form, and, when you have posted, will create a new 
+topic with your post as the first one in the topic.&nbsp; In the <B>View Topic</B> page you have two ways to <U>Reply to posts</U>.&nbsp;You can click on the<U> Reply</U> and this will take you to the posting form, and, when you have posted,
+it will add your post to the topic you replied to.&nbsp; To reply to a
+specific post, you may also click the <U>Quote</U> button in the upper right corner of that post.&nbsp;If you have it enabled,
+you can also reply by way of the quick reply form on the <B>View Topic </B>Page itself.</DIV>
+<BLOCKQUOTE>
+<h3><A href="#TOC31" name="SEC31">2.2.1 Posting Form</A></h3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<DIV class=body3>When you post a new topic or post a reply, you are taken to the 
+posting form, where to enter your post.&nbsp; <BR>
+<BR>
+<B>Subject</B> - The subject of 
+your post.&nbsp; If this is a new post, the subject is required, and it will be the 
+name of the topic.&nbsp; If the post is replying to another post, the subject is not 
+required, but may be added, and will be shown at the top of the post. 
+<BR>
+<BR>
+<B>Message Body</B> - The Message body is a large text area where the 
+body of your post is input.&nbsp; Plain text is the only thing allowed in this text 
+area, but special formatting, links, smilies (emoticons), images, etc. may be 
+added through the use of <B>Smilies</B>, <B>BBCode</B> and/or <B>HTML</B> (if 
+they are enabled). <BR>
+<BR>
+<B>Message Icons</B> - These are special icons that are displayed on the View Forum page.<BR>
+<BR>
+<B>Smilies</B> - Smilies (also called emoticons) can 
+be added to posts.&nbsp; You may only use smilies in your post if they are enabled on 
+the board you are using.&nbsp; To see if smilies are enabled, look in the lower left 
+corner of the posting form, you should see "Smilies are <U>ON</U>/<U>OFF</U>".&nbsp; 
+If smilies are enabled and you would like to disable them in your post, check 
+the box next to <B>Disable Smilies in this Post</B>.&nbsp;&nbsp; For more information, see 
+<A class="linkage" href="#sec37"> Smilies</A> <BR>
+<BR>
+<B>BBCode</B> - BBCode allows you to add special formatting 
+to your posts.&nbsp; You may only use BBCode in your post if it is enabled on the 
+board you are using.&nbsp; To see if BBCode is enabled, look in the lower left corner 
+of the posting form, you should see "BBCode is <U>ON</U>/<U>OFF</U>".&nbsp; If BBCode 
+is enabled and you would like to disable it in your post, check the box next to 
+<B>Disable BBCode in this Post</B>.&nbsp; For more information, see <A class="linkage" href="#sec36"> BBCode</A>. 
+<BR>
+<BR>
+<B>HTML</B> - You may use HTML to format your posts.&nbsp; The HTML tags 
+allowed may be configured in the administration panel (for more information, see 
+<A class="linkage" href="#sec11"> General Configuration</A>).&nbsp; You may only use HTML in your post if it is enabled on the 
+board you are using.&nbsp; To see if HTML is enabled, look in the lower left corner 
+of the posting form, you should see "HTML is <U>ON</U>/<U>OFF</U>".&nbsp; If HTML is 
+enabled and you would like to disable it in your post, check the box next to 
+<B>Disable HTML in this Post</B>. <BR>
+<BR>
+<BR>
+<B>Signature</B> - You may add a signature to your post.&nbsp; To 
+do this, check the box next to <B>Attach Signature</B>.&nbsp; You may change your 
+signature by editing your profile.&nbsp; For more information, see <A class="linkage" href="#sec46"> Profile Settings</A>. 
+<BR>
+<BR>
+<B>Reply Notification</B> - When you post, you may be interested in 
+knowing when that topic is replied to.&nbsp; If so, you may check <B>Notify me when a 
+reply is posted</B>.&nbsp; For more information, see <A class="linkage" href="#sec45"> Watching Topics</A>. 
+<BR>
+<BR>
+<B>Sticky/Announcement</B> - To make a post into an <B>Announcement</B> 
+or a <B>Sticky Topic</B>, look to the bottom of the posting form.&nbsp; There are 
+radio buttons at the bottom that will allow you to set the post as 
+<B>Normal</B>, <B>Sticky</B> or <B>Announcement</B>.&nbsp; These options will only be 
+visible to a user for the top post in a topic, and only if they have permission 
+to make Announcements and Sticky topics.&nbsp; For more information, see <A class="linkage" href="#sec33"> Announcements</A>, <A class="linkage" href="#sec34"> Sticky Topics</A> and <A class="linkage" href="#sec7"> Forum Permissions</A> <BR>
+<BR>
+<B>Attachment </B>- If enabled in admin users will have an option to add attachments. This option will only be visible to a user if they have permission to add attachments.<BR>
+<BR>
+<B>Polls</B> - To add a poll, look to the bottom of the 
+posting form.&nbsp; These options will only be visible to a user if they have 
+permission to make Polls. For more information, see <A class="linkage" href="#sec35"> Polls</A>.</DIV>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC32" name="SEC32">2.2.2 Quick Reply</A></H3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>If enabled in admin users can also reply to posts with the quick reply that appears directly on the <B>View Topic</B> page. The quick reply comes in two versions normal and advance. The advance
+quick reply has many of the same options as the standard reply.<BR>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC33" name="SEC33">2.2.2 Announcements</A></H3>
+</BLOCKQUOTE>
+
+<DIV class=body3>
+<BLOCKQUOTE>Announcements are a special type of topic.&nbsp; In the <B>View 
+Forum</B> page, Announcements appear above all other topics (at the top of the 
+forum).&nbsp; Announcements will also appear on every <B>View Forum</B> page.&nbsp; For 
+instance, if you had 75 topics in a forum and 50 on each page, announcements 
+would appear on the page with the first 50 topics <B>and</B> on the page with 
+the last 25 topics. <BR>
+<BR>
+To make a topic into an announcement, simply select 
+the <B>Announcement</B> radio button on the posting form.&nbsp; The top post of a 
+topic must be specified as <B>Announcement</B> for the topic to be an 
+Announcement.&nbsp; For more information, see <A class="linkage" href="#sec31">Posting Form</A>. 
+<BR>
+<BR>
+<h3><A href="#TOC34" name="SEC34">2.2.3 Sticky Topics</A></h3>
+</BLOCKQUOTE>
+</DIV>
+<DIV class=body3>
+<BLOCKQUOTE>Sticky topics are a special type of topic.&nbsp; In the <B>View 
+Forum</B> page, Sticky topics appear above all other topics except for 
+Announcements.&nbsp; Sticky topics only appear on the first <B>View Forum</B> page. 
+<BR>
+<BR>
+To make a topic sticky, simply select the <B>Sticky</B> radio button on 
+the posting form.&nbsp; For more information, see <A class="linkage" href="#sec31">Posting Form</A>.</BLOCKQUOTE>
+</DIV>
+<BLOCKQUOTE>
+<h3><A href="#TOC35" name="SEC35">2.2.4 Polls</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE>Polls are a special type of that allow community members to 
+vote on an idea or issue.&nbsp; Polls can only be made from the top post in a topic. 
+<BR>
+<BR>
+<B>Poll Question</B> - This is the subject of the Poll, the question 
+that is being <I>answered</I> by the poll.&nbsp; The poll question appears at the top 
+of the topic, above the poll options.&nbsp; This is required for the poll. 
+<BR>
+<BR>
+<B>Poll Option</B> - Poll Options are the possible answers to the poll 
+question.&nbsp; To add poll options, type the option into the text field and click 
+<U>Add Option</U>.&nbsp; To have a valid poll, at least two options must be offered. 
+<BR>
+<BR>
+<B>Run Poll for</B> - Number of days to run the poll for.&nbsp; After the 
+specified time has passed, the results of the poll are displayed in the topic, 
+and no one else may vote.</BLOCKQUOTE>
+</DIV>
+<BLOCKQUOTE>
+<h3><A href="#TOC36" name="SEC36">2.2.5 BBCode</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE>BBCode is a system that will allow you to format your posts in 
+special ways.&nbsp; The BBCode system uses tags in a way nearly identical to HTML.&nbsp; 
+The primary difference between BBCode and HTML is that BBCode uses square 
+brackets [ and ] instead of angle brackets &lt; and &gt;.&nbsp; For a more detailed 
+description of how BBCode works, click the small </BLOCKQUOTE>
+<BLOCKQUOTE><U>BBCode</U> link on the lower left corner of the <B>Posting Form</B>.&nbsp; <BR>
+<BR>
+<BR>
+Here is a list of sample BBCode and its output: <BR>
+<BR>
+<B>[b]</B>Bolded 
+Text<B>[/b]</B><BR>
+<B>Bolded Text</B> <BR>
+<BR>
+<B>[i]</B>Italicized 
+Text<B>[/i]</B><BR>
+<I>Italicized Text</I> <BR>
+<BR>
+<B>[u]</B>Underlined 
+Text<B>[/u]</B><BR>
+<U>Underlined Text</U> <BR>
+<BR>
+<B>[color=red]</B>Red 
+Text<B>[/color]</B> <B>or</B> <B>[color=#FF0000]</B>Red 
+Text<B>[/color]</B><BR>
+<SPAN style="COLOR: red">Red Text</SPAN> 
+<BR>
+<BR>
+<B>[size=24]</B>Bigger Text<B>[/size]</B><BR>
+<SPAN 
+style="FONT-SIZE: 24px">Bigger Text</SPAN> <BR>
+<BR>
+<B>[quote]</B>This cheese is 
+delicious<B>[/quote]</B><BR>
+<IMG height="50" alt="Anonymous Quote" src="anon_quote.gif" width="235" border="0"> 
+<BR>
+<BR>
+<B>[quote="The Cheese Man"]</B>This cheese is 
+delicious.<B>[/quote]</B><BR>
+<IMG height="48" alt="Quote" src="quote.gif" width="281" border="0"> 
+<BR>
+<BR>
+<B>[code]</B>if ($cheese == "tasty") { return true; 
+}<B>[/code]</B><BR>
+<IMG height="52" alt="Code" src="code.gif" width="374" border="0"> 
+<BR>
+<BR>
+<B>[list]</B><BR>
+<B>[*]</B>Cheddar Cheese<BR>
+<B>[*]</B>Limburger 
+Cheese<BR>
+<B>[*]</B>Cottage Cheese<BR>
+<B>[/list]</B>
+<UL>
+<LI>Cheddar Cheese 
+<LI>Limburger Cheese 
+<LI>Cottage Cheese </LI>
+</UL>
+<B>[list=1]</B><BR>
+<B>[*]</B>Cheddar 
+Cheese<BR>
+<B>[*]</B>Limburger Cheese<BR>
+<B>[*]</B>Cottage 
+Cheese<BR>
+<B>[/list]</B> 
+<OL type=1>
+<LI>Cheddar Cheese 
+<LI>Limburger Cheese 
+<LI>Cottage Cheese </LI>
+</OL>
+<BR>
+<B>[list=a]</B><BR>
+<B>[*]</B>Cheddar 
+Cheese<BR>
+<B>[*]</B>Limburger Cheese<BR>
+<B>[*]</B>Cottage 
+Cheese<BR>
+<B>[/list]</B> 
+<OL type=a>
+<LI>Cheddar Cheese 
+<LI>Limburger Cheese 
+<LI>Cottage Cheese </LI>
+</OL>
+<B>[url=http://www.PNphpbb.com/]</B>Visit PNphpBB!<B>[/url]</B><BR>
+<A href="http://www.phpbb.com/">Visit PNphpBB!</A>&nbsp; (Link URL:&nbsp; http://www.pnphpbb.com) <BR>
+<BR>
+<B>[url]</B>http://www.phpbb.com/<B>[/url]</B><BR>
+<A href="http://www.phpbb.com/">http://www.pnphpbb.com/</A>&nbsp; (Link URL:&nbsp; http://www.pnphpbb.com) <BR>
+<BR>
+<B>[email]</B>no.one@domain.adr<B>[/email]</B><BR>
+<A href="mailto:no.one@domain.adr">no.one@domain.adr</A> 
+<BR>
+<BR>
+<B>[img]</B>http://www.pnphpbb.com/images/PNphpBB.gif<B>[/img]</B><BR>
+<BR>
+</BLOCKQUOTE>
+</DIV>
+<BLOCKQUOTE>
+<h3><A href="#TOC37" name="SEC37">2.2.6 Smilies</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE>Smilies are small images that appear in posts.&nbsp; Usually they 
+are small images of faces, and are often used to show emotion. <BR>
+To use smilies in your posts, you need to enter a series of characters.&nbsp;
+Common character series are :) for a happy face , :( for a sad face , etc.&nbsp;
+Another common style for smilie character sequences is <I>:emotion:</I> (i.e. the emotion the smilie shows, with a colon &quot;:&quot; before
+and after this).&nbsp; Examples of this are :wink: for a winking face ,
+:lol: for a laughing face , etc. <BR>
+<BR>
+Many templates (including subSilver, the default template) have smilie 
+buttons on the posting form.&nbsp; Normally, this is a grid of the smilies, any of 
+which may be clicked to insert the appropriate character sequence at the current 
+text insertion point.&nbsp; For more information, see <A class="linkage" href="#sec13"> Smilie Administration</A>.</BLOCKQUOTE>
+</DIV>
+<P><FONT face="Verdana, Arial, Helvetica, sans-serif"><BR>
+</FONT>
+</P>
+<BLOCKQUOTE>
+<h3><A href="#TOC38" name="SEC38">2.2.7 Quoting Messages</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE>Quoting messages allows you to include other's posts in your 
+own.&nbsp; It is useful for showing that you are replying to a post, or part of a 
+post. <BR>
+<BR>
+To quote all of someone's post, look at the top right corner of 
+their post and click <U>Quote</U>.&nbsp; This will take you to the posting form, and 
+will allow you to reply to the post.&nbsp; It will also automatically add the 
+appropriate <B>BBCode</B> to your post to quote the post you are replying to. 
+<BR>
+<BR>
+The proper syntax to quote a post is: <BR>
+<BR>
+[quote="<I>&lt;name to 
+quote&gt;</I>"]<I>&lt;text to quote&gt;</I>[/quote] <BR>
+<BR>
+<I>&lt;name to 
+quote&gt;</I> is the source of your quote, and <I>&lt;text to quote&gt;</I> is 
+what you are quoting.&nbsp; So to quote the user <I>Cheese Man</I> saying "Power the 
+behold of cheese." <BR>
+<BR>
+[quote="Cheese Man"]Power the behold of 
+cheese[/quote] <BR>
+<BR>
+For more information, see <A class="linkage" href="#sec36"> BBCode</A>.</BLOCKQUOTE>
+</DIV>
+<P><FONT 
+face="Verdana, Arial, Helvetica, sans-serif"><BR>
+</FONT>
+</P>
+<BLOCKQUOTE>
+<h3><A href="#TOC39" name="SEC39">2.2.8 Editing Posts</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE>Editing posts allows you to go back and fix errors, remove 
+incorrect information, or add new information to your posts.&nbsp; To edit a post, 
+look at the top right corner of your post and click <U>Edit</U>.&nbsp; You will be 
+taken to the posting form to edit your post, and then click <U>Submit</U> to 
+enter it into the database.&nbsp; If you edit a post after it has been replied to, a 
+small message will appear at the bottom of it indicating how many times it has 
+been edited, and when and by whom the last edit occurred. <BR>
+<BR>
+To delete a 
+post, click <U>Edit</U> and check <B>Delete this Post</B>.&nbsp; Click <U>Submit</U> 
+to finish deleting the post.&nbsp; You may not delete a post if it has been replied 
+to (i.e. it is not the last post in the topic)</BLOCKQUOTE>
+</DIV>
+<P><FONT 
+face="Verdana, Arial, Helvetica, sans-serif"><BR>
+</FONT></P>
+<h2><A href="#TOC40" name="SEC40">2.3 Private Messages</A></h2>
+<P>In PNphpBB2 you have the option of chosing to use the postnuke PM system
+or the built in PNphpBB2 PM system in the forum. This is set in the admin
+area of PNphpBB2. If the forum is set to use the PNphpBB2 PM system then
+the information belows applies.</P>
+<DIV class=body2>Private messages allow users on a board to contact each other out of the
+public eye.&nbsp; Private messages can be described as a cross between
+email, instant messaging, and PNphpBB2 forum posting. <BR>
+<BR>
+<B>Note:</B> If attachments are enabled in the forum, you will be able to send attachments by way of private messages also.<BR>
+<BR>To use private 
+messaging, you must be logged in to the board.&nbsp; Look at the top of any page, and 
+click <U>You have X new message(s)</U>.&nbsp; This will take you to your private 
+messaging center. <BR>
+</DIV>
+<OL>
+  <LI><B>Sending</B> - There are three primary ways to send a private message.&nbsp; First,
+  you may go your private messaging center and click <U>New Post</U>.&nbsp; Secondly, 
+you may click <U>Post Reply</U> from a private message you are reading.&nbsp; 
+Finally, you may click the <B><U>PM</U></B> link on any user's profile or post. 
+<BR>
+  <BR>
+  The posting form is identical to the normal posting form with a few 
+exceptions: <BR>
+  <BR>
+  <B>Username</B> - The username of the person you want to 
+receive the message.&nbsp; If you are replying to a PM, or clicked the 
+<B><U>PM</U></B> link in someone's profile, this field will be automatically 
+filled for you. <BR>
+  <BR>
+  Additionally, PMs may not be <B>Sticky Topics</B>, 
+<B>Announcements</B>, or contain <B>Polls</B>.
+  <LI>
+  <DIV class=body3><B>Receiving</B> - There are three ways that one may be notified of a new private message.&nbsp;
+  Most obvious is the Private message link at the top of every page.&nbsp;
+  It will display <U>You have X new message(s)</U>, where X is the number of new 
+messages you have.&nbsp; You may click this link to take you to your <B>Inbox</B>. 
+<BR>
+  <BR>
+  You may be informed of new PMs by an email sent to the email address 
+your username is registered to.&nbsp; You may also be informed of a new PM by means 
+of a small window that pops up while you are viewing the board.&nbsp; Email and 
+pop-up notification will contain a link to your <B>Inbox</B>.&nbsp; Email and pop-up 
+notification may be enabled/disabled in your <B>Profile</B> (for more 
+information, see <A class="linkage" href="#sec46">Profile Settings</A>) 
+<BR>
+  <BR>
+  Sometimes you may be informed of a new PM, but when you go to your 
+Inbox, there is no new message.&nbsp; This is not a bug, it simply means that the 
+sender must have deleted the PM before you read it.&nbsp; For more information, see 
+<A class=linkage href="phpBB_2_0_Users_Guide.html#section4_3_3">The Outbox</A>. <BR>
+  You may delete messages by selecting them and clicking 
+<U>Delete Marked</U>.&nbsp; Alternatively, you may delete all messages by clicking 
+<U>Delete All</U>.&nbsp; You may also sort/display messages by age by using the 
+dropdown list box in the upper right corner.</DIV>
+  <LI>
+  <DIV class=body3><B>The 
+Outbox</B> - When you send a PM, the message goes to your <B>Outbox</B>.&nbsp; It remains in the Outbox until the recipient visits his/her Inbox, at which point it is moved from your Outbox to their Inbox.&nbsp; While the message remains in your Outbox you may edit or delete your post if you like.&nbsp; The message remains in your control until it is received.</DIV>
+  <LI><B>The 
+Savebox</B> - The Savebox is provided as a place to keep important PMs.&nbsp; Often
+  it is used to save valuable messages from the Inbox, and then you can use
+  the <U>Delete All</U> function to discard the rest. <BR>
+  <BR>
+  You may save 
+messages in your Inbox by selecting the messages (with the checkboxes next to 
+each message) and clicking <U>Save Marked</U>.
+</OL>
+<h2><A href="#TOC41" name="SEC41">2.4 Usergroups</A></h2>
+<P><B>Usergroups</B> are a powerful feature of phpBB 2.0.0.&nbsp; They allow moderator 
+permissions, private permissions, and any other special user settings to be 
+granted to multiple people.&nbsp; This makes it easy to change settings for a group 
+that has things in common without having to edit each user's individual 
+permissions.&nbsp; It is also possible to make the <B>Group Moderator </B>(controls group membership) someone who is not an administrator, granting
+power to users without leaving your board's administration panel vulnerable.<BR>
+</P>
+<OL>
+  <LI><B>Joining a group</B> - There are two ways to join a group.&nbsp; First, you may be added to
+  the group by the group moderator.&nbsp; This is not controlled by the user,
+  but by the group moderator through the group control panel.&nbsp; This
+  is the only way to become a member of a <B>Closed</B> or <B>Hidden</B> group. <BR>
+  <BR>
+  To join an 
+open group, click the small <U>Usergroups</U> link at the top of any page. 
+<BR>
+  <BR>
+  Choose the group to join from the <B>Join a Group</B> dropdown list 
+shown, and click <U>View Information</U>.&nbsp; This will take you to the <B>Group 
+Control Panel</B>.&nbsp; Click <U>Join Group</U> to request membership in the group.&nbsp; 
+The <B>Group Moderator</B> will receive an email informing them of the request, which they must approve
+  before you become a member of the group.&nbsp;.
+  <LI><B>Moderating a Group</B> - For each group, there is one <B>Group Moderator</B>.&nbsp; The group 
+moderator may control membership to the group by adding and removing members.&nbsp; 
+They may also control the <B>Group Type</B>.&nbsp; The group moderator is specified 
+in the admin panel.&nbsp; For more information, see <A class="linkage" href="#sec16">Group Administration</A>.
+  <LI><B>Adding Members</B> - To add members to a group, go to the <B>Group Control 
+Panel</B>.&nbsp; In the lower right corner, there is a text field.&nbsp; Enter the 
+username to add, and click <U>Add Member</U>.&nbsp; Additionally, you may use <U>Find 
+a username</U> if you are not sure of the name of the user to add.
+  <LI><B>Approving Members</B> - To approve a user's membership to a group, go to the <B>Group 
+Control Panel</B>.&nbsp; Look at the bottom of the page at the <B>Pending Members</B> 
+section.&nbsp; Check the box next to the member(s) to approve and click <U>Approve 
+Selected</U>.&nbsp; You may similarly select and deny a user's membership to the 
+group. <BR>
+  <BR>
+  When a user requests to join a group, email will be sent to the 
+group moderator with a link to the <B>Group Control Panel</B>.&nbsp; This allows the 
+group moderator to be notified, speeding the approval process.
+  <LI><B>Removing Members</B> - To remove members from a group, go to the <B>Group Control 
+Panel</B>.&nbsp; Check the boxes next to the names of members to remove, and click 
+<U>Remove Selected</U>.
+  <LI><A name="grtype"><B>Group Types (Open, Hidden, Closed)</B></A> - Group types may be changed by the group moderator or a board administrator in the <B>Group Control Panel</B>.&nbsp; They may also be changed by 
+board administrators in the <B>Group Management</B> section of the admin panel.&nbsp; 
+For more information, see <A class="linkage" href="#sec16"> Group Administration</A>.
+  <OL>
+    <LI><B>Open</B> - All users may see the group and group members.&nbsp; Users may request
+    membership to this group.&nbsp; For more information, see Joining a Group. 
+    <LI><B>Closed</B> - All users may see the group and group members.&nbsp; Users may not 
+request membership to the group, but may be added by the group moderator.
+    <LI><B>Hidden</B> - The group and its members are not visible to normal users.&nbsp; 
+Users may be added by the group moderator.&nbsp; If a hidden group is moderator of a 
+forum, the group <B><I>will</I></B> show up in the <B>Moderators</B> list.
+  </OL>
+  <BR>
+</OL>
+<h2><A href="#TOC42" name="SEC42">2.5 Searching</A></h2>
+<P>With PNphpBB2 you have the option of using one of the optional search includes
+that work with the postnuke search function and using the built in search
+function of the forum. The following information is related to the built
+in serach function of PNphpBB2.<BR>
+PNphpBB2 has a built in search system that will allow you to find topics
+you are interested in.&nbsp; To get to the search page, click the small
+<U>Search</U> link at 
+the top of any page. <BR>
+</P>
+<BLOCKQUOTE>
+<h3><A href="#TOC43" name="SEC43">2.5.1 Search Query</A></h3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE><B>Search for Keywords</B>
+- You may search for words in the 
+content of topics.&nbsp; Enter the words to search for into the text field.&nbsp; 
+<BR>
+<BR>
+If you select <B>Search for any terms or use query as entered</B>, then 
+topic containing ANY of the words you entered will be displayed.&nbsp; You may use 
+the <B>AND</B>, <B>OR</B>, and <B>NOT</B> operators to indicate which words you 
+want to search for.&nbsp; Use <B>AND</B> to indicate that multiple words MUST be 
+found.&nbsp; Use <B>OR</B> to indicate that a word is optional/alternate.&nbsp; Use 
+<B>NOT</B> to indicate that a word should not be present in the topics 
+displayed. <BR>
+<BR>
+If you select <B>Search for all terms</B>, only topics 
+containing all of the words in the query will be displayed.&nbsp; Selecting this 
+option has effects comparable to using <B>Search for any terms or use query as 
+entered</B>, with the <B>AND</B> operator between each term. <BR>
+<BR>
+You may use 
+the asterisk(*) wildcard character to broaden your search.&nbsp; The asterisk will 
+match any number of characters.&nbsp; So <I>*cheese*</I> will match <I>cheese</I>, 
+<I>cheesewheel</I>, <I>wheelcheese</I>, or <I>wheelcheesewheel</I>.&nbsp; Likewise 
+<I>cheese*fudge</I> will match <I>cheesefudge</I>, <I>cheeseyfudge</I>, or 
+<I>cheese597fudge</I>. <BR>
+<BR>
+To increase the speed and decrease the overhead 
+of the search utility, only words may be searched for.&nbsp; Phrases (such as "cheese 
+wheel") may not be searched for, except by their component words.&nbsp; The minimum 
+size for words is four characters, and the maximum size is twenty characters.&nbsp; 
+Any non-alphanumeric character (e.g. white space and punctuation) is a word 
+boundary.&nbsp; <BR>
+<BR>
+<B>Search for Author</B> - You may search for posts by post 
+author.&nbsp; Simply enter the author's username into this text field.&nbsp; You may use 
+the asterisk(*) wildcard in author's names to broaden your search.&nbsp; Again, the 
+asterisk will match any number of characters.</BLOCKQUOTE>
+</DIV>
+<BLOCKQUOTE>
+<H3><A href="#TOC44" name="SEC44">2.5.2 Search Options</A></H3>
+</BLOCKQUOTE>
+<DIV class=body3>
+<BLOCKQUOTE><B>Forum</B>
+- Select the forum you wish to search in, or 
+<B>All available</B>. To search multiple forums, search by <B>Category</B>. 
+<BR>
+<BR>
+<B>Category</B> - Select the category you wish to search in, or <B>All 
+available</B>. <BR>
+<BR>
+<B>Display Results as Posts</B> - Search results will be 
+displayed as a list of the posts.&nbsp; Part of the post that matches the query will 
+be displayed, and the search terms highlighted.&nbsp; For each post there is a ling 
+<BR>
+<BR>
+<B>Display Results as Topics</B> - Search results will be displayed as a 
+list of Topic titles.&nbsp; For each topic there is a link to the forum it is in, the 
+topic itself, and the author of the topic. <BR>
+<BR>
+<B>Search Previous</B> - This 
+dropdown box will allow you to specify the maximum age of posts to display as 
+results of the search.&nbsp; There are also radio buttons here that will allow you to 
+search only the body of posts, or the subject(title) of the posts as well. 
+<BR>
+<BR>
+<B>Sort by</B> - This will allow you to specify how search results are 
+organized.&nbsp; You may sort by Post Time, Post Subject, Topic Title, Author, or 
+Forum.&nbsp; The sort may be in ascending or descending order alphabetically (or 
+chronologically where appropriate) <BR>
+<BR>
+<B>Return first</B> - When <B>Display 
+Results as</B> is set to <B>Posts</B>, this dropdown box will allow you to 
+control how much of the post is displayed in the search result.</BLOCKQUOTE>
+</DIV>
+<h2><A href="#TOC45" name="SEC45">2.6 Watching Topics</A></h2>
+<P>You may subscribe to topics in PNphpBB2.&nbsp; When a topic you are subscribed
+to is replied to, an email will be sent to the email address that your
+username is registered to.&nbsp; The email will contain a link to the topic
+that has been replied to.&nbsp; You will only receive one email per topic
+until the next time you log in to the board.&nbsp;</P>
+<OL>
+  <LI><B>Subscribing to Topics</B> - To subscribe to a topic, look at the lower left corner of the <B>Topic View</B> page.&nbsp; Click the small <U>Watch this topic for replies</U> 
+link. <BR>
+  <BR>
+  Additionally, if you post or reply to a topic, you may check <B>Notify 
+me when a reply is posted</B> to subscribe to a topic.
+  <LI><B>Unsubscribing from Topics</B> - To unsubscribe from a topic, look at the lower left corner of the <B>Topic View</B> page.&nbsp; Click the small <U>Stop watching this topic</U> 
+link.&nbsp; <BR>
+  <BR>
+  Alternatively, you may look at your notification email.&nbsp; At the end of 
+the email (right above the signature) there is a link that will unsubscribe you 
+from the topic.
+</OL>
+<h2><A href="#TOC46" name="SEC46">2.7 Profile Settings</A></h2>
+Most of the profile information used in the forum is obtained from the
+postnuke profile. Any changes made in the postnuke profile is automatically
+updated in the forum at the start of each new forum session. The forum's
+profile page includes a link to the postnuke profile and a button that
+will force the forum to update the user profile information from postnuke
+immediately.<BR>
+The forums profile itself includes mostly forum specific settings.<BR>
+<BLOCKQUOTE>
+<h3><A href="#TOC47" name="SEC47">2.7.1 PNphpBB2 Profile settings</A></h3>
+<OL>
+  <LI><B>Forum signature</B> - This signature can be will be posted at the bottom of each of your posts.
+  <LI><B>Always show my Email Address</B> - If <B>Yes</B> a link to email you will 
+appear in your profile.&nbsp; If set to <B>No</B>, the link will not appear. 
+  <LI><B>Hide your online status</B> - If <B>Yes</B> you will not be visible to normal 
+users in the <B>Who is Online?</B> list at the bottom of the <B>Forum Index</B>. Note: This will only work in the forum itself it will not hide your online
+  status in postnuke.
+  <LI><B>Always notify me of replies</B> - If <B>Yes</B> then the <B>Notify me when a 
+reply is posted</B> checkbox on the posting form will be checked by default.&nbsp; 
+You may still uncheck it each time you post. 
+  <LI><B>Notify on new Private Messages</B> - If <B>Yes</B> an email will be sent to 
+your registered email address each time you receive a private message.
+  <LI><B>Pop up window on new Private Messages</B> - If <B>Yes</B> you will see a pop 
+up window notifying you of new Private Messages you receive while browsing the 
+forums. 
+  <LI><B>Always attach my signature</B> - If <B>Yes</B> then the <B>Attach 
+signature</B> checkbox on the posting form will be checked by default.&nbsp; You may 
+still uncheck it each time you post.
+  <LI><B>Always allow BBCode</B> - If <B>Yes</B> then the <B>Disable BBCode in this 
+post</B> checkbox on the posting form will be unchecked by default.&nbsp; You may 
+still check it each time you post. 
+  <LI><B>Always allow HTML</B> - If <B>Yes</B> then the <B>Disable HTML in this 
+post</B> checkbox on the posting form will be unchecked by default.&nbsp; You may 
+still check it each time you post. 
+  <LI><B>Always enable Smilies</B> - If <B>Yes</B> then the <B>Disable Smilies in this 
+post</B> checkbox on the posting form will be unchecked by default.&nbsp; You may 
+still check it each time you post. 
+  <LI><B>Board Style</B> - Selects the style that the board.&nbsp; This setting will not 
+work if the administrator has turned on <B>Override user style</B>.
+</OL>
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><A href="#TOC48" name="SEC48">2.7.2 Avatars</A></H3>
+</BLOCKQUOTE>
+<BLOCKQUOTE>Avatars are small pictures that display each post.&nbsp; Each user may choose his/her own avatar.&nbsp; However, permission to allow users to have avatars is controlled by the board administrator.&nbsp; Each of the following settings may be enabled/disabled in the Administration Panel.
+<OL>
+  <LI><B>Gallery Avatars</B> - You may choose your avatar from a gallery of avatars.&nbsp; 
+The gallery is a collection of avatars stored on the server that the board is 
+running on.&nbsp; To select an avatar from the gallery, click <U>Show Gallery</U>.&nbsp; 
+You may use the dropdown list at the top of the gallery to navigate between 
+categories of avatars.&nbsp; To choose an avatar, check the radio button underneath 
+it and click <U>Select Avatar</U>. <B>Note:</B> At install the forum will use the avatar from the postnuke profile if
+  one is available. Afterwards you can use the &quot;From Postnuke&quot;
+  button to have the forum update your avatar from postnuke. Also the postnuke
+  avatars are available in the gallery.
+  <LI><B>Remotely Linked Avatars</B> - You may use an image that is hosted on another site as your avatar.&nbsp; To do this, just enter the URI into the text field.&nbsp; It is recommended that the images are small and do not deform tables or distract people.&nbsp; Administrators have the ability to block specific users from having an avatar. <B> Note</B>: The file size and avatar size limits that you set in admin have no effect
+  on remote avatars.
+  <LI><B>Uploaded Avatars</B> - If you have an image that you would like to use, you 
+may upload the image to the server that the board is on.&nbsp; You may upload an 
+image on your computer by clicking the <U>Browse</U> button.&nbsp; You may also upload an image by entering the URI that the
+  image is located at.&nbsp; Uploaded images have an admin-controlled limit
+  on file size and image size.
+</OL>
+</BLOCKQUOTE>
+<h2><A href="#TOC49" name="SEC49">2.8 Moderating</A></h2>
+<P>Moderation allows content on your board to be controlled.&nbsp; A moderator
+of a forum may edit, delete, split, or move topics in that forum.&nbsp;
+A moderator may also edit or delete any post in a topic in that forum.&nbsp;
+A board administrator automatically has moderator permissions to every
+forum on that board.&nbsp; Moderator permissions for a specific forum may
+also be granted to a user or group of users.&nbsp;For more information,
+see <A class="linkage" href="#sec18"> Group Permissions</A> and 
+<A class="linkage" href="#sec26">User Permissions</A>. </P>
+<BLOCKQUOTE>
+<h3><A href="#TOC50" name="SEC50">2.8.1 Moderator Control Panel</A></h3>
+To get to the <B>Moderator Control Panel</B>, click the small <U>moderate this 
+forum</U> link.&nbsp; This link appears in the lower right corner of <B>Forum 
+View</B> and <B>Topic View</B> pages that you have moderator permissions in. 
+<BR>
+<OL>
+  <LI><B>Moving Topics</B> - In the <B>Moderator Control Panel</B>, you may move any number 
+of topics from the current forum to another forum.&nbsp; To do this, check the boxes 
+next to each topic and click <U>Move</U>.&nbsp; Select the forum that you would like 
+to move the topics moved to.&nbsp; Select if you would like to leave <B>Shadow 
+Topics</B>, and click <U>Yes</U> to complete the move.
+  <LI><B>Shadow Topics</B> - Shadow Topics may be left when a topic is moved from one forum to another.&nbsp;
+  Shadow topics exist so that when someone commonly checks a topic, they
+  will not be confused when it gets moved.&nbsp; A shadow topic appears in
+  the original forum, and links to the topic in its new forum.&nbsp;&nbsp;
+  The text &quot;Moved: &quot; will appear in front of the shadow topic in
+  the old forum.&nbsp; A shadow topic will not be marked <B>unread</B> when new replies are posted to the topic, so it 
+should eventually move down the forum as new topics are made and replied to.&nbsp; 
+The actual topic (in the new forum) will be updated as replies are posted. 
+<BR>
+  <BR>
+  Suppose there was a topic titled "What kinds of cheese do you like?" in 
+a forum named <I>General Discussion</I>.&nbsp; Suppose that a moderator moved that 
+topic to the <I>Cheese Discussion</I> forum, and left a shadow topic.&nbsp; In the 
+<I>Cheese Discussion</I> forum, there will be the topic named "What kinds of 
+cheese do you like?"&nbsp; This topic will be marked <B>unread</B> as replies are 
+posted to it.&nbsp; In the <I>General Discussion</I> forum there will be a topic 
+named "Moved: What kinds of cheese do you like?"&nbsp; This topic will link directly 
+to the topic in the <I>Cheese Discussion</I> forum, and will not be marked 
+<B>unread</B> as replies are posted.
+  <LI><B>Deleting Topics</B> - In the <B>Moderator Control Panel</B>, you may delete any 
+number of topics.&nbsp; To do this, check the boxes next to each topic and click 
+<U>Delete</U>.&nbsp; You must confirm your decision by clicking <U>Yes</U>.
+  <LI><B>Locking and unlocking topics</B> - In the <B>Moderator Control Panel</B>, you may lock or unlock 
+any number of topics.&nbsp; To do this, check the boxes next to each topic and click 
+<U>Lock</U> or <U>Unlock</U>.&nbsp; A locked topic may only be posted to by 
+moderators and administrators.
+  <LI><B>Splitting Topics</B> - In the <B>Moderator Control Panel</B>, you may split a topic by 
+clicking on the topic title.&nbsp; You will be taken to the <B>Split Topic Control 
+Panel</B>.&nbsp; You may select the posts to split; they will then be removed from 
+the topic and put into a new topic.&nbsp; This will allow you to move off-topic posts 
+to another topic, keeping your topics more organized. <BR>
+  <BR>
+  <B>New Topic 
+Title</B> - The title of the new topic created by the split. <BR>
+  <BR>
+  <B>Forum 
+for new topic</B> - The forum that the new topic will be located in. <BR>
+  <BR>
+  To 
+split only specific posts from a topic, check the box next to each post and 
+click <B>Split selected posts</B>. <BR>
+  <BR>
+  To split a post and every post after 
+that one, select the first post to split and click <B>Split from selected 
+posts.</B>
+              <LI><B>Merge Topics</B> - You can access this option only by way of the its quick action button.(see below). After selecting this option you are taken to the <B>Merge Topic Page</B>.<br>
+              <B>Options on the Merge Topic Page:</B>
+              <OL>
+                <LI><B>New topic title</B> - This will be the new title of the final topic. Let it blank if you want
+                the system to use the title of the destination topic.
+                <LI><B>Topic to merge</B> - This topic will be merge to the other topic. You can input the topic
+                id, the url of the topic, or the url of a post in this topic. By default
+                this will be set to the topic that from which you seleted the merge topic
+                option.
+                <LI><B>Destination topic</B> - This topic will get all the posts of the precedent topic. You can input
+                the topic id, the url of the topic, or the url of a post in this topic.
+                
+                <LI><SPAN class=gen>Leave shadow topic in old forum.</SPAN>
+              </OL> 
+            </OL>
+</BLOCKQUOTE>
+            <BLOCKQUOTE>
+<h3><A href="#TOC51" name="SEC51">2.8.2 Moderator Quick Actions</A></h3>
+<DIV class=body2>Moderator Quick Actions are small buttons at the bottom of each 
+topic.&nbsp; <BR>
+<BR>
+They allow moderation tasks to be performed quickly for the specified
+topic.
+<OL>
+  <LI><B>Moving Topics</B> - To move a topic, click the Move Topic button.&nbsp; <BR>
+  <BR>Select the forum to move the topic to, select whether a shadow topic will be 
+left, and click <U>Yes</U> to complete the move.&nbsp; For more information, see Moving Topics. 
+  <LI><B>Deleting Topics</B> - To delete a topic, click the Delete Topic button. <BR>
+  <BR>
+  You must confirm the delete by clicking <U>Yes</U>.
+  <LI><B>Locking and Unlocking Topics</B> - To lock or unlock a topic, click the Lock Topic button or Unlock Topic
+  button. <BR>
+  <BR>
+  &nbsp;The appropriate button will be displayed based on whether the topic
+  is currently locked or unlocked.&nbsp; A locked topic may only be posted
+  to by moderators and administrators.
+              <LI><B>Splitting Topics</B> - To split a topic, click the Split Topic button. <BR>
+              <BR>
+              You will be taken to the <B>Split Topic Control 
+Panel</B>.&nbsp; For more information, see Splitting Topics.
+              <LI><B>Merge Topics</B> - To merge two topics click the Merge Topic button.
+</OL>
+</DIV>
+</BLOCKQUOTE>
+<h2><A href="#TOC52" name="SEC52">2.9 Reporting Bugs</A></h2>
+Before reporting any bugs please check the support forum (www.pnphpbb.com)
+to see if its already been reported and also check the patch forum to see
+if a patch already exists for the problem. If you do need to report a bug,
+please post in the approiate forum and include the follow information plus
+any additional information that you think might be useful.<BR>
+<P><SPAN style="FONT-WEIGHT: bold">If you are requesting support, PLEASE give us 
+specific information about your site. Some BASIC information would be:</SPAN> 
+<BR>
+<BR>1.) Operating system and version <BR>2.) Web server and version <BR>3.) 
+PHP version <BR>4.) Database type and version (MySQL, Etc) <BR>5.) Any error 
+messages you may be getting <BR>6.) Screen print (cut and paste) or error 
+message. <BR>7.) Link to your site <BR>8.) Upgrading from what version or new 
+install <BR>9.) When did the problem occure. <BR>
+            10.) And any other information 
+that may be useful <BR>
+            11)What version of PostNuke are you using?<BR>
+<BR>Without this information we can not offer support, 
+and we do not want to have to keep asking for this stuff, because it takes up 
+your time and OURS. We truly want to help but you have to help us, help you. We 
+can not test out ALL variations of installs ourselves. <BR>
+<BR>Also PLEASE do 
+not post support or bug topics beginning with HELP! or I can't get it to work, 
+or Nothing happens when. BE SPECIFIC with your subject titles, this will help 
+others in the future read thought the posts for problems already addressed. 
+<BR>
+<BR>Thank you! <BR>
+<BR>The PNphpBB Group</P>
+</td>
+</tr>
+</table>
+
+</TABLE>
+</body>
+</html>

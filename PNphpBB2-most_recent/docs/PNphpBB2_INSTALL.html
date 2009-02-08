@@ -1,0 +1,1030 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<META http-equiv="Content-Style-Type" content="text/css">
+<title>PNphpBB2 INSTALLATION INSTRUCTIONS</title>
+<style type="text/css">
+<!--
+
+.maintitle, h1, h2 {
+   font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+   text-decoration: none; line-height : 120%; color : #000000;
+}
+
+body {
+ background-color: #E5E5E5;
+ scrollbar-face-color: #DEE3E7;
+ scrollbar-highlight-color: #FFFFFF;
+ scrollbar-shadow-color: #DEE3E7;
+ scrollbar-3dlight-color: #D1D7DC;
+ scrollbar-arrow-color:  #006699;
+ scrollbar-track-color: #EFEFEF;
+ scrollbar-darkshadow-color: #98AAB1;
+}
+
+u { color: #006699; text-decoration: none; }
+
+a:link, a:active, a:visited { color : #006699; }
+a:hover  { text-decoration: underline; color : #DD6900; }
+
+font, th, td, p { font-family: Verdana, Arial, Helvetica, sans-serif ;}
+
+.bodyline { background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+p, ul, li, td {color : #000000; font: normal 12px Verdana, Arial, Helvetica, sans-serif; border-color : #000000; line-height : 130%;}
+li.headline {font-size:15pt; font-weight:bold; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif; text-decoration: none; line-height : 120%; color : #006699;}
+li.subhead {font-size:11pt; font-weight:bold; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif; text-decoration: none; line-height : 120%; color : #006699;}
+h2 {font-size:15pt; font-weight:bold; color:red;}
+h3 {font-size:12pt;color:blue;}
+
+//-->
+</style>
+</head>
+
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
+<tr> 
+<td class="bodyline"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<img src="logo.gif" border="0" alt="PNphpBB : The forum for Postnuke" vspace="1" width="200" height="69"></td>
+<td align="center" width="100%" valign="middle"><span class="maintitle">
+<font style="font-size: 17pt">PNphpBB2 INSTALLATION/UPGRADE INSTRUCTIONS</font><font style="font-size: 17pt"><br>
+</font><span style="font-weight: 400"><font size="3">Revised 08/30/2004</font></span></span></td>
+</tr>
+</table>
+
+<h2 align="center">BEFORE YOU DO ANYTHING 
+WITH THIS MODULE READ THESE INSTRUCTIONS FIRST!</h2>
+
+<p><b>There are some limitations of 
+what databases this module supports. Although phpBB2 supports Microsoft</b><font face="Verdana"><b>© 
+Access© one mod (Attachments) does not. Therefore PNphpBB2 does not support it 
+as well. Also none of us use Postgres, so we can not guarantee that the 
+installation will be successful in its current state. Those using Postgres can 
+contact us directly and we will help (with your help) fix any issues you may 
+have.</b></font></p>
+
+<p>Do NOT simply copy, initialize and activate this module. There has been some 
+significant changes to this module and if you are upgrading from a previous 
+version you will NEED TO PERFORM SEVERAL STEPS before proceeding with the 
+upgrade. </p>
+
+<p>This document assumes that you have installed and configured a Postnuke .72x/.75x/.76x 
+site. And are familiar with administration functions specifically with modules and blocks.</p>
+
+<p>For more detailed information on using PNphpBB2 you should read the
+<a target="_new" href="PNphpBB2_Users_Guide.html">User guide</a>. You can access the Users Guide through the administration page once the
+            module is installed.</p>
+
+<p>If you are upgrading from version of the module you can jump to the &quot;<a href="#Updating from a previous version">Updating 
+from a previous version</a>&quot; section.</p>
+
+<ol>
+  <li><a href="#Intro">Introduction</a></li>
+ <li><a href="#PN760 Notes">Using PNphpBB in PostNuke .76x</a></li>
+ <li><a href="#1.2i features">PNphpBB2 1.2i features</a></li>
+ <li><a href="#1.2g features">PNphpBB2 1.2g features</a></li>
+ <li><a href="#1.2a features">PNphpBB2 1.2a features</a></li>
+ <li><a href="#1.2 features">PNphpBB2 1.2 features</a></li>
+ <li><a href="#1.1 features">PNphpBB2 1.1 features</a></li>
+ <li><a href="#1.0 features">PNphpBB2 1.0 features</a></li>
+ <li><a href="#Before you start">Before you start</a></li>
+ <li><a href="#Requirements">Requirements</a></li>
+ <li><a href="#Quick Install">Quick Install</a></li>
+ <li><a href="#New Installations">New Installations</a>
+    <ol type="a">
+    <li><a href="#Turn off compression in Postnuke">Turn off compression in Postnuke</a></li>
+      <li><a href="#Changing the file extension">Changing the file extension</a></li>
+     <li><a href="#Setting file permissions">Setting file permissions</a></li>
+     <li><a href="#Initialize PNphpBB2">Initialize PNphpBB2 </a></li>
+     <li><a href="#Activate PNphpBB2">Activate PNphpBB2</a></li>
+     <li><a href="#Remove the Install directory">Remove the install directory</a></li>
+     <li><a href="#Add a menu item">Add a menu item</a></li>
+     <li><a href="#Configure your forum_install">Configure your forum</a></li>
+     <li><a href="#Install Multi-Block_install">Install Multi-Block (Optional)</a></li>
+    </ol>
+  </li>
+  <li><a href="#Before you convert">Before you convert</a></li>
+ <li><a href="#Converting to PNphpBB2">Converting to PNphpBB2</a></li>
+   <ol type="a">
+   <li><a href="#Backup your databases">Backup your databases</a></li>
+      <li><a href="#Remove existing forum blocks">Remove existing forum blocks</a></li>
+    <li><a href="#Deactivate and remove your existing forum module">Deactivate and remove your existing forum module</a></li>
+    <li><a href="#Remove the config.php file">Remove the config.php file</a></li>
+    <li><a href="#Verify you current installation prefix">Verify you current installation prefix</a></li>
+    <li><a href="#Copy attachment/uploaded avatars to a safe place">Copy attachment/uploaded avatars to a safe place</a></li>
+    <li><a href="#Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a></li>
+    <li><a href="#Obtain additional language files">Obtain additional language files</a></li>
+    <li><a href="#Set permissions">Set permissions</a></li>
+    <li><a href="#Replace the changeinfo.php file">Replace the changeinfo.php file</a></li>
+    <li><a href="#Initialize the module">Initialize the module</a></li>
+    <li><a href="#Activate PNphpBB2">Activate PNphpBB2</a></li>
+    <li><a href="#Remove the install directory">Remove the install directory</a></li>
+    <li><a href="#Restore attachment and avatars">Restore attachment and avatars</a></li>
+    <li><a href="#Remove old modules">Remove old modules</a></li>
+    <li><a href="#Configure your forum_upgrade">Configure your forum</a></li>
+    <li><a href="#Add menu item">Add menu item</a></li>
+    <li><a href="#Install Multi-Block_upgrade">Install Multi-Block (Optional)</a></li>
+  </ol>
+ <li><a href="#Updating from a previous version">Updating from a previous version</a></li>
+   <ol type="a">
+    <li><a href="#Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a></li>
+   <li><a href="#Upgrade the PNphpBB2 in Postnuke">Upgrade the PNphpBB2 in Postnuke</a></li>
+   <li><a href="#Activate PNphpBB2">Activate PNphpBB2</a></li>
+   <li><a href="#Remove the install directory">Remove the install directory</a></li>
+  </ol>
+ <li><a href="#Removal">Removal</a></li>
+  <li><a href="#General Support">General Support</a></li>
+  <li><a href="#Credits">Credits</a></li>
+ <li><a href="#Copyright and disclaimer">Copyright and disclaimer</a></li>
+</ol>
+<ol type="1">
+  <li class="headline"><a name="Intro">Introduction</a></li>
+
+<p>PNphpBB2 is a Postnuke module based on phpBB2 forum (<a href="http://www.phpbb.com">http://www.phpbb.com</a>). Although phpBB2 is a stand alone forum, PNphpBB2 
+integrates the features of phpBB2 (currently version 2.0.20) into Postnuke. PNphpBB2 synchronizes 
+your Postnuke users (by the user_id) and automatically maintains important user 
+data. When a user logs into Postnuke and enters PNphpBB2 for the first time 
+their user data is automatically copied to the forum database. Each time the 
+user re-enters the forum their user data is then refreshed keeping the two in sync. 
+(Some information like signatures and avatars are handled differently between 
+Postnuke and PNphpBB2, so the user needs to maintain separate signatures and 
+avatars, this will be resolved in future version of PNphpBB2)</p>
+<p>A unique feature of PNphpBB2 is the theme integration with Postnuke. There 
+are at least two other Postnuke forum modules based on phpBB2, although all 
+being successful and popular modules for Postnuke neither of them offer any 
+theme integration with Postnuke. As a result with these other modules you where 
+limited to using the default subSilver template and the limited color changes 
+that you could make in the administration menu item styles edit. Although it is probably 
+possible to add new templates to these modules, it would require countless hours 
+of manual editing. <br>
+With the theme integration of PNphpBB2, you have many options. You can use the 
+default color matching part to automatically match the colors of the Postnuke 
+theme. Or you can make custom styles to match one or several Postnuke themes if 
+you allow your users to change themes. In addition you can use custom images in 
+PNphpBB2 with one or several Postnuke themes. All of these require little hand 
+editing by the user and are simple enough that the average user can take 
+advantage of them. <br>
+&nbsp;<br>
+In addition it makes it's easier for the more advance users to adapt new 
+templates for use in PNphpBB2 if needed. </p>
+<p>PNphpBB2 incorporates PNTheme, a theme matching template designed by Batpuppy 
+from <a href="http://www.batpuppy.com/">http://www.batpuppy.com/</a>. 
+PNTheme matches the color and text styles to your existing Postnuke 
+theme and does it on the fly! But that is not the end, PNTheme allows you to add 
+(but not required) custom images and styles to further customize your forum to 
+match your Postnuke theme. You can have as many custom style/images as you have 
+Postnuke themes, or just let PNTheme do all the work. What does this do for you? 
+It prevents you from having to create your own templates for the forum to match 
+your Postnuke theme. As well as spend countless hours modifying your forum themes if 
+new features are added to PNphpBB2 in the future. Please see the section on 
+PNTheme for further information on how to use the theme matching feature of 
+PNphpBB2.</p>
+<p><i>Note: PNTheme will use the stock FI subSilver images for 
+themes that do not have custom styles/images set up for them. (FI subSilver is a 
+custom phpBB2 template adapted for use with PNphpBB2
+<a href="http://www.forumimages.com/">http://www.forumimages.com/</a>) </i></p>
+<p class="MsoNormal"><b><i>Was there a version .1.0c?</i></b> </p>
+<p class="MsoNormal">Version .1.0c was considered to be a developmental release 
+or service release that was intended to fix and improve upon many of the 
+problems some people were encountering with .1.0b. Since there has been 
+“significant” changes to the database layout as well as a major improvement to 
+the session handling routines we felt it wise to skip .1.0c and go right on to 
+1.0. Version 1.0 also added Postnuke Multi-Site support. </p>
+<p class="MsoNormal"><u><i>Note: Although versions 1.0 and above are Postnuke Multi-Site aware, it 
+has not been thoroughly been tested. There may be some issues that will need to be 
+worked out as people start using it in this type of environment. The PNphpBB Group 
+will do its best to help out and repair any problems with this feature.</i></u></p>
+
+  <li class="headline"><a name="PN760 Notes">Using PNphpBB in PostNuke .7.6.x</a></li>
+  <p>One of the features of PNphpBB was its ability to match the forum theme to the current PostNuke theme. 
+  In order to perform this function it needed to write style sheets on the fly. 
+  With the introduction of Xanthia into the core of PostNuke it made it a little more difficult to perform this function. 
+  The solution was to design a new method to create the style sheets, then put them in the correct place within the PostNuke theme.</p>
+  <p>Version 1.2g contains a new theme matching system by where it will obtain the color codes from the current theme, 
+  then it takes a style sheet template (default_style.tpl) and create a new custom style sheet for the particular 
+  PostNuke theme. (Providing one does not already exists) It also creates (the the best of its abilities) a set of 
+  cellpics that are used the decorate the forum tables. Although this new system was designed to work for Xanthia, 
+  it also works well with pervious version of PostNuke as well (.72x).</p>
+  <p><font color="red"><b>Before you upgrade your PostNuke site to .7.6.2, we advise that you upgrade your PNphpBB module to 1.2g. 
+  Versions prior to 1.2g do not work in PostNuke .75x.</b></font><li class="headline">
+	<a name="1.2i features">PNphpBB2 1.2i features</a></li>
+  <p>
+  	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Version 1.2i addresses many of the bugs found in 1.2a-g</li>
+		<li>Update core to phpBB2 2.0.20</li>
+		<li>Upgraded Attachment mod (2.4.3)</li>
+		<li>Updated to allow PNphpBB2 to work within PostNuke .7.6.x</li>
+		<li>Corrected update issues with the install script</li>
+		<li>Flood control on searches</li>
+		<li>Changes to increase compatibility with Xanthia themes</li>
+		<li>Fixed the avatar upload feature</li>
+		<li>Upgraded to version 2.0 of Multi-Block giving admins greater control</li>
+		<li>New Pagination features</li>
+	</ul>
+	<p></p>
+	<li class="headline"><a name="1.2g features">PNphpBB2 1.2g features</a></li>&nbsp;
+  	<p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Version 1.2g addresses many of the bugs found in 1.2a-f</li>
+		<li>Update core to phpBB2 2.0.10</li>
+		<li>Upgraded Attachment mod (2.3.10)</li>
+		<li>HTML 4.0 Validation (Ongoing)</li>
+		<li>Added Post Edit Time mod (Allows admins to limit the amount of time a author can edit their posts)</li>
+		<li>Updated to allow PNphpBB2 to work within PostNuke .75x</li>
+		<li>NEW style matching code</li>
+		<li>NEW Install/Update/Removal code (Now checks to make sure the modules is installed in the correct location)</li>
+	</ul></p>
+	<li class="headline"><a name="1.2a features">PNphpBB2 1.2a features</a></li>
+  	<p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Version 1.2a addresses many of the bugs found in 1.2</li>
+		<li>Update core to phpBB2 2.0.6 (Version 1.2 contained many of the 2.0.6 changes)</li>
+		<li>Online/Offline mod added that shows users who are online while viewing topics.</li>
+		<li>Administration function to allow you to search and replace text within posts</li>
+		<li>Multi-Block updates</li>
+		<li>Improved functionality if attachment mod is disabled.</li>
+		<li>Updated text and graphical version of the forum permissions in the legend</li>
+		<li>Updated moderator functions. Including a topic merge function.</li>
+	</ul></p>
+	<li class="headline"><a name="1.2 features">PNphpBB2 1.2 features</a></li>
+  	<p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Sub-forums/Sub-Cats - Will allow you create and maintain sub-forums or categories to contain your forums for better organization.</li>
+		<li>Re-write of most of the theme matching code, also included theme matching for Rank images.</li>
+		<li>Post icons - You can now add small icons to each and every post.</li>
+		<li>A PNphpBB2 Configuration administration menu, that separates all the PNphpBB2 specific forum configuration data.</li>
+		<li>eXtreme Styles mod by Vjacheslav Trushkin. It is a replacement for the template routines that offer compiling of the templates before they are sent to the user. This dramatically increases the performance of the forum.</li>
+		<li>Topic and forum sort options. The user can specify the sort order of the posts and topics, as well as the operator can specify the sort order of the forums themselves.</li>
+		<li>Split announcement and sticky posts. Allows you to separate the announcements and sticky post in your forums (This is a global option)</li>
+		<li>Announcements on index. This feature allows you to display announcements from all the forums on the index of the forum. Options allow you to specify which forums you do NOT want to display announcements for as well as a time duration of how long they display.</li>
+		<li>NEW Navigation bar. This is a mod that was available from Daz's site
+		<a href="http://www.forumimages.com">www.forumimages.com</a>. We are continuing to develop this mode for us in PNphpBB2 and is currently available only in the view topic area of the forum. This feature can be turned off by modifying the tpl files.</li>
+		<li>Applied the 2.3.7 version of the Attachment mod by Acyd Burn.</li>
+		<li>Updated Multi-Block with a few more features, including a scrolling post list.</li>
+		<li>Many of the PNphpBB2 specific features can now be turned on and off though the PNphpBB2 Configuration menu.</li>
+		<li>PNLite and subSilver style/themes have been removed from this release but are still offered as add on themes for the module.</li>
+	</ul></p>
+	<li class="headline"><a name="1.1 features">PNphpBB2 1.1 features</a></li>
+  	<p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Completely re-written (AGAIN!) session handling routine that matches the functionality of phpBB2 2.0.4. For a detail on what was done please refer to the revision notes. 
+		<a href="PNphpBB2/PNphpBB2/docs/revisions.htm">(revisions .html)</a>.</li>
+		<li>Many Bug fixes see <a href="PNphpBB2/PNphpBB2/docs/revisions.htm">(revisions.html)</a>.</li>
+		<li>Added category titles to forum list drop downs in Pruning and Permissions functions in the administration page.</li>
+		<li>Changed all module.php?op=modload’s to index.php?name=ModName for shorter url’s and new Postnuke module load process.</li>
+		<li>Improved the language handling abilities of the forum by integrating the PN language to the forum.</li>
+		<li>Refined the date time and time zone integration with Postnuke. This involved using the Postnuke date and time functions in place of the once being used by phpBB2.</li>
+		<li>Applied version 2.3.7 of the Attachment-Mod.</li>
+		<li>Repaired the forum title and topic title text size. phpBB2 shows the topic title and the forum title in the page header of the forum as large text.</li>
+		<li>Repaired MultiBlock, some table issues causing problems with some PN themes. Also Changed direct MySQL statement to Postnuke DB call.</li>
+	</ul></p>
+	<li class="headline"><a name="1.0 features">PNphpBB2 1.0 features</a></li>
+  	<p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>Completely re-written session handling routine that matches the functionality of phpBB2 2.0.4. However to remedy some session related issues the advanced session handling introduced in phpBB2 2.0.4 has been removed (commented out). phpBB2 users have reported trouble with this extra added security as well. We feel that with the security features of Postnuke the likelihood of a security problem within PNphpBB2 even with these routines being removed is reduced due to the fact that the forum is being &quot;passed&quot; though Postnuke.</li>
+		<li>Updated PNTheme templates. </li>
+		<li>NEW PNLite theme based on the Fi Plane templates from <i>
+		<a href="http://www.forumimages.com/">http://www.forumimages.com/</a></i>, for low bandwidth users.</li>
+		<li>Re-Written Install/Upgrade scripts. As well as a new delete script. These new scripts will help operators troubleshoot their installations. They report virtually every aspect of the install/upgrade process and report back to you for each and every query process. Then if something does go wrong it will report back to you in detail exactly what went wrong and why. 
+		</li>
+		<li>Postnuke Multi-Site support. The is not multi-forum support (yet), it will allow you to use Multi-Site module of Postnuke to allow you to have multiple forum databases within Postnuke's table prefix structure that handles multi-site’s. This has NOT fully been tested although seems to work ok in a test environment. In order to support this feature, ALL the tables had to be moved under the Postnuke hierarchies. This involves moving existing PNphpBB2 tables into the Postnuke prefixes (default Postnuke table prefix is nuke_). The Install/Upgrade scripts will notify of any problems that may result in this update.</li>
+		<li>Upgrading will now default some of the configuration options that was left out of .1.0b. Namely the default script path, avatar paths. It will also change any users who have subSilver as their default template to PNTheme. As well as default the forum to PNTheme for anonymous users. It will also install the PNLite and Fi subSilver templates.</li>
+		<li>Postnuke avatar integration. This seems to have been a big issues for some, so we think we have come up with a compromise. If you are new user to the forum (never logged into the forum) and you have a Postnuke avatar set, it will be copied (linked) to your PNphpBB2 user profile. It will only do this once. After that PNphpBB2 avatar handling routines take over. PNphpBB2 will also create a pseudo avatar group in the forum avatar gallery that you can pick a new Postnuke avatar if you wish to change it. Or you can click the “From Postnuke” button you grab your current Postnuke avatar. We may change or improve this feature in the future, depending on the feedback we get.</li>
+		<li>PNphpBB2 now includes Multi-Block, a multi purpose block that can be used for a Login, Who’s Online, Last Forum Posts, Forum Status, and a Forum Category block. You can customize the block to include any or all the features above. We are sure you will find this new block very useful.</li>
+		<li>Synchronization of Postnuke signatures are <u>NOT</u> a feature of 1.0. 
+		</li>
+	</ul></p>
+	<li class="headline"><a name="Before you start">Before you start</a></li>
+
+	<p>Please be sure to backup ALL relevant databases and tables. Since the 
+	installation and update scripts have not been tested with all database types. 
+(Only MySQL).&nbsp;</p>
+	<p class="MsoNormal">We will not be held responsible for what may happen to your 
+data by using this module or its scripts, including the install, update, and 
+delete 
+scripts.&nbsp;</p>
+	<p class="MsoNormal">If you have not backed up your database/tables (Postnuke, 
+phpBB2, and any other modules that may be using your Postnuke database) DO NOT 
+PROCEED! If you do and have problems, or loss of data, do not blame us. WE TOLD 
+YOU SO!</p>
+	<p class="MsoNormal">A good utility for backing up your data is phpMyAdmin. It 
+can be found here:
+	<a href="http://www.phpmyadmin.net/" style="color: blue; text-decoration: underline; text-underline: single">http://www.phpmyadmin.net/</a>, 
+	or MySQL 
+Front
+	<a href="http://www.mysqlfront.de/" style="color: blue; text-decoration: underline; text-underline: single">http://www.mysqlfront.de/</a>. Both of these utilities offer the ability to back 
+up your data. (Export/Import) We have found that MySQL Front does a better job at restoring 
+you’re backed up data than phpMyAdmin does. You MUST have an understanding of 
+how these utilities work before you proceed. You can also use MYSQLDUMP that 
+comes with most MySQL installations. Please refer to the MYSQLDUMP help facility 
+for more information on how to perform database backups.</p>
+	<p class="MsoNormal"><i>Note: We did have some trouble restoring and or copying 
+the phpbb_forums table, it continually gave me a key index length error. We were 
+able to resolve the problem by copying the phpbb_forums table with phpMyAdmin after 
+the import/restore was complete using MySQL Front.</i></p>
+	<p class="MsoNormal"><i>Tip: If restoring from a backup (IE: And SQL 
+extract/text file) be sure that ALL the tables are restored before you begin the 
+upgrade process. It was found that on “occasion” tables would get dropped on the way. 
+It could have been just us or the system/utility that was being using. But since it 
+happened more often that not, we felt that it was worth mentioning.</i></p>
+	<p class="MsoNormal">All the above may sound a bit redundant and excessive, BUT 
+we have encountered situations where we have had to restore data from a backup 
+because of unforeseen problems. And we are sure some of you will encounter the 
+same things. We make every attempt to test this module and its corresponding 
+scripts; however since we do not have the ability to test in all possible 
+environments, an ounce of protection is better than loosing valuable data.</p>
+	<p class="MsoNormal">Now that that is out of the way lets proceed.&nbsp;</p>
+	<li class="headline"><a name="Requirements">Requirements</a></li>
+
+	<p>Installation of PNphpBB requires the following:</p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>A web server or web hosting account running on any major Operating System</li>
+		<li>Postnuke .72x or above Installed and running a SQL database system,
+		<b>one 
+of</b>:
+ 		<ul>
+			<li>MySQL (3.22 or higher)</li>
+			<li>PostgreSQL 7.0.3 or higher (preferably 7.1.x or 7.2.x)</li>
+			<li>MS SQL Server (7 or 2000) directly or via ODBC</li>
+			<li>MS Access (2000 or XP) via ODBC (NOT TESTED)</li>
+		</ul></li>
+		<li>A knowledge of installing and maintaining modules and blocks within the 
+Postnuke environment.</li>
+	</ul>
+	<p>If your server or hosting account does not meet the requirements above we are afraid PNphpBB is not for you.</p>
+	<li class="headline"><a name="Quick Install">Quick Install</a></li>
+
+	<p>If you have basic knowledge of using FTP (or have shell access) and are sure your hosting service or server will run 
+PNphpBB2 you can use these steps to quickly get started.</p>
+	<ol>
+		<li>Turn off compression in the Postnuke Administration settings</li>
+		<li>Decompress the PNphpBB2 archive to a local directory on your system. If you 
+are unpacking the archive from a shell be sure it ends up in the Postnuke modules 
+directory, then skip to step 3.</li>
+		<li>Upload all the files contained in this archive (retaining the directory 
+structure) to your <font color="#0000FF">Postnuke modules</font> folder.
+		<li>Change the permissions on the directories ./modules/PNphpBB2/files, 
+./modules/PNphpBB2/images/upload, ./modules/PNphpBB2/templates/PNTheme/styles, and 
+./modules/PNphpBB2/templates/PNTheme/cellpics to be writable by your web server. We do NOT 
+recommend making these world writable. Even though the tgz version of the 
+release sets the permissions to these directories to world writable, we 
+recommend changing these to be writable by your web server once your 
+installation is complete. See your systems administrator for more 
+information if you are unsure about how to do this.</li>
+		<li>Initialize the PNphpBB2 module through the Postnuke module administration 
+page. Verify the installation was completed successfully then choose Finish.</li>
+		<li>Remove the ./modules/PNphpBB2/install directory. (The forum will not 
+function until this directory is removed.)</li>
+		<li>Add a menu item for PNphpBB2 in the menu block [PNphpBB2].</li>
+		<li>Optionally add the PNphpBB2 Multi-Block to your page through the Postnuke block 
+administration page.</li>
+	</ol>
+	<p>If you experienced problems or do not know how to proceed with any of the steps above please read the rest of this document.</p>
+	<li class="headline"><a name="New Installations">New Installations</a></li>
+
+	<p>Installation of PNphpBB2 will vary according to your server and database. If you have 
+	<i>shell access</i> to your account (via telnet or ssh for example) you may want to upload the entire 
+PNphpBB2 archive (in binary mode!) to a directory on your host and unpack it 
+to your Postnuke modules folder.</p>
+	<p>If you do not have shell access or do not wish to use it you will need to decompress the 
+PNphpBB2 archive to a local directory on your system using your favorite compression program, e.g. WinZip, rar, zip, etc. From there you must FTP
+	<b>ALL</b> the files it contains (being sure to retain the directory structure and filenames) to your 
+Postnuke modules folder. Please ensure that the cases of filenames are retained, do
+	<b>NOT</b> force filenames to all lower or upper case doing so will cause 
+problems later.</p>
+	<p>All .php, .inc, .sql, .cfg and .htm files should be uploaded in <b>ASCII</b> mode, while all graphics should be uploaded in 
+	<b>BINARY</b> mode. If you are unfamiliar with what this means please refer to your FTP client documentation. In most cases this is all handled 
+transparently by your ftp client but if you encounter problems later you should be sure the files where uploaded correctly as described here.</p>
+	<ol>
+		<li type="a" class="subhead"><a name="Turn off compression in Postnuke">Turn off compression in Postnuke</a></li>
+ 
+		<p>We have found in some cases that with compression (gzip) turned on in Postnuke 
+will prevent the install/upgrade status screens from displaying. We recommend that 
+until the module is installed/upgrades and activated that this option be turned off. 
+You can find this option in the Postnuke Administration page under settings.</p>
+		<li type="a" class="subhead"><a name="Changing the file extension">Changing the file extension</a></li>
+
+		<p>If the file extension used to execute PHP scripts on your server is
+		<b>NOT</b> .php but for example .php3 or .phtml you should first rename
+		<b>ALL</b> files ending in .php and change the value of $phpEx in <u>extension.inc</u>. In the vast majority of cases this step will be 
+unnecessary. <u><b>(The PNphpBB Group strongly suggests that you do NOT do 
+this!)</b></u></p>
+		<li type="a" class="subhead"><a name="Setting file permissions">Setting file permissions</a></li>
+
+		<p>In order for this module to work correctly you need to be sure you have the correct permissions setup for the PNphpBB2 directory.</p>
+		<p>The following directories need to have write permitions by the web server: (We would highly advise NOT giving them world writable access)<p>
+		<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li><b>./modules/PNphpBB2/files</b>
+			<p>Requierd to allow the attachment mod to work correctly (not required if you are not enabling the attachment mod).</p>
+			</li>
+			<li><b>./modules/PNphpBB2/files/thumbs</b>
+			<p>If you are going to use the thumbnail option for the attachment mod (not required if you are not enabling the attachment mod).</p>
+			</li>
+			<li><b>./modules/PNphpBB2/images/avatars/upload<b>
+			<p>If you are going to allow users to upload avatars.</p></li>
+			<li><b>./modules/PNphpBB2/templates/PNTheme/styles</b></li>
+			<li><b>./modules/PNphpBB2/templates/PNTheme/cellpics</b>
+			<p>To allow the forum to create style information to match your theme.</p>
+			</li>
+		</ul>
+		<li type="a" class="subhead"><a name="Initialize PNphpBB2">Initialize PNphpBB2</a></li>
+
+		<p>Through Postnuke (Logged in a administrator, this is important!), Go to the 
+administration page and select modules. Next select regenerate modules  and scroll down and find PNphpBB2. To the right 
+you should find the <span style="TEXT-DECORATION: underline">Initialize </span>option, select that now. Your screen will pause for a few seconds (maybe longer 
+for slower systems), then you will be presented with a PNphpBB2 installation 
+screen showing you everything the install process did. Please not any errors you 
+encounter. Print the page if necessary so you can accurately report any 
+installation problem you may have to the support forum. If you received no 
+errors you then can proceed by clicking the &quot;Finish&quot; button at the bottom 
+of the page. You will then be returned to the module administration screen.</p>
+		<li type="a" class="subhead"><a name="Activate PNphpBB2">Activate PNphpBB2</a></li>
+
+		<p><b>NEW in 1.2g: The module now activates itself, no need to perform this step</b></p>
+		<p>At this point the install process has created all the databases tables and setup 
+the default forum configuration. You will now need to
+		<span style="TEXT-DECORATION: underline">Activate </span>it. In the module list 
+scroll down to PNphpBB2 and to the right you will now find an <u>Activate</u> 
+link. Click this now. Once 
+it has been activated it will now show up in the Postnuke Administration page as
+		<span style="text-decoration: underline; font-weight: bold">PNphpBB2 
+		</span>. At 
+this point the installation process is now complete.</p>
+		<li type="a" class="subhead"><a name="Remove the Install directory">Remove the Install directory</a></li>
+
+		<p>PNphpBB2 will not allow your to start using or use administration functions before you removed 
+the install directory. Do this now. You could rename it if you wish, or move it 
+to a nonpublic place, but after you have it installed you will never need it 
+again unless you wish to remove the module using the remove script. The install, 
+update, and remove scripts can ONLY be accessed through Postnuke.</p>
+		<li type="a" class="subhead"><a name="Add a menu item">Add a menu item</a></li>
+
+		<p>Last but not least you will want your users to be able to get to your forum. You 
+can do this many ways, but it is suggested you add it to your main menu 
+(modules menu). From the Postnuke Administration page select
+		<span style="font-weight: bold; text-decoration: underline">Blocks 
+		</span>. <br><br>From the View Blocks page, find the Main Menu (If you have a standard Postnuke 
+install, if you have changed the names of course they will be different), and 
+select <span style="text-decoration: underline; font-weight: bold">Edit </span>.
+		<br><br>from here you can either add the forum to the bottom of the menu or in a 
+particular section, In this example we will be placing it in the first position under Modules. On 
+the line that says Modules (for example) select the check box to the right that 
+says Insert Blank After then scroll down to the bottom and click the Commit 
+button. This will take you back to the View Block screen, so go ahead and click 
+the <span style="text-decoration: underline; font-weight: bold">Edit </span>option for the Main Menu again. 
+		<br><br>Now you should have a blank line under the Modules menu item in the column 
+Title. Now type in that blank spot under Modules &quot;Forum&quot;, &quot;My Forum&quot;, or what 
+ever you like to call your new forum. Move to the URL column and enter 
+[PNphpBB2] the [] MUST be used. Next in the Description (it is optional) enter a 
+description of your new forum. <br><br>Lastly scroll down and click Commit and your done.</p>
+		<li type="a" class="subhead"><a name="Configure your forum_install">Configure your forum</a></li>
+
+		<p>At this point PNphpBB2 is install and ready to use, however you should go to 
+the administration section and setup your forum, adding categories and topics. 
+Also by default the attachment mod is disabled, if you choose to use it you will 
+need to activate it from the Attachment Management option in the administration 
+page of the forum.</p>
+		<li type="a" class="subhead"><a name="Install Multi-Block_install">Install Multi-Block (Optional)</a></li>
+
+		<p>If you would like to add a block that can contains the last forum posts, 
+forum statistics, forum category list, or a PNphpBB2 private message aware 
+&quot;Who's online&quot; to your Postnuke site, then you will need to install Multi-Block. Start by entering  the 
+Postnuke Administration page. Then 
+select [b] <span style="TEXT-DECORATION: underline">Blocks </span>. Now select
+		<span style="text-decoration: underline">New Block </span>.<br><br>Now you are presented with a screen asking you to fill out a title for your 
+block, give it a title. <br><br>From the drop down list-box scroll all the way to the bottom and select 
+PNphpBB2/Multi-Block. <br><br>Next choose where you want it to be displayed, centered is best. The PNphpBB2 
+private message aware &quot;Who's online&quot; section only works in a left or right 
+block. <br><br>Choose a language. <br><br>Click Commit changes.&nbsp; <br><br>You will then be presented with a configuration screen where you can choose what 
+features to display in the newly added Multi-Block. Multi-Block is a 
+configurable Postnuke block that can display a wide variety of information. 
+There is a great deal you can configure here so experiment and see what the 
+possibilities are. We will be offering a comprehensive users guide for 
+Multi-Block in the future as well as additional feature in future releases. <br>
+		<br>One you are satisfied with you changes choose Commit.</p>
+		<p>This concludes the new install instructions.</p>
+	</ol>
+	<li class="headline"><a name="Before you convert">Before you convert</a></li>
+
+	<p>PNphpBB2 supports converting from phpBB2 2.0.1 through 2.0.10 stand alone 
+versions. There are no provisions for synchronizing between Postnuke and phpBB2, 
+its strictly a one way street. If you choose to convert to PNphpBB2 from 
+the stand alone version of phpBB2 there are a few things you should know.</p>
+	<ol>
+		<li>Your phpBB2 (phpbb_*) tables must be copied or restored to the Postnuke database 
+  before the conversion can take place.</li>
+		<li>The tables also must have the default phpBB2 table prefix of phpbb_.</li>
+		<li>Its a one way street, ALL Postnuke users will be deleted then the phpBB2 
+  users will be inserted into Postnuke , except for the admin user (user id 2).</li>
+		<li>Have a backup of your phpBB2 databases, because there is NO UNDO.</li>
+	</ol>
+	<p>you can ONLY convert if you are using one of the following modules:</p>
+	<ul style="font-size: 10pt; margin-top: 0in; margin-bottom: 0in" type="disc">
+		<li>phpBB2pnmod-F</li>
+		<li>phpBB2pnmod-203</li>
+		<li>phpBB2pnmod-203-Attachments</li>
+		<li>PNphpBB2 .1.0b/.1.0c</li>
+		<li>phpBB2 2.0.1 through 2.0.20 Stand alone</li>
+	</ul>
+	<p class="MsoNormal">Conversion from DB_phpBB2 from Danboss is not supported at 
+this time due to the fact that DB_phpbb2 inserts the users into the forum based 
+on username and not by Postnuke user id. We may in the future create a 
+conversion script to do this.</p>
+	<li class="headline"><a name="Converting to PNphpBB2">Converting to PNphpBB2</a></li>
+
+	<p>If you already have a version of the module installed please see the &quot;<a href="#Updating from a previous version">Updating 
+from a previous version</a>&quot; 
+section. </p>
+	<ol>
+		<li type="a" class="subhead"><a name="Backup your databases">Backup your databases</a></li>
+   		<p>No explanation needed for this step. Just do it!</p>
+		<li type="a" class="subhead"><a name="Remove existing forum blocks">Remove existing forum blocks</a></li>
+   		<p><b>This is very important!</b> If you upgrade your existing 
+installation and you have blocks installed that use the tables from older 
+version of of this module. you could have serious problems operating and 
+navigating your Postnuke site.</p>
+		<p>If you have problems (or get errors loading your index 
+page) the only way you can fix this is to go in with a database utility 
+(mentioned above) and remove the corresponding block from the {Postnuke table 
+prefix here}_blocks table.</p>
+		<li type="a" class="subhead">
+		<a name="Deactivate and remove your existing forum module">Deactivate and remove your existing forum module</a></li>
+
+		<p>From the Postnuke 
+administration page, select modules, regenerate then deactivate and remove the existing forum module. You 
+do not need to remove the phpBB2 or PNphpBB2 directory at this time.  Be sure to retain 
+the files and avatars directories so that they can be copied over to the new installation 
+directory.</p>
+		<p><i>Note: If you are upgrading from version .1.0b then you 
+may be able to just copy the installation package over top of your existing 
+one. However there have been a number of files added and removed from .1.0b so 
+we advise that you remove all the release files from the old version before 
+installing the new one. You can keep the <b>files</b>, <b>images/avatars</b>, <b>images/ranks</b> (if 
+you use them), and <b>images/smiles</b> directories, but you should delete all the other 
+files.</i></p>
+		<li type="a" class="subhead"><a name="Remove the config.php file">Remove the config.php file</a></li>
+
+		<p>PNphpBB2 version 1.0 and above no longer uses the config.php file located in 
+the modules/PNphpBB2 (or modules/phpBB2) directory. PLEASE DO NOT CONFUSE THIS 
+WITH THE CONFIG.PHP file located in your root Postnuke directory. PNphpBb2 now 
+gets ALL the database 
+information from Postnuke. Since the tables for PNphpBB2 are located within the 
+Postnuke database it is not necessary to duplicated database connection 
+information. The table prefix for the forum MUST be phpbb_.</p>
+		<p>Remove this file now since it is now longer needed. Some 
+blocks still look for this file to find out where the forum data is located ($table_prefix). 
+If you wish to continue to use these blocks you will need to edit them to 
+contain the $table_prefix variable. If you do this be sure to include the 
+Postnuke variable for site prefix something like this:</p>
+		<p>$table_prefix = pnConfigGetVar('prefix') . &quot;_phpbb_&quot;;&nbsp;</p>
+		<p><i>Feature: PNphpBB2 includes Mult-iBlock, a multi 
+purpose block that can be used for a Login, Who’s Online, Last Forum Posts, 
+Forum Status, and a Forum Category block. You can use any combination of the 
+above to customize the block to include any or all the features above. We are 
+sure you will find this new block very useful.</i></p>
+		<li type="a" class="subhead">
+		<a name="Verify you current installation prefix">Verify you current installation prefix</a></li>
+
+		<p>This is another important issue. If you do not use the 
+default table prefix (phpbb_) for your forum, then you will need to change it 
+back to phpbb_ (ALL LOWER CASE) or the upgrade process will not find in and it 
+will perform a NEW install.</p>
+		<p>The other option is to change the $modversion['old_table_prefix'] 
+variable in the <b><u>pnversion.php</u></b> 
+script (defualt = phpbb_). Change this to the same table prefix you have installed. The update 
+program then should be able to find the tables and move them over to the new 
+location. </p>
+		<p><i>Note: some of you may have already made the necessary 
+changes to support Postnuke’s multi-site feature. If you have be sure you have 
+named it {Postnuke table prefix}_phpbb_, if not you will need to set the $modversion['old_table_prefix'] 
+variable in the pnversion.php script as mentioned above.</i>&nbsp;</p>
+		<p>The update script will notify you and abort if it can not 
+find the OLD prefix tables or if the NEW prefix tables are populated, it will 
+NOT overwrite or rename your tables if it can not move them to the new location.</p>
+		<li type="a" class="subhead">
+		<a name="Copy attachment/uploaded avatars to a safe place">Copy attachment/uploaded avatars to a safe place</a></li>
+
+		<p>If you do not allow uploading of avatars <b><u>and</u></b> 
+not use the attachment mod then you can skip this step.</p>
+		<p>It is very important to remember that if you are using the 
+file attachment feature of PNphpBB2 and/or you allow users to upload avatars, 
+that you save the following directories to a safe location.</p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li>phpBB2pnmod-F
+  			<ul>
+				<li>modules/phpBB2/images/avatars</li>
+			</ul></li>
+			<li>phpBB2pnmod-203
+  			<ul>
+				<li>modules/phpBB2/images/avatars</li>
+			</ul></li>
+			<li>phpBB2pnmod-203-Attachments
+  			<ul>
+				<li>modules/phpBB2/images/avatars</li>
+				<li>modules/phpBB2/files</li>
+			</ul></li>
+			<li>PNphpBB2 .1.0b/.1.0c
+  			<ul>
+				<li>modules/PNphpBB2/files</li>
+				<li>modules/PNphpBB2/images/avatars/upload</li>
+			</ul></li>
+		</ul>
+		<p>The above are the default locations so if you have changed 
+their locations then you will need to substitute where you have stored them.&nbsp;</p>
+		<p><i>Tip: This would be a good time to note that PNphpBB2 
+uses modules/PNphpBB2 as its default root to find files. The full path from your 
+web root is no longer needed. The upgrade script will change these for you. You 
+need to go back in after the upgrade is complete and check these locations and 
+move the files associated with these paths, if you have changed them from the 
+default root. (IE: PNphpBB2 does not support reading files from locations 
+beneath the modules/PNphpBB2 directory. PNphpBB2 Update will change the entries 
+in the config table to match this new directory structure.</i></p>
+		<p>If you are going to simply overwrite your existing install 
+(for pervious PNphpBB2 users only) then there is no need to do this the files or 
+directories will not be deleted. We do recommend deleted all the release files 
+before upgrading. To be safe you should back them up anyhow. If you are going to 
+remove/delete the installation then you will want to restore these files to the 
+new locations. </p>
+		<li type="a" class="subhead"><a name="Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a></li>
+
+		<p>Unpack the contents of the PNphpBB2.zip or 
+PNphpBB2.tgz to your Postnuke modules folder. <b><u>THESE MUST</u></b> go in the 
+		<b><u>modules/PNphpBB2</b></u> 
+directory! If you unpack the file 
+into the modules directory it will be placed in the correct directory. If you 
+FTP the files be sure to upload them to the modules/PNphpBB2 this is very 
+important. See <a href="#New Installations">New Installations</a> for a more 
+detailed description of uploading the release files via FTP.</p>
+		<p><i>Note: Many users who have installed or upgraded have 
+insisted on installing the module in the modules/phpBB2 or other directory under 
+modules.. Although there has been some module name reference ($ModName) within 
+PNphpBB2’s code, it is not supported and you will have problems. So do everyone 
+a favor including yourself and be sure that the module is unpacked or uploaded 
+to the <b><u>modules/PNphpBB2</u></b> directory. Also note that the directory is 
+in both upper and lower case (PNphpBB2).</i></p>
+		<p><b>Additional Note:</b> Begining with version 1.2g the module will no longer allow you to copy/upload to the wrong directory. The install/upgrade functions check to be sure the module is in the correct location</p>
+		<li type="a" class="subhead"><a name="Obtain additional language files">Obtain additional language files</a></li>
+
+		<p>Unlike phpBB2 and previous version of this module the installation and update scripts use 
+language specific text to keep installers up to date on what is going on. 
+Although most installers will be able to understand some if not all the English 
+text, We thought it would be nice to include the addition of language specific files for 
+these processes. If it can not find them it will default to English. </p>
+		<p>Obtain the correct language files that it specific to your 
+Postnuke site, the install and update scripts will look for the Postnuke 
+equivalent language file (lang_pnphpbb2.php) in the modules/PNphpBB2/language 
+directory. These are to be installed based on the path structure of the language 
+kit. The path structure of the language kit is the same as the module, if you 
+unpack or upload it to the modules/PNphpBB2 they should find they way home.</p>
+		<p><i>Note:&nbsp; Versions 1.0 and above use an updated lang_pnphpbb2.php 
+language file. If you are going to simply copy over an existing installation be 
+sure that this new language file gets updated, or you will have blank status 
+information in your update process. It will be hard to tell what’s going on.</i></p>
+		<li type="a" class="subhead"><a name="Set permissions">Set permissions</a></li>
+
+		<p>In order for this module to work correctly you need to be 
+sure you have the correct permissions setup for the PNphpBB2 directory. The 
+forum module itself should be world readable; this is one of the single most 
+important issues that comes up when installing this module. The files folder 
+(modules/PNphpBB2/files) and if you are going to allow users to upload avatars 
+(modules/PNphpBB2/avatars/upload) then write access will have to be given to the 
+images folder (modules/images/avatars/upload). Also if you are going to use the 
+thumbnail option for the attachment mod then you will need to create a (thumbs) 
+directory under files and give it write access. You should be able to give these 
+folder write access by the web server, It is strongly advise NOT giving them 
+world writable access. If you are using apache web server and you have the 
+default username for the web server set to “apache” then as long as apache has 
+owner or write access then you will be ok.</p>
+		<p>In order for the theme matching function of the forum to work correctly it will be nesasary
+for you to grant write privlages for the web server for the (modules/PNphpBB2/templates/PNTheme/styles) and
+(modules/PNphpBB2/templates/PNTheme/cellpics) directories.</p>
+		<p><i>Note: According to the Attachment Mod Users Guide, the 
+thumbs 
+directory will be created when the thumbnails option is turned on and the 
+TEST SETTINGS button is selected. See the 
+		<a href="attach_user_guide.html" target="_blank">Attachment Mod User Guide</a> for more information on how to use the Attachment 
+Mod.</i></p>
+		<li type="a" class="subhead"><a name="Replace the changeinfo.php file">Replace the changeinfo.php file</a></li>
+
+		<p>If you replaced the changeinfo file in Postnuke from either the phpBB2pnmod-F 
+or either of the phpBB2pnmod-203 versions you need to replaced it with an 
+original copy from the current version your are running. This file is in the 
+modules/NS-Your_Account/user/modules directory. PNphpBB2 does not use the 
+modified changeinfo.php file any longer, instead this is handled in the forum profile 
+section. You obtain the original changeinfo.php file from a original Postnuke 
+install package&nbsp;
+		<a href="http://www.postnuke.com/" style="color: blue; text-decoration: underline; text-underline: single">www.Postnuke.com</a>.</p>
+		<li type="a" class="subhead"><a name="Initialize the module">Initialize the module</a></li>
+
+		<p>Log-in as administrator through Postnuke, go to the 
+administration section and select modules. <br><br>Next select regenerate modules  and scroll 
+down and find PNphpBB2. To the right you should find the <u>Initialize</u> click 
+this now.&nbsp; Those upgrading from .1.0b will find an upgrade button instead 
+if you forgot to do step
+		<a href="#Deactivate and remove your existing forum module">Deactivate and 
+remove your existing forum module</a> go back and perform this operation 
+before proceeding.<br><br>Your screen will pause for a few seconds (maybe longer for slower systems), then 
+you will be presented with a status screen that will show everything that update 
+script performed, or did not perform. (If you did not successfully update your 
+lang_pnphpbb2.php file you may find a lack of information) At this point the 
+update is complete. You should see where it has moved your table structure to 
+the new Postnuke prefixed table structure. If it is in the default location this 
+should show that it moved the data to nuke_phpbb_*. It will also update or 
+install the Attachment Mod .If you encounter errors other than 
+what is listed on the PNphpBB2 status screen, PLEASE let us know.&nbsp;If you 
+receive errors on for the attachment tables (should be 5 of them) do not worry 
+the update script will discover these are missing and install them 
+automatically.</p>
+		<p>After reviewing the status screen (it can be rather 
+lengthy, so if you encountered errors you may want to print or save this screen) 
+click the “Done” button at the bottom of the page, the module will them be automaticly activated 
+and you will be returned to the module list screen. &nbsp;</p>
+		<p>These new install and update scripts have ONLY been tested 
+with MySQL, there is a possibility that other database types may encounter 
+problems.</p>
+		<p><i><u>Notice: We would like to invite those using  MSSQL, or PostgreSQL to test this install process and delete options and 
+report back to us your findings. Any help on these platforms would be greatly 
+appreciated.</u></i></p>
+		<li type="a" class="subhead"><a name="Activate PNphpBB2">Activate PNphpBB2</a></li>
+
+		<p>NOTE: This step is no longer nessasary because the install/upgrade scripts will automatcily
+activate the module for you. If for some reason the module did not activate then you may attempt to activate
+it manualy.</p>
+		<p>Now that PNphpBB2 is Initialized/Updated you will need to 
+Activate it. Do this now. Once it has been activated it will now show up in the 
+Postnuke Administration page as PNphpBB2.</p>
+		<li type="a" class="subhead"><a name="Remove the install directory">Remove the install directory</a></li>
+
+		<p>For your safety the module will be allow you to use or 
+administrate the forum until  the modules/PNphpBB2/install directory has been 
+removed. Do that now. You could rename it if you wish, or move it to a nonpublic 
+place, but after you have it installed you will never need it again unless you 
+want to remove PNphpBB2. PNphpBB2 versions 1.0 and above now include a removal script that will 
+remove ALL the tables from the Postnuke database. This is another reason to 
+delete the install directory. If you remove the module from Postnuke you will be 
+reminded that the tables still exist and the module simple has been removed from 
+Postnuke’s module database. If you want to allow PNphpBB2 to remove the tables 
+you will need to have the remove_pnphpbb2.php in the install directory. PLEASE 
+USE WITH CAUTION!</p>
+		<li type="a" class="subhead"><a name="Restore attachment and avatars">Restore attachment and avatars</a></li>
+
+		<p>If you do not allow uploading of avatars <b><u>and</u></b> 
+not use the attachment mod then you can skip this step.&nbsp;</p>
+		<p>Now that the forum update is complete you can now copy/move 
+any attachments or avatars from your previous installation. Be sure you move the 
+attachments to the modules/PNphpBB2/files and user avatars to 
+modules/PNphpBB2/images/avatars/upload directory. Again be sure the web server 
+has read/write access to these directories or you will not be able to uses these 
+features.</p>
+		<li type="a" class="subhead"><a name="Remove old modules">Remove old modules</a></li>
+
+		<p>At this point you should remove the old phpBB2 directory or 
+other instance of PNphpBB2 you may have. It is important that you do this, if 
+not when you regenerate the modules in Postnuke it will find duplicate module 
+and block information in that directory and present you with an error, PLUS you 
+would not want to mistakenly re-initialize the old module. You do not want 
+anything redirecting by mistake to this directory.</p>
+		<li type="a" class="subhead"><a name="Configure your forum_upgrade">Configure your forum</a></li>
+
+		<p>In previous version of the forum module it was necessary to 
+tell the forum exactly where the module was located. The directories needed to 
+have modules/phpBB2 appended to the beginning of the directories that is no 
+longer needed. The update script will attempt to change these as well as a 
+number of other default settings. But you still should review and be sure they 
+are correct. If not then they will need to be manually changed. <br><br>From the Administration page, under General Admin choose Configuration. Then be 
+sure the script path has been changed from modules/phpBB2 to modules/PNphBB2 
+(This is case sensitive). The module no longer looks at this option because it 
+derives the script path from the Postnuke module name. But it would be best to 
+make sure this is populated in the event we missed something. Verify that the 
+following has been done. If not make the necessary changes. We encourage you to 
+keep the default settings for these options so that future updates will go more 
+smoothly for you and there is less chance that you may forget to check them. <br>
+		<br>Smilies Storage Path: images/smiles</p>
+		<p>(This is the directory where all the smilies are stored.)<br><br>Avatar Storage Path: images/avatars/upload</p>
+		<p>(This is where the user uploaded avatars are stored.)<br><br>Avatar Gallery Path: images/avatars/gallery</p>
+		<p>(The location where the avatar categories are stored.)</p>
+		<p>If you are going to add additional avatars to your gallery 
+you will need to copy them to a subdirectory under 
+modules/PNphpBB2/images/avatars/gallery. An example would be if you had a 
+collection of cat and dog related avatars, you would name the directory 
+something like modules/PNphpBB2/images/avatars/gallery/cats_and_dogs and place 
+your images there. The category will then show up when your users select the 
+avatar gallery from their profile.</p>
+		<p>The Postnuke avatar integration creates a virtual category 
+called Postnuke. There is no need to create this directory. Doing so may confuse 
+the gallery.</p>
+		<p>Once you are satisfied with the settings click “Submit”.
+<br><br>If you already had the attachment mod installed then you will need to verify 
+some paths in there as well. <br><br>Under Attachments choose Management<span style="font-size:8.5pt;font-family:
+Arial;color:aliceblue"> </span>and verify the following: <br><br>Upload Directory: files</p>
+		<p>(Location where the uploaded attachments will be stored)</p>
+		<p>This will also contain the directory for storing thumbnails 
+if you have enabled this feature. files/thumbs is assumed and will be created if 
+you choose the Special Categories option from the Extensions admin menu, verify 
+the location of the Imagick Program and choose Test Settings at the bottom of 
+the page. </p>
+		<p>Imagick is the program that creates the thumbnails; it must 
+be installed prior to enabling thumbnails in the attachment mod. For more 
+information on how to obtain and install this option see the
+		<a href="attach_user_guide.html" target="_blank">Attachment Mod User 
+Guide</a>.</p>
+		<p>Attachment Posting Icon: images/icon_clip.gif <br><br>Attachment Topic Icon: images/icon_clip.gif</p>
+		<p>Previous version of this module kept these icons in the 
+Postnuke images folder. You will no longer need them there and can be removed, 
+unless you are using these images else ware.</p>
+		<p>Once you are satisfied with the settings click “Submit”.<br><br>At this point PNphpBB2 is updated and ready to use, however if the attachment 
+mode was newly installed then by default this feature is disabled, if you choose 
+to use it you will need to activate it from the Attachment &nbsp;- Management option 
+in the administration page of the forum. Also if you have not given your users a 
+way to enter the forum or you have updated from something other than PNphpBB2 
+you will need to create/edit the menu item so that it directs to the new module 
+see below.</p>
+		<li type="a" class="subhead"><a name="Add menu item">Add menu item</a></li>
+
+		<p>Last but not least you want your users to be able to get to 
+your forum. You can do this many ways, But it is suggested to add it to your 
+main menu (modules menu).&nbsp;</p>
+		<p>From the Postnuke Administration page select Blocks. <br><br>From the View Blocks page, find the Main Menu (If you have a standard Postnuke 
+install.</p>
+		<p>Choose edit, and from here you can either add the forum to 
+the bottom of the menu or in a particular section, For this example we will be placing it in the 
+first position under Modules. On the line that says Modules (for example) select 
+the check box to the right that says Insert Blank After then scroll down to the 
+bottom and click the Commit button. This will take you back to the View Block 
+screen, so go ahead and click the Edit option for the Main Menu again. <br><br>Now you should have a blank line under the Modules menu item in the column 
+Title. Now type in that blank spot under Modules &quot;Forum&quot;, &quot;My Forum&quot;, or what 
+ever you like to call your new forum. Move to the URL column and enter 
+[PNphpBB2] the []’s and the case MUST be used. Next in the Description (it is 
+optional) enter a description of your new forum. <br><br>Once you are satisfied with the settings click “Commit changes”.</p>
+		<li type="a" class="subhead"><a name="Install Multi-Block_upgrade">Install Multi-Block (Optional)</a></li>
+
+		<p>If had been using the LastXPost block in previous version you should have 
+removed it in step <a href="#Remove existing forum blocks">Remove existing 
+forum blocks</a>. 
+If you would like to add a new block that can contains the last forum posts, 
+forum statistics, forum category list, or a PNphpBB2 private message aware 
+&quot;Who's online&quot; to your Postnuke site, then you will need to install Multi-Block. Start by entering  the 
+Postnuke Administration page. Then 
+select [b] <u>Blocks </u>. Now select
+<u>New Block </u>.<br><br>Now you are presented with a screen asking you to fill out a title for your 
+block, give it a title. <br><br>From the drop down list-box scroll all the way to the bottom and select 
+PNphpBB2/Multi-Block. <br><br>Next choose where you want it to be displayed, centered is best. The PNphpBB2 
+private message aware &quot;Who's online&quot; section only works in a left or right 
+block. <br><br>Choose a language. <br><br>Click Commit changes.&nbsp; <br><br>You will then be presented with a configuration screen where you can choose what 
+features to display in the newly added Multi-Block. Multi-Block is a 
+configurable Postnuke block that can display a wide variety of information. 
+There is a great deal you can configure here so experiment and see what the 
+possibilities are. We will be offering a comprehensive users guide for 
+Multi-Block in the future as well as additional feature in future releases. <br>
+		<br>One you are satisfied with you changes choose Commit.</p>
+		<p>This concludes the update install instructions.</p>
+	</ol>
+	<li class="headline"><a name="Updating from a previous version">Updating from a previous version</a></li>
+
+ 	<p><b>Note: If you have a version of PNphpBB prior to 1.0 please follow the instruction for
+	<a href="#Converting to PNphpBB2">Converting to PNphpBB2</a>.</b></p>
+	<p>Upgrading from a previous version of PNphpBB2 is relatively simple.</p>
+	<ol>
+		<li type="a" class="subhead"><a name="Make backups">Make backups</a></li>
+		<p>As with any upgrade you should always be prepared for the worst. Good backups
+ are always good to have in the event of disaster.<br />Backing up your Postnuke Database will also backup your forums. Also backup
+  your PNphpBB2 directory.</p>
+		<li type="a" class="subhead"><a name="Turn off compression in Postnuke">Turn off compression in Postnuke</a></li>
+ 
+		<p>We have found in some cases that with compression (gzip) turned on in Postnuke 
+will prevent the install/upgrade status screens from displaying. We recommend that 
+until the module is installed/upgrades and activated that this option be turned off. 
+You can find this option in the Postnuke Administration page under settings.</p>
+		<li type="a" class="subhead"><a name="Remove existing module files">Remove existing module files</a></li>
+
+		<p>With previous updates to PNphpBB2 it was not necessary to remove your old PNphpBB2 
+files before upgrading. However there are situations were this may cause problems 
+with some installations due to the fact many administrators use FTP clients to 
+transmit their release files to their servers.<br />Transmission errors DO occur, 
+we have seen it many times in the past. This results in a partial or incomplete 
+install of the release files. <br />The PNphpBB Group recommends that you delete 
+ALL your previous version files before upload/unpacking the new version with 
+the exception of the following files/directories.</p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li>modules/PNphpBB2/files</li>
+			<li>modules/PNphpBB2/images/avatars/uploads</li>
+		</ul>
+		<p>If you have added custom or additional avatars to the gallery then you may 
+want to keep the following directory as well:</p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li>modules/PNphpBB2/images/avatars/gallery</li>
+		</ul>
+		<p>If you have added or customized smilies, rank images, post icons you should 
+keep the following directories respectfully</p>
+		<ul style="margin-top: 0in; margin-bottom: 0in" type="disc">
+			<li>modules/PNphpBB2/images/ranks</li>
+			<li>modules/PNphpBB2/images/posticons</li>
+			<li>modules/PNphpBB2/images/smiles</li>
+		</ul>
+		<p>If you are using the eXtreme Styles mod (Template Compiler) then you should 
+also remove the contents of the <b><u>modules/PNphpBB2/cache</u></b> directory since many of the 
+template files have changed. This will prevent old version of the template from 
+being used once the upgrade is complete.</p>
+		<li type="a" class="subhead"><a name="Unpack the PNphpBB2 package_">Unpack the PNphpBB2 package</a></li>
+
+		<p>If you have moded your copy of PNphpBB2 you may want to use the 
+changes file and manually add the new changes. This file is available as a separate download. We will not support upgrades 
+performed in this way.</p>
+		<p>Follow the procedures in section 
+		<a href="#Unpack the PNphpBB2 package">Unpack the PNphpBB2 package</a> 
+and copy over the existing files in your PNphpBB2 directory. You may want to 
+delete the existing ones before you upload or unpack the new ones so you know 
+that they have been replaced with the new versions. Be careful not to delete 
+your uploaded/attachment files in the files directory or the uploaded avatars 
+directory.</p>
+		<li type="a" class="subhead"><a name="Upgrade the PNphpBB2 in Postnuke">Upgrade the PNphpBB2 in Postnuke</a></li>
+
+		<p>Log-in as administrator through Postnuke, go to the 
+administration section and select modules. <br><br>Next select regenerate modules  and scroll 
+down and find PNphpBB2. To the right you should find the <u>Upgrade</u>, click 
+this now.<br><br>Your screen will pause for a few seconds (maybe longer for slower systems), then 
+you will be presented with a status screen that will show everything that update 
+script performed, or did not perform.&nbsp; At this point the update is 
+complete. It will also update or install the Attachment Mod. If you encounter errors other than 
+what is listed on the PNphpBB2 status screen, PLEASE let us know.<br>After reviewing the status screen (it can be rather 
+lengthy, so if you encountered errors you may want to print or save this screen) 
+click the “Done” button at the bottom and you will be returned to the module 
+list screen.</p>
+		<li type="a" class="subhead"><a name="Activate PNphpBB2">Activate PNphpBB2</a></li>
+
+		<p><b>NEW in 1.2g: The module now activates itself, no need to perform this step</b></p>
+		<p>Now that PNphpBB2 is Updated you will need to 
+Activate it. Do this now. Once it has been activated it will now show up in the Postnuke Administration page as PNphpBB2.</p>
+		<li type="a" class="subhead"><a name="Remove the install directory">Remove the install directory</a></li>
+
+		<p>For your safety the module will be allow you to use or 
+administrate the forum until the modules/PNphpBB2/install directory has been 
+removed. Do that now. You could rename it if you wish, or move it to a nonpublic 
+place, but after you have it installed you will never need it again unless you 
+want to remove PNphpBB2.</p>
+		<p>At this point your update is now complete.</p>
+	</ol>
+	<li class="headline"><a name="Removal">Removing PNphpBB2</a></li>
+
+	<p>PNphpBB2 versions 1.0 and above include a handy (but dangerous) removal script. It can ONLY 
+be accessed though the Post nuke administration page, through the modules <u>Remove</u> link. If you have removed the install directory (You should have), and you wish to use 
+the removal script you will have to restore the install directory from the release archive before 
+performing the removal step.</p>
+	<p>If you use this process keep in mind this will completely remove the PNphpBB2 
+tables from Postnuke, thus deleting all your forums and posts so use this with 
+caution. There has been a number of safe guards put into place that ensures that 
+the site admin is performing the removal process.</p>
+	<li class="headline"><a name="General Support">General Support</a></li>
+
+	<p>Support for PNphpBB2 specifically can be obtained by accessing the forums on
+	<a href="http://www.pnphpbb.com">http://www.pnphpbb.com</a>. There are specific 
+forums for support for PNphpBB2 as well as discussion topics on themes, 
+languages and mods. Although PNphpBB2 is offered &quot;AS-IS&quot; without warranty or 
+specific guarantees, we will offer support where we can. The forum offers 
+support from many other PNphpBB2 users.</p>
+	<p><b><u>PLEASE DO NOT</u></b> contact the authors of phpBB2, or authors of the 
+included mods, directly for support. PNphpBB2 has been developed independently of phpBB2 
+and is not supported by phpBB2.</p>
+	<li class="headline"><a name="Credits">Credits</a></li>
+
+	<p>PNphpBB2 was developed by the joint efforts of the following individuals.</p>
+	<p>The PNphpBB Group</p>
+	<p>PNphpBB2 can now be found in the Postnuke NOC at:</p>
+	<p><a href="http://sourceforge.net/projects/pnphpbb2">hthttp://noc.postnuke.com/projects/pnphpbb2/</a></p>
+	<p>Carls - Carl Slaughter - Programming, Porting and conversion of phpBB2<br>
+	<a href="mailto:carls@itsallbutstraw.com">carls@itsallbutstraw.com</a> or
+	<a href="mailto:carls@pnphpbb.com">carls@pnphpbb.com</a><br>
+	<a href="http://www.itsallbutstraw.com">http://www.itsallbutstraw.com</a> or
+	<a href="http://www.pnphpbb.com">http://www.pnphpbb.com</a></p>
+	<p>Batpuppy - Theme development - PNTheme/PNLite - Debugging and testing<br>
+	<a href="mailto:ppeay@batpuppy.com">ppeay@drpeay.com</a> <br>
+	<a href="http://www.batpuppy.com/">http://www.batpuppy.com/</a></p>
+	<p>Bobt - Language translation and Language packs<br>
+	<a href="mailto:bob@magicfingers.org">bob@magicfingers.org</a><br>
+	<a href="http://no.magicfingers.org/">http://no.magicfingers.org/</a></p>
+	<p>PNphpBB2 is based on phpBB <a href="http://www.phpbb.com">http://www.phpbb.com</a></p>
+	<p>We wish to thank everyone who made contributions to the project no matter how 
+small. We will continue to accept and use suggestions from PNphpBB2 users.</p>
+	<li class="headline"><a name="Copyright and disclaimer">Copyright and disclaimer</a></li>
+
+	<p>This application is open source software released under the 
+	<a href="http://www.gnu.org/licenses/gpl.html" target="_new">GPL</a>. 
+Please see source code and the Docs directory for more details.</p>
+	<p>PNphpBB2 and the PNphpBB Group is in no way affiliated with
+	<a target="_new" href="http://www.pnphpbb.com/">phpBB</a> or the phpBB Group.</p>
+	<p>This package and its contents are Copyright © 2006
+	<a target="_new" href="http://www.pnphpbb.com/">PNphpBB Group</a>, All Rights Reserved.</p>
+</ol>
+</td>
+</tr>
+</table>
+
+</TABLE>
+</body>
+</html>

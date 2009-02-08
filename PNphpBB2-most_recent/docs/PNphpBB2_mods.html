@@ -1,0 +1,723 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>PNTheme and other modsAttachment Mod User Guide</TITLE>
+<style type="text/css">
+<!--
+/*
+  The original subSilver Theme for phpBB version 2+
+  Created by subBlue design
+  http://www.subBlue.com
+*/
+
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;}
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;	border-collapse : collapse; }
+
+.nav	{ font-weight: bold; font-size: 11px; color : #000000;}
+.postbody { font-size : 12px;}
+
+.sampleurl { font-size : 12px; color: green ;}
+
+input, textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
+
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699;}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+td.cat, td.catHead, td.catSides, td.catLeft, td.catRight, td.catBottom {
+			background-image: url('images/cellpic1.gif');
+			background-color:#D1D7DC; border: medium solid #FFFFFF; height: 28px
+;}
+
+td.cat, td.catHead, td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+
+
+.maintitle, h1, h2	{
+			font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #000000;
+}
+
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+u { color: #006699; text-decoration: none; }
+
+a:link, a:active, a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+
+font, th, td, p { font-family: Verdana, Arial, Helvetica, sans-serif ;}
+
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url('images/cellpic3.gif');
+}
+th.thHead, th.thSides, th.thTop, th.thLeft, th.thRight, th.thBottom, th.thCornerL, th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px; }
+td.row3Right, td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid; }
+
+th.thHead, td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides, td.catSides, td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight, td.catRight, td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft, td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom, td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen, .genmed, .gensmall { color : #000000; }
+a.gen, a.genmed, a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover, a.genmed:hover, a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+p, ul, li, td {font-size:10pt;}
+h2 {font-size:15pt; font-weight:bold; color:red;}
+h3 {font-size:12pt;color:blue;}
+
+input, textarea, select {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+input { text-indent : 2px; }
+
+input.button {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+//-->
+</style>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css">
+<!--
+/*
+  The original subSilver Theme for phpBB version 2+
+  Created by subBlue design
+  http://www.subBlue.com
+*/
+
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;}
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; color : #000000; border-color : #000000;	border-collapse : collapse; }
+
+.nav	{ font-weight: bold; font-size: 11px; color : #000000;}
+.postbody { font-size : 12px;}
+
+.sampleurl { font-size : 12px; color: green ;}
+
+input, textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
+
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699;}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+td.cat, td.catHead, td.catSides, td.catLeft, td.catRight, td.catBottom {
+			background-image: url('images/cellpic1.gif');
+			background-color:#D1D7DC; border: medium solid #FFFFFF; height: 28px
+;}
+
+td.cat, td.catHead, td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+
+
+.maintitle, h1, h2	{
+			font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #000000;
+}
+
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+u { color: #006699; text-decoration: none; }
+
+a:link, a:active, a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+
+font, th, td, p { font-family: Verdana, Arial, Helvetica, sans-serif ;}
+
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+;}
+
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url('images/cellpic3.gif');
+}
+th.thHead, th.thSides, th.thTop, th.thLeft, th.thRight, th.thBottom, th.thCornerL, th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px; }
+td.row3Right, td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid; }
+
+th.thHead, td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides, td.catSides, td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight, td.catRight, td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft, td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom, td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen, .genmed, .gensmall { color : #000000; }
+a.gen, a.genmed, a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover, a.genmed:hover, a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+p, ul, li, td {font-size:10pt;}
+h2 {font-size:15pt; font-weight:bold; color:red;}
+h3 {font-size:12pt;color:blue;}
+
+input, textarea, select {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+input { text-indent : 2px; }
+
+input.button {
+border-top-width : 1px; 
+border-right-width : 1px; 
+border-bottom-width : 1px; 
+border-left-width : 1px;  
+}
+
+//-->
+</style>
+</HEAD>
+<BODY bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="10" align="center">
+  
+    <tr>
+      <td class="bodyline">
+      <TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+        <TBODY>
+          <tr>
+            <td>
+          
+          <tr>
+            <td class="bodyline">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              
+                <tr>
+                  <td>
+                  <CENTER>
+                  <TABLE width="877">
+                    <TBODY>
+                      <TR>
+                        <TD align="center" width="220"><IMG height="69" src="logo.gif" width="200" align="left" border="0"></TD>
+                        <TD align="center" width="647"><B><FONT size="5">PNTheme and other mods</FONT></B></TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE>
+                  </CENTER>
+                  <UL>
+                    <LI><A name="TOC1" href="#SEC1">1.0 PNTheme </A>
+                    <UL>
+                      <LI><A name="TOC2" href="#SEC2">1.1 Functions</A>
+                      <LI><A name="TOC3" href="#SEC3">1.2. How to use</A>
+                      <LI><A name="TOC4" href="#SEC4">1.3 Tips on using PNTheme</A>
+                      <LI><A name="TOC5" href="#SEC5">1.4 New</A>
+                      <LI><A name="TOC6" href="#SEC6">1.5 Revisions</A>
+                      <LI><A name="TOC7" href="#SEC7">1.6 PNTheme Support</A>
+                    </UL>
+                    <LI><A name="TOC8" href="#SEC8">2.0 eXtreme Styles mod</A>
+                    <LI><A name="TOC9" href="#SEC9">3.0 Categories Hierarchy</A>
+                  </UL>
+                  <H2><A href="#TOC1" name="SEC1">1.0 PNTheme </A><BR>
+                  </H2>
+                  <B>Note: </B>This Part of the module is under going revision. Most of what is written
+                  below is still correct except that currently the mod automatically creates
+                  a style sheet and cellpics for each postnuke theme the first time it is
+                  loaded. The defaultcss.css file that use to dynamically create an inline
+                  style for the forum had to be removed in order to work with PostNuke .762
+                  and Xanthia and been replaced by this process. This part of the module
+                  was back ported from 1.3dev version so it far from finished. Currently
+                  you will probably need to edit the style sheet created by it manually to
+                  correctly match your forum and adjust or change the cellpics as needed.
+                  In the future online editing/creating of style sheets and online preview
+                  and much more will be added and the color matching of the default created
+                  style sheets will be improved.<BR>
+                  The rest of the mod such as images, ranks and posticons work much the same
+                  they did in the past.
+                  <P class=MsoNormal>Description: The purpose of PNTheme is to better integrate 
+the styles of PNphpBB2 with Postnuke themes. It goes about doing this by adding 
+two functions to the PNphpbb2 module.</P>
+                  <H3><A href="#TOC2" name="SEC2">1.1 Functions</A></H3>
+                  <P class=MsoNormal>Color matching: This part takes the basic bgcolors of the 
+Postnuke theme and uses them to generate the basic colors in the style sheet of 
+the module. The color matching takes place in the defaultcss.php file. You can 
+fine-tune the colors if needed in the configuration part of this file.</P>
+                  <P class=MsoNormal>Custom styles: This is an optional part of PNTheme that 
+allows you to use a custom style with a Postnuke theme. It also allows you the 
+use custom images and/or cellpics if desired.</P>
+                  <H3><A href="#TOC3" name="SEC3">1.2. How to use</A></H3>
+                  <P class=MsoNormal><B>Custom styles:</B><BR><BR>
+                  <B><I>NOTE: Them styles along with the cellpics, images, ranks, and posticons for light and dark (Default is light_blue now) are no longer distributed with the module. stylesadmin.css is no longer used.</I></B><BR><BR>
+                  A few custom styles are included in the module for PNTheme and more are
+                  available for download. The three included are paired with the corresponding
+                  cellpics except for styleadmin.css and are as follows:</P>
+                  <OL>
+                    <LI>light.css - based on the subSilver theme also include will be the cellpics,custom images and posticons based on this same name. This is the same theme used with the postnuke ADS-Ultralight-Blue and PostnukeBlue themes at www.pnphpbb.com.
+                    <LI>dark.css - based on the fiblack theme. It also includes the cellpics,images
+                    and posticons based on this same name. This is the same theme as used at
+                    www.pnphpbb.com with the Postnuke themes Vcore and Bitrate.
+                    <LI>styleadmin.css - This is the custom style adapted to use the data from
+                    edit style in PNphpBB2 admin.
+                  </OL>
+                  <P class=MsoNormal> Other than with the custom styles adapted for the module as examples(available
+                  as an optional download), these will require user setup. To better understand
+                  how to use this part of PNTheme I will explain how it works. <BR>
+                  In general all it does is check certain directories (see below) for 
+predefined files or folders, if they are present then it uses them and if not it 
+uses default settings.<BR>
+                  <BR>
+                  The directory setup used is as 
+follows:<BR>
+                  <BR>
+                    <UL>
+                      <LI>PNTheme
+                        <UL>
+                          <LI>cellpics
+                          <LI>images
+                          <LI>styles
+                          <LI>ranks
+                          <LI>posticons
+                        </UL>
+                      </UL>
+                  <BR>
+                  **styles** In the styles folder you place the adapted phpbb2 style sheet
+                  and name it based on the Postnuke theme you want it to display with. For
+                  example say you adapted the subSilver.css for use with the PostnukeBlue
+                  theme, you would name the file PostnukeBlue.css and place it in the styles
+                  folder.<BR>
+                  **images** In the images folder, you add a new folder named after the Postnuke
+theme that you want the images to display with. Using the above example
+the folder would be named &quot;PostnukeBlue&quot;. Into this folder you
+place the all the custom images except for the cellpics. If you want the
+style to use the default images then you just don't make this folder.<BR>
+                  **cellpics** In the cellpics folder you make a folder based on the Postnuke
+theme name as above. You place all the cellpics for the style in this folder.
+For most custom styles you will use cellpics.<BR>
+                  **ranks** In the ranks folder you make a folder based on the Postnuke theme
+name as above. You place all the rank images for the style in this folder.
+If you want the style to use the default rank images then you just don't
+make this folder.<BR>
+                  **posticons**In the posticons folder you make a folder based on the Postnuke
+theme name as above. You place all the posticons for the style in this
+folder. If you want the style to use the default posticons then you just
+don't make this folder.</P>
+                  <H3><A href="#TOC4" name="SEC4">1.3 Tips on using PNTheme</A></H3>
+                  <P class=MsoNormal><B>Tips on adapting phpbb2 styles as custom styles for 
+PNphpBB2<BR>
+                  </B><BR>
+                  It's not hard to adapt a phpbb2 style for use as a custom 
+style in PNphpBB2.<BR>
+                  You should select a style that designed for either the 
+subSilver template or a similar template.<BR>
+                  Usually you can just use the CSS or 
+style sheet for this style as the bases of the custom style. Unfortunately some 
+styles are not as well designed and many of the changes will be in the 
+theme_info.cfg file instead. I am sure other people will have different methods 
+of doing this but I will detail the way I do it. <BR>
+                  <BR>
+                  ****Custom style sheet 
+*****<BR>
+                  (1) You will need to remove some style tags that conflict with Postnuke.
+Some of the things I remove are as follows:<BR>
+                  <BR>
+                  (a) /* General page style. The scroll bar colours only 
+visible in IE5.5+ */<BR>
+                  body {<BR>
+                  background-color: 
+#E5E5E5;<BR>
+                  scrollbar-face-color: #DEE3E7;<BR>
+                  scrollbar-highlight-color: 
+#FFFFFF;<BR>
+                  scrollbar-shadow-color: #DEE3E7;<BR>
+                  scrollbar-3dlight-color: 
+#D1D7DC;<BR>
+                  scrollbar-arrow-color: #006699;<BR>
+                  scrollbar-track-color: 
+#EFEFEF;<BR>
+                  scrollbar-darkshadow-color: #98AAB1;<BR>
+                  }<BR>
+                  <BR>
+                  (b) /* General font 
+families for common tags */<BR>
+                  font,th,td,p { font-family: Verdana, Arial, 
+Helvetica, sans-serif }<BR>
+                  a:link,a:active,a:visited { color : #006699; 
+}<BR>
+                  a:hover { text-decoration: underline; color : #DD6900; }<BR>
+                  <BR>
+                  (c) /* 
+Copyright and bottom info */<BR>
+                  .copyright { font-size: 10px; font-family: 
+Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: 
+-1px;}<BR>
+                  a.copyright { color: #444444; text-decoration: 
+none;}<BR>
+                  a.copyright:hover { color: #000000; text-decoration: 
+underline;}<BR>
+                  <BR>
+                  Depending on the style, other tags may need to be removed or 
+adjusted but these are the ones seen in most all phpbb2 style sheets.<BR>
+                  <BR>
+                  (2) You need to save the converted style sheet as a css file using the
+name of the Postnuke theme you wish it to be active with. For example if
+you wanted to use it with the PostnukeBlue theme you would name it PostnukeBlue.css.
+You upload this file to the styles folder.<BR>
+                  <BR>
+                  ****Cellpics****<BR>
+                  <BR>
+                  In most cases you will use 
+cellpics with custom styles. To do this you need to do the following:<BR>
+                  (1) 
+Make a folder in the /cellpics folder using the name of the Postnuke theme you 
+wish the cellpics to be associated with. Using the above example you would make 
+a folder named "PostnukeBlue" (cellpics/PostnukeBlue/). You upload the cellpics 
+associated with the custom style to this new folder.<BR>
+                  <BR>
+                  ****custom 
+images****<BR>
+                  <BR>
+                  You can associate custom icons or images with any Postnuke 
+theme. All you do is create a folder in the /images folder using the name of the 
+Postnuke theme. Using the above example, you would make a folder name 
+"PostnukeBlue" (images/PostnukeBlue/). You upload all the custom images to this 
+folder including the language ones (lang_english,ect). Often you will just want 
+to use the default images and in this case, you just don't make this 
+folder.<BR>
+                  <BR>
+                  After doing all this, you need to switch to the Postnuke theme 
+that you set this custom style for and see how it looks. If the colors don't 
+match what the style should look like then you will have to adjust the colors in 
+the style.php page using either the data from theme_info.cfg or you can use 
+colors from the color matching part of the theme mod. To get the colors from the 
+color matching part of the mod, you can temporary rename the custom style, 
+reload the page,and look at the inline style information in the source code of 
+the page.<BR>
+                  <BR>
+                  If you want to make your own custom style (not convert one) 
+then you make it much like you do for phpbb2 itself. You can check the resources 
+there as a starting point.</P>
+                  <H3><A href="#TOC5" name="SEC5">1.4 New</A></H3>
+                  <P>A few new features where added to the theme mod in PNphpBB2 1.2. These
+include the custom rank images and posticons(including custom posticons).
+Among the major things are:<BR>
+                  (1) Minimize/Maximize - This option was added. You can set a default in
+PNphpBB2 admin and can also have a buttom with the top mini icons that
+allows the user to switch between views. Minimize is the normal view within
+postnuke with right blocks. Maximize is a full page view without any postnuke
+blocks but still within the postnuke theme.<BR>
+                  (2)Out of Postnuke Option - Not sure what to call this option but what
+it does is to load the forum within postnuke but outside the postnuke theme.
+The forums themes will then work similar to how they work in a standalone
+forum. How this works is that it assumes that all adapted forum templates
+will include the headerBB2.php file and if it is not present then it will
+load the template as &quot;out of postnuke&quot;.<BR>
+                  (3)Subforum/Subcategory - you can read more about this below. In short
+after you create forums or categories in admin, you can assign them as
+subforums or subcategories to another categories.</P>
+                  <H3><A href="#TOC6" name="SEC6">1.5 Revisions</A></H3>
+                  <P class=MsoNormal>Added version 1.0a<BR>
+                  <BR>
+                  I know that some people like to use 
+the edit in styles administration to adapt a style. So I added a style.php file 
+that uses the information that you enter in styles administration. You will 
+still have to do the cellpics as above. The file is in the PNTheme/styles/ 
+folder and it is called styleadmin.php. You can rename it to associate it with a 
+Postnuke theme. You could actually look at the source code of the page after 
+adapting it using style edit and use the inline style information to make a 
+custom style as described above. Its really better to use custom styles.</P>
+                  <P class=MsoNormal>Added version 1.1<BR>
+                  &nbsp;<BR>
+                  This version includes better 
+integration of the subSilver template into postnuke and adds the PNLite 
+template. PNLite works much the same way as PNTheme except that it includes only 
+the color matching and custom style part from PNTheme. Images and cellpics are 
+not really used that much in this template. This version also includes some core 
+changes that will allow new adapted templates to be added to PNphpBB2 more 
+easily.</P>
+                  <P><BR>
+                  version 1.2<BR>
+                  A lot of the theme mod code that was in seperate files where moved to the
+headerBB2.php file. The conversion of a phpbb2 theme was made simplier.</P>
+                  <H3><A href="#TOC7" name="SEC7">1.6 PNTheme Support</A></H3>
+                  <P class=MsoNormal>For support and to ask questions check 
+at:<BR>
+                  <BR>
+                  http://www.pnphpbb.com/<BR>
+                  or 
+<BR>
+                  http://batpuppy.drpeay.com/<BR>
+                  <BR>
+                  If you find any bugs or have any ideas 
+for improvements please post at the above sites or email 
+me.<BR>
+                  <BR>
+                  Thanks,<BR>
+                  Batpuppy</P>
+                  <H2><A href="#TOC8" name="SEC8">2.0 <SPAN class=hdr>eXtreme Styles mod</SPAN></A></H2>
+                  <P>Created by Vjacheslav Trushkin for phpBB2.0.5 and adapted for use in PNphpBB2.</P>
+                  <P><B>Main features:</B></P>
+                  <UL>
+                    <LI>Fast templates compilation and execution.
+                    <LI>Configurable fast cache system.
+                    <LI>Unlimited PHP in templates.
+                    <LI>Include tpl files inside templates.
+                    <LI>Use different tpl files with usual phpBB and this mod.
+                    <LI>Unlimited switches in one line in .tpl files.
+                    <LI>Auto-update for phpBB, styles, mods.
+                  </UL>
+                  <P>Configuration information for this mod is included in the Admin docs. For more information on the mod itself see this <A href="http://www.trushkin.net/manual.php?cat=xs">site</A>.</P>
+                  <H2><A href="#TOC9" name="SEC9">3.0 Categories Hierarchy</A></h2>
+                  <P>This information is taken from the installation doc.</P>
+                  <BLOCKQUOTE><B>How does it work ?</B> <BR>
+                  You have a forum tree like this : <BR>
+                  Index<BR>
+                  - Cat 1<BR>
+                  --- Forum 1.1<BR>
+                  --- Forum 1.2<BR>
+                  --- Sub-Cat 1.1<BR>
+                  ----- Forum 1.1.1<BR>
+                  ----- Forum 1.1.2<BR>
+                  - Cat 2<BR>
+                  --- Forum 2.1<BR>
+                  --- Forum 2.2<BR>
+                  <HR>
+                  Displaying the index (no category selected) :<BR>
+                  <HR>
+                  <B>vBulletin view</B><BR>
+                  Index<BR>
+                  - Cat 1<BR>
+                  --- Forum 1.1<BR>
+                  --- Forum 1.2<BR>
+                  --- Sub-Cat 1.1<BR>
+                  ----- Forum 1.1.1<BR>
+                  ----- Forum 1.1.2<BR>
+                  - Cat 2<BR>
+                  --- Forum 2.1<BR>
+                  --- Forum 2.2<BR>
+                  <BR>
+                  <B>sub-forum view</B><BR>
+                  Index<BR>
+                  - Cat 1<BR>
+                  --- Forum 1.1<BR>
+                  --- Forum 1.2<BR>
+                  --- Sub-Cat 1.1<BR>
+                  - Cat 2<BR>
+                  --- Forum 2.1<BR>
+                  --- Forum 2.2<BR>
+                  <HR>
+                  Choosing one categorie, ie Cat 1, you'll get on your index this :
+                  <HR>
+                  <BR>
+                  <B>vBulletin view</B><BR>
+                  <BR>
+                  Index &gt; Cat 1<BR>
+                  - Cat 1<BR>
+                  --- Forum 1.1<BR>
+                  --- Forum 1.2<BR>
+                  --- Sub-Cat 1.1<BR>
+                  ----- Forum 1.1.1<BR>
+                  ----- Forum 1.1.2<BR>
+                  <BR>
+                  <B>sub-forum view</B><BR>
+                  <BR>
+                  Index &gt; Cat 1<BR>
+                  - Cat 1<BR>
+                  --- Forum 1.1<BR>
+                  --- Forum 1.2<BR>
+                  --- Sub-Cat 1.1<BR>
+                  <HR>
+                  Or a sub-categorie (not limited in depth), ie Sub-Cat 1 :<BR>
+                  <HR>
+                  <BR>
+                  <B>vBulletin view</B><BR>
+                  <BR>
+                  Index &gt; Cat 1 &gt; Sub-Cat 1.1<BR>
+                  - Sub-Cat 1.1<BR>
+                  --- Forum 1.1.1<BR>
+                  --- Forum 1.1.2<BR>
+                  <BR>
+                  <B>sub-forum view</B><BR>
+                  <BR>
+                  Index &gt; Cat 1 &gt; Sub-Cat 1.1<BR>
+                  - Sub-Cat 1.1<BR>
+                  --- Forum 1.1.1<BR>
+                  --- Forum 1.1.2<BR>
+                  <HR>
+                  Then getting in a forum, ie Forum 1.1.2, you'll get this :<BR>
+                  <HR>
+                  Index &gt; Cat 1 &gt; Sub-Cat 1.1 &gt; Forum 1.1.2<BR>
+                  - post 1<BR>
+                  - post 2<BR>
+                  etc.<BR>
+                  <BR>
+                  <BR>
+                  <HR>
+                  <BR>
+                  Setting the board<BR>
+                  <BR>
+                  To choose the way you want to display your board : <BR>
+                  <BR>
+                  go to Admin Configuration Panel/General Admin/Configuration<BR>
+                  - set &quot;Display sub-categories as forums&quot; :<BR>
+                  sub-forum view : Yes<BR>
+                  vBulletin view : No (&quot;flat&quot; view)<BR>
+                  <BR>
+                  To attach a category to another category :<BR>
+                  <BR>
+                  - go to Admin Configuration Panel/Forum Admin/Management,<BR>
+                  - create it, <BR>
+                  - edit it, <BR>
+                  - on the edit category screen, choose the mother cat by setting &quot;Attached
+to category&quot;<BR>
+                  <BR>
+                  I know this is somewhat hard to follow, but subforums are really simple
+and probably the best way to understand them is to just use them.<BR>
+                  </BLOCKQUOTE>
+                  </td>
+                </tr>
+              
+            </table>
+            
+          
+          </TBODY>
+      </TABLE>
+      
+    
+  
+</TABLE>
+</BODY>
+</HTML>

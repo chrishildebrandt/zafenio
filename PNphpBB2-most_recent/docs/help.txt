@@ -1,0 +1,24 @@
+Quick Install
+
+Please review the complete install/upgrade instructions which are located in the document ./modules/PNphpBB2/docs/PNphpBB2_INSTALL.html. 
+
+Turn off compression in the Postnuke Administration settings.
+
+Change the permissions on the directories ./modules/PNphpBB2/files, ./modules/PNphpBB2/images/upload, ./modules/PNphpBB2/templates/PNTheme/styles, and ./modules/PNphpBB2/templates/PNTheme/cellpics to be writable by your web server. We do NOT recommend making these world writable. Even though the tgz version of the release sets the permissions to these directories to world writable, we recommend changing these to be writable by your web server once your installation is complete. See your systems administrator for more information if you are unsure about how to do this.
+
+If you are installing into a PostNuke version .75x environment and using a Xanthia theme you will need to copy the ./modules/PNphpBB2/Xanthia/function.pnphpbbstylesheet.php file to the ./modules/Xanthia/plugins directory.
+
+Then you will need to edit your ./themes/xanthia_theme_name/templates/master.htm and ./themes/xanthia_theme_name/templates/modules/home.htm files and add the function call &lt;!--[pnphpbbstylesheet]--&gt; somewhere between the &lt;head&gt; and &lt;/head&gt; tags. 
+
+Initialize the PNphpBB2 module through the Postnuke module administration page. Verify the installation was completed successfully then choose Finish.
+
+Remove the ./modules/PNphpBB2/install directory. (The forum will not function until this directory is removed.)
+
+Add a menu item for PNphpBB2 in the menu block [PNphpBB2].
+
+Optionally add the PNphpBB2 Multi-Block to your page through the Postnuke block administration page.
+
+For complete instruction on setting up and using the forum please refer to document ./modules/PNphpBB2/docs/PNphpBB2_Users_Guide.html.
+Thank you for choosing PNphpBB2!
+
+The PNphpBB Group.

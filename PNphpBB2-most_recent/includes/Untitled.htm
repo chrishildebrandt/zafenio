@@ -1,0 +1,110 @@
+<!-- BEGIN switch_msgicon_checkbox -->
+<tr>
+<td valign="top" class="row1"><span class="gen"><b>Messageicon</b></td> 
+<td class="row2" class="gen"> 
+<table width="75%" border="0" cellspacing="0" cellpadding="2">
+<!-- END switch_msgicon_checkbox --> 
+<!-- BEGIN post_images_row -->
+<tr align="center" valign="middle">
+<!-- BEGIN post_images_col -->
+<td><INPUT type="radio" name="msg_icon" value="2" {MSG_ICON_CHECKED2}><img src="{post_images_row.post_images_col.POST_IMAGES_IMG}" border="0" alt="{post_images_row.post_images_col.POST_IMAGES_DESC}" title="{post_images_row.post_images_col.POST_IMAGES_DESC}" width="15" height="15" /></td>
+<!-- END post_images_col -->
+</tr>
+<!-- END post_images_row -->
+<!-- BEGIN switch_msgicon_checkbox -->
+</table></td>
+<tr>
+<!-- END switch_msgicon_checkbox -->
+
+
+<img src="{post_images_row.post_images_column.POST_IMAGE}" alt="{post_images_row.post_images_column.POST_IMAGE_NAME}" title="{post_images_row.post_images_column.POST_IMAGES_NAME}" /></td>
+
+
+// Begin PNphpBB2 Module (Message Icons)
+/*	 		switch ($post_info['post_icon']) { 
+                          case 1 : $msg_icon_checked = 1; break; 
+                          case 2 : $msg_icon_checked = 2; break; 
+                          case 3 : $msg_icon_checked = 3; break; 
+                          case 4 : $msg_icon_checked = 4; break; 
+                          case 5 : $msg_icon_checked = 5; break; 
+                          case 6 : $msg_icon_checked = 6; break; 
+                          case 7 : $msg_icon_checked = 7; break; 
+                          case 8 : $msg_icon_checked = 8; break; 
+                          case 9 : $msg_icon_checked = 9; break; 
+                          case 10 : $msg_icon_checked = 10; break; 
+                          case 11 : $msg_icon_checked = 11; break; 
+                          case 12 : $msg_icon_checked = 12; break; 
+                          case 13 : $msg_icon_checked = 13; break; 
+                          case 14 : $msg_icon_checked = 14; break; 
+                          default : $msg_icon_checked = 0; break; 
+*/                        } 
+// End PNphpBB2 Module (Message Icons)
+
+
+list($image_category) = explode("/",$post_info['post_icon'])
+
+
+	$post_images = array();
+	$post_images_row_count = 0;
+	$post_images_col_count = 0;
+
+//	for ($i = 0; $i < 14; $i++)
+	while( $file = @readdir($dir) )
+	{
+	  if ( preg_match('/(\.gif$|\.png$|\.jpg|\.jpeg)$/is', $file) &&  preg_match('/image_/is', $file) ) 			 
+		{
+		 	 // Now explode the name and number
+			 list(,$num) = explode("_", $file);
+			 list($num) = explode(".", $num);
+//			 die($file . ' / ' . $num);
+		 	 $post_images[$post_images_row_count] = array($num => $file);
+//		 	 $post_images_num[$post_images_row_count][$post_images_col_count] = $num;
+		}
+
+		$post_images_col_count++;
+		if ( $post_images_col_count == 7 )
+		{
+			 $post_images_row_count++;
+			$post_images_col_count = 0;
+		}
+	}
+//	die($post_images_col_count);
+	@closedir($dir);
+	@ksort($post_images);
+	@reset($post_images);
+	
+//	$s_colspan = 0;
+	
+	$template->assign_vars(array(
+	  'L_MSG_ICONS' => $lang['Msg_Icons'],
+	  'L_MSG_ICON_NO_ICON' => $lang['Msg_Icon_No_Icon']
+	));
+
+	for($i = 1; $i < count($post_images); $i++)
+	{
+
+		$template->assign_block_vars("post_images_row", array());
+
+//		$s_colspan = max($s_colspan, count($post_images[$i]));
+//die("images=" . count($post_images));
+		for($j = 1; $j < count($post_images[$i]); $j++)
+		{
+// Begin PNphpBB2 Module
+//	 		die("Here");
+			list($num, $file) = $post_images[$i][$j]; 
+			$checked = ($msg_icon_checked == $num) ? "CHECKED" : "";
+			$template->assign_block_vars('post_images_row.post_images_column', array(
+				"POST_IMAGE" => $post_images_path . '/' . $file, 
+				"POST_IMAGE_NUM" => $num,
+				"POST_IMAGE_CHECKED" => $checked,
+				"S_OPTIONS_POST_IMAGE" => $file)
+			);
+// End PNphpBB2 Module
+		}
+	}
+	opener.document.forms['post'].posticon.value += text;
+	opener.document.forms['post'].message,focus();
+	window.close();
+
+	
+	
