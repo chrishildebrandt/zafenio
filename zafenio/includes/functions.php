@@ -1672,7 +1672,7 @@ function append_sid($url, $params = false, $is_amp = true, $session_id = false)
 	/* This sucks, but it's better than touching all the callers */
 	$name = basename($url);
 	$name = substr($name, 0, strrpos($name, '.'));
-	$url = 'index.php?module=' . PHPBB_MODULE_NAME . '&amp;func=' . $name;
+	$url = 'index.php?module=' . PHPBB_MODULE_NAME . '&amp;file=' . $name;
 
 	// Developers using the hook function need to globalise the $_SID and $_EXTRA_URL on their own and also handle it appropiatly.
 	// They could mimick most of what is within this function
