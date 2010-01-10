@@ -12,7 +12,7 @@ $dbname = $info['dbname'];
 $dbuser = $info['dbuname'];
 $dbpasswd = $info['dbpass'];
 
-$table_prefix = pnConfigGetVar('prefix') . '_phpbb3_';
+$table_prefix = pnConfigGetVar('prefix') . '_zafenio_';
 $acm_type = 'file';
 $load_extensions = '';
 
