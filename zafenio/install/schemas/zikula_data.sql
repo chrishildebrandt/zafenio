@@ -234,6 +234,11 @@ INSERT INTO zk_zafenio_config (config_name, config_value, is_dynamic) VALUES ('s
 INSERT INTO zk_zafenio_config (config_name, config_value, is_dynamic) VALUES ('upload_dir_size', '0', 1);
 INSERT INTO zk_zafenio_config (config_name, config_value, is_dynamic) VALUES ('warnings_last_gc', '0', 1);
 
+-- This will be done by the installer
+INSERT INTO zk_zafenio_config(config_name,config_value) VALUES('board_startdate', NOW());
+INSERT INTO zk_zafenio_config(config_name,config_value) VALUES('default_lang', 'en');
+
+
 # -- Forum related auth options
 INSERT INTO zk_zafenio_acl_options (auth_option, is_local) VALUES ('f_', 1);
 INSERT INTO zk_zafenio_acl_options (auth_option, is_local) VALUES ('f_announce', 1);
