@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: functions_convert.php 8667 2008-06-21 16:05:02Z acydburn $
+* @version $Id$
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -205,10 +205,12 @@ function get_group_id($group_name)
 
 /**
 * Generate the email hash stored in the users table
+*
+* Note: Deprecated, calls should directly go to phpbb_email_hash()
 */
 function gen_email_hash($email)
 {
-	return (crc32(strtolower($email)) . strlen($email));
+	return phpbb_email_hash($email);
 }
 
 /**
@@ -551,7 +553,7 @@ function _import_check($config_var, $source, $use_target)
 	);
 
 	// copy file will prepend $phpBB_root_path
-	$target = $config[$config_var] . '/' . basename(($use_target === false) ? $source : $use_target);
+	$target = $config[$config_var] . '/' . utf8_basename(($use_target === false) ? $source : $use_target);
 
 	if (!empty($convert->convertor[$config_var]) && strpos($source, $convert->convertor[$config_var]) !== 0)
 	{
@@ -567,11 +569,11 @@ function _import_check($config_var, $source, $use_target)
 
 	if ($result['copied'])
 	{
-		$result['target'] = basename($target);
+		$result['target'] = utf8_basename($target);
 	}
 	else
 	{
-		$result['target'] = ($use_target !== false) ? $result['orig_source'] : basename($target);
+		$result['target'] = ($use_target !== false) ? $result['orig_source'] : utf8_basename($target);
 	}
 
 	return $result;
@@ -600,7 +602,7 @@ function import_attachment($source, $use_target = false)
 		{
 			$thumb_dir = $convert->convertor['thumbnails'][0];
 			$thumb_prefix = $convert->convertor['thumbnails'][1];
-			$thumb_source = $thumb_dir . $thumb_prefix . basename($result['source']);
+			$thumb_source = $thumb_dir . $thumb_prefix . utf8_basename($result['source']);
 
 			if (strpos($thumb_source, $convert->convertor['upload_path']) !== 0)
 			{
@@ -1232,6 +1234,11 @@ function get_config()
 			$convert->p_master->error($user->lang['FILE_NOT_FOUND'] . ': ' . $filename, __LINE__, __FILE__);
 		}
 
+		if (isset($convert->config_schema['array_name']))
+		{
+			unset($convert->config_schema['array_name']);
+		}
+
 		$convert_config = extract_variables_from_file($filename);
 		if (!empty($convert->config_schema['array_name']))
 		{
@@ -1264,6 +1271,7 @@ function restore_config($schema)
 	global $db, $config;
 
 	$convert_config = get_config();
+
 	foreach ($schema['settings'] as $config_name => $src)
 	{
 		if (preg_match('/(.*)\((.*)\)/', $src, $m))
@@ -1274,8 +1282,16 @@ function restore_config($schema)
 		}
 		else
 		{
-			$config_value = (isset($convert_config[$src])) ? $convert_config[$src] : '';
-		}
+			if ($schema['table_format'] != 'file' || empty($schema['array_name']))
+			{
+				$config_value = (isset($convert_config[$src])) ? $convert_config[$src] : '';
+			}
+			else if (!empty($schema['array_name']))
+			{
+				$src_ary = $schema['array_name'];
+				$config_value = (isset($convert_config[$src_ary][$src])) ? $convert_config[$src_ary][$src] : '';
+			}
+   		}
 
 		if ($config_value !== '')
 		{
@@ -1698,7 +1714,8 @@ function add_default_groups()
 		'REGISTERED_COPPA'	=> array('', 0, 0),
 		'GLOBAL_MODERATORS'	=> array('00AA00', 1, 0),
 		'ADMINISTRATORS'	=> array('AA0000', 1, 1),
-		'BOTS'				=> array('9E8DA7', 0, 0)
+		'BOTS'				=> array('9E8DA7', 0, 0),
+		'NEWLY_REGISTERED'		=> array('', 0, 0),
 	);
 
 	$sql = 'SELECT *
@@ -1744,6 +1761,7 @@ function sync_post_count($offset, $limit)
 	$sql = 'SELECT COUNT(post_id) AS num_posts, poster_id
 			FROM ' . POSTS_TABLE . '
 			WHERE post_postcount = 1
+				AND post_approved = 1
 			GROUP BY poster_id
 			ORDER BY poster_id';
 	$result = $db->sql_query_limit($sql, $limit, $offset);
@@ -1951,7 +1969,7 @@ function update_dynamic_config()
 		FROM ' . ATTACHMENTS_TABLE . '
 		WHERE is_orphan = 0';
 	$result = $db->sql_query($sql);
-	set_config('upload_dir_size', (int) $db->sql_fetchfield('stat'), true);
+	set_config('upload_dir_size', (float) $db->sql_fetchfield('stat'), true);
 	$db->sql_freeresult($result);
 
 	/**
@@ -2255,7 +2273,7 @@ function copy_file($src, $trg, $overwrite = false, $die_on_failure = true, $sour
 
 	if (substr($trg, -1) == '/')
 	{
-		$trg .= basename($src);
+		$trg .= utf8_basename($src);
 	}
 	$src_path = relative_base($src, $source_relative_path, __LINE__, __FILE__);
 	$trg_path = $trg;

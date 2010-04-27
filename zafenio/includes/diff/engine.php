@@ -2,7 +2,7 @@
 /**
 *
 * @package diff
-* @version $Id: engine.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -17,21 +17,20 @@ if (!defined('IN_PHPBB'))
 }
 
 /**
-* Code from pear.php.net, Text_Diff-0.2.1 (beta) package
-* http://pear.php.net/package/Text_Diff/
+* Code from pear.php.net, Text_Diff-1.1.0 package
+* http://pear.php.net/package/Text_Diff/ (native engine)
 *
 * Modified by phpBB Group to meet our coding standards
 * and being able to integrate into phpBB
 *
-* Class used internally by Diff to actually compute the diffs.  This class is
-* implemented using native PHP code.
+* Class used internally by Text_Diff to actually compute the diffs. This
+* class is implemented using native PHP code.
 *
 * The algorithm used here is mostly lifted from the perl module
 * Algorithm::Diff (version 1.06) by Ned Konz, which is available at:
 * http://www.perl.com/CPAN/authors/id/N/NE/NEDKONZ/Algorithm-Diff-1.06.zip
 *
-* More ideas are taken from:
-* http://www.ics.uci.edu/~eppstein/161/960229.html
+* More ideas are taken from: http://www.ics.uci.edu/~eppstein/161/960229.html
 *
 * Some ideas (and a bit of code) are taken from analyze.c, of GNU
 * diffutils-2.7, which can be found at:
@@ -41,6 +40,8 @@ if (!defined('IN_PHPBB'))
 * Geoffrey T. Dairiki <dairiki@dairiki.org>. The original PHP version of this
 * code was written by him, and is used/adapted with his permission.
 *
+* Copyright 2004-2008 The Horde Project (http://www.horde.org/)
+*
 * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
 * @package diff
 *
@@ -48,6 +49,11 @@ if (!defined('IN_PHPBB'))
 */
 class diff_engine
 {
+	/**
+	* If set to true we trim all lines before we compare them. This ensures that sole space/tab changes do not trigger diffs.
+	*/
+	var $skip_whitespace_changes = true;
+
 	function diff(&$from_lines, &$to_lines, $preserve_cr = true)
 	{
 		// Remove empty lines...
@@ -84,7 +90,7 @@ class diff_engine
 		// Skip leading common lines.
 		for ($skip = 0; $skip < $n_from && $skip < $n_to; $skip++)
 		{
-			if ($from_lines[$skip] !== $to_lines[$skip])
+			if (trim($from_lines[$skip]) !== trim($to_lines[$skip]))
 			{
 				break;
 			}
@@ -97,7 +103,7 @@ class diff_engine
 
 		for ($endskip = 0; --$xi > $skip && --$yi > $skip; $endskip++)
 		{
-			if ($from_lines[$xi] !== $to_lines[$yi])
+			if (trim($from_lines[$xi]) !== trim($to_lines[$yi]))
 			{
 				break;
 			}
@@ -107,12 +113,12 @@ class diff_engine
 		// Ignore lines which do not exist in both files.
 		for ($xi = $skip; $xi < $n_from - $endskip; $xi++)
 		{
-			$xhash[$from_lines[$xi]] = 1;
+			if ($this->skip_whitespace_changes) $xhash[trim($from_lines[$xi])] = 1; else $xhash[$from_lines[$xi]] = 1;
 		}
 
 		for ($yi = $skip; $yi < $n_to - $endskip; $yi++)
 		{
-			$line = $to_lines[$yi];
+			$line = ($this->skip_whitespace_changes) ? trim($to_lines[$yi]) : $to_lines[$yi];
 
 			if (($this->ychanged[$yi] = empty($xhash[$line])))
 			{
@@ -125,7 +131,7 @@ class diff_engine
 
 		for ($xi = $skip; $xi < $n_from - $endskip; $xi++)
 		{
-			$line = $from_lines[$xi];
+			$line = ($this->skip_whitespace_changes) ? trim($from_lines[$xi]) : $from_lines[$xi];
 
 			if (($this->xchanged[$xi] = empty($yhash[$line])))
 			{
@@ -139,8 +145,21 @@ class diff_engine
 		$this->_compareseq(0, sizeof($this->xv), 0, sizeof($this->yv));
 
 		// Merge edits when possible.
-		$this->_shift_boundaries($from_lines, $this->xchanged, $this->ychanged);
-		$this->_shift_boundaries($to_lines, $this->ychanged, $this->xchanged);
+		if ($this->skip_whitespace_changes)
+		{
+			$from_lines_clean = array_map('trim', $from_lines);
+			$to_lines_clean = array_map('trim', $to_lines);
+
+			$this->_shift_boundaries($from_lines_clean, $this->xchanged, $this->ychanged);
+			$this->_shift_boundaries($to_lines_clean, $this->ychanged, $this->xchanged);
+
+			unset($from_lines_clean, $to_lines_clean);
+		}
+		else
+		{
+			$this->_shift_boundaries($from_lines, $this->xchanged, $this->ychanged);
+			$this->_shift_boundaries($to_lines, $this->ychanged, $this->xchanged);
+		}
 
 		// Compute the edit operations.
 		$edits = array();
@@ -159,7 +178,7 @@ class diff_engine
 
 			if ($copy)
 			{
-				$edits[] = &new diff_op_copy($copy);
+				$edits[] = new diff_op_copy($copy);
 			}
 
 			// Find deletes & adds.
@@ -177,15 +196,15 @@ class diff_engine
 
 			if ($delete && $add)
 			{
-				$edits[] = &new diff_op_change($delete, $add);
+				$edits[] = new diff_op_change($delete, $add);
 			}
 			else if ($delete)
 			{
-				$edits[] = &new diff_op_delete($delete);
+				$edits[] = new diff_op_delete($delete);
 			}
 			else if ($add)
 			{
-				$edits[] = &new diff_op_add($add);
+				$edits[] = new diff_op_add($add);
 			}
 		}
 
@@ -251,7 +270,7 @@ class diff_engine
 				}
 			}
 
-			$x1 = $xoff + (int)(($numer + ($xlim-$xoff)*$chunk) / $nchunks);
+			$x1 = $xoff + (int)(($numer + ($xlim - $xoff) * $chunk) / $nchunks);
 
 			for (; $x < $x1; $x++)
 			{
@@ -262,7 +281,8 @@ class diff_engine
 				}
 				$matches = $ymatches[$line];
 
-				foreach ($matches as $y)
+				reset($matches);
+				while (list(, $y) = each($matches))
 				{
 					if (empty($this->in_seq[$y]))
 					{
@@ -273,7 +293,7 @@ class diff_engine
 				}
 
 				// no reset() here
-				while (list($junk, $y) = each($matches))
+				while (list(, $y) = each($matches))
 				{
 					if ($y > $this->seq[$k - 1])
 					{

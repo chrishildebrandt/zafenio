@@ -2,7 +2,7 @@
 /**
 *
 * @package acp
-* @version $Id: acp_jabber.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -44,13 +44,13 @@ class acp_jabber
 		$this->tpl_name = 'acp_jabber';
 		$this->page_title = 'ACP_JABBER_SETTINGS';
 
-		$jab_enable			= request_var('jab_enable', $config['jab_enable']);
-		$jab_host			= request_var('jab_host', $config['jab_host']);
-		$jab_port			= request_var('jab_port', $config['jab_port']);
-		$jab_username		= request_var('jab_username', $config['jab_username']);
-		$jab_password		= request_var('jab_password', $config['jab_password']);
-		$jab_package_size	= request_var('jab_package_size', $config['jab_package_size']);
-		$jab_use_ssl		= request_var('jab_use_ssl', $config['jab_use_ssl']);
+		$jab_enable			= request_var('jab_enable',			(bool)		$config['jab_enable']);
+		$jab_host			= request_var('jab_host',			(string)	$config['jab_host']);
+		$jab_port			= request_var('jab_port',			(int)		$config['jab_port']);
+		$jab_username		= request_var('jab_username',		(string)	$config['jab_username']);
+		$jab_password		= request_var('jab_password',		(string)	$config['jab_password']);
+		$jab_package_size	= request_var('jab_package_size',	(int)		$config['jab_package_size']);
+		$jab_use_ssl		= request_var('jab_use_ssl',		(bool)		$config['jab_use_ssl']);
 
 		$form_name = 'acp_jabber';
 		add_form_key($form_name);
@@ -85,6 +85,20 @@ class acp_jabber
 
 				$jabber->disconnect();
 			}
+			else
+			{
+				// This feature is disabled.
+				// We update the user table to be sure all users that have IM as notify type are set to both as notify type
+				// We set this to both because users still have their jabber address entered and may want to receive jabber notifications again once it is re-enabled.
+				$sql_ary = array(
+					'user_notify_type'		=> NOTIFY_BOTH,
+				);
+
+				$sql = 'UPDATE ' . USERS_TABLE . '
+					SET ' . $db->sql_build_array('UPDATE', $sql_ary) . '
+					WHERE user_notify_type = ' . NOTIFY_IM;
+				$db->sql_query($sql);
+			}
 
 			set_config('jab_enable', $jab_enable);
 			set_config('jab_host', $jab_host);
@@ -103,7 +117,7 @@ class acp_jabber
 			'JAB_ENABLE'			=> $jab_enable,
 			'L_JAB_SERVER_EXPLAIN'	=> sprintf($user->lang['JAB_SERVER_EXPLAIN'], '<a href="http://www.jabber.org/">', '</a>'),
 			'JAB_HOST'				=> $jab_host,
-			'JAB_PORT'				=> $jab_port,
+			'JAB_PORT'				=> ($jab_port) ? $jab_port : '',
 			'JAB_USERNAME'			=> $jab_username,
 			'JAB_PASSWORD'			=> $jab_password,
 			'JAB_PACKAGE_SIZE'		=> $jab_package_size,

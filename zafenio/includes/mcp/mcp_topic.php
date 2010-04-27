@@ -2,7 +2,7 @@
 /**
 *
 * @package mcp
-* @version $Id: mcp_topic.php 8520 2008-04-21 13:17:30Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -46,8 +46,9 @@ function mcp_topic_view($id, $mode, $action)
 	$forum_id		= request_var('f', 0);
 	$to_topic_id	= request_var('to_topic_id', 0);
 	$to_forum_id	= request_var('to_forum_id', 0);
-	$post_id_list	= request_var('post_id_list', array(0));
 	$sort			= isset($_POST['sort']) ? true : false;
+	$submitted_id_list	= request_var('post_ids', array(0));
+	$checked_ids = $post_id_list = request_var('post_id_list', array(0));
 
 	// Split Topic?
 	if ($action == 'split_all' || $action == 'split_beyond')
@@ -105,7 +106,14 @@ function mcp_topic_view($id, $mode, $action)
 
 	if ($total == -1)
 	{
-		$total = $topic_info['topic_replies'] + 1;
+		if ($auth->acl_get('m_approve', $topic_info['forum_id']))
+		{
+			$total = $topic_info['topic_replies_real'] + 1;
+		}
+		else
+		{
+			$total = $topic_info['topic_replies'] + 1;
+		}
 	}
 
 	$posts_per_page = max(0, request_var('posts_per_page', intval($config['posts_per_page'])));
@@ -113,9 +121,16 @@ function mcp_topic_view($id, $mode, $action)
 	{
 		$posts_per_page = $total;
 	}
-	if (!empty($sort_days_old) && $sort_days_old != $sort_days)
+
+	if ((!empty($sort_days_old) && $sort_days_old != $sort_days) || $total <= $posts_per_page)
 	{
 		$start = 0;
+	}
+
+	// Make sure $start is set to the last page if it exceeds the amount
+	if ($start < 0 || $start >= $total)
+	{
+		$start = ($start < 0) ? 0 : floor(($total - 1) / $posts_per_page) * $posts_per_page;
 	}
 
 	$sql = 'SELECT u.username, u.username_clean, u.user_colour, p.*
@@ -226,7 +241,7 @@ function mcp_topic_view($id, $mode, $action)
 
 			'S_POST_REPORTED'	=> ($row['post_reported']) ? true : false,
 			'S_POST_UNAPPROVED'	=> ($row['post_approved']) ? false : true,
-			'S_CHECKED'			=> ($post_id_list && in_array(intval($row['post_id']), $post_id_list)) ? true : false,
+			'S_CHECKED'			=> (($submitted_id_list && !in_array(intval($row['post_id']), $submitted_id_list)) || in_array(intval($row['post_id']), $checked_ids)) ? true : false,
 			'S_HAS_ATTACHMENTS'	=> (!empty($attachments[$row['post_id']])) ? true : false,
 
 			'U_POST_DETAILS'	=> "$url&amp;i=$id&amp;p={$row['post_id']}&amp;mode=post_details" . (($forum_id) ? "&amp;f=$forum_id" : ''),
@@ -251,7 +266,7 @@ function mcp_topic_view($id, $mode, $action)
 	// Display topic icons for split topic
 	$s_topic_icons = false;
 
-	if ($auth->acl_get('m_split', $topic_info['forum_id']))
+	if ($auth->acl_gets('m_split', 'm_merge', (int) $topic_info['forum_id']))
 	{
 		include_once($phpbb_root_path . 'includes/functions_posting.' . $phpEx);
 		$s_topic_icons = posting_gen_topic_icons('', $icon_id);
@@ -279,6 +294,7 @@ function mcp_topic_view($id, $mode, $action)
 
 	$s_hidden_fields = build_hidden_fields(array(
 		'st_old'	=> $sort_days,
+		'post_ids'	=> $post_id_list,
 	));
 
 	$template->assign_vars(array(
@@ -292,8 +308,9 @@ function mcp_topic_view($id, $mode, $action)
 		'POSTS_PER_PAGE'	=> $posts_per_page,
 		'ACTION'			=> $action,
 
-		'REPORTED_IMG'		=> $user->img('icon_topic_reported', 'POST_REPORTED', false, true),
-		'UNAPPROVED_IMG'	=> $user->img('icon_topic_unapproved', 'POST_UNAPPROVED', false, true),
+		'REPORTED_IMG'		=> $user->img('icon_topic_reported', 'POST_REPORTED'),
+		'UNAPPROVED_IMG'	=> $user->img('icon_topic_unapproved', 'POST_UNAPPROVED'),
+		'INFO_IMG'			=> $user->img('icon_post_info', 'VIEW_INFO'),
 
 		'S_MCP_ACTION'		=> "$url&amp;i=$id&amp;mode=$mode&amp;action=$action&amp;start=$start",
 		'S_FORUM_SELECT'	=> ($to_forum_id) ? make_forum_select($to_forum_id, false, false, true, true, true) : make_forum_select($topic_info['forum_id'], false, false, true, true, true),
@@ -328,7 +345,7 @@ function mcp_topic_view($id, $mode, $action)
 */
 function split_topic($action, $topic_id, $to_forum_id, $subject)
 {
-	global $db, $template, $user, $phpEx, $phpbb_root_path, $auth;
+	global $db, $template, $user, $phpEx, $phpbb_root_path, $auth, $config;
 
 	$post_id_list	= request_var('post_id_list', array(0));
 	$forum_id		= request_var('forum_id', 0);
@@ -370,11 +387,11 @@ function split_topic($action, $topic_id, $to_forum_id, $subject)
 		return;
 	}
 
-	$forum_info = get_forum_data(array($to_forum_id), 'm_split');
+	$forum_info = get_forum_data(array($to_forum_id), 'f_post');
 
 	if (!sizeof($forum_info))
 	{
-		$template->assign_var('MESSAGE', $user->lang['NOT_MODERATOR']);
+		$template->assign_var('MESSAGE', $user->lang['USER_CANNOT_POST']);
 		return;
 	}
 
@@ -490,6 +507,9 @@ function split_topic($action, $topic_id, $to_forum_id, $subject)
 		$db->sql_query($sql);
 
 		$success_msg = 'TOPIC_SPLIT_SUCCESS';
+
+		// Update forum statistics
+		set_config_count('num_topics', 1, true);
 
 		// Link back to both topics
 		$return_link = sprintf($user->lang['RETURN_TOPIC'], '<a href="' . append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $post_info['forum_id'] . '&amp;t=' . $post_info['topic_id']) . '">', '</a>') . '<br /><br />' . sprintf($user->lang['RETURN_NEW_TOPIC'], '<a href="' . append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $to_forum_id . '&amp;t=' . $to_topic_id) . '">', '</a>');

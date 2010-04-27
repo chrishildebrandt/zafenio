@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: functions_posting.php 8667 2008-06-21 16:05:02Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -24,6 +24,8 @@ function generate_smilies($mode, $forum_id)
 	global $auth, $db, $user, $config, $template;
 	global $phpEx, $phpbb_root_path;
 
+	$start = request_var('start', 0);
+
 	if ($mode == 'window')
 	{
 		if ($forum_id)
@@ -44,8 +46,25 @@ function generate_smilies($mode, $forum_id)
 
 		page_header($user->lang['SMILIES']);
 
+		$sql = 'SELECT COUNT(smiley_id) AS item_count
+			FROM ' . SMILIES_TABLE . '
+			GROUP BY smiley_url';
+		$result = $db->sql_query($sql, 3600);
+
+		$smiley_count = 0;
+		while ($row = $db->sql_fetchrow($result))
+		{
+			++$smiley_count;
+		}
+		$db->sql_freeresult($result);
+
 		$template->set_filenames(array(
 			'body' => 'posting_smilies.html')
+		);
+
+		$template->assign_var('PAGINATION',
+			generate_pagination(append_sid("{$phpbb_root_path}posting.$phpEx", 'mode=smilies&amp;f=' . $forum_id),
+				$smiley_count, $config['smilies_per_page'], $start, true)
 		);
 	}
 
@@ -64,13 +83,22 @@ function generate_smilies($mode, $forum_id)
 		$db->sql_freeresult($result);
 	}
 
-	$last_url = '';
-
-	$sql = 'SELECT *
-		FROM ' . SMILIES_TABLE .
-		(($mode == 'inline') ? ' WHERE display_on_posting = 1 ' : '') . '
-		ORDER BY smiley_order';
-	$result = $db->sql_query($sql, 3600);
+	if ($mode == 'window')
+	{
+		$sql = 'SELECT smiley_url, MIN(emotion) as emotion, MIN(code) AS code, smiley_width, smiley_height
+			FROM ' . SMILIES_TABLE . '
+			GROUP BY smiley_url, smiley_width, smiley_height
+			ORDER BY MIN(smiley_order)';
+		$result = $db->sql_query_limit($sql, $config['smilies_per_page'], $start, 3600);
+	}
+	else
+	{
+		$sql = 'SELECT *
+			FROM ' . SMILIES_TABLE . '
+			WHERE display_on_posting = 1
+			ORDER BY smiley_order';
+		$result = $db->sql_query($sql, 3600);
+	}
 
 	$smilies = array();
 	while ($row = $db->sql_fetchrow($result))
@@ -84,12 +112,14 @@ function generate_smilies($mode, $forum_id)
 
 	if (sizeof($smilies))
 	{
+		$root_path = (defined('PHPBB_USE_BOARD_URL_PATH') && PHPBB_USE_BOARD_URL_PATH) ? generate_board_url() . '/' : $phpbb_root_path;
+
 		foreach ($smilies as $row)
 		{
 			$template->assign_block_vars('smiley', array(
 				'SMILEY_CODE'	=> $row['code'],
 				'A_SMILEY_CODE'	=> addslashes($row['code']),
-				'SMILEY_IMG'	=> $phpbb_root_path . $config['smilies_path'] . '/' . $row['smiley_url'],
+				'SMILEY_IMG'	=> $root_path . $config['smilies_path'] . '/' . $row['smiley_url'],
 				'SMILEY_WIDTH'	=> $row['smiley_width'],
 				'SMILEY_HEIGHT'	=> $row['smiley_height'],
 				'SMILEY_DESC'	=> $row['emotion'])
@@ -614,7 +644,7 @@ function create_thumbnail($source, $destination, $mimetype)
 	list($new_width, $new_height) = get_img_size_format($width, $height);
 
 	// Do not create a thumbnail if the resulting width/height is bigger than the original one
-	if ($new_width > $width && $new_height > $height)
+	if ($new_width >= $width && $new_height >= $height)
 	{
 		return false;
 	}
@@ -629,7 +659,7 @@ function create_thumbnail($source, $destination, $mimetype)
 			$config['img_imagick'] .= '/';
 		}
 
-		@passthru(escapeshellcmd($config['img_imagick']) . 'convert' . ((defined('PHP_OS') && preg_match('#^win#i', PHP_OS)) ? '.exe' : '') . ' -quality 85 -antialias -sample ' . $new_width . 'x' . $new_height . ' "' . str_replace('\\', '/', $source) . '" +profile "*" "' . str_replace('\\', '/', $destination) . '"');
+		@passthru(escapeshellcmd($config['img_imagick']) . 'convert' . ((defined('PHP_OS') && preg_match('#^win#i', PHP_OS)) ? '.exe' : '') . ' -quality 85 -geometry ' . $new_width . 'x' . $new_height . ' "' . str_replace('\\', '/', $source) . '" "' . str_replace('\\', '/', $destination) . '"');
 
 		if (file_exists($destination))
 		{
@@ -656,6 +686,7 @@ function create_thumbnail($source, $destination, $mimetype)
 				break;
 
 				case IMG_JPG:
+					@ini_set('gd.jpeg_ignore_warning', 1);
 					$image = @imagecreatefromjpeg($source);
 				break;
 
@@ -666,6 +697,11 @@ function create_thumbnail($source, $destination, $mimetype)
 				case IMG_WBMP:
 					$image = @imagecreatefromwbmp($source);
 				break;
+			}
+
+			if (empty($image))
+			{
+				return false;
 			}
 
 			if ($type['version'] == 1)
@@ -687,6 +723,10 @@ function create_thumbnail($source, $destination, $mimetype)
 				{
 					return false;
 				}
+
+				// Preserve alpha transparency (png for example)
+				@imagealphablending($new_image, false);
+				@imagesavealpha($new_image, true);
 
 				imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 			}
@@ -729,7 +769,7 @@ function create_thumbnail($source, $destination, $mimetype)
 		return false;
 	}
 
-	@chmod($destination, 0666);
+	phpbb_chmod($destination, CHMOD_READ | CHMOD_WRITE);
 
 	return true;
 }
@@ -747,7 +787,7 @@ function posting_gen_inline_attachments(&$attachment_data)
 
 		foreach ($attachment_data as $i => $attachment)
 		{
-			$s_inline_attachment_options .= '<option value="' . $i . '">' . basename($attachment['real_filename']) . '</option>';
+			$s_inline_attachment_options .= '<option value="' . $i . '">' . utf8_basename($attachment['real_filename']) . '</option>';
 		}
 
 		$template->assign_var('S_INLINE_ATTACHMENT_OPTIONS', $s_inline_attachment_options);
@@ -761,27 +801,27 @@ function posting_gen_inline_attachments(&$attachment_data)
 /**
 * Generate inline attachment entry
 */
-function posting_gen_attachment_entry($attachment_data, &$filename_data)
+function posting_gen_attachment_entry($attachment_data, &$filename_data, $show_attach_box = true)
 {
-	global $template, $config, $phpbb_root_path, $phpEx, $user;
+	global $template, $config, $phpbb_root_path, $phpEx, $user, $auth;
 
+	// Some default template variables
 	$template->assign_vars(array(
-		'S_SHOW_ATTACH_BOX'	=> true)
-	);
+		'S_SHOW_ATTACH_BOX'	=> $show_attach_box,
+		'S_HAS_ATTACHMENTS'	=> sizeof($attachment_data),
+		'FILESIZE'			=> $config['max_filesize'],
+		'FILE_COMMENT'		=> (isset($filename_data['filecomment'])) ? $filename_data['filecomment'] : '',
+	));
 
 	if (sizeof($attachment_data))
 	{
-		$template->assign_vars(array(
-			'S_HAS_ATTACHMENTS'	=> true)
-		);
-
 		// We display the posted attachments within the desired order.
 		($config['display_order']) ? krsort($attachment_data) : ksort($attachment_data);
 
 		foreach ($attachment_data as $count => $attach_row)
 		{
 			$hidden = '';
-			$attach_row['real_filename'] = basename($attach_row['real_filename']);
+			$attach_row['real_filename'] = utf8_basename($attach_row['real_filename']);
 
 			foreach ($attach_row as $key => $value)
 			{
@@ -791,8 +831,8 @@ function posting_gen_attachment_entry($attachment_data, &$filename_data)
 			$download_link = append_sid("{$phpbb_root_path}download/file.$phpEx", 'mode=view&amp;id=' . (int) $attach_row['attach_id'], true, ($attach_row['is_orphan']) ? $user->session_id : false);
 
 			$template->assign_block_vars('attach_row', array(
-				'FILENAME'			=> basename($attach_row['real_filename']),
-				'A_FILENAME'		=> addslashes(basename($attach_row['real_filename'])),
+				'FILENAME'			=> utf8_basename($attach_row['real_filename']),
+				'A_FILENAME'		=> addslashes(utf8_basename($attach_row['real_filename'])),
 				'FILE_COMMENT'		=> $attach_row['attach_comment'],
 				'ATTACH_ID'			=> $attach_row['attach_id'],
 				'S_IS_ORPHAN'		=> $attach_row['is_orphan'],
@@ -804,11 +844,6 @@ function posting_gen_attachment_entry($attachment_data, &$filename_data)
 		}
 	}
 
-	$template->assign_vars(array(
-		'FILE_COMMENT'	=> $filename_data['filecomment'],
-		'FILESIZE'		=> $config['max_filesize'])
-	);
-
 	return sizeof($attachment_data);
 }
 
@@ -819,7 +854,7 @@ function posting_gen_attachment_entry($attachment_data, &$filename_data)
 /**
 * Load Drafts
 */
-function load_drafts($topic_id = 0, $forum_id = 0, $id = 0)
+function load_drafts($topic_id = 0, $forum_id = 0, $id = 0, $pm_action = '', $msg_id = 0)
 {
 	global $user, $db, $template, $auth;
 	global $phpbb_root_path, $phpEx;
@@ -912,7 +947,7 @@ function load_drafts($topic_id = 0, $forum_id = 0, $id = 0)
 		{
 			// Either display as PM draft if forum_id and topic_id are empty or if access to the forums has been denied afterwards...
 			$link_pm = true;
-			$insert_url = append_sid("{$phpbb_root_path}ucp.$phpEx", "i=$id&amp;mode=compose&amp;d={$draft['draft_id']}");
+			$insert_url = append_sid("{$phpbb_root_path}ucp.$phpEx", "i=$id&amp;mode=compose&amp;d={$draft['draft_id']}" . (($pm_action) ? "&amp;action=$pm_action" : '') . (($msg_id) ? "&amp;p=$msg_id" : ''));
 		}
 
 		$template->assign_block_vars('draftrow', array(
@@ -945,6 +980,7 @@ function topic_review($topic_id, $forum_id, $mode = 'topic_review', $cur_post_id
 		WHERE p.topic_id = $topic_id
 			" . ((!$auth->acl_get('m_approve', $forum_id)) ? 'AND p.post_approved = 1' : '') . '
 			' . (($mode == 'post_review') ? " AND p.post_id > $cur_post_id" : '') . '
+			' . (($mode == 'post_review_edit') ? " AND p.post_id = $cur_post_id" : '') . '
 		ORDER BY p.post_time ';
 	$sql .= ($mode == 'post_review') ? 'ASC' : 'DESC';
 	$result = $db->sql_query_limit($sql, $config['posts_per_page']);
@@ -963,12 +999,25 @@ function topic_review($topic_id, $forum_id, $mode = 'topic_review', $cur_post_id
 		return false;
 	}
 
+	// Handle 'post_review_edit' like 'post_review' from now on
+	if ($mode == 'post_review_edit')
+	{
+		$mode = 'post_review';
+	}
+
 	$sql = $db->sql_build_query('SELECT', array(
-		'SELECT'	=> 'u.username, u.user_id, u.user_colour, p.*',
+		'SELECT'	=> 'u.username, u.user_id, u.user_colour, p.*, z.friend, z.foe',
 
 		'FROM'		=> array(
 			USERS_TABLE		=> 'u',
 			POSTS_TABLE		=> 'p',
+		),
+
+		'LEFT_JOIN'	=> array(
+			array(
+				'FROM'	=> array(ZEBRA_TABLE => 'z'),
+				'ON'	=> 'z.user_id = ' . $user->data['user_id'] . ' AND z.zebra_id = p.poster_id'
+			)
 		),
 
 		'WHERE'		=> $db->sql_in_set('p.post_id', $post_list) . '
@@ -1061,6 +1110,9 @@ function topic_review($topic_id, $forum_id, $mode = 'topic_review', $cur_post_id
 
 		$post_subject = censor_text($post_subject);
 
+		$post_anchor = ($mode == 'post_review') ? 'ppr' . $row['post_id'] : 'pr' . $row['post_id'];
+		$u_show_post = append_sid($phpbb_root_path . 'viewtopic.' . $phpEx, "f=$forum_id&amp;t=$topic_id&amp;p={$row['post_id']}&amp;view=show#p{$row['post_id']}");
+
 		$template->assign_block_vars($mode . '_row', array(
 			'POST_AUTHOR_FULL'		=> get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 			'POST_AUTHOR_COLOUR'	=> get_username_string('colour', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
@@ -1068,6 +1120,9 @@ function topic_review($topic_id, $forum_id, $mode = 'topic_review', $cur_post_id
 			'U_POST_AUTHOR'			=> get_username_string('profile', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 
 			'S_HAS_ATTACHMENTS'	=> (!empty($attachments[$row['post_id']])) ? true : false,
+			'S_FRIEND'			=> ($row['friend']) ? true : false,
+			'S_IGNORE_POST'		=> ($row['foe']) ? true : false,
+			'L_IGNORE_POST'		=> ($row['foe']) ? sprintf($user->lang['POST_BY_FOE'], get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']), "<a href=\"{$u_show_post}\" onclick=\"dE('{$post_anchor}', 1); return false;\">", '</a>') : '',
 
 			'POST_SUBJECT'		=> $post_subject,
 			'MINI_POST_IMG'		=> $user->img('icon_post_target', $user->lang['POST']),
@@ -1114,7 +1169,7 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 
 	if (!$topic_notification && !$forum_notification)
 	{
-		trigger_error('WRONG_NOTIFICATION_MODE');
+		trigger_error('NO_MODE');
 	}
 
 	if (($topic_notification && !$config['allow_topic_notify']) || ($forum_notification && !$config['allow_forum_notify']))
@@ -1251,6 +1306,7 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 			$msg_list_ary[$row['template']][$pos]['jabber']	= $row['user_jabber'];
 			$msg_list_ary[$row['template']][$pos]['name']	= $row['username'];
 			$msg_list_ary[$row['template']][$pos]['lang']	= $row['user_lang'];
+			$msg_list_ary[$row['template']][$pos]['user_id']= $row['user_id'];
 		}
 		unset($msg_users);
 
@@ -1271,8 +1327,8 @@ function user_notification($mode, $subject, $topic_title, $forum_name, $forum_id
 					'U_FORUM'				=> generate_board_url() . "/viewforum.$phpEx?f=$forum_id",
 					'U_TOPIC'				=> generate_board_url() . "/viewtopic.$phpEx?f=$forum_id&t=$topic_id",
 					'U_NEWEST_POST'			=> generate_board_url() . "/viewtopic.$phpEx?f=$forum_id&t=$topic_id&p=$post_id&e=$post_id",
-					'U_STOP_WATCHING_TOPIC'	=> generate_board_url() . "/viewtopic.$phpEx?f=$forum_id&t=$topic_id&unwatch=topic",
-					'U_STOP_WATCHING_FORUM'	=> generate_board_url() . "/viewforum.$phpEx?f=$forum_id&unwatch=forum",
+					'U_STOP_WATCHING_TOPIC'	=> generate_board_url() . "/viewtopic.$phpEx?uid={$addr['user_id']}&f=$forum_id&t=$topic_id&unwatch=topic",
+					'U_STOP_WATCHING_FORUM'	=> generate_board_url() . "/viewforum.$phpEx?uid={$addr['user_id']}&f=$forum_id&unwatch=forum",
 				));
 
 				$messenger->send($addr['method']);
@@ -1437,7 +1493,7 @@ function delete_post($forum_id, $topic_id, $post_id, &$data)
 				$sql_data[FORUMS_TABLE] = ($data['post_approved']) ? 'forum_posts = forum_posts - 1' : '';
 			}
 
-			$sql_data[TOPICS_TABLE] = 'topic_first_post_id = ' . intval($row['post_id']) . ", topic_first_poster_colour = '" . $db->sql_escape($row['user_colour']) . "', topic_first_poster_name = '" . (($row['poster_id'] == ANONYMOUS) ? $db->sql_escape($row['post_username']) : $db->sql_escape($row['username'])) . "'";
+			$sql_data[TOPICS_TABLE] = 'topic_poster = ' . intval($row['poster_id']) . ', topic_first_post_id = ' . intval($row['post_id']) . ", topic_first_poster_colour = '" . $db->sql_escape($row['user_colour']) . "', topic_first_poster_name = '" . (($row['poster_id'] == ANONYMOUS) ? $db->sql_escape($row['post_username']) : $db->sql_escape($row['username'])) . "'";
 
 			// Decrementing topic_replies here is fine because this case only happens if there is more than one post within the topic - basically removing one "reply"
 			$sql_data[TOPICS_TABLE] .= ', topic_replies_real = topic_replies_real - 1' . (($data['post_approved']) ? ', topic_replies = topic_replies - 1' : '');
@@ -1501,6 +1557,21 @@ function delete_post($forum_id, $topic_id, $post_id, &$data)
 		break;
 	}
 
+	if (($post_mode == 'delete') || ($post_mode == 'delete_last_post') || ($post_mode == 'delete_first_post'))
+	{
+		$sql = 'SELECT 1 AS has_attachments
+			FROM ' . ATTACHMENTS_TABLE . '
+			WHERE topic_id = ' . $topic_id;
+		$result = $db->sql_query_limit($sql, 1);
+		$has_attachments = (int) $db->sql_fetchfield('has_attachments');
+		$db->sql_freeresult($result);
+
+		if (!$has_attachments)
+		{
+			$sql_data[TOPICS_TABLE] .= ', topic_attachment = 0';
+		}
+	}
+
 //	$sql_data[USERS_TABLE] = ($data['post_postcount']) ? 'user_posts = user_posts - 1' : '';
 
 	$db->sql_transaction('begin');
@@ -1552,8 +1623,9 @@ function delete_post($forum_id, $topic_id, $post_id, &$data)
 
 /**
 * Submit Post
+* @todo Split up and create lightweight, simple API for this.
 */
-function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $update_message = true)
+function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $update_message = true, $update_search_index = true)
 {
 	global $db, $auth, $user, $config, $phpEx, $template, $phpbb_root_path;
 
@@ -1604,9 +1676,25 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 		$data['post_approved'] = $topic_row['post_approved'];
 	}
 
+	// This variable indicates if the user is able to post or put into the queue - it is used later for all code decisions regarding approval
+	// The variable name should be $post_approved, because it indicates if the post is approved or not
+	$post_approval = 1;
+
+	// Check the permissions for post approval. Moderators are not affected.
+	if (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id']))
+	{
+		// Post not approved, but in queue
+		$post_approval = 0;
+	}
+
+	// Mods are able to force approved/unapproved posts. True means the post is approved, false the post is unapproved
+	if (isset($data['force_approved_state']))
+	{
+		$post_approval = ($data['force_approved_state']) ? 1 : 0;
+	}
+
 	// Start the transaction here
 	$db->sql_transaction('begin');
-
 
 	// Collect Information
 	switch ($post_mode)
@@ -1619,7 +1707,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				'icon_id'			=> $data['icon_id'],
 				'poster_ip'			=> $user->ip,
 				'post_time'			=> $current_time,
-				'post_approved'		=> (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id'])) ? 0 : 1,
+				'post_approved'		=> $post_approval,
 				'enable_bbcode'		=> $data['enable_bbcode'],
 				'enable_smilies'	=> $data['enable_smilies'],
 				'enable_magic_url'	=> $data['enable_urls'],
@@ -1685,7 +1773,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				'forum_id'			=> ($topic_type == POST_GLOBAL) ? 0 : $data['forum_id'],
 				'poster_id'			=> $data['poster_id'],
 				'icon_id'			=> $data['icon_id'],
-				'post_approved'		=> (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id'])) ? 0 : $data['post_approved'],
+				'post_approved'		=> (!$post_approval) ? 0 : $data['post_approved'],
 				'enable_bbcode'		=> $data['enable_bbcode'],
 				'enable_smilies'	=> $data['enable_smilies'],
 				'enable_magic_url'	=> $data['enable_urls'],
@@ -1717,9 +1805,10 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 			$sql_data[TOPICS_TABLE]['sql'] = array(
 				'topic_poster'				=> (int) $user->data['user_id'],
 				'topic_time'				=> $current_time,
+				'topic_last_view_time'		=> $current_time,
 				'forum_id'					=> ($topic_type == POST_GLOBAL) ? 0 : $data['forum_id'],
 				'icon_id'					=> $data['icon_id'],
-				'topic_approved'			=> (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id'])) ? 0 : 1,
+				'topic_approved'			=> $post_approval,
 				'topic_title'				=> $subject,
 				'topic_first_poster_name'	=> (!$user->data['is_registered'] && $username) ? $username : (($user->data['user_id'] != ANONYMOUS) ? $user->data['username'] : ''),
 				'topic_first_poster_colour'	=> $user->data['user_colour'],
@@ -1730,33 +1819,50 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
 			if (isset($poll['poll_options']) && !empty($poll['poll_options']))
 			{
+				$poll_start = ($poll['poll_start']) ? $poll['poll_start'] : $current_time;
+				$poll_length = $poll['poll_length'] * 86400;
+				if ($poll_length < 0)
+				{
+					$poll_start = $poll_start + $poll_length;
+					if ($poll_start < 0)
+					{
+						$poll_start = 0;
+					}
+					$poll_length = 1;
+				}
+
 				$sql_data[TOPICS_TABLE]['sql'] = array_merge($sql_data[TOPICS_TABLE]['sql'], array(
 					'poll_title'		=> $poll['poll_title'],
-					'poll_start'		=> ($poll['poll_start']) ? $poll['poll_start'] : $current_time,
+					'poll_start'		=> $poll_start,
 					'poll_max_options'	=> $poll['poll_max_options'],
-					'poll_length'		=> ($poll['poll_length'] * 86400),
+					'poll_length'		=> $poll_length,
 					'poll_vote_change'	=> $poll['poll_vote_change'])
 				);
 			}
 
-			$sql_data[USERS_TABLE]['stat'][] = "user_lastpost_time = $current_time" . (($auth->acl_get('f_postcount', $data['forum_id'])) ? ', user_posts = user_posts + 1' : '');
+			$sql_data[USERS_TABLE]['stat'][] = "user_lastpost_time = $current_time" . (($auth->acl_get('f_postcount', $data['forum_id']) && $post_approval) ? ', user_posts = user_posts + 1' : '');
 
 			if ($topic_type != POST_GLOBAL)
 			{
-				if ($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id']))
+				if ($post_approval)
 				{
 					$sql_data[FORUMS_TABLE]['stat'][] = 'forum_posts = forum_posts + 1';
 				}
-				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_topics_real = forum_topics_real + 1' . (($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id'])) ? ', forum_topics = forum_topics + 1' : '');
+				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_topics_real = forum_topics_real + 1' . (($post_approval) ? ', forum_topics = forum_topics + 1' : '');
 			}
 		break;
 
 		case 'reply':
-			$sql_data[TOPICS_TABLE]['stat'][] = 'topic_replies_real = topic_replies_real + 1, topic_bumped = 0, topic_bumper = 0' . (($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id'])) ? ', topic_replies = topic_replies + 1' : '') . ((!empty($data['attachment_data']) || (isset($data['topic_attachment']) && $data['topic_attachment'])) ? ', topic_attachment = 1' : '');
+			$sql_data[TOPICS_TABLE]['stat'][] = 'topic_last_view_time = ' . $current_time . ',
+				topic_replies_real = topic_replies_real + 1,
+				topic_bumped = 0,
+				topic_bumper = 0' .
+				(($post_approval) ? ', topic_replies = topic_replies + 1' : '') .
+				((!empty($data['attachment_data']) || (isset($data['topic_attachment']) && $data['topic_attachment'])) ? ', topic_attachment = 1' : '');
 
-			$sql_data[USERS_TABLE]['stat'][] = "user_lastpost_time = $current_time" . (($auth->acl_get('f_postcount', $data['forum_id'])) ? ', user_posts = user_posts + 1' : '');
+			$sql_data[USERS_TABLE]['stat'][] = "user_lastpost_time = $current_time" . (($auth->acl_get('f_postcount', $data['forum_id']) && $post_approval) ? ', user_posts = user_posts + 1' : '');
 
-			if (($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id'])) && $topic_type != POST_GLOBAL)
+			if ($post_approval && $topic_type != POST_GLOBAL)
 			{
 				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_posts = forum_posts + 1';
 			}
@@ -1764,26 +1870,41 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
 		case 'edit_topic':
 		case 'edit_first_post':
+			if (isset($poll['poll_options']) && !empty($poll['poll_options']))
+			{
+				$poll_start = ($poll['poll_start']) ? $poll['poll_start'] : $current_time;
+				$poll_length = $poll['poll_length'] * 86400;
+				if ($poll_length < 0)
+				{
+					$poll_start = $poll_start + $poll_length;
+					if ($poll_start < 0)
+					{
+						$poll_start = 0;
+					}
+					$poll_length = 1;
+				}
+			}
 
 			$sql_data[TOPICS_TABLE]['sql'] = array(
 				'forum_id'					=> ($topic_type == POST_GLOBAL) ? 0 : $data['forum_id'],
 				'icon_id'					=> $data['icon_id'],
-				'topic_approved'			=> (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id'])) ? 0 : $data['topic_approved'],
+				'topic_approved'			=> (!$post_approval) ? 0 : $data['topic_approved'],
 				'topic_title'				=> $subject,
 				'topic_first_poster_name'	=> $username,
 				'topic_type'				=> $topic_type,
 				'topic_time_limit'			=> ($topic_type == POST_STICKY || $topic_type == POST_ANNOUNCE) ? ($data['topic_time_limit'] * 86400) : 0,
 				'poll_title'				=> (isset($poll['poll_options'])) ? $poll['poll_title'] : '',
-				'poll_start'				=> (isset($poll['poll_options'])) ? (($poll['poll_start']) ? $poll['poll_start'] : $current_time) : 0,
+				'poll_start'				=> (isset($poll['poll_options'])) ? $poll_start : 0,
 				'poll_max_options'			=> (isset($poll['poll_options'])) ? $poll['poll_max_options'] : 1,
-				'poll_length'				=> (isset($poll['poll_options'])) ? ($poll['poll_length'] * 86400) : 0,
+				'poll_length'				=> (isset($poll['poll_options'])) ? $poll_length : 0,
 				'poll_vote_change'			=> (isset($poll['poll_vote_change'])) ? $poll['poll_vote_change'] : 0,
+				'topic_last_view_time'		=> $current_time,
 
 				'topic_attachment'			=> (!empty($data['attachment_data'])) ? 1 : (isset($data['topic_attachment']) ? $data['topic_attachment'] : 0),
 			);
 
 			// Correctly set back the topic replies and forum posts... only if the topic was approved before and now gets disapproved
-			if (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id']) && $data['topic_approved'])
+			if (!$post_approval && $data['topic_approved'])
 			{
 				// Do we need to grab some topic informations?
 				if (!sizeof($topic_row))
@@ -1803,8 +1924,14 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_topics = forum_topics - 1';
 				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_posts = forum_posts - ' . ($topic_row['topic_replies'] + 1);
 
-				set_config('num_topics', $config['num_topics'] - 1, true);
-				set_config('num_posts', $config['num_posts'] - ($topic_row['topic_replies'] + 1), true);
+				set_config_count('num_topics', -1, true);
+				set_config_count('num_posts', ($topic_row['topic_replies'] + 1) * (-1), true);
+
+				// Only decrement this post, since this is the one non-approved now
+				if ($auth->acl_get('f_postcount', $data['forum_id']))
+				{
+					$sql_data[USERS_TABLE]['stat'][] = 'user_posts = user_posts - 1';
+				}
 			}
 
 		break;
@@ -1813,12 +1940,17 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 		case 'edit_last_post':
 
 			// Correctly set back the topic replies and forum posts... but only if the post was approved before.
-			if (!$auth->acl_get('f_noapprove', $data['forum_id']) && !$auth->acl_get('m_approve', $data['forum_id']) && $data['post_approved'])
+			if (!$post_approval && $data['post_approved'])
 			{
-				$sql_data[TOPICS_TABLE]['stat'][] = 'topic_replies = topic_replies - 1';
+				$sql_data[TOPICS_TABLE]['stat'][] = 'topic_replies = topic_replies - 1, topic_last_view_time = ' . $current_time;
 				$sql_data[FORUMS_TABLE]['stat'][] = 'forum_posts = forum_posts - 1';
 
-				set_config('num_posts', $config['num_posts'] - 1, true);
+				set_config_count('num_posts', -1, true);
+
+				if ($auth->acl_get('f_postcount', $data['forum_id']))
+				{
+					$sql_data[USERS_TABLE]['stat'][] = 'user_posts = user_posts - 1';
+				}
 			}
 
 		break;
@@ -2054,7 +2186,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 			else
 			{
 				// insert attachment into db
-				if (!@file_exists($phpbb_root_path . $config['upload_path'] . '/' . basename($orphan_rows[$attach_row['attach_id']]['physical_filename'])))
+				if (!@file_exists($phpbb_root_path . $config['upload_path'] . '/' . utf8_basename($orphan_rows[$attach_row['attach_id']]['physical_filename'])))
 				{
 					continue;
 				}
@@ -2080,8 +2212,8 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
 		if ($space_taken && $files_added)
 		{
-			set_config('upload_dir_size', $config['upload_dir_size'] + $space_taken, true);
-			set_config('num_files', $config['num_files'] + $files_added, true);
+			set_config_count('upload_dir_size', $space_taken, true);
+			set_config_count('num_files', $files_added, true);
 		}
 	}
 
@@ -2119,10 +2251,20 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 			// this post is the latest post in the forum, better update
 			if ($row['forum_last_post_id'] == $data['post_id'])
 			{
-				if ($post_approved && $row['forum_last_post_subject'] !== $subject)
+				// If post approved and subject changed, or poster is anonymous, we need to update the forum_last* rows
+				if ($post_approved && ($row['forum_last_post_subject'] !== $subject || $data['poster_id'] == ANONYMOUS))
 				{
-					// the only data that can really be changed is the post's subject
-					$sql_data[FORUMS_TABLE]['stat'][] = 'forum_last_post_subject = \'' . $db->sql_escape($subject) . '\'';
+					// the post's subject changed
+					if ($row['forum_last_post_subject'] !== $subject)
+					{
+						$sql_data[FORUMS_TABLE]['stat'][] = 'forum_last_post_subject = \'' . $db->sql_escape($subject) . '\'';
+					}
+
+					// Update the user name if poster is anonymous... just in case an admin changed it
+					if ($data['poster_id'] == ANONYMOUS)
+					{
+						$sql_data[FORUMS_TABLE]['stat'][] = "forum_last_poster_name = '" . $db->sql_escape($username) . "'";
+					}
 				}
 				else if ($data['post_approved'] !== $post_approved)
 				{
@@ -2259,6 +2401,12 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 		{
 			// only the subject can be changed from edit
 			$sql_data[TOPICS_TABLE]['stat'][] = "topic_last_post_subject = '" . $db->sql_escape($subject) . "'";
+
+			// Maybe not only the subject, but also changing anonymous usernames. ;)
+			if ($data['poster_id'] == ANONYMOUS)
+			{
+				$sql_data[TOPICS_TABLE]['stat'][] = "topic_last_poster_name = '" . $db->sql_escape($username) . "'";
+			}
 		}
 	}
 	else if (!$data['post_approved'] && ($post_mode == 'edit_last_post' || $post_mode == 'edit_topic' || ($post_mode == 'edit_first_post' && !$data['topic_replies'])))
@@ -2294,22 +2442,22 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	}
 
 	// Update total post count, do not consider moderated posts/topics
-	if ($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id']))
+	if ($post_approval)
 	{
 		if ($post_mode == 'post')
 		{
-			set_config('num_topics', $config['num_topics'] + 1, true);
-			set_config('num_posts', $config['num_posts'] + 1, true);
+			set_config_count('num_topics', 1, true);
+			set_config_count('num_posts', 1, true);
 		}
 
 		if ($post_mode == 'reply')
 		{
-			set_config('num_posts', $config['num_posts'] + 1, true);
+			set_config_count('num_posts', 1, true);
 		}
 	}
 
 	// Update forum stats
-	$where_sql = array(POSTS_TABLE => 'post_id = ' . $data['post_id'], TOPICS_TABLE => 'topic_id = ' . $data['topic_id'], FORUMS_TABLE => 'forum_id = ' . $data['forum_id'], USERS_TABLE => 'user_id = ' . $user->data['user_id']);
+	$where_sql = array(POSTS_TABLE => 'post_id = ' . $data['post_id'], TOPICS_TABLE => 'topic_id = ' . $data['topic_id'], FORUMS_TABLE => 'forum_id = ' . $data['forum_id'], USERS_TABLE => 'user_id = ' . $poster_id);
 
 	foreach ($sql_data as $table => $update_ary)
 	{
@@ -2342,7 +2490,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	}
 
 	// Index message contents
-	if ($update_message && $data['enable_indexing'])
+	if ($update_search_index && $data['enable_indexing'])
 	{
 		// Select the search method and do some additional checks to ensure it can actually be utilised
 		$search_type = basename($config['search_type']);
@@ -2377,7 +2525,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				VALUES (' . $user->data['user_id'] . ', ' . $data['topic_id'] . ')';
 			$db->sql_query($sql);
 		}
-		else if ($data['notify_set'] && !$data['notify'])
+		else if (($config['email_enable'] || $config['jab_enable']) && $data['notify_set'] && !$data['notify'])
 		{
 			$sql = 'DELETE FROM ' . TOPICS_WATCH_TABLE . '
 				WHERE user_id = ' . $user->data['user_id'] . '
@@ -2394,7 +2542,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
 	// Mark this topic as read
 	// We do not use post_time here, this is intended (post_time can have a date in the past if editing a message)
-	markread('topic', $data['forum_id'], $data['topic_id'], time());
+	markread('topic', (($topic_type == POST_GLOBAL) ? 0 : $data['forum_id']), $data['topic_id'], time());
 
 	//
 	if ($config['load_db_lastread'] && $user->data['is_registered'])
@@ -2402,7 +2550,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 		$sql = 'SELECT mark_time
 			FROM ' . FORUMS_TRACK_TABLE . '
 			WHERE user_id = ' . $user->data['user_id'] . '
-				AND forum_id = ' . $data['forum_id'];
+				AND forum_id = ' . (($topic_type == POST_GLOBAL) ? 0 : $data['forum_id']);
 		$result = $db->sql_query($sql);
 		$f_mark_time = (int) $db->sql_fetchfield('mark_time');
 		$db->sql_freeresult($result);
@@ -2415,25 +2563,34 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	if (($config['load_db_lastread'] && $user->data['is_registered']) || $config['load_anon_lastread'] || $user->data['is_registered'])
 	{
 		// Update forum info
-		$sql = 'SELECT forum_last_post_time
-			FROM ' . FORUMS_TABLE . '
-			WHERE forum_id = ' . $data['forum_id'];
+		if ($topic_type == POST_GLOBAL)
+		{
+			$sql = 'SELECT MAX(topic_last_post_time) as forum_last_post_time
+				FROM ' . TOPICS_TABLE . '
+				WHERE forum_id = 0';
+		}
+		else
+		{
+			$sql = 'SELECT forum_last_post_time
+				FROM ' . FORUMS_TABLE . '
+				WHERE forum_id = ' . $data['forum_id'];
+		}
 		$result = $db->sql_query($sql);
 		$forum_last_post_time = (int) $db->sql_fetchfield('forum_last_post_time');
 		$db->sql_freeresult($result);
 
-		update_forum_tracking_info($data['forum_id'], $forum_last_post_time, $f_mark_time, false);
+		update_forum_tracking_info((($topic_type == POST_GLOBAL) ? 0 : $data['forum_id']), $forum_last_post_time, $f_mark_time, false);
 	}
 
 	// Send Notifications
-	if ($mode != 'edit' && $mode != 'delete' && ($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id'])))
+	if ($mode != 'edit' && $mode != 'delete' && $post_approval)
 	{
 		user_notification($mode, $subject, $data['topic_title'], $data['forum_name'], $data['forum_id'], $data['topic_id'], $data['post_id']);
 	}
 
 	$params = $add_anchor = '';
 
-	if ($auth->acl_get('f_noapprove', $data['forum_id']) || $auth->acl_get('m_approve', $data['forum_id']))
+	if ($post_approval)
 	{
 		$params .= '&amp;t=' . $data['topic_id'];
 

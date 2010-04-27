@@ -2,7 +2,7 @@
 /**
 *
 * @package dbal
-* @version $Id: oracle.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -55,10 +55,31 @@ class dbal_oracle extends dbal
 
 	/**
 	* Version information about used database
+	* @param bool $raw if true, only return the fetched sql_server_version
+	* @return string sql server version
 	*/
-	function sql_server_info()
+	function sql_server_info($raw = false)
 	{
-		return @ociserverversion($this->db_connect_id);
+/*
+		global $cache;
+
+		if (empty($cache) || ($this->sql_server_version = $cache->get('oracle_version')) === false)
+		{
+			$result = @ociparse($this->db_connect_id, 'SELECT * FROM v$version WHERE banner LIKE \'Oracle%\'');
+			@ociexecute($result, OCI_DEFAULT);
+			@ocicommit($this->db_connect_id);
+
+			$row = array();
+			@ocifetchinto($result, $row, OCI_ASSOC + OCI_RETURN_NULLS);
+			@ocifreestatement($result);
+			$this->sql_server_version = trim($row['BANNER']);
+
+			$cache->put('oracle_version', $this->sql_server_version);
+		}
+*/
+		$this->sql_server_version = @ociserverversion($this->db_connect_id);
+
+		return $this->sql_server_version;
 	}
 
 	/**
@@ -115,7 +136,7 @@ class dbal_oracle extends dbal
 	*/
 	function _rewrite_where($where_clause)
 	{
-		preg_match_all('/\s*(AND|OR)?\s*([\w_.]++)\s*(?:(=|<[=>]?|>=?)\s*((?>\'(?>[^\']++|\'\')*+\'|[\d-.]+))|((NOT )?IN\s*\((?>\'(?>[^\']++|\'\')*+\',? ?|[\d-.]+,? ?)*+\)))/', $where_clause, $result, PREG_SET_ORDER);
+		preg_match_all('/\s*(AND|OR)?\s*([\w_.()]++)\s*(?:(=|<[=>]?|>=?|LIKE)\s*((?>\'(?>[^\']++|\'\')*+\'|[\d-.()]+))|((NOT )?IN\s*\((?>\'(?>[^\']++|\'\')*+\',? ?|[\d-.]+,? ?)*+\)))/', $where_clause, $result, PREG_SET_ORDER);
 		$out = '';
 		foreach ($result as $val)
 		{
@@ -168,7 +189,7 @@ class dbal_oracle extends dbal
 					$out .= ' ' . $val[1] . '(';
 					$in_array = array();
 
-					// constuct each IN() clause	
+					// constuct each IN() clause
 					foreach ($in_clause as $in_values)
 					{
 						$in_array[] = $val[2] . ' ' . (isset($val[6]) ? $val[6] : '') . 'IN(' . implode(', ', $in_values) . ')';
@@ -234,12 +255,61 @@ class dbal_oracle extends dbal
 				// We overcome Oracle's 4000 char limit by binding vars
 				if (strlen($query) > 4000)
 				{
-					if (preg_match('/^(INSERT INTO[^(]++)\\(([^()]+)\\) VALUES[^(]++\\((.*?)\\)$/s', $query, $regs))
+					if (preg_match('/^(INSERT INTO[^(]++)\\(([^()]+)\\) VALUES[^(]++\\((.*?)\\)$/sU', $query, $regs))
 					{
 						if (strlen($regs[3]) > 4000)
 						{
 							$cols = explode(', ', $regs[2]);
+
 							preg_match_all('/\'(?:[^\']++|\'\')*+\'|[\d-.]+/', $regs[3], $vals, PREG_PATTERN_ORDER);
+
+							if (sizeof($cols) !== sizeof($vals))
+							{
+								// Try to replace some common data we know is from our restore script or from other sources
+								$regs[3] = str_replace("'||chr(47)||'", '/', $regs[3]);
+								$_vals = explode(', ', $regs[3]);
+
+								$vals = array();
+								$is_in_val = false;
+								$i = 0;
+								$string = '';
+
+								foreach ($_vals as $value)
+								{
+									if (strpos($value, "'") === false && !$is_in_val)
+									{
+										$vals[$i++] = $value;
+										continue;
+									}
+
+									if (substr($value, -1) === "'")
+									{
+										$vals[$i] = $string . (($is_in_val) ? ', ' : '') . $value;
+										$string = '';
+										$is_in_val = false;
+
+										if ($vals[$i][0] !== "'")
+										{
+											$vals[$i] = "''" . $vals[$i];
+										}
+										$i++;
+										continue;
+									}
+									else
+									{
+										$string .= (($is_in_val) ? ', ' : '') . $value;
+										$is_in_val = true;
+									}
+								}
+
+								if ($string)
+								{
+									// New value if cols != value
+									$vals[(sizeof($cols) !== sizeof($vals)) ? $i : $i - 1] .= $string;
+								}
+
+								$vals = array(0 => $vals);
+							}
 
 							$inserts = $vals[0];
 							unset($vals);
@@ -355,7 +425,7 @@ class dbal_oracle extends dbal
 			return false;
 		}
 
-		return ($this->query_result) ? $this->query_result : false;
+		return $this->query_result;
 	}
 
 	/**
@@ -530,7 +600,7 @@ class dbal_oracle extends dbal
 	*/
 	function sql_escape($msg)
 	{
-		return str_replace("'", "''", $msg);
+		return str_replace(array("'", "\0"), array("''", ''), $msg);
 	}
 
 	/**
@@ -545,6 +615,16 @@ class dbal_oracle extends dbal
 	function _sql_custom_build($stage, $data)
 	{
 		return $data;
+	}
+
+	function _sql_bit_and($column_name, $bit, $compare = '')
+	{
+		return 'BITAND(' . $column_name . ', ' . (1 << $bit) . ')' . (($compare) ? ' ' . $compare : '');
+	}
+
+	function _sql_bit_or($column_name, $bit, $compare = '')
+	{
+		return 'BITOR(' . $column_name . ', ' . (1 << $bit) . ')' . (($compare) ? ' ' . $compare : '');
 	}
 
 	/**

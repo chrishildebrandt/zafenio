@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: functions_phpbb20.php 8489 2008-04-03 14:04:10Z naderman $
+* @version $Id$
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -71,8 +71,8 @@ function phpbb_insert_forums()
 	$result = $src_db->sql_query($sql);
 	$prune_enabled = (int) $src_db->sql_fetchfield('config_value');
 	$src_db->sql_freeresult($result);
-	
-	
+
+
 	// Insert categories
 	$sql = 'SELECT cat_id, cat_title
 		FROM ' . $convert->src_table_prefix . 'categories
@@ -227,6 +227,7 @@ function phpbb_insert_forums()
 			'prune_freq'		=> (int) null_to_zero($row['prune_freq']),
 
 			'forum_flags'		=> phpbb_forum_flags(),
+			'forum_options'		=> 0,
 
 			// Default values
 			'forum_desc_bitfield'		=> '',
@@ -461,7 +462,7 @@ function phpbb_get_birthday($birthday = '')
 		}
 
 		// The birthday mod from niels is using this code to transform to day/month/year
-		return gmdate('d-m-Y', $birthday * 86400 + 1);
+		return sprintf('%2d-%2d-%4d', gmdate('j', $birthday * 86400 + 1), gmdate('n', $birthday * 86400 + 1), gmdate('Y', $birthday * 86400 + 1));
 	}
 }
 
@@ -972,12 +973,12 @@ function phpbb_convert_authentication($mode)
 	{
 		// And now the moderators
 		// We make sure that they have at least standard access to the forums they moderate in addition to the moderating permissions
-		
+
 		$mod_post_map = array(
 			'auth_announce'		=> 'f_announce',
 			'auth_sticky'		=> 'f_sticky'
 		);
-		
+
 		foreach ($user_access as $forum_id => $access_map)
 		{
 			$forum_id = (int) $forum_id;
@@ -1229,7 +1230,7 @@ function phpbb_prepare_message($message)
 	{
 		$message = preg_replace('/\[quote="(.*?)"\]/s', '[quote=&quot;\1&quot;]', $message);
 		$message = preg_replace('/\[quote=\\\"(.*?)\\\"\]/s', '[quote=&quot;\1&quot;]', $message);
-		
+
 		// let's hope that this solves more problems than it causes. Deal with escaped quotes.
 		$message = str_replace('\"', '&quot;', $message);
 		$message = str_replace('\&quot;', '&quot;', $message);
@@ -1258,7 +1259,7 @@ function phpbb_prepare_message($message)
 
 	// parse($allow_bbcode, $allow_magic_url, $allow_smilies, $allow_img_bbcode = true, $allow_flash_bbcode = true, $allow_quote_bbcode = true, $allow_url_bbcode = true, $update_this_message = true, $mode = 'post')
 	$message_parser->parse($enable_bbcode, $enable_magic_url, $enable_smilies);
-	
+
 	if (sizeof($message_parser->warn_msg))
 	{
 		$msg_id = isset($convert->row['post_id']) ? $convert->row['post_id'] : $convert->row['privmsgs_id'];
@@ -1352,7 +1353,7 @@ function phpbb_copy_thumbnails()
 	global $db, $convert, $user, $config, $cache, $phpbb_root_path;
 
 	$src_path = $convert->options['forum_path'] . '/' . phpbb_get_files_dir() . '/thumbs/';
-	
+
 	if ($handle = @opendir($src_path))
 	{
 		while ($entry = readdir($handle))
@@ -1431,13 +1432,13 @@ function phpbb_attachment_forum_perms($forum_permissions)
 			$pos--;
 			continue;
 		}
-		
+
 		$forum_auth = substr($forum_permissions, $pos, $auth_len);
 		$forum_id = base64_unpack($forum_auth);
 
 		$forum_ids[] = (int) $forum_id;
 	}
-	
+
 	if (sizeof($forum_ids))
 	{
 		return attachment_forum_perms($forum_ids);
@@ -1516,7 +1517,7 @@ function phpbb_import_avatar($user_avatar)
 function phpbb_get_avatar_height($user_avatar)
 {
 	global $convert_row;
-	
+
 	if (empty($convert_row['user_avatar_type']))
 	{
 		return 0;
@@ -1536,7 +1537,7 @@ function phpbb_get_avatar_width($user_avatar)
 	{
 		return 0;
 	}
-	
+
 	return get_avatar_width($user_avatar, 'phpbb_avatar_type', $convert_row['user_avatar_type']);
 }
 
@@ -1698,7 +1699,7 @@ function phpbb_disallowed_username($username)
 * Checks whether there are any usernames on the old board that would map to the same
 * username_clean on phpBB3. Prints out a list if any exist and exits.
 */
-function phpbb_check_username_collisions()
+function phpbb_create_userconv_table()
 {
 	global $db, $src_db, $convert, $table_prefix, $user, $lang;
 
@@ -1708,9 +1709,9 @@ function phpbb_check_username_collisions()
 		case 'mysql':
 			$map_dbms = 'mysql_40';
 		break;
-	
+
 		case 'mysql4':
-			if (version_compare($db->mysql_version, '4.1.3', '>='))
+			if (version_compare($db->sql_server_info(true), '4.1.3', '>='))
 			{
 				$map_dbms = 'mysql_41';
 			}
@@ -1719,69 +1720,69 @@ function phpbb_check_username_collisions()
 				$map_dbms = 'mysql_40';
 			}
 		break;
-	
+
 		case 'mysqli':
 			$map_dbms = 'mysql_41';
 		break;
-	
+
 		case 'mssql':
 		case 'mssql_odbc':
 			$map_dbms = 'mssql';
 		break;
-	
+
 		default:
 			$map_dbms = $db->sql_layer;
 		break;
 	}
 
 	// create a temporary table in which we store the clean usernames
-	$drop_sql = 'DROP TABLE ' . $table_prefix . 'userconv';
+	$drop_sql = 'DROP TABLE ' . USERCONV_TABLE;
 	switch ($map_dbms)
 	{
 		case 'firebird':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id INTEGER NOT NULL,
 				username_clean VARCHAR(255) CHARACTER SET UTF8 DEFAULT \'\' NOT NULL COLLATE UNICODE
 			)';
 		break;
 
 		case 'mssql':
-			$create_sql = 'CREATE TABLE [' . $table_prefix . 'userconv] (
+			$create_sql = 'CREATE TABLE [' . USERCONV_TABLE . '] (
 				[user_id] [int] NOT NULL ,
 				[username_clean] [varchar] (255) DEFAULT (\'\') NOT NULL
 			)';
 		break;
 
 		case 'mysql_40':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id mediumint(8) NOT NULL,
 				username_clean blob NOT NULL
 			)';
 		break;
 
 		case 'mysql_41':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id mediumint(8) NOT NULL,
 				username_clean varchar(255) DEFAULT \'\' NOT NULL
 			) CHARACTER SET `utf8` COLLATE `utf8_bin`';
 		break;
 
 		case 'oracle':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id number(8) NOT NULL,
 				username_clean varchar2(255) DEFAULT \'\'
 			)';
 		break;
 
 		case 'postgres':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id INT4 DEFAULT \'0\',
 				username_clean varchar_ci DEFAULT \'\' NOT NULL
 			)';
 		break;
 
 		case 'sqlite':
-			$create_sql = 'CREATE TABLE ' . $table_prefix . 'userconv (
+			$create_sql = 'CREATE TABLE ' . USERCONV_TABLE . ' (
 				user_id INTEGER NOT NULL DEFAULT \'0\',
 				username_clean varchar(255) NOT NULL DEFAULT \'\'
 			)';
@@ -1792,37 +1793,15 @@ function phpbb_check_username_collisions()
 	$db->sql_query($drop_sql);
 	$db->sql_return_on_error(false);
 	$db->sql_query($create_sql);
+}
 
-	// now select all user_ids and usernames and then convert the username (this can take quite a while!)
-	$sql = 'SELECT user_id, username
-		FROM ' . $convert->src_table_prefix . 'users';
-	$result = $src_db->sql_query($sql);
-
-	$insert_ary = array();
-	$i = 0;
-	while ($row = $src_db->sql_fetchrow($result))
-	{
-		$clean_name = utf8_clean_string(phpbb_set_default_encoding($row['username']));
-		$insert_ary[] = array('user_id' => (int) $row['user_id'], 'username_clean' => (string) $clean_name);
-
-		if ($i % 1000 == 999)
-		{
-			$db->sql_multi_insert($table_prefix . 'userconv', $insert_ary);
-			$insert_ary = array();
-		}
-		$i++;
-	}
-	$src_db->sql_freeresult($result);
-
-	if (sizeof($insert_ary))
-	{
-		$db->sql_multi_insert($table_prefix . 'userconv', $insert_ary);
-	}
-	unset($insert_ary);
+function phpbb_check_username_collisions()
+{
+	global $db, $src_db, $convert, $table_prefix, $user, $lang;
 
 	// now find the clean version of the usernames that collide
 	$sql = 'SELECT username_clean
-		FROM ' . $table_prefix . 'userconv
+		FROM ' . USERCONV_TABLE .'
 		GROUP BY username_clean
 		HAVING COUNT(user_id) > 1';
 	$result = $db->sql_query($sql);
@@ -1838,7 +1817,7 @@ function phpbb_check_username_collisions()
 	if (sizeof($colliding_names))
 	{
 		$sql = 'SELECT user_id, username_clean
-			FROM ' . $table_prefix . 'userconv
+			FROM ' . USERCONV_TABLE . '
 			WHERE ' . $db->sql_in_set('username_clean', $colliding_names);
 		$result = $db->sql_query($sql);
 		unset($colliding_names);
@@ -1881,6 +1860,7 @@ function phpbb_check_username_collisions()
 		$convert->p_master->error('<span style="color:red">' . $user->lang['COLLIDING_USERNAMES_FOUND'] . '</span></b><br /><br />' . $list . '<b>', __LINE__, __FILE__);
 	}
 
+	$drop_sql = 'DROP TABLE ' . USERCONV_TABLE;
 	$db->sql_query($drop_sql);
 }
 

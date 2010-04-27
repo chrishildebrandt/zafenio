@@ -69,8 +69,8 @@ h2, caption {
 h3, h4 {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	font-size: 1.20em;
-	text-decoration: none; 
-	line-height: 1.20em; 
+	text-decoration: none;
+	line-height: 1.20em;
 	margin-top: 25px;
 }
 
@@ -97,8 +97,8 @@ hr {
 	height: 1px;
 }
 
-.small { 
-	font-size: 0.85em; 
+.small {
+	font-size: 0.85em;
 }
 
 /* General links  */
@@ -119,6 +119,17 @@ a:active {
 
 .install-body p a {
 	font-weight: bold;
+}
+
+/* List items */
+ul, ol {
+	list-style-position: inside;
+	margin-left: 1em;
+}
+
+li {
+	display: list-item;
+	list-style-type: inherit;
 }
 
 /* Main blocks
@@ -191,8 +202,8 @@ a:active {
 	margin: 0 3% 0 0;
 }
 
-* html #main { 
-	height: 350px; 
+* html #main {
+	height: 350px;
 }
 
 #page-body.simple-page-body {
@@ -304,7 +315,7 @@ a:active {
 	padding: 0;
 }
 
-span.corners-top, span.corners-bottom, 
+span.corners-top, span.corners-bottom,
 span.corners-top span, span.corners-bottom span {
 	font-size: 1px;
 	line-height: 1px;
@@ -783,7 +794,7 @@ label img {
 
 fieldset.quick, p.quick {
 	margin: 0 0 5px;
-	padding: 5px 0 0; 
+	padding: 5px 0 0;
 	border: none;
 	background-color: transparent;
 	text-align: right;
@@ -836,7 +847,7 @@ select option.disabled {
 }
 
 /* Special case inputs */
-select#board_timezone, 
+select#board_timezone,
 select#full_folder_action {
 	width: 95%;
 }
@@ -1175,6 +1186,10 @@ input.disabled {
 	font-weight: bold;
 }
 
+.notice {
+	background-color: #62A5CC;
+}
+
 /* Special cases for the error page */
 #errorpage #page-header a {
 	font-weight: bold;
@@ -1229,12 +1244,12 @@ input.disabled {
 }
 
 /* Nice method for clearing floated blocks without having to insert any extra markup
-	From http://www.positioniseverything.net/easyclearing.html 
+	From http://www.positioniseverything.net/easyclearing.html
 .clearfix:after, #tabs:after, .row:after, #content:after, fieldset dl:after, #page-body:after {
-	content: "."; 
-	display: block; 
-	height: 0; 
-	clear: both; 
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
 	visibility: hidden;
 }*/
 
@@ -1301,7 +1316,7 @@ fieldset.permissions legend input{
 	height: 1.1em;
 }
 
-/* Permission sections */ 
+/* Permission sections */
 fieldset.permissions .permissions-simple {
 	text-align: left;
 	padding-top: 3px;
@@ -1333,18 +1348,21 @@ fieldset.permissions .permissions-switch {
 fieldset.permissions .padding {
 }
 
+.permissions-switch {
+	margin-top: -6px;
+	font-size: .9em;
+}
+
 .permissions-switch a {
 	text-decoration: underline;
-	font-size: 0.90em;
 }
 
 .permissions-reset {
-	margin-top: -6px;
 	padding-bottom: 10px;
 }
 
 .permissions-reset a {
-	font-size: .8em;
+	font-size: .85em;
 }
 
 /* Tabbed menu */
@@ -1509,7 +1527,7 @@ fieldset.permissions .padding {
 	background-image: url("../images/corners_right2.gif");
 }
 
-.permissions-panel span.corners-top, .permissions-panel span.corners-bottom, 
+.permissions-panel span.corners-top, .permissions-panel span.corners-bottom,
 .permissions-panel span.corners-top span, .permissions-panel span.corners-bottom span {
 	font-size: 1px;
 	line-height: 1px;
@@ -1587,7 +1605,7 @@ fieldset.permissions .padding {
 }
 
 .permissions-panel th.row4 {
-	background-image: none;	
+	background-image: none;
 	background-color: #E4E8EB;
 	color: #536482;
 	border: none;
@@ -1595,8 +1613,8 @@ fieldset.permissions .padding {
 
 .permissions-panel th a:link, .permissions-panel th a:hover, .permissions-panel th a:visited {
 	display: block;
-	color: #FFFFFF; 
-	text-decoration: underline; 
+	color: #FFFFFF;
+	text-decoration: underline;
 }
 
 .permissions-panel td.permissions-yes label:hover {

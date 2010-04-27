@@ -3,7 +3,7 @@
 * acp_permissions_phpbb (phpBB Permission Set) [English]
 *
 * @package language
-* @version $Id: permissions_phpbb.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 */
@@ -111,7 +111,8 @@ $lang = array_merge($lang, array(
 	'acl_u_sig'			=> array('lang' => 'Can use signature', 'cat' => 'post'),
 
 	'acl_u_sendpm'		=> array('lang' => 'Can send private messages', 'cat' => 'pm'),
-	'acl_u_masspm'		=> array('lang' => 'Can send pm to multiple users and groups', 'cat' => 'pm'),
+	'acl_u_masspm'		=> array('lang' => 'Can send messages to multiple users', 'cat' => 'pm'),
+	'acl_u_masspm_group'=> array('lang' => 'Can send messages to groups', 'cat' => 'pm'),
 	'acl_u_readpm'		=> array('lang' => 'Can read private messages', 'cat' => 'pm'),
 	'acl_u_pm_edit'		=> array('lang' => 'Can edit own private messages', 'cat' => 'pm'),
 	'acl_u_pm_delete'	=> array('lang' => 'Can remove private messages from own folder', 'cat' => 'pm'),
@@ -120,10 +121,10 @@ $lang = array_merge($lang, array(
 	'acl_u_pm_printpm'	=> array('lang' => 'Can print private messages', 'cat' => 'pm'),
 	'acl_u_pm_attach'	=> array('lang' => 'Can attach files in private messages', 'cat' => 'pm'),
 	'acl_u_pm_download'	=> array('lang' => 'Can download files in private messages', 'cat' => 'pm'),
-	'acl_u_pm_bbcode'	=> array('lang' => 'Can post BBCode in private messages', 'cat' => 'pm'),
-	'acl_u_pm_smilies'	=> array('lang' => 'Can post smilies in private messages', 'cat' => 'pm'),
-	'acl_u_pm_img'		=> array('lang' => 'Can post images in private messages', 'cat' => 'pm'),
-	'acl_u_pm_flash'	=> array('lang' => 'Can post Flash in private messages', 'cat' => 'pm'),
+	'acl_u_pm_bbcode'	=> array('lang' => 'Can use BBCode in private messages', 'cat' => 'pm'),
+	'acl_u_pm_smilies'	=> array('lang' => 'Can use smilies in private messages', 'cat' => 'pm'),
+	'acl_u_pm_img'		=> array('lang' => 'Can use [img] BBCode tag in private messages', 'cat' => 'pm'),
+	'acl_u_pm_flash'	=> array('lang' => 'Can use [flash] BBCode tag in private messages', 'cat' => 'pm'),
 
 	'acl_u_sendemail'	=> array('lang' => 'Can send e-mails', 'cat' => 'misc'),
 	'acl_u_sendim'		=> array('lang' => 'Can send instant messages', 'cat' => 'misc'),
@@ -150,10 +151,10 @@ $lang = array_merge($lang, array(
 	'acl_f_attach'		=> array('lang' => 'Can attach files', 'cat' => 'content'),
 	'acl_f_download'	=> array('lang' => 'Can download files', 'cat' => 'content'),
 	'acl_f_sigs'		=> array('lang' => 'Can use signatures', 'cat' => 'content'),
-	'acl_f_bbcode'		=> array('lang' => 'Can post BBCode', 'cat' => 'content'),
-	'acl_f_smilies'		=> array('lang' => 'Can post smilies', 'cat' => 'content'),
-	'acl_f_img'			=> array('lang' => 'Can post images', 'cat' => 'content'),
-	'acl_f_flash'		=> array('lang' => 'Can post Flash', 'cat' => 'content'),
+	'acl_f_bbcode'		=> array('lang' => 'Can use BBCode', 'cat' => 'content'),
+	'acl_f_smilies'		=> array('lang' => 'Can use smilies', 'cat' => 'content'),
+	'acl_f_img'			=> array('lang' => 'Can use [img] BBCode tag', 'cat' => 'content'),
+	'acl_f_flash'		=> array('lang' => 'Can use [flash] BBCode tag', 'cat' => 'content'),
 
 	'acl_f_edit'		=> array('lang' => 'Can edit own posts', 'cat' => 'actions'),
 	'acl_f_delete'		=> array('lang' => 'Can delete own posts', 'cat' => 'actions'),

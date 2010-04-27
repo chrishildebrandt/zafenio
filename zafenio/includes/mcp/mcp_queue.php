@@ -2,7 +2,7 @@
 /**
 *
 * @package mcp
-* @version $Id: mcp_queue.php 8609 2008-06-05 14:08:12Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -105,6 +105,7 @@ class mcp_queue
 				{
 					$template->assign_vars(array(
 						'S_TOPIC_REVIEW'	=> true,
+						'S_BBCODE_ALLOWED'	=> $post_info['enable_bbcode'],
 						'TOPIC_TITLE'		=> $post_info['topic_title'])
 					);
 				}
@@ -242,6 +243,17 @@ class mcp_queue
 				}
 
 				$forum_list_approve = get_forum_list('m_approve', false, true);
+				$forum_list_read = array_flip(get_forum_list('f_read', true, true)); // Flipped so we can isset() the forum IDs
+
+				// Remove forums we cannot read
+				foreach ($forum_list_approve as $k => $forum_data)
+				{
+					if (!isset($forum_list_read[$forum_data['forum_id']]))
+					{
+						unset($forum_list_approve[$k]);
+					}
+				}
+				unset($forum_list_read);
 
 				if (!$forum_id)
 				{
@@ -480,12 +492,17 @@ function approve_post($post_id_list, $id, $mode)
 		// If Post -> total_posts = total_posts+1, forum_posts = forum_posts+1, topic_replies = topic_replies+1
 
 		$total_topics = $total_posts = 0;
-		$forum_topics_posts = $topic_approve_sql = $topic_replies_sql = $post_approve_sql = $topic_id_list = $forum_id_list = $approve_log = array();
-
-		$update_forum_information = false;
+		$topic_approve_sql = $post_approve_sql = $topic_id_list = $forum_id_list = $approve_log = array();
+		$user_posts_sql = $post_approved_list = array();
 
 		foreach ($post_info as $post_id => $post_data)
 		{
+			if ($post_data['post_approved'])
+			{
+				$post_approved_list[] = $post_id;
+				continue;
+			}
+
 			$topic_id_list[$post_data['topic_id']] = 1;
 
 			if ($post_data['forum_id'])
@@ -493,21 +510,19 @@ function approve_post($post_id_list, $id, $mode)
 				$forum_id_list[$post_data['forum_id']] = 1;
 			}
 
+			// User post update (we do not care about topic or post, since user posts are strictly connected to posts)
+			// But we care about forums where post counts get not increased. ;)
+			if ($post_data['post_postcount'])
+			{
+				$user_posts_sql[$post_data['poster_id']] = (empty($user_posts_sql[$post_data['poster_id']])) ? 1 : $user_posts_sql[$post_data['poster_id']] + 1;
+			}
+
 			// Topic or Post. ;)
 			if ($post_data['topic_first_post_id'] == $post_id)
 			{
 				if ($post_data['forum_id'])
 				{
-					if (!isset($forum_topics_posts[$post_data['forum_id']]))
-					{
-						$forum_topics_posts[$post_data['forum_id']] = array(
-							'forum_posts'	=> 0,
-							'forum_topics'	=> 0
-						);
-					}
-
 					$total_topics++;
-					$forum_topics_posts[$post_data['forum_id']]['forum_topics']++;
 				}
 				$topic_approve_sql[] = $post_data['topic_id'];
 
@@ -520,12 +535,6 @@ function approve_post($post_id_list, $id, $mode)
 			}
 			else
 			{
-				if (!isset($topic_replies_sql[$post_data['topic_id']]))
-				{
-					$topic_replies_sql[$post_data['topic_id']] = 0;
-				}
-				$topic_replies_sql[$post_data['topic_id']]++;
-
 				$approve_log[] = array(
 					'type'			=> 'post',
 					'post_subject'	=> $post_data['post_subject'],
@@ -536,33 +545,23 @@ function approve_post($post_id_list, $id, $mode)
 
 			if ($post_data['forum_id'])
 			{
-				if (!isset($forum_topics_posts[$post_data['forum_id']]))
-				{
-					$forum_topics_posts[$post_data['forum_id']] = array(
-						'forum_posts'	=> 0,
-						'forum_topics'	=> 0
-					);
-				}
-
 				$total_posts++;
-				$forum_topics_posts[$post_data['forum_id']]['forum_posts']++;
 
 				// Increment by topic_replies if we approve a topic...
 				// This works because we do not adjust the topic_replies when re-approving a topic after an edit.
 				if ($post_data['topic_first_post_id'] == $post_id && $post_data['topic_replies'])
 				{
 					$total_posts += $post_data['topic_replies'];
-					$forum_topics_posts[$post_data['forum_id']]['forum_posts'] += $post_data['topic_replies'];
 				}
 			}
 
 			$post_approve_sql[] = $post_id;
+		}
 
-			// If the post is newer than the last post information stored we need to update the forum information
-			if ($post_data['post_time'] >= $post_data['forum_last_post_time'])
-			{
-				$update_forum_information = true;
-			}
+		$post_id_list = array_values(array_diff($post_id_list, $post_approved_list));
+		for ($i = 0, $size = sizeof($post_approved_list); $i < $size; $i++)
+		{
+			unset($post_info[$post_approved_list[$i]]);
 		}
 
 		if (sizeof($topic_approve_sql))
@@ -581,54 +580,44 @@ function approve_post($post_id_list, $id, $mode)
 			$db->sql_query($sql);
 		}
 
+		unset($topic_approve_sql, $post_approve_sql);
+
 		foreach ($approve_log as $log_data)
 		{
 			add_log('mod', $log_data['forum_id'], $log_data['topic_id'], ($log_data['type'] == 'topic') ? 'LOG_TOPIC_APPROVED' : 'LOG_POST_APPROVED', $log_data['post_subject']);
 		}
 
-		if (sizeof($topic_replies_sql))
+		if (sizeof($user_posts_sql))
 		{
-			foreach ($topic_replies_sql as $topic_id => $num_replies)
+			// Try to minimize the query count by merging users with the same post count additions
+			$user_posts_update = array();
+
+			foreach ($user_posts_sql as $user_id => $user_posts)
 			{
-				$sql = 'UPDATE ' . TOPICS_TABLE . "
-					SET topic_replies = topic_replies + $num_replies
-					WHERE topic_id = $topic_id";
-				$db->sql_query($sql);
+				$user_posts_update[$user_posts][] = $user_id;
 			}
-		}
 
-		if (sizeof($forum_topics_posts))
-		{
-			foreach ($forum_topics_posts as $forum_id => $row)
+			foreach ($user_posts_update as $user_posts => $user_id_ary)
 			{
-				$sql = 'UPDATE ' . FORUMS_TABLE . '
-					SET ';
-				$sql .= ($row['forum_topics']) ? "forum_topics = forum_topics + {$row['forum_topics']}" : '';
-				$sql .= ($row['forum_topics'] && $row['forum_posts']) ? ', ' : '';
-				$sql .= ($row['forum_posts']) ? "forum_posts = forum_posts + {$row['forum_posts']}" : '';
-				$sql .= " WHERE forum_id = $forum_id";
-
+				$sql = 'UPDATE ' . USERS_TABLE . '
+					SET user_posts = user_posts + ' . $user_posts . '
+					WHERE ' . $db->sql_in_set('user_id', $user_id_ary);
 				$db->sql_query($sql);
 			}
 		}
 
 		if ($total_topics)
 		{
-			set_config('num_topics', $config['num_topics'] + $total_topics, true);
+			set_config_count('num_topics', $total_topics, true);
 		}
 
 		if ($total_posts)
 		{
-			set_config('num_posts', $config['num_posts'] + $total_posts, true);
+			set_config_count('num_posts', $total_posts, true);
 		}
-		unset($topic_approve_sql, $topic_replies_sql, $post_approve_sql);
 
-		update_post_information('topic', array_keys($topic_id_list));
-
-		if ($update_forum_information)
-		{
-			update_post_information('forum', array_keys($forum_id_list));
-		}
+		sync('topic', 'topic_id', array_keys($topic_id_list), true);
+		sync('forum', 'forum_id', array_keys($forum_id_list), true, true);
 		unset($topic_id_list, $forum_id_list);
 
 		$messenger = new messenger();
@@ -695,7 +684,7 @@ function approve_post($post_id_list, $id, $mode)
 		}
 		else
 		{
-			$success_msg = (sizeof($post_id_list) == 1) ? 'POST_APPROVED_SUCCESS' : 'POSTS_APPROVED_SUCCESS';
+			$success_msg = (sizeof($post_id_list) + sizeof($post_approved_list) == 1) ? 'POST_APPROVED_SUCCESS' : 'POSTS_APPROVED_SUCCESS';
 		}
 	}
 	else
@@ -793,6 +782,13 @@ function disapprove_post($post_id_list, $id, $mode)
 			// If the reason is defined within the language file, we will use the localized version, else just use the database entry...
 			$disapprove_reason = (strtolower($row['reason_title']) != 'other') ? ((isset($user->lang['report_reasons']['DESCRIPTION'][strtoupper($row['reason_title'])])) ? $user->lang['report_reasons']['DESCRIPTION'][strtoupper($row['reason_title'])] : $row['reason_description']) : '';
 			$disapprove_reason .= ($reason) ? "\n\n" . $reason : '';
+
+			if (isset($user->lang['report_reasons']['DESCRIPTION'][strtoupper($row['reason_title'])]))
+			{
+				$disapprove_reason_lang = strtoupper($row['reason_title']);
+			}
+
+			$email_disapprove_reason = $disapprove_reason;
 		}
 	}
 
@@ -800,89 +796,63 @@ function disapprove_post($post_id_list, $id, $mode)
 
 	if (confirm_box(true))
 	{
+		$disapprove_log = $disapprove_log_topics = $disapprove_log_posts = array();
+		$topic_replies_real = $post_disapprove_list = array();
 
-		// If Topic -> forum_topics_real -= 1
-		// If Post -> topic_replies_real -= 1
-
-		$num_disapproved = 0;
-		$forum_topics_real = $topic_id_list = $forum_id_list = $topic_replies_real_sql = $post_disapprove_sql = $disapprove_log = array();
-
+		// Build a list of posts to be unapproved and get the related topics real replies count
 		foreach ($post_info as $post_id => $post_data)
 		{
-			$topic_id_list[$post_data['topic_id']] = 1;
-
-			if ($post_data['forum_id'])
+			$post_disapprove_list[$post_id] = $post_data['topic_id'];
+			if (!isset($topic_replies_real[$post_data['topic_id']]))
 			{
-				$forum_id_list[$post_data['forum_id']] = 1;
+				$topic_replies_real[$post_data['topic_id']] = $post_data['topic_replies_real'];
 			}
+		}
 
-			// Topic or Post. ;)
-			/**
-			* @todo this probably is a different method than the one used by delete_posts, does this cause counter inconsistency?
-			*/
-			if ($post_data['topic_first_post_id'] == $post_id && $post_data['topic_last_post_id'] == $post_id)
+		// Now we build the log array
+		foreach ($post_disapprove_list as $post_id => $topic_id)
+		{
+			// If the count of disapproved posts for the topic is greater
+			// than topic's real replies count, the whole topic is disapproved/deleted
+			if (sizeof(array_keys($post_disapprove_list, $topic_id)) > $topic_replies_real[$topic_id])
 			{
-				if ($post_data['forum_id'])
+				// Don't write the log more than once for every topic
+				if (!isset($disapprove_log_topics[$topic_id]))
 				{
-					if (!isset($forum_topics_real[$post_data['forum_id']]))
-					{
-						$forum_topics_real[$post_data['forum_id']] = 0;
-					}
-					$forum_topics_real[$post_data['forum_id']]++;
-					$num_disapproved++;
+					// Build disapproved topics log
+					$disapprove_log_topics[$topic_id] = array(
+						'type'			=> 'topic',
+						'post_subject'	=> $post_info[$post_id]['topic_title'],
+						'forum_id'		=> $post_info[$post_id]['forum_id'],
+						'topic_id'		=> 0, // useless to log a topic id, as it will be deleted
+					);
 				}
-
-				$disapprove_log[] = array(
-					'type'			=> 'topic',
-					'post_subject'	=> $post_data['post_subject'],
-					'forum_id'		=> $post_data['forum_id'],
-					'topic_id'		=> 0, // useless to log a topic id, as it will be deleted
-				);
 			}
 			else
 			{
-				if (!isset($topic_replies_real_sql[$post_data['topic_id']]))
-				{
-					$topic_replies_real_sql[$post_data['topic_id']] = 0;
-				}
-				$topic_replies_real_sql[$post_data['topic_id']]++;
-
-				$disapprove_log[] = array(
+				// Build disapproved posts log
+				$disapprove_log_posts[] = array(
 					'type'			=> 'post',
-					'post_subject'	=> $post_data['post_subject'],
-					'forum_id'		=> $post_data['forum_id'],
-					'topic_id'		=> $post_data['topic_id'],
+					'post_subject'	=> $post_info[$post_id]['post_subject'],
+					'forum_id'		=> $post_info[$post_id]['forum_id'],
+					'topic_id'		=> $post_info[$post_id]['topic_id'],
 				);
-			}
 
-			$post_disapprove_sql[] = $post_id;
-		}
-
-		unset($post_data);
-
-		if (sizeof($forum_topics_real))
-		{
-			foreach ($forum_topics_real as $forum_id => $topics_real)
-			{
-				$sql = 'UPDATE ' . FORUMS_TABLE . "
-					SET forum_topics_real = forum_topics_real - $topics_real
-					WHERE forum_id = $forum_id";
-				$db->sql_query($sql);
 			}
 		}
 
-		if (sizeof($topic_replies_real_sql))
-		{
-			foreach ($topic_replies_real_sql as $topic_id => $num_replies)
-			{
-				$sql = 'UPDATE ' . TOPICS_TABLE . "
-					SET topic_replies_real = topic_replies_real - $num_replies
-					WHERE topic_id = $topic_id";
-				$db->sql_query($sql);
-			}
-		}
+		// Get disapproved posts/topics counts separately
+		$num_disapproved_topics = sizeof($disapprove_log_topics);
+		$num_disapproved_posts = sizeof($disapprove_log_posts);
 
-		if (sizeof($post_disapprove_sql))
+		// Build the whole log
+		$disapprove_log = array_merge($disapprove_log_topics, $disapprove_log_posts);
+
+		// Unset unneeded arrays
+		unset($post_data, $disapprove_log_topics, $disapprove_log_posts);
+
+		// Let's do the job - delete disapproved posts
+		if (sizeof($post_disapprove_list))
 		{
 			if (!function_exists('delete_posts'))
 			{
@@ -890,33 +860,57 @@ function disapprove_post($post_id_list, $id, $mode)
 			}
 
 			// We do not check for permissions here, because the moderator allowed approval/disapproval should be allowed to delete the disapproved posts
-			delete_posts('post_id', $post_disapprove_sql);
+			// Note: function delete_posts triggers related forums/topics sync,
+			// so we don't need to call update_post_information later and to adjust real topic replies or forum topics count manually
+			delete_posts('post_id', array_keys($post_disapprove_list));
 
 			foreach ($disapprove_log as $log_data)
 			{
 				add_log('mod', $log_data['forum_id'], $log_data['topic_id'], ($log_data['type'] == 'topic') ? 'LOG_TOPIC_DISAPPROVED' : 'LOG_POST_DISAPPROVED', $log_data['post_subject'], $disapprove_reason);
 			}
 		}
-		unset($post_disapprove_sql, $topic_replies_real_sql);
-
-		update_post_information('topic', array_keys($topic_id_list));
-
-		if (sizeof($forum_id_list))
-		{
-			update_post_information('forum', array_keys($forum_id_list));
-		}
-		unset($topic_id_list, $forum_id_list);
 
 		$messenger = new messenger();
 
 		// Notify Poster?
 		if ($notify_poster)
 		{
+			$lang_reasons = array();
+
 			foreach ($post_info as $post_id => $post_data)
 			{
 				if ($post_data['poster_id'] == ANONYMOUS)
 				{
 					continue;
+				}
+
+				if (isset($disapprove_reason_lang))
+				{
+					// Okay we need to get the reason from the posters language
+					if (!isset($lang_reasons[$post_data['user_lang']]))
+					{
+						// Assign the current users translation as the default, this is not ideal but getting the board default adds another layer of complexity.
+						$lang_reasons[$post_data['user_lang']] = $user->lang['report_reasons']['DESCRIPTION'][$disapprove_reason_lang];
+
+						// Only load up the language pack if the language is different to the current one
+						if ($post_data['user_lang'] != $user->lang_name && file_exists($phpbb_root_path . '/language/' . $post_data['user_lang'] . '/mcp.' . $phpEx))
+						{
+							// Load up the language pack
+							$lang = array();
+							@include($phpbb_root_path . '/language/' . basename($post_data['user_lang']) . '/mcp.' . $phpEx);
+
+							// If we find the reason in this language pack use it
+							if (isset($lang['report_reasons']['DESCRIPTION'][$disapprove_reason_lang]))
+							{
+								$lang_reasons[$post_data['user_lang']] = $lang['report_reasons']['DESCRIPTION'][$disapprove_reason_lang];
+							}
+
+							unset($lang); // Free memory
+						}
+					}
+
+					$email_disapprove_reason = $lang_reasons[$post_data['user_lang']];
+					$email_disapprove_reason .= ($reason) ? "\n\n" . $reason : '';
 				}
 
 				$email_template = ($post_data['post_id'] == $post_data['topic_first_post_id'] && $post_data['post_id'] == $post_data['topic_last_post_id']) ? 'topic_disapproved' : 'post_disapproved';
@@ -928,25 +922,27 @@ function disapprove_post($post_id_list, $id, $mode)
 
 				$messenger->assign_vars(array(
 					'USERNAME'		=> htmlspecialchars_decode($post_data['username']),
-					'REASON'		=> htmlspecialchars_decode($disapprove_reason),
+					'REASON'		=> htmlspecialchars_decode($email_disapprove_reason),
 					'POST_SUBJECT'	=> htmlspecialchars_decode(censor_text($post_data['post_subject'])),
 					'TOPIC_TITLE'	=> htmlspecialchars_decode(censor_text($post_data['topic_title'])))
 				);
 
 				$messenger->send($post_data['user_notify_type']);
 			}
+
+			unset($lang_reasons);
 		}
-		unset($post_info, $disapprove_reason);
+		unset($post_info, $disapprove_reason, $email_disapprove_reason, $disapprove_reason_lang);
 
 		$messenger->save_queue();
 
-		if (sizeof($forum_topics_real))
+		if ($num_disapproved_topics)
 		{
-			$success_msg = ($num_disapproved == 1) ? 'TOPIC_DISAPPROVED_SUCCESS' : 'TOPICS_DISAPPROVED_SUCCESS';
+			$success_msg = ($num_disapproved_topics == 1) ? 'TOPIC_DISAPPROVED_SUCCESS' : 'TOPICS_DISAPPROVED_SUCCESS';
 		}
 		else
 		{
-			$success_msg = (sizeof($post_id_list) == 1) ? 'POST_DISAPPROVED_SUCCESS' : 'POSTS_DISAPPROVED_SUCCESS';
+			$success_msg = ($num_disapproved_posts == 1) ? 'POST_DISAPPROVED_SUCCESS' : 'POSTS_DISAPPROVED_SUCCESS';
 		}
 	}
 	else

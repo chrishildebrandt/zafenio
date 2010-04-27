@@ -1,6 +1,6 @@
 /*
 
- $Id: mssql_schema.sql 8666 2008-06-21 16:04:13Z acydburn $
+ $Id$
 
 */
 
@@ -93,7 +93,7 @@ ALTER TABLE [phpbb_acl_options] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-CREATE  INDEX [auth_option] ON [phpbb_acl_options]([auth_option]) ON [PRIMARY]
+CREATE  UNIQUE  INDEX [auth_option] ON [phpbb_acl_options]([auth_option]) ON [PRIMARY]
 GO
 
 
@@ -302,7 +302,8 @@ CREATE TABLE [phpbb_confirm] (
 	[session_id] [char] (32) DEFAULT ('') NOT NULL ,
 	[confirm_type] [int] DEFAULT (0) NOT NULL ,
 	[code] [varchar] (8) DEFAULT ('') NOT NULL ,
-	[seed] [int] DEFAULT (0) NOT NULL 
+	[seed] [int] DEFAULT (0) NOT NULL ,
+	[attempts] [int] DEFAULT (0) NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -438,6 +439,7 @@ CREATE TABLE [phpbb_forums] (
 	[forum_last_poster_name] [varchar] (255) DEFAULT ('') NOT NULL ,
 	[forum_last_poster_colour] [varchar] (6) DEFAULT ('') NOT NULL ,
 	[forum_flags] [int] DEFAULT (32) NOT NULL ,
+	[forum_options] [int] DEFAULT (0) NOT NULL ,
 	[display_subforum_list] [int] DEFAULT (1) NOT NULL ,
 	[display_on_index] [int] DEFAULT (1) NOT NULL ,
 	[enable_indexing] [int] DEFAULT (1) NOT NULL ,
@@ -530,6 +532,7 @@ CREATE TABLE [phpbb_groups] (
 	[group_id] [int] IDENTITY (1, 1) NOT NULL ,
 	[group_type] [int] DEFAULT (1) NOT NULL ,
 	[group_founder_manage] [int] DEFAULT (0) NOT NULL ,
+	[group_skip_auth] [int] DEFAULT (0) NOT NULL ,
 	[group_name] [varchar] (255) DEFAULT ('') NOT NULL ,
 	[group_desc] [varchar] (4000) DEFAULT ('') NOT NULL ,
 	[group_desc_bitfield] [varchar] (255) DEFAULT ('') NOT NULL ,
@@ -545,6 +548,7 @@ CREATE TABLE [phpbb_groups] (
 	[group_sig_chars] [int] DEFAULT (0) NOT NULL ,
 	[group_receive_pm] [int] DEFAULT (0) NOT NULL ,
 	[group_message_limit] [int] DEFAULT (0) NOT NULL ,
+	[group_max_recipients] [int] DEFAULT (0) NOT NULL ,
 	[group_legend] [int] DEFAULT (1) NOT NULL 
 ) ON [PRIMARY]
 GO
@@ -797,6 +801,9 @@ GO
 CREATE  INDEX [post_approved] ON [phpbb_posts]([post_approved]) ON [PRIMARY]
 GO
 
+CREATE  INDEX [post_username] ON [phpbb_posts]([post_username]) ON [PRIMARY]
+GO
+
 CREATE  INDEX [tid_post_time] ON [phpbb_posts]([topic_id], [post_time]) ON [PRIMARY]
 GO
 
@@ -825,7 +832,8 @@ CREATE TABLE [phpbb_privmsgs] (
 	[message_edit_time] [int] DEFAULT (0) NOT NULL ,
 	[message_edit_count] [int] DEFAULT (0) NOT NULL ,
 	[to_address] [varchar] (4000) DEFAULT ('') NOT NULL ,
-	[bcc_address] [varchar] (4000) DEFAULT ('') NOT NULL 
+	[bcc_address] [varchar] (4000) DEFAULT ('') NOT NULL ,
+	[message_reported] [int] DEFAULT (0) NOT NULL 
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
@@ -941,6 +949,8 @@ CREATE TABLE [phpbb_profile_fields] (
 	[field_validation] [varchar] (20) DEFAULT ('') NOT NULL ,
 	[field_required] [int] DEFAULT (0) NOT NULL ,
 	[field_show_on_reg] [int] DEFAULT (0) NOT NULL ,
+	[field_show_on_vt] [int] DEFAULT (0) NOT NULL ,
+	[field_show_profile] [int] DEFAULT (0) NOT NULL ,
 	[field_hide] [int] DEFAULT (0) NOT NULL ,
 	[field_no_view] [int] DEFAULT (0) NOT NULL ,
 	[field_active] [int] DEFAULT (0) NOT NULL ,
@@ -1048,6 +1058,7 @@ CREATE TABLE [phpbb_reports] (
 	[report_id] [int] IDENTITY (1, 1) NOT NULL ,
 	[reason_id] [int] DEFAULT (0) NOT NULL ,
 	[post_id] [int] DEFAULT (0) NOT NULL ,
+	[pm_id] [int] DEFAULT (0) NOT NULL ,
 	[user_id] [int] DEFAULT (0) NOT NULL ,
 	[user_notify] [int] DEFAULT (0) NOT NULL ,
 	[report_closed] [int] DEFAULT (0) NOT NULL ,
@@ -1061,6 +1072,12 @@ ALTER TABLE [phpbb_reports] WITH NOCHECK ADD
 	(
 		[report_id]
 	)  ON [PRIMARY] 
+GO
+
+CREATE  INDEX [post_id] ON [phpbb_reports]([post_id]) ON [PRIMARY]
+GO
+
+CREATE  INDEX [pm_id] ON [phpbb_reports]([pm_id]) ON [PRIMARY]
 GO
 
 
@@ -1295,7 +1312,9 @@ CREATE TABLE [phpbb_styles_template] (
 	[template_copyright] [varchar] (255) DEFAULT ('') NOT NULL ,
 	[template_path] [varchar] (100) DEFAULT ('') NOT NULL ,
 	[bbcode_bitfield] [varchar] (255) DEFAULT ('kNg=') NOT NULL ,
-	[template_storedb] [int] DEFAULT (0) NOT NULL 
+	[template_storedb] [int] DEFAULT (0) NOT NULL ,
+	[template_inherits_id] [int] DEFAULT (0) NOT NULL ,
+	[template_inherit_path] [varchar] (255) DEFAULT ('') NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -1487,6 +1506,9 @@ ALTER TABLE [phpbb_topics_track] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
+CREATE  INDEX [topic_id] ON [phpbb_topics_track]([topic_id]) ON [PRIMARY]
+GO
+
 CREATE  INDEX [forum_id] ON [phpbb_topics_track]([forum_id]) ON [PRIMARY]
 GO
 
@@ -1608,7 +1630,7 @@ CREATE TABLE [phpbb_users] (
 	[user_allow_viewonline] [int] DEFAULT (1) NOT NULL ,
 	[user_allow_viewemail] [int] DEFAULT (1) NOT NULL ,
 	[user_allow_massemail] [int] DEFAULT (1) NOT NULL ,
-	[user_options] [int] DEFAULT (895) NOT NULL ,
+	[user_options] [int] DEFAULT (230271) NOT NULL ,
 	[user_avatar] [varchar] (255) DEFAULT ('') NOT NULL ,
 	[user_avatar_type] [int] DEFAULT (0) NOT NULL ,
 	[user_avatar_width] [int] DEFAULT (0) NOT NULL ,
@@ -1627,7 +1649,10 @@ CREATE TABLE [phpbb_users] (
 	[user_interests] [varchar] (4000) DEFAULT ('') NOT NULL ,
 	[user_actkey] [varchar] (32) DEFAULT ('') NOT NULL ,
 	[user_newpasswd] [varchar] (40) DEFAULT ('') NOT NULL ,
-	[user_form_salt] [varchar] (32) DEFAULT ('') NOT NULL 
+	[user_form_salt] [varchar] (32) DEFAULT ('') NOT NULL ,
+	[user_new] [int] DEFAULT (1) NOT NULL ,
+	[user_reminded] [int] DEFAULT (0) NOT NULL ,
+	[user_reminded_time] [int] DEFAULT (0) NOT NULL 
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 

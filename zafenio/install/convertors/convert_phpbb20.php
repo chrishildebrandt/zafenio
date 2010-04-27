@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: convert_phpbb20.php 8619 2008-06-07 14:10:16Z acydburn $
+* @version $Id$
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -31,8 +31,8 @@ unset($dbpasswd);
 */
 $convertor_data = array(
 	'forum_name'	=> 'phpBB 2.0.x',
-	'version'		=> '1.0.2',
-	'phpbb_version'	=> '3.0.2',
+	'version'		=> '1.0.3',
+	'phpbb_version'	=> '3.0.7-PL1',
 	'author'		=> '<a href="http://www.phpbb.com/">phpBB Group</a>',
 	'dbms'			=> $dbms,
 	'dbhost'		=> $dbhost,
@@ -78,6 +78,15 @@ $tables = array(
 *
 * 'table_format' can take the value 'file' to indicate a config file. In this case array_name
 * is set to indicate the name of the array the config values are stored in
+* Example of using a file:
+* $config_schema = array(
+* 	'table_format'	=>	'file',
+* 	'filename'	=>	'NAME OF FILE', // If the file is not in the root directory, the path needs to be added with no leading slash
+* 	'array_name' => 'NAME OF ARRAY', // Only used if the configuration file stores the setting in an array.
+* 	'settings'		=>	array(
+*        'board_email' => 'SUPPORT_EMAIL', // target config name => source target name
+* 	)
+* );
 * 'table_format' can be an array if the values are stored in a table which is an assosciative array
 * (as per phpBB 2.0.x)
 * If left empty, values are assumed to be stored in a table where each config setting is
@@ -129,7 +138,7 @@ $config_schema = array(
 		'board_timezone'		=> 'board_timezone',
 		'allow_privmsg'			=> 'not(privmsg_disable)',
 		'gzip_compress'			=> 'gzip_compress',
-		'coppa_enable'			=> 'is_empty(coppa_mail)',
+		'coppa_enable'			=> '!is_empty(coppa_mail)',
 		'coppa_fax'				=> 'coppa_fax',
 		'coppa_mail'			=> 'coppa_mail',
 		'record_online_users'	=> 'record_online_users',
@@ -229,6 +238,9 @@ if (!$get_info)
 	@define('DEFAULT_AVATAR_X_CUSTOM', get_config_value('avatar_max_width'));
 	@define('DEFAULT_AVATAR_Y_CUSTOM', get_config_value('avatar_max_height'));
 
+	// additional table used only during conversion
+	@define('USERCONV_TABLE', $table_prefix . 'userconv');
+
 /**
 *	Description on how to use the convertor framework.
 *
@@ -316,7 +328,7 @@ if (!$get_info)
 		// username_clean in phpBB3 which is not possible, so we'll give the admin a list
 		// of user ids and usernames and let him deicde what he wants to do with them
 		'execute_first'	=> '
-			phpbb_check_username_collisions();
+			phpbb_create_userconv_table();
 			import_avatar_gallery();
 			if (defined("MOD_ATTACHMENT")) phpbb_import_attach_config();
 			phpbb_insert_forums();
@@ -339,6 +351,14 @@ if (!$get_info)
 		'),
 
 		'schema' => array(
+			array(
+				'target'	=> USERCONV_TABLE,
+				'query_first'   => array('target', $convert->truncate_statement . USERCONV_TABLE),
+
+
+				array('user_id',			'users.user_id', 	''),
+				array('username_clean',		'users.username',	array('function1' => 'phpbb_set_encoding', 'function2' => 'utf8_clean_string')),
+			),
 
 			array(
 				'target'		=> (defined('MOD_ATTACHMENT')) ? ATTACHMENTS_TABLE : '',
@@ -419,6 +439,7 @@ if (!$get_info)
 
 			array(
 				'target'		=> BANLIST_TABLE,
+				'execute_first'	=> 'phpbb_check_username_collisions();',
 				'query_first'	=> array('target', $convert->truncate_statement . BANLIST_TABLE),
 
 				array('ban_ip',					'banlist.ban_ip',					'decode_ban_ip'),
@@ -482,7 +503,7 @@ if (!$get_info)
 				array('topic_moved_id',			0,									''),
 				array('topic_type',				'topics.topic_type',				'phpbb_convert_topic_type'),
 				array('topic_first_post_id',	'topics.topic_first_post_id',		''),
-				array('topic_last_view_time',	'posts.post_time',					''),
+				array('topic_last_view_time',	'posts.post_time',					'intval'),
 				array('poll_title',				'vote_desc.vote_text',				array('function1' => 'null_to_str', 'function2' => 'phpbb_set_encoding', 'function3' => 'utf8_htmlspecialchars')),
 				array('poll_start',				'vote_desc.vote_start',				'null_to_zero'),
 				array('poll_length',			'vote_desc.vote_length',			'null_to_zero'),
@@ -599,6 +620,7 @@ if (!$get_info)
 				'query_first'	=> array('target', $convert->truncate_statement . POSTS_TABLE),
 				'execute_first'	=> '
 					$config["max_post_chars"] = 0;
+					$config["min_post_chars"] = 0;
 					$config["max_quote_depth"] = 0;
 				',
 
@@ -648,6 +670,7 @@ if (!$get_info)
 
 				'execute_first'	=> '
 					$config["max_post_chars"] = 0;
+					$config["min_post_chars"] = 0;
 					$config["max_quote_depth"] = 0;
 				',
 
@@ -853,7 +876,7 @@ if (!$get_info)
 				array('user_regdate',			'users.user_regdate',				''),
 				array('username',				'users.username',					'phpbb_set_default_encoding'), // recode to utf8 with default lang
 				array('username_clean',			'users.username',					array('function1' => 'phpbb_set_default_encoding', 'function2' => 'utf8_clean_string')),
-				array('user_password',			'users.user_password',				''),
+				array('user_password',			'users.user_password',				'phpbb_hash'),
 				array('user_pass_convert',		1,									''),
 				array('user_posts',				'users.user_posts',					'intval'),
 				array('user_email',				'users.user_email',					'strtolower'),

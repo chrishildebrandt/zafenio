@@ -2,7 +2,7 @@
 /**
 *
 * @package ucp
-* @version $Id: ucp_pm_viewfolder.php 8567 2008-05-26 12:00:17Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -65,6 +65,12 @@ function view_folder($id, $mode, $folder_id, $folder)
 
 		$mark_options = array('mark_important', 'delete_marked');
 
+		// Minimise edits
+		if (!$auth->acl_get('u_pm_delete') && $key = array_search('delete_marked', $mark_options))
+		{
+			unset($mark_options[$key]);
+		}
+
 		$s_mark_options = '';
 		foreach ($mark_options as $mark_option)
 		{
@@ -115,81 +121,8 @@ function view_folder($id, $mode, $folder_id, $folder)
 			// Build Recipient List if in outbox/sentbox - max two additional queries
 			if ($folder_id == PRIVMSGS_OUTBOX || $folder_id == PRIVMSGS_SENTBOX)
 			{
-				$recipient_list = $address = array();
-
-				foreach ($folder_info['rowset'] as $message_id => $row)
-				{
-					$address[$message_id] = rebuild_header(array('to' => $row['to_address'], 'bcc' => $row['bcc_address']));
-					$_save = array('u', 'g');
-					foreach ($_save as $save)
-					{
-						if (isset($address[$message_id][$save]) && sizeof($address[$message_id][$save]))
-						{
-							foreach (array_keys($address[$message_id][$save]) as $ug_id)
-							{
-								$recipient_list[$save][$ug_id] = array('name' => $user->lang['NA'], 'colour' => '');
-							}
-						}
-					}
-				}
-
-				$_types = array('u', 'g');
-				foreach ($_types as $ug_type)
-				{
-					if (!empty($recipient_list[$ug_type]))
-					{
-						if ($ug_type == 'u')
-						{
-							$sql = 'SELECT user_id as id, username as name, user_colour as colour
-								FROM ' . USERS_TABLE . '
-								WHERE ';
-						}
-						else
-						{
-							$sql = 'SELECT group_id as id, group_name as name, group_colour as colour, group_type
-								FROM ' . GROUPS_TABLE . '
-								WHERE ';
-						}
-						$sql .= $db->sql_in_set(($ug_type == 'u') ? 'user_id' : 'group_id', array_map('intval', array_keys($recipient_list[$ug_type])));
-
-						$result = $db->sql_query($sql);
-
-						while ($row = $db->sql_fetchrow($result))
-						{
-							if ($ug_type == 'g')
-							{
-								$row['name'] = ($row['group_type'] == GROUP_SPECIAL) ? $user->lang['G_' . $row['name']] : $row['name'];
-							}
-
-							$recipient_list[$ug_type][$row['id']] = array('name' => $row['name'], 'colour' => $row['colour']);
-						}
-						$db->sql_freeresult($result);
-					}
-				}
-
-				foreach ($address as $message_id => $adr_ary)
-				{
-					foreach ($adr_ary as $type => $id_ary)
-					{
-						foreach ($id_ary as $ug_id => $_id)
-						{
-							if ($type == 'u')
-							{
-								$address_list[$message_id][] = get_username_string('full', $ug_id, $recipient_list[$type][$ug_id]['name'], $recipient_list[$type][$ug_id]['colour']);
-							}
-							else
-							{
-								$user_colour = ($recipient_list[$type][$ug_id]['colour']) ? ' style="font-weight: bold; color:#' . $recipient_list[$type][$ug_id]['colour'] . '"' : '';
-								$link = '<a href="' . append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=group&amp;g=' . $ug_id) . '"' . $user_colour . '>';
-								$address_list[$message_id][] = $link . $recipient_list[$type][$ug_id]['name'] . (($link) ? '</a>' : '');
-							}
-						}
-					}
-				}
-				unset($recipient_list, $address);
+				$address_list = get_recipient_strings($folder_info['rowset']);
 			}
-
-			$data = array();
 
 			foreach ($folder_info['pm_list'] as $message_id)
 			{
@@ -267,12 +200,15 @@ function view_folder($id, $mode, $folder_id, $folder)
 		else
 		{
 			// Build Recipient List if in outbox/sentbox
-			$address = array();
+
+			$address_temp = $address = $data = array();
+
 			if ($folder_id == PRIVMSGS_OUTBOX || $folder_id == PRIVMSGS_SENTBOX)
 			{
 				foreach ($folder_info['rowset'] as $message_id => $row)
 				{
-					$address[$message_id] = rebuild_header(array('to' => $row['to_address'], 'bcc' => $row['bcc_address']));
+					$address_temp[$message_id] = rebuild_header(array('to' => $row['to_address'], 'bcc' => $row['bcc_address']));
+					$address[$message_id] = array();
 				}
 			}
 
@@ -296,8 +232,12 @@ function view_folder($id, $mode, $folder_id, $folder)
 				$_types = array('u', 'g');
 				foreach ($_types as $ug_type)
 				{
-					if (isset($address[$message_id][$ug_type]) && sizeof($address[$message_id][$ug_type]))
+					if (isset($address_temp[$message_id][$ug_type]) && sizeof($address_temp[$message_id][$ug_type]))
 					{
+						if (!isset($address[$message_id][$ug_type]))
+						{
+							$address[$message_id][$ug_type] = array();
+						}
 						if ($ug_type == 'u')
 						{
 							$sql = 'SELECT user_id as id, username as name
@@ -310,25 +250,36 @@ function view_folder($id, $mode, $folder_id, $folder)
 								FROM ' . GROUPS_TABLE . '
 								WHERE ';
 						}
-						$sql .= $db->sql_in_set(($ug_type == 'u') ? 'user_id' : 'group_id', array_map('intval', array_keys($address[$message_id][$ug_type])));
+						$sql .= $db->sql_in_set(($ug_type == 'u') ? 'user_id' : 'group_id', array_map('intval', array_keys($address_temp[$message_id][$ug_type])));
 
 						$result = $db->sql_query($sql);
 
 						while ($info_row = $db->sql_fetchrow($result))
 						{
-							$address[$message_id][$ug_type][$address[$message_id][$ug_type][$info_row['id']]][] = $info_row['name'];
-							unset($address[$message_id][$ug_type][$info_row['id']]);
+							$address[$message_id][$ug_type][$address_temp[$message_id][$ug_type][$info_row['id']]][] = $info_row['name'];
+							unset($address_temp[$message_id][$ug_type][$info_row['id']]);
 						}
 						$db->sql_freeresult($result);
 					}
 				}
 
-				decode_message($message_row['message_text'], $message_row['bbcode_uid']);
+				// There is the chance that all recipients of the message got deleted. To avoid creating 
+				// exports without recipients, we add a bogus "undisclosed recipient".
+				if (!(isset($address[$message_id]['g']) && sizeof($address[$message_id]['g'])) && 
+				    !(isset($address[$message_id]['u']) && sizeof($address[$message_id]['u'])))
+				{
+					$address[$message_id]['u'] = array();
+					$address[$message_id]['u']['to'] = array();
+					$address[$message_id]['u']['to'][] = $user->lang['UNDISCLOSED_RECIPIENT'];
+				}
 
+				decode_message($message_row['message_text'], $message_row['bbcode_uid']);
+				
 				$data[] = array(
 					'subject'	=> censor_text($row['message_subject']),
 					'sender'	=> $row['username'],
-					'date'		=> $user->format_date($row['message_time']),
+					// ISO 8601 date. For PHP4 we are able to hardcode the timezone because $user->format_date() does not set it.
+					'date'		=> $user->format_date($row['message_time'], (PHP_VERSION >= 5) ? 'c' : "Y-m-d\TH:i:s+00:00", true),
 					'to'		=> ($folder_id == PRIVMSGS_OUTBOX || $folder_id == PRIVMSGS_SENTBOX) ? $address[$message_id] : '',
 					'message'	=> $message_row['message_text']
 				);
@@ -456,12 +407,12 @@ function get_pm_from($folder_id, $folder, $user_id)
 	if ($folder_id == PRIVMSGS_OUTBOX || $folder_id == PRIVMSGS_SENTBOX)
 	{
 		$sort_by_text = array('t' => $user->lang['POST_TIME'], 's' => $user->lang['SUBJECT']);
-		$sort_by_sql = array('t' => 'p.msg_id', 's' => 'p.message_subject');
+		$sort_by_sql = array('t' => 'p.message_time', 's' => array('p.message_subject', 'p.message_time'));
 	}
 	else
 	{
 		$sort_by_text = array('a' => $user->lang['AUTHOR'], 't' => $user->lang['POST_TIME'], 's' => $user->lang['SUBJECT']);
-		$sort_by_sql = array('a' => 'u.username_clean', 't' => 'p.msg_id', 's' => 'p.message_subject');
+		$sort_by_sql = array('a' => array('u.username_clean', 'p.message_time'), 't' => 'p.message_time', 's' => array('p.message_subject', 'p.message_time'));
 	}
 
 	$s_limit_days = $s_sort_key = $s_sort_dir = $u_sort_param = '';
@@ -502,9 +453,9 @@ function get_pm_from($folder_id, $folder, $user_id)
 		'PAGE_NUMBER'		=> on_page($pm_count, $config['topics_per_page'], $start),
 		'TOTAL_MESSAGES'	=> (($pm_count == 1) ? $user->lang['VIEW_PM_MESSAGE'] : sprintf($user->lang['VIEW_PM_MESSAGES'], $pm_count)),
 
-		'POST_IMG'		=> (!$auth->acl_get('u_sendpm')) ? $user->img('button_topic_locked', 'PM_LOCKED') : $user->img('button_pm_new', 'POST_PM'),
+		'POST_IMG'		=> (!$auth->acl_get('u_sendpm')) ? $user->img('button_topic_locked', 'POST_PM_LOCKED') : $user->img('button_pm_new', 'POST_NEW_PM'),
 
-		'L_NO_MESSAGES'	=> (!$auth->acl_get('u_sendpm')) ? $user->lang['POST_PM_LOCKED'] : $user->lang['NO_MESSAGES'],
+		'S_NO_AUTH_SEND_MESSAGE'	=> !$auth->acl_get('u_sendpm'),
 
 		'S_SELECT_SORT_DIR'		=> $s_sort_dir,
 		'S_SELECT_SORT_KEY'		=> $s_sort_key,
@@ -512,8 +463,8 @@ function get_pm_from($folder_id, $folder, $user_id)
 		'S_TOPIC_ICONS'			=> ($config['enable_pm_icons']) ? true : false,
 
 		'U_POST_NEW_TOPIC'	=> ($auth->acl_get('u_sendpm')) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=compose') : '',
-		'S_PM_ACTION'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", "i=pm&amp;mode=view&amp;action=view_folder&amp;f=$folder_id"))
-	);
+		'S_PM_ACTION'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", "i=pm&amp;mode=view&amp;action=view_folder&amp;f=$folder_id" . (($start !== 0) ? "&amp;start=$start" : '')),
+	));
 
 	// Grab all pm data
 	$rowset = $pm_list = array();
@@ -531,14 +482,24 @@ function get_pm_from($folder_id, $folder, $user_id)
 		}
 
 		// Select the sort order
-		$sql_sort_order = $sort_by_sql[$sort_key] . ' ' . (($sort_dir == 'd') ? 'ASC' : 'DESC');
+		$direction = ($sort_dir == 'd') ? 'ASC' : 'DESC';
 		$sql_start = max(0, $pm_count - $sql_limit - $start);
 	}
 	else
 	{
 		// Select the sort order
-		$sql_sort_order = $sort_by_sql[$sort_key] . ' ' . (($sort_dir == 'd') ? 'DESC' : 'ASC');
+		$direction = ($sort_dir == 'd') ? 'DESC' : 'ASC';
 		$sql_start = $start;
+	}
+
+	// Sql sort order
+	if (is_array($sort_by_sql[$sort_key]))
+	{
+		$sql_sort_order = implode(' ' . $direction . ', ', $sort_by_sql[$sort_key]) . ' ' . $direction;
+	}
+	else
+	{
+		$sql_sort_order = $sort_by_sql[$sort_key] . ' ' . $direction;
 	}
 
 	$sql = 'SELECT t.*, p.root_level, p.message_time, p.message_subject, p.icon_id, p.to_address, p.message_attachment, p.bcc_address, u.username, u.username_clean, u.user_colour

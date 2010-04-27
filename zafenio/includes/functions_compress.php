@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: functions_compress.php 8639 2008-06-09 17:44:32Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -80,6 +80,11 @@ class compress
 				}
 			}
 		}
+		else
+		{
+			// $src does not exist
+			return false;
+		}
 
 		return true;
 	}
@@ -89,6 +94,11 @@ class compress
 	*/
 	function add_custom_file($src, $filename)
 	{
+		if (!file_exists($src))
+		{
+			return false;
+		}
+
 		$this->data($filename, file_get_contents($src), false, stat($src));
 		return true;
 	}
@@ -155,7 +165,12 @@ class compress_zip extends compress
 	*/
 	function compress_zip($mode, $file)
 	{
-		return $this->fp = @fopen($file, $mode . 'b');
+		$this->fp = @fopen($file, $mode . 'b');
+
+		if (!$this->fp)
+		{
+			trigger_error('Unable to open file ' . $file . ' [' . $mode . 'b]');
+		}
 	}
 
 	/**
@@ -228,7 +243,7 @@ class compress_zip extends compress
 									{
 										trigger_error("Could not create directory $folder");
 									}
-									@chmod($str, 0777);
+									phpbb_chmod($str, CHMOD_READ | CHMOD_WRITE);
 								}
 							}
 						}
@@ -257,7 +272,7 @@ class compress_zip extends compress
 								{
 									trigger_error("Could not create directory $folder");
 								}
-								@chmod($str, 0777);
+								phpbb_chmod($str, CHMOD_READ | CHMOD_WRITE);
 							}
 						}
 					}
@@ -544,7 +559,7 @@ class compress_tar extends compress
 								{
 									trigger_error("Could not create directory $folder");
 								}
-								@chmod($str, 0777);
+								phpbb_chmod($str, CHMOD_READ | CHMOD_WRITE);
 							}
 						}
 					}
@@ -571,7 +586,7 @@ class compress_tar extends compress
 							{
 								trigger_error("Could not create directory $folder");
 							}
-							@chmod($str, 0777);
+							phpbb_chmod($str, CHMOD_READ | CHMOD_WRITE);
 						}
 					}
 
@@ -580,7 +595,7 @@ class compress_tar extends compress
 					{
 						trigger_error("Couldn't create file $filename");
 					}
-					@chmod($target_filename, 0777);
+					phpbb_chmod($target_filename, CHMOD_READ);
 
 					// Grab the file contents
 					fwrite($fp, ($filesize) ? $fzread($this->fp, ($filesize + 511) &~ 511) : '', $filesize);

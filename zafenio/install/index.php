@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: index.php 8598 2008-06-04 15:37:06Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -18,8 +18,12 @@ define('IN_INSTALL', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './../';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 
-// Report all errors, except notices
-error_reporting(E_ALL ^ E_NOTICE);
+// Report all errors, except notices and deprecation messages
+if (!defined('E_DEPRECATED'))
+{
+	define('E_DEPRECATED', 8192);
+}
+error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 
 // @todo Review this test and see if we can find out what it is which prevents PHP 4.2.x from even displaying the page with requirements on it
 if (version_compare(PHP_VERSION, '4.3.3') < 0)
@@ -108,7 +112,7 @@ if (version_compare(PHP_VERSION, '6.0.0-dev', '>='))
 }
 else
 {
-	set_magic_quotes_runtime(0);
+	@set_magic_quotes_runtime(0);
 
 	// Be paranoid with passed vars
 	if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on')
@@ -175,7 +179,7 @@ if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !$language)
 		// Set correct format ... guess full xx_yy form
 		$accept_lang = substr($accept_lang, 0, 2) . '_' . substr($accept_lang, 3, 2);
 
-		if (file_exists($phpbb_root_path . 'language/' . $accept_lang))
+		if (file_exists($phpbb_root_path . 'language/' . $accept_lang) && is_dir($phpbb_root_path . 'language/' . $accept_lang))
 		{
 			$language = $accept_lang;
 			break;
@@ -184,7 +188,7 @@ if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !$language)
 		{
 			// No match on xx_yy so try xx
 			$accept_lang = substr($accept_lang, 0, 2);
-			if (file_exists($phpbb_root_path . 'language/' . $accept_lang))
+			if (file_exists($phpbb_root_path . 'language/' . $accept_lang) && is_dir($phpbb_root_path . 'language/' . $accept_lang))
 			{
 				$language = $accept_lang;
 				break;
@@ -218,7 +222,7 @@ if (!$language)
 	closedir($dir);
 }
 
-if (!file_exists($phpbb_root_path . 'language/' . $language))
+if (!file_exists($phpbb_root_path . 'language/' . $language) || !is_dir($phpbb_root_path . 'language/' . $language))
 {
 	die('No language found!');
 }
@@ -229,6 +233,14 @@ include($phpbb_root_path . 'language/' . $language . '/acp/common.' . $phpEx);
 include($phpbb_root_path . 'language/' . $language . '/acp/board.' . $phpEx);
 include($phpbb_root_path . 'language/' . $language . '/install.' . $phpEx);
 include($phpbb_root_path . 'language/' . $language . '/posting.' . $phpEx);
+
+// usually we would need every single constant here - and it would be consistent. For 3.0.x, use a dirty hack... :(
+
+// Define needed constants
+define('CHMOD_ALL', 7);
+define('CHMOD_READ', 4);
+define('CHMOD_WRITE', 2);
+define('CHMOD_EXECUTE', 1);
 
 $mode = request_var('mode', 'overview');
 $sub = request_var('sub', '');
@@ -336,11 +348,6 @@ class module
 
 		foreach ($module as $row)
 		{
-			// Check any module pre-reqs
-			if ($row['module_reqs'] != '')
-			{
-			}
-
 			// Module order not specified or module already assigned at this position?
 			if (!isset($row['module_order']) || isset($this->module_ary[$row['module_order']]))
 			{

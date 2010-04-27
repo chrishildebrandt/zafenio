@@ -2,7 +2,7 @@
 /**
 *
 * @package mcp
-* @version $Id: mcp_front.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -27,14 +27,14 @@ function mcp_front_view($id, $mode, $action)
 	// Latest 5 unapproved
 	if ($module->loaded('queue'))
 	{
-		$forum_list = get_forum_list('m_approve');
+		$forum_list = array_values(array_intersect(get_forum_list('f_read'), get_forum_list('m_approve')));
 		$post_list = array();
 		$forum_names = array();
 
 		$forum_id = request_var('f', 0);
 
 		$template->assign_var('S_SHOW_UNAPPROVED', (!empty($forum_list)) ? true : false);
-		
+
 		if (!empty($forum_list))
 		{
 			$sql = 'SELECT COUNT(post_id) AS total
@@ -81,7 +81,7 @@ function mcp_front_view($id, $mode, $action)
 
 			if ($total)
 			{
-				$sql = 'SELECT p.post_id, p.post_subject, p.post_time, p.poster_id, p.post_username, u.username, u.username_clean, t.topic_id, t.topic_title, t.topic_first_post_id, p.forum_id
+				$sql = 'SELECT p.post_id, p.post_subject, p.post_time, p.poster_id, p.post_username, u.username, u.username_clean, u.user_colour, t.topic_id, t.topic_title, t.topic_first_post_id, p.forum_id
 					FROM ' . POSTS_TABLE . ' p, ' . TOPICS_TABLE . ' t, ' . USERS_TABLE . ' u
 					WHERE ' . $db->sql_in_set('p.post_id', $post_list) . '
 						AND t.topic_id = p.topic_id
@@ -103,12 +103,15 @@ function mcp_front_view($id, $mode, $action)
 						'U_MCP_TOPIC'		=> append_sid("{$phpbb_root_path}mcp.$phpEx", 'i=main&amp;mode=topic_view&amp;f=' . $row['forum_id'] . '&amp;t=' . $row['topic_id']),
 						'U_FORUM'			=> (!$global_topic) ? append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $row['forum_id']) : '',
 						'U_TOPIC'			=> append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $row['forum_id'] . '&amp;t=' . $row['topic_id']),
-						'U_AUTHOR'			=> ($row['poster_id'] == ANONYMOUS) ? '' : append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u=' . $row['poster_id']),
+
+						'AUTHOR_FULL'		=> get_username_string('full', $row['poster_id'], $row['username'], $row['user_colour']),
+						'AUTHOR'			=> get_username_string('username', $row['poster_id'], $row['username'], $row['user_colour']),
+						'AUTHOR_COLOUR'		=> get_username_string('colour', $row['poster_id'], $row['username'], $row['user_colour']),
+						'U_AUTHOR'			=> get_username_string('profile', $row['poster_id'], $row['username'], $row['user_colour']),
 
 						'FORUM_NAME'	=> (!$global_topic) ? $forum_names[$row['forum_id']] : $user->lang['GLOBAL_ANNOUNCEMENT'],
 						'POST_ID'		=> $row['post_id'],
 						'TOPIC_TITLE'	=> $row['topic_title'],
-						'AUTHOR'		=> ($row['poster_id'] == ANONYMOUS) ? (($row['post_username']) ? $row['post_username'] : $user->lang['GUEST']) : $row['username'],
 						'SUBJECT'		=> ($row['post_subject']) ? $row['post_subject'] : $user->lang['NO_SUBJECT'],
 						'POST_TIME'		=> $user->format_date($row['post_time']))
 					);
@@ -116,7 +119,12 @@ function mcp_front_view($id, $mode, $action)
 				$db->sql_freeresult($result);
 			}
 
+			$s_hidden_fields = build_hidden_fields(array(
+				'redirect'		=> append_sid("{$phpbb_root_path}mcp.$phpEx", 'i=main' . (($forum_id) ? '&amp;f=' . $forum_id : ''))
+			));
+
 			$template->assign_vars(array(
+				'S_HIDDEN_FIELDS'		=> $s_hidden_fields,
 				'S_MCP_QUEUE_ACTION'	=> append_sid("{$phpbb_root_path}mcp.$phpEx", "i=queue"),
 			));
 
@@ -140,7 +148,7 @@ function mcp_front_view($id, $mode, $action)
 	// Latest 5 reported
 	if ($module->loaded('reports'))
 	{
-		$forum_list = get_forum_list('m_report');
+		$forum_list = array_values(array_intersect(get_forum_list('f_read'), get_forum_list('m_report')));
 
 		$template->assign_var('S_SHOW_REPORTS', (!empty($forum_list)) ? true : false);
 
@@ -149,6 +157,7 @@ function mcp_front_view($id, $mode, $action)
 			$sql = 'SELECT COUNT(r.report_id) AS total
 				FROM ' . REPORTS_TABLE . ' r, ' . POSTS_TABLE . ' p
 				WHERE r.post_id = p.post_id
+					AND r.pm_id = 0
 					AND r.report_closed = 0
 					AND p.forum_id IN (0, ' . implode(', ', $forum_list) . ')';
 			$result = $db->sql_query($sql);
@@ -178,6 +187,7 @@ function mcp_front_view($id, $mode, $action)
 					),
 
 					'WHERE'		=> 'r.post_id = p.post_id
+						AND r.pm_id = 0
 						AND r.report_closed = 0
 						AND r.reason_id = rr.reason_id
 						AND p.topic_id = t.topic_id
@@ -240,10 +250,100 @@ function mcp_front_view($id, $mode, $action)
 		}
 	}
 
+	// Latest 5 reported PMs
+	if ($module->loaded('pm_reports') && $auth->acl_getf_global('m_report'))
+	{
+		$template->assign_var('S_SHOW_PM_REPORTS', true);
+		$user->add_lang(array('ucp'));
+
+		$sql = 'SELECT COUNT(r.report_id) AS total
+			FROM ' . REPORTS_TABLE . ' r, ' . PRIVMSGS_TABLE . ' p
+			WHERE r.post_id = 0
+				AND r.pm_id = p.msg_id
+				AND r.report_closed = 0';
+		$result = $db->sql_query($sql);
+		$total = (int) $db->sql_fetchfield('total');
+		$db->sql_freeresult($result);
+
+		if ($total)
+		{
+			include($phpbb_root_path . 'includes/functions_privmsgs.' . $phpEx);
+
+			$sql = $db->sql_build_query('SELECT', array(
+				'SELECT'	=> 'r.report_id, r.report_time, p.msg_id, p.message_subject, p.message_time, p.to_address, p.bcc_address, u.username, u.username_clean, u.user_colour, u.user_id, u2.username as author_name, u2.username_clean as author_name_clean, u2.user_colour as author_colour, u2.user_id as author_id',
+
+				'FROM'		=> array(
+					REPORTS_TABLE			=> 'r',
+					REPORTS_REASONS_TABLE	=> 'rr',
+					USERS_TABLE				=> array('u', 'u2'),
+					PRIVMSGS_TABLE				=> 'p'
+				),
+
+				'WHERE'		=> 'r.pm_id = p.msg_id
+					AND r.post_id = 0
+					AND r.report_closed = 0
+					AND r.reason_id = rr.reason_id
+					AND r.user_id = u.user_id
+					AND p.author_id = u2.user_id',
+
+				'ORDER_BY'	=> 'p.message_time DESC'
+			));
+			$result = $db->sql_query_limit($sql, 5);
+
+			$pm_by_id = $pm_list = array();
+			while ($row = $db->sql_fetchrow($result))
+			{
+				$pm_by_id[(int) $row['msg_id']] = $row;
+				$pm_list[] = (int) $row['msg_id'];
+			}
+
+			$address_list = get_recipient_strings($pm_by_id);
+
+			foreach ($pm_list as $message_id)
+			{
+				$row = $pm_by_id[$message_id];
+
+				$template->assign_block_vars('pm_report', array(
+					'U_PM_DETAILS'	=> append_sid("{$phpbb_root_path}mcp.$phpEx", 'r=' . $row['report_id'] . "&amp;i=pm_reports&amp;mode=pm_report_details"),
+
+					'REPORTER_FULL'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
+					'REPORTER'			=> get_username_string('username', $row['user_id'], $row['username'], $row['user_colour']),
+					'REPORTER_COLOUR'	=> get_username_string('colour', $row['user_id'], $row['username'], $row['user_colour']),
+					'U_REPORTER'		=> get_username_string('profile', $row['user_id'], $row['username'], $row['user_colour']),
+
+					'PM_AUTHOR_FULL'		=> get_username_string('full', $row['author_id'], $row['author_name'], $row['author_colour']),
+					'PM_AUTHOR'			=> get_username_string('username', $row['author_id'], $row['author_name'], $row['author_colour']),
+					'PM_AUTHOR_COLOUR'		=> get_username_string('colour', $row['author_id'], $row['author_name'], $row['author_colour']),
+					'U_PM_AUTHOR'			=> get_username_string('profile', $row['author_id'], $row['author_name'], $row['author_colour']),
+
+					'PM_SUBJECT'		=> $row['message_subject'],
+					'REPORT_TIME'		=> $user->format_date($row['report_time']),
+					'PM_TIME'			=> $user->format_date($row['message_time']),
+					'RECIPIENTS'		=> implode(', ', $address_list[$row['msg_id']]),
+				));
+			}
+		}
+
+		if ($total == 0)
+		{
+			$template->assign_vars(array(
+				'L_PM_REPORTS_TOTAL'	=>	$user->lang['PM_REPORTS_ZERO_TOTAL'],
+				'S_HAS_PM_REPORTS'		=>	false)
+			);
+		}
+		else
+		{
+			$template->assign_vars(array(
+				'L_PM_REPORTS_TOTAL'	=> ($total == 1) ? $user->lang['PM_REPORT_TOTAL'] : sprintf($user->lang['PM_REPORTS_TOTAL'], $total),
+				'S_HAS_PM_REPORTS'		=> true)
+			);
+		}
+	}
+
 	// Latest 5 logs
 	if ($module->loaded('logs'))
 	{
-		$forum_list = get_forum_list('m_');
+		$forum_list = array_values(array_intersect(get_forum_list('f_read'), get_forum_list('m_')));
 
 		if (!empty($forum_list))
 		{

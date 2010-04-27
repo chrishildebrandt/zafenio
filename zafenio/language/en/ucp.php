@@ -4,7 +4,7 @@
 * ucp [English]
 *
 * @package language
-* @version $Id: ucp.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -50,7 +50,7 @@ $lang = array_merge($lang, array(
 	<br />
 	We may also create cookies external to the phpBB software whilst browsing “%1$s”, though these are outside the scope of this document which is intended to only cover the pages created by the phpBB software. The second way in which we collect your information is by what you submit to us. This can be, and is not limited to: posting as an anonymous user (hereinafter “anonymous posts”), registering on “%1$s” (hereinafter “your account”) and posts submitted by you after registration and whilst logged in (hereinafter “your posts”).<br />
 	<br />
-	Your account will at a bare minimum contain a uniquely identifiable name (hereinafter “your user name”), a personal password used for logging into your account (hereinafter “your password”) and a personal, valid e-mail address (hereinafter “your e-mail”). Your information for your account at “%1$s” is protected by data-protection laws applicable in the country that hosts us. Any information beyond your user name, your password and your e-mail required by “%1$s” during the registration process are at our digression what is mandatory and what is optional. In all cases, you have the option of what information in your account is publicly displayed. Furthermore, within your account, you have the option to opt-in or opt-out of automatically generated e-mails from the phpBB software.<br />
+	Your account will at a bare minimum contain a uniquely identifiable name (hereinafter “your user name”), a personal password used for logging into your account (hereinafter “your password”) and a personal, valid e-mail address (hereinafter “your e-mail”). Your information for your account at “%1$s” is protected by data-protection laws applicable in the country that hosts us. Any information beyond your user name, your password, and your e-mail address required by “%1$s” during the registration process is either mandatory or optional, at the discretion of “%1$s”. In all cases, you have the option of what information in your account is publicly displayed. Furthermore, within your account, you have the option to opt-in or opt-out of automatically generated e-mails from the phpBB software.<br />
 	<br />
 	Your password is ciphered (a one-way hash) so that it is secure. However, it is recommended that you do not reuse the same password across a number of different websites. Your password is the means of accessing your account at “%1$s”, so please guard it carefully and under no circumstance will anyone affiliated with “%1$s”, phpBB or another 3rd party, legitimately ask you for your password. Should you forget your password for your account, you can use the “I forgot my password” feature provided by the phpBB software. This process will ask you to submit your user name and your e-mail, then the phpBB software will generate a new password to reclaim your account.<br />
 	',
@@ -79,6 +79,7 @@ $lang = array_merge($lang, array(
 	'ADD_NEW_RULE'					=> 'Add new rule',
 	'ADD_RULE'						=> 'Add rule',
 	'ADD_TO'						=> 'Add [To]',
+	'ADD_USERS_UCP_EXPLAIN'			=> 'Here you can add new users to the group. You may select whether this group becomes the new default for the selected users. Please enter each username on a separate line.',
 	'ADMIN_EMAIL'					=> 'Administrators can e-mail me information',
 	'AGREE'							=> 'I agree to these terms',
 	'ALLOW_PM'						=> 'Allow users to send you private messages',
@@ -92,7 +93,9 @@ $lang = array_merge($lang, array(
 	'AVATAR_FEATURES_DISABLED'		=> 'The avatar functionality is currently disabled.',
 	'AVATAR_GALLERY'				=> 'Local gallery',
 	'AVATAR_GENERAL_UPLOAD_ERROR'	=> 'Could not upload avatar to %s.',
+	'AVATAR_NOT_ALLOWED'			=> 'Your avatar cannot be displayed because avatars have been disallowed.',
 	'AVATAR_PAGE'					=> 'Page',
+	'AVATAR_TYPE_NOT_ALLOWED'		=> 'Your current avatar cannot be displayed because its type has been disallowed.',
 
 	'BACK_TO_DRAFTS'			=> 'Back to saved drafts',
 	'BACK_TO_LOGIN'				=> 'Back to login screen',
@@ -118,10 +121,13 @@ $lang = array_merge($lang, array(
 	'CHANGE_PASSWORD'			=> 'Change password',
 	'CLICK_RETURN_FOLDER'		=> '%1$sReturn to your “%3$s” folder%2$s',
 	'CONFIRMATION'				=> 'Confirmation of registration',
-	'CONFIRM_CHANGES'			=> 'Confirm changes',	
+	'CONFIRM_CHANGES'			=> 'Confirm changes',
 	'CONFIRM_EMAIL'				=> 'Confirm e-mail address',
 	'CONFIRM_EMAIL_EXPLAIN'		=> 'You only need to specify this if you are changing your e-mail address.',
 	'CONFIRM_EXPLAIN'			=> 'To prevent automated registrations the board requires you to enter a confirmation code. The code is displayed in the image you should see below. If you are visually impaired or cannot otherwise read this code please contact the %sBoard Administrator%s.',
+	'VC_REFRESH'				=> 'Refresh confirmation code',
+	'VC_REFRESH_EXPLAIN'		=> 'If you cannot read the code you can request a new one by clicking the button.',
+
 	'CONFIRM_PASSWORD'			=> 'Confirm password',
 	'CONFIRM_PASSWORD_EXPLAIN'	=> 'You only need to confirm your password if you changed it above.',
 	'COPPA_BIRTHDAY'			=> 'To continue with the registration procedure please tell us when you were born.',
@@ -194,6 +200,7 @@ $lang = array_merge($lang, array(
 	'FOES_UPDATED'				=> 'Your foes list has been updated successfully.',
 	'FOLDER_ADDED'				=> 'Folder successfully added.',
 	'FOLDER_MESSAGE_STATUS'		=> '%1$d from %2$d messages stored',
+	'FOLDER_NAME_EMPTY'			=> 'You must enter a name for this folder.',
 	'FOLDER_NAME_EXIST'			=> 'Folder <strong>%s</strong> already exists.',
 	'FOLDER_OPTIONS'			=> 'Folder options',
 	'FOLDER_RENAMED'			=> 'Folder successfully renamed.',
@@ -270,10 +277,12 @@ $lang = array_merge($lang, array(
 	'NOTIFY_METHOD_IM'				=> 'Jabber only',
 	'NOTIFY_ON_PM'					=> 'Notify me on new private messages',
 	'NOT_ADDED_FRIENDS_ANONYMOUS'	=> 'You cannot add the anonymous user to your friends list.',
+	'NOT_ADDED_FRIENDS_BOTS'		=> 'You cannot add bots to your friends list.',
 	'NOT_ADDED_FRIENDS_FOES'		=> 'You cannot add users to your friends list who are on your foes list.',
 	'NOT_ADDED_FRIENDS_SELF'		=> 'You cannot add yourself to the friends list.',
 	'NOT_ADDED_FOES_MOD_ADMIN'		=> 'You cannot add administrators and moderators to your foes list.',
 	'NOT_ADDED_FOES_ANONYMOUS'		=> 'You cannot add the anonymous user to your foes list.',
+	'NOT_ADDED_FOES_BOTS'			=> 'You cannot add bots to your foes list.',
 	'NOT_ADDED_FOES_FRIENDS'		=> 'You cannot add users to your foes list who are on your friends list.',
 	'NOT_ADDED_FOES_SELF'			=> 'You cannot add yourself to the foes list.',
 	'NOT_AGREE'						=> 'I do not agree to these terms',
@@ -288,9 +297,11 @@ $lang = array_merge($lang, array(
 	'NO_AUTH_EDIT_MESSAGE'			=> 'You are not authorised to edit private messages.',
 	'NO_AUTH_FORWARD_MESSAGE'		=> 'You are not authorised to forward private messages.',
 	'NO_AUTH_GROUP_MESSAGE'			=> 'You are not authorised to send private messages to groups.',
+	'NO_AUTH_PASSWORD_REMINDER'		=> 'You are not authorised to request a new password.',
+	'NO_AUTH_READ_HOLD_MESSAGE'		=> 'You are not authorised to read private messages that are on hold.',
 	'NO_AUTH_READ_MESSAGE'			=> 'You are not authorised to read private messages.',
 	'NO_AUTH_READ_REMOVED_MESSAGE'	=> 'You are not able to read this message because it was removed by the author.',
-	'NO_AUTH_SEND_MESSAGE'			=> 'You are not authorised sending private messages.',
+	'NO_AUTH_SEND_MESSAGE'			=> 'You are not authorised to send private messages.',
 	'NO_AUTH_SIGNATURE'				=> 'You are not authorised to define a signature.',
 
 	'NO_BCC_RECIPIENT'			=> 'None',
@@ -314,6 +325,7 @@ $lang = array_merge($lang, array(
 	'NO_SAVED_DRAFTS'			=> 'No drafts saved.',
 	'NO_TO_RECIPIENT'			=> 'None',
 	'NO_WATCHED_FORUMS'			=> 'You are not subscribed to any forums.',
+	'NO_WATCHED_SELECTED'		=> 'You have not selected any subscribed topics or forums.',
 	'NO_WATCHED_TOPICS'			=> 'You are not subscribed to any topics.',
 
 	'PASS_TYPE_ALPHA_EXPLAIN'	=> 'Password must be between %1$d and %2$d characters long, must contain letters in mixed case and must contain numbers.',
@@ -322,7 +334,7 @@ $lang = array_merge($lang, array(
 	'PASS_TYPE_SYMBOL_EXPLAIN'	=> 'Password must be between %1$d and %2$d characters long, must contain letters in mixed case, must contain numbers and must contain symbols.',
 	'PASSWORD'					=> 'Password',
 	'PASSWORD_ACTIVATED'		=> 'Your new password has been activated.',
-	'PASSWORD_UPDATED'			=> 'Your password has been sent successfully to your original e-mail address.',
+	'PASSWORD_UPDATED'			=> 'A new password was sent to your registered e-mail address.',
 	'PERMISSIONS_RESTORED'		=> 'Successfully restored original permissions.',
 	'PERMISSIONS_TRANSFERRED'	=> 'Successfully transferred permissions from <strong>%s</strong>, you are now able to browse the board with this user’s permissions.<br />Please note that admin permissions were not transferred. You are able to revert to your permission set at any time.',
 	'PM_DISABLED'				=> 'Private messaging has been disabled on this board.',
@@ -340,7 +352,7 @@ $lang = array_merge($lang, array(
 	'POST_EDIT_PM'				=> 'Edit message',
 	'POST_FORWARD_PM'			=> 'Forward message',
 	'POST_NEW_PM'				=> 'Compose message',
-	'POST_PM_LOCKED'			=> 'Private messaging is locked',
+	'POST_PM_LOCKED'			=> 'Private messaging is locked.',
 	'POST_PM_POST'				=> 'Quote post',
 	'POST_QUOTE_PM'				=> 'Quote message',
 	'POST_REPLY_PM'				=> 'Reply to message',
@@ -362,6 +374,8 @@ $lang = array_merge($lang, array(
 	'RENAME'							=> 'Rename',
 	'RENAME_FOLDER'						=> 'Rename folder',
 	'REPLIED_MESSAGE'					=> 'Replied to message',
+	'REPLY_TO_ALL'						=> 'Reply to sender and all recipients.',
+	'REPORT_PM'							=> 'Report private message',
 	'RESIGN_SELECTED'					=> 'Resign selected',
 	'RETURN_FOLDER'						=> '%1$sReturn to previous folder%2$s',
 	'RETURN_UCP'						=> '%sReturn to the User Control Panel%s',
@@ -375,7 +389,7 @@ $lang = array_merge($lang, array(
 	'SAME_PASSWORD_ERROR'		=> 'The new password you entered is the same as your current password.',
 	'SEARCH_YOUR_POSTS'			=> 'Show your posts',
 	'SEND_PASSWORD'				=> 'Send password',
-	'SENT_AT'					=> 'Sent at',
+	'SENT_AT'					=> 'Sent',			// Used before dates in private messages
 	'SHOW_EMAIL'				=> 'Users can contact me by e-mail',
 	'SIGNATURE_EXPLAIN'			=> 'This is a block of text that can be added to posts you make. There is a %d character limit.',
 	'SIGNATURE_PREVIEW'			=> 'Your signature will appear like this in posts',
@@ -390,7 +404,7 @@ $lang = array_merge($lang, array(
 
 	'TIMEZONE'					=> 'Timezone',
 	'TO'						=> 'To',
-	'TOO_MANY_RECIPIENTS'		=> 'Too many recipients.',
+	'TOO_MANY_RECIPIENTS'		=> 'You tried to send a private message to too many recipients.',
 	'TOO_MANY_REGISTERS'		=> 'You have exceeded the maximum number of registration attempts for this session. Please try again later.',
 
 	'UCP'						=> 'User Control Panel',
@@ -411,14 +425,14 @@ $lang = array_merge($lang, array(
 	'UCP_MAIN_FRONT'			=> 'Front page',
 	'UCP_MAIN_SUBSCRIBED'		=> 'Manage subscriptions',
 
-	'UCP_MSNM'					=> 'MSN Messenger',
+	'UCP_MSNM'					=> 'WL/MSN Messenger',
 	'UCP_NO_ATTACHMENTS'		=> 'You have posted no files.',
 
 	'UCP_PREFS'					=> 'Board preferences',
 	'UCP_PREFS_PERSONAL'		=> 'Edit global settings',
 	'UCP_PREFS_POST'			=> 'Edit posting defaults',
 	'UCP_PREFS_VIEW'			=> 'Edit display options',
-	
+
 	'UCP_PM'					=> 'Private messages',
 	'UCP_PM_COMPOSE'			=> 'Compose message',
 	'UCP_PM_DRAFTS'				=> 'Manage PM drafts',
@@ -446,6 +460,7 @@ $lang = array_merge($lang, array(
 	'UCP_ZEBRA'						=> 'Friends &amp; Foes',
 	'UCP_ZEBRA_FOES'				=> 'Manage foes',
 	'UCP_ZEBRA_FRIENDS'				=> 'Manage friends',
+	'UNDISCLOSED_RECIPIENT'			=> 'Undisclosed Recipient',
 	'UNKNOWN_FOLDER'				=> 'Unknown folder',
 	'UNWATCH_MARKED'				=> 'Unwatch marked',
 	'UPLOAD_AVATAR_FILE'			=> 'Upload from your machine',

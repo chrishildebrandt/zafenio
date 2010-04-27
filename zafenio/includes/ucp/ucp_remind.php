@@ -2,7 +2,7 @@
 /**
 *
 * @package ucp
-* @version $Id: ucp_remind.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -36,9 +36,9 @@ class ucp_remind
 
 		if ($submit)
 		{
-			$sql = 'SELECT user_id, username, user_email, user_jabber, user_notify_type, user_type, user_lang, user_inactive_reason
+			$sql = 'SELECT user_id, username, user_permissions, user_email, user_jabber, user_notify_type, user_type, user_lang, user_inactive_reason
 				FROM ' . USERS_TABLE . "
-				WHERE user_email = '" . $db->sql_escape($email) . "'
+				WHERE user_email_hash = '" . $db->sql_escape(phpbb_email_hash($email)) . "'
 					AND username_clean = '" . $db->sql_escape(utf8_clean_string($username)) . "'";
 			$result = $db->sql_query($sql);
 			$user_row = $db->sql_fetchrow($result);
@@ -64,6 +64,15 @@ class ucp_remind
 				{
 					trigger_error('ACCOUNT_NOT_ACTIVATED');
 				}
+			}
+
+			// Check users permissions
+			$auth2 = new auth();
+			$auth2->acl($user_row);
+
+			if (!$auth2->acl_get('u_chgpasswd'))
+			{
+				trigger_error('NO_AUTH_PASSWORD_REMINDER');
 			}
 
 			$server_url = generate_board_url();

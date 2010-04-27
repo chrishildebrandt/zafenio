@@ -4,7 +4,7 @@
 * viewtopic [English]
 *
 * @package language
-* @version $Id: viewtopic.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -40,6 +40,7 @@ $lang = array_merge($lang, array(
 	'ATTACHMENT_FUNCTIONALITY_DISABLED'	=> 'The attachments feature has been disabled.',
 
 	'BOOKMARK_ADDED'		=> 'Bookmarked topic successfully.',
+	'BOOKMARK_ERR'			=> 'Bookmarking the topic failed. Please try again.',
 	'BOOKMARK_REMOVED'		=> 'Removed bookmarked topic successfully.',
 	'BOOKMARK_TOPIC'		=> 'Bookmark topic',
 	'BOOKMARK_TOPIC_REMOVE'	=> 'Remove from bookmarks',
@@ -47,6 +48,7 @@ $lang = array_merge($lang, array(
 	'BUMP_TOPIC'			=> 'Bump topic',
 
 	'CODE'					=> 'Code',
+	'COLLAPSE_QR'			=> 'Hide Quick Reply',
 
 	'DELETE_TOPIC'			=> 'Delete topic',
 	'DOWNLOAD_NOTICE'		=> 'You do not have the required permissions to view the files attached to this post.',
@@ -58,7 +60,8 @@ $lang = array_merge($lang, array(
 
 	'FILE_NOT_FOUND_404'	=> 'The file <strong>%s</strong> does not exist.',
 	'FORK_TOPIC'			=> 'Copy topic',
-
+	'FULL_EDITOR'			=> 'Full Editor',
+	
 	'LINKAGE_FORBIDDEN'		=> 'You are not authorised to view, download or link from/to this site.',
 	'LOGIN_NOTIFY_TOPIC'	=> 'You have been notified about this topic, please login to view it.',
 	'LOGIN_VIEWTOPIC'		=> 'The board requires you to be registered and logged in to view this topic.',
@@ -85,11 +88,13 @@ $lang = array_merge($lang, array(
 	'PRINT_TOPIC'			=> 'Print view',
 
 	'QUICK_MOD'				=> 'Quick-mod tools',
+	'QUICKREPLY'			=> 'Quick Reply',
 	'QUOTE'					=> 'Quote',
 
 	'REPLY_TO_TOPIC'		=> 'Reply to topic',
 	'RETURN_POST'			=> '%sReturn to the post%s',
 
+	'SHOW_QR'				=> 'Quick Reply',
 	'SUBMIT_VOTE'			=> 'Submit vote',
 
 	'TOTAL_VOTES'			=> 'Total votes',

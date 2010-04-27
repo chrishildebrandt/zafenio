@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: common.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -19,8 +19,12 @@ if (!defined('IN_PHPBB'))
 $starttime = explode(' ', microtime());
 $starttime = $starttime[1] + $starttime[0];
 
-// Report all errors, except notices
-error_reporting(E_ALL ^ E_NOTICE);
+// Report all errors, except notices and deprecation messages
+if (!defined('E_DEPRECATED'))
+{
+	define('E_DEPRECATED', 8192);
+}
+error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 
 /*
 * Remove variables created by register_globals from the global scope
@@ -103,7 +107,7 @@ if (version_compare(PHP_VERSION, '6.0.0-dev', '>='))
 }
 else
 {
-	set_magic_quotes_runtime(0);
+	@set_magic_quotes_runtime(0);
 
 	// Be paranoid with passed vars
 	if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on' || !function_exists('ini_get'))
@@ -172,7 +176,8 @@ if (defined('DEBUG_EXTRA'))
 }
 
 // Load Extensions
-if (!empty($load_extensions))
+// dl() is deprecated and disabled by default as of PHP 5.3.
+if (!empty($load_extensions) && function_exists('dl'))
 {
 	$load_extensions = explode(',', $load_extensions);
 

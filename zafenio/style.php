@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: style.php 8513 2008-04-21 10:54:12Z acydburn $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -15,8 +15,12 @@ define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 
-// Report all errors, except notices
-error_reporting(E_ALL ^ E_NOTICE);
+// Report all errors, except notices and deprecation messages
+if (!defined('E_DEPRECATED'))
+{
+	define('E_DEPRECATED', 8192);
+}
+error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 
 require($phpbb_root_path . 'config.' . $phpEx);
 
@@ -27,11 +31,11 @@ if (!defined('PHPBB_INSTALLED') || empty($dbms) || empty($acm_type))
 
 if (version_compare(PHP_VERSION, '6.0.0-dev', '<'))
 {
-	set_magic_quotes_runtime(0);
+	@set_magic_quotes_runtime(0);
 }
 
 // Load Extensions
-if (!empty($load_extensions))
+if (!empty($load_extensions) && function_exists('dl'))
 {
 	$load_extensions = explode(',', $load_extensions);
 
@@ -62,6 +66,7 @@ if ($id)
 	require($phpbb_root_path . 'includes/cache.' . $phpEx);
 	require($phpbb_root_path . 'includes/db/' . $dbms . '.' . $phpEx);
 	require($phpbb_root_path . 'includes/constants.' . $phpEx);
+	require($phpbb_root_path . 'includes/functions.' . $phpEx);
 
 	$db = new $sql_db();
 	$cache = new cache();
@@ -90,8 +95,9 @@ if ($id)
 	$recompile = $config['load_tplcompile'];
 	if (!$user)
 	{
-		$id			= $config['default_style'];
-		$recompile	= false;
+		$id			= ($id) ? $id : $config['default_style'];
+//		Commented out because calls do not always include the SID anymore
+//		$recompile	= false;
 		$user		= array('user_id' => ANONYMOUS);
 	}
 
@@ -117,10 +123,11 @@ if ($id)
 
 	$user_image_lang = (file_exists($phpbb_root_path . 'styles/' . $theme['imageset_path'] . '/imageset/' . $user['user_lang'])) ? $user['user_lang'] : $config['default_lang'];
 
+	// Same query in session.php
 	$sql = 'SELECT *
 		FROM ' . STYLES_IMAGESET_DATA_TABLE . '
 		WHERE imageset_id = ' . $theme['imageset_id'] . "
-		AND image_filename <> '' 
+		AND image_filename <> ''
 		AND image_lang IN ('" . $db->sql_escape($user_image_lang) . "', '')";
 	$result = $db->sql_query($sql, 3600);
 
@@ -256,11 +263,11 @@ if ($id)
 				case 'SRC':
 					$replace[] = $imgs[$img]['src'];
 				break;
-				
+
 				case 'WIDTH':
 					$replace[] = $imgs[$img]['width'];
 				break;
-	
+
 				case 'HEIGHT':
 					$replace[] = $imgs[$img]['height'];
 				break;

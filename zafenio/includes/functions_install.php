@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: functions_install.php 8507 2008-04-20 04:57:29Z davidmj $
+* @version $Id$
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -21,7 +21,20 @@ if (!defined('IN_PHPBB'))
 */
 function can_load_dll($dll)
 {
-	return ((@ini_get('enable_dl') || strtolower(@ini_get('enable_dl')) == 'on') && (!@ini_get('safe_mode') || strtolower(@ini_get('safe_mode')) == 'off') && @dl($dll . '.' . PHP_SHLIB_SUFFIX)) ? true : false;
+	// SQLite2 is a tricky thing, from 5.0.0 it requires PDO; if PDO is not loaded we must state that SQLite is unavailable
+	// as the installer doesn't understand that the extension has a prerequisite.
+	//
+	// On top of this sometimes the SQLite extension is compiled for a different version of PDO
+	// by some Linux distributions which causes phpBB to bomb out with a blank page.
+	//
+	// Net result we'll disable automatic inclusion of SQLite support
+	//
+	// See: r9618 and #56105
+	if ($dll == 'sqlite')
+	{
+		return false;
+	}
+	return ((@ini_get('enable_dl') || strtolower(@ini_get('enable_dl')) == 'on') && (!@ini_get('safe_mode') || strtolower(@ini_get('safe_mode')) == 'off') && function_exists('dl') && @dl($dll . '.' . PHP_SHLIB_SUFFIX)) ? true : false;
 }
 
 /**
@@ -175,7 +188,7 @@ function get_available_dbms($dbms = false, $return_unavailable = false, $only_20
 function dbms_select($default = '', $only_20x_options = false)
 {
 	global $lang;
-	
+
 	$available_dbms = get_available_dbms(false, false, $only_20x_options);
 	$dbms_options = '';
 	foreach ($available_dbms as $dbms_name => $details)
@@ -396,10 +409,10 @@ function connect_check_db($error_connect, &$error, $dbms_details, $table_prefix,
 					}
 					else
 					{
-						$sql = "SELECT FIRST 0 char_length('')
-							FROM RDB\$DATABASE";
+						$sql = 'SELECT 1 FROM RDB$DATABASE
+							WHERE BIN_AND(10, 1) = 0';
 						$result = $db->sql_query($sql);
-						if (!$result) // This can only fail if char_length is not defined
+						if (!$result) // This can only fail if BIN_AND is not defined
 						{
 							$error[] = $lang['INST_ERR_DB_NO_FIREBIRD'];
 						}
@@ -440,7 +453,7 @@ function connect_check_db($error_connect, &$error, $dbms_details, $table_prefix,
 					unset($final);
 				}
 			break;
-			
+
 			case 'oracle':
 				if ($unicode_check)
 				{
@@ -462,7 +475,7 @@ function connect_check_db($error_connect, &$error, $dbms_details, $table_prefix,
 					}
 				}
 			break;
-			
+
 			case 'postgres':
 				if ($unicode_check)
 				{

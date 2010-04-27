@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: bbcode.php 8479 2008-03-29 00:22:48Z naderman $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -128,7 +128,7 @@ class bbcode
 	*/
 	function bbcode_cache_init()
 	{
-		global $user, $phpbb_root_path;
+		global $phpbb_root_path, $template, $user;
 
 		if (empty($this->template_filename))
 		{
@@ -137,7 +137,18 @@ class bbcode
 
 			if (!@file_exists($this->template_filename))
 			{
-				trigger_error('The file ' . $this->template_filename . ' is missing.', E_USER_ERROR);
+				if (isset($user->theme['template_inherits_id']) && $user->theme['template_inherits_id'])
+				{
+					$this->template_filename = $phpbb_root_path . 'styles/' . $user->theme['template_inherit_path'] . '/template/bbcode.html';
+					if (!@file_exists($this->template_filename))
+					{
+						trigger_error('The file ' . $this->template_filename . ' is missing.', E_USER_ERROR);
+					}
+				}
+				else
+				{
+					trigger_error('The file ' . $this->template_filename . ' is missing.', E_USER_ERROR);
+				}
 			}
 		}
 
@@ -254,7 +265,7 @@ class bbcode
 				case 6:
 					$this->bbcode_cache[$bbcode_id] = array(
 						'preg' => array(
-							'!\[color=(#[0-9a-f]{6}|[a-z\-]+):$uid\](.*?)\[/color:$uid\]!is'	=> $this->bbcode_tpl('color', $bbcode_id),
+							'!\[color=(#[0-9a-f]{3}|#[0-9a-f]{6}|[a-z\-]+):$uid\](.*?)\[/color:$uid\]!is'	=> $this->bbcode_tpl('color', $bbcode_id),
 						)
 					);
 				break;
@@ -349,7 +360,7 @@ class bbcode
 								// In order to use templates with custom bbcodes we need
 								// to replace all {VARS} to corresponding backreferences
 								// Note that backreferences are numbered from bbcode_match
-								if (preg_match_all('/\{(URL|LOCAL_URL|EMAIL|TEXT|SIMPLETEXT|IDENTIFIER|COLOR|NUMBER)[0-9]*\}/', $rowset[$bbcode_id]['bbcode_match'], $m))
+								if (preg_match_all('/\{(URL|LOCAL_URL|EMAIL|TEXT|SIMPLETEXT|INTTEXT|IDENTIFIER|COLOR|NUMBER)[0-9]*\}/', $rowset[$bbcode_id]['bbcode_match'], $m))
 								{
 									foreach ($m[0] as $i => $tok)
 									{
@@ -399,7 +410,7 @@ class bbcode
 		if (empty($bbcode_hardtpl))
 		{
 			global $user;
-			
+
 			$bbcode_hardtpl = array(
 				'b_open'	=> '<span style="font-weight: bold">',
 				'b_close'	=> '</span>',
@@ -517,12 +528,12 @@ class bbcode
 		else if (is_numeric($type))
 		{
 			$tpl = 'olist_open';
-			$type = 'arabic-numbers';
+			$type = 'decimal';
 		}
 		else
 		{
 			$tpl = 'olist_open';
-			$type = 'arabic-numbers';
+			$type = 'decimal';
 		}
 
 		return str_replace('{LIST_TYPE}', $type, $this->bbcode_tpl($tpl));

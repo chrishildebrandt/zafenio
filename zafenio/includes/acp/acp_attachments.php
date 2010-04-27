@@ -2,7 +2,7 @@
 /**
 *
 * @package acp
-* @version $Id: acp_attachments.php 8555 2008-05-15 14:10:11Z Kellanved $
+* @version $Id$
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -124,11 +124,11 @@ class acp_attachments
 						'legend2'					=> $l_legend_cat_images,
 						'img_display_inlined'		=> array('lang' => 'DISPLAY_INLINED',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
 						'img_create_thumbnail'		=> array('lang' => 'CREATE_THUMBNAIL',		'validate' => 'bool',	'type' => 'radio:yes_no', 'explain' => true),
-						'img_max_thumb_width'		=> array('lang' => 'MAX_THUMB_WIDTH',		'validate' => 'int',	'type' => 'text:7:15', 'explain' => true, 'append' => ' px'),
+						'img_max_thumb_width'		=> array('lang' => 'MAX_THUMB_WIDTH',		'validate' => 'int',	'type' => 'text:7:15', 'explain' => true, 'append' => ' ' . $user->lang['PIXEL']),
 						'img_min_thumb_filesize'	=> array('lang' => 'MIN_THUMB_FILESIZE',	'validate' => 'int',	'type' => 'text:7:15', 'explain' => true, 'append' => ' ' . $user->lang['BYTES']),
 						'img_imagick'				=> array('lang' => 'IMAGICK_PATH',			'validate' => 'string',	'type' => 'text:20:200', 'explain' => true, 'append' => '&nbsp;&nbsp;<span>[ <a href="' . $this->u_action . '&amp;action=imgmagick">' . $user->lang['SEARCH_IMAGICK'] . '</a> ]</span>'),
-						'img_max'					=> array('lang' => 'MAX_IMAGE_SIZE',		'validate' => 'int',	'type' => 'dimension:3:4', 'explain' => true, 'append' => ' px'),
-						'img_link'					=> array('lang' => 'IMAGE_LINK_SIZE',		'validate' => 'int',	'type' => 'dimension:3:4', 'explain' => true, 'append' => ' px'),
+						'img_max'					=> array('lang' => 'MAX_IMAGE_SIZE',		'validate' => 'int',	'type' => 'dimension:3:4', 'explain' => true, 'append' => ' ' . $user->lang['PIXEL']),
+						'img_link'					=> array('lang' => 'IMAGE_LINK_SIZE',		'validate' => 'int',	'type' => 'dimension:3:4', 'explain' => true, 'append' => ' ' . $user->lang['PIXEL']),
 					)
 				);
 
@@ -279,7 +279,7 @@ class acp_attachments
 					{
 						$l_explain = (isset($user->lang[$vars['lang'] . '_EXPLAIN'])) ? $user->lang[$vars['lang'] . '_EXPLAIN'] : '';
 					}
-					
+
 					$content = build_cfg_template($type, $config_key, $this->new_config, $config_key, $vars);
 					if (empty($content))
 					{
@@ -684,8 +684,9 @@ class acp_attachments
 							$ext_group_row['max_filesize'] = (int) $config['max_filesize'];
 						}
 
-						$size_format = ($ext_group_row['max_filesize'] >= 1048576) ? 'mb' : (($ext_group_row['max_filesize'] >= 1024) ? 'kb' : 'b');
-						$ext_group_row['max_filesize'] = get_formatted_filesize($ext_group_row['max_filesize'], false);
+						$max_filesize = get_formatted_filesize($ext_group_row['max_filesize'], false, array('mb', 'kb', 'b'));
+						$size_format = $max_filesize['si_identifier'];
+						$ext_group_row['max_filesize'] = $max_filesize['value'];
 
 						$img_path = $config['upload_icons_path'];
 
@@ -694,7 +695,7 @@ class acp_attachments
 
 						$imglist = filelist($phpbb_root_path . $img_path);
 
-						if (sizeof($imglist))
+						if (!empty($imglist['']))
 						{
 							$imglist = array_values($imglist);
 							$imglist = $imglist[0];
@@ -765,6 +766,8 @@ class acp_attachments
 
 						$s_forum_id_options = '';
 
+						/** @todo use in-built function **/
+
 						$sql = 'SELECT forum_id, forum_name, parent_id, forum_type, left_id, right_id
 							FROM ' . FORUMS_TABLE . '
 							ORDER BY left_id ASC';
@@ -795,7 +798,7 @@ class acp_attachments
 							}
 							else if ($row['left_id'] > $right + 1)
 							{
-								$padding = $padding_store[$row['parent_id']];
+								$padding = empty($padding_store[$row['parent_id']]) ? '' : $padding_store[$row['parent_id']];
 							}
 
 							$right = $row['right_id'];
@@ -1001,8 +1004,8 @@ class acp_attachments
 
 						if ($files_added)
 						{
-							set_config('upload_dir_size', $config['upload_dir_size'] + $space_taken, true);
-							set_config('num_files', $config['num_files'] + $files_added, true);
+							set_config_count('upload_dir_size', $space_taken, true);
+							set_config_count('num_files', $files_added, true);
 						}
 					}
 				}
@@ -1024,8 +1027,8 @@ class acp_attachments
 					$template->assign_block_vars('orphan', array(
 						'FILESIZE'			=> get_formatted_filesize($row['filesize']),
 						'FILETIME'			=> $user->format_date($row['filetime']),
-						'REAL_FILENAME'		=> basename($row['real_filename']),
-						'PHYSICAL_FILENAME'	=> basename($row['physical_filename']),
+						'REAL_FILENAME'		=> utf8_basename($row['real_filename']),
+						'PHYSICAL_FILENAME'	=> utf8_basename($row['physical_filename']),
 						'ATTACH_ID'			=> $row['attach_id'],
 						'POST_IDS'			=> (!empty($post_ids[$row['attach_id']])) ? $post_ids[$row['attach_id']] : '',
 						'U_FILE'			=> append_sid($phpbb_root_path . 'download/file.' . $phpEx, 'mode=view&amp;id=' . $row['attach_id']))
@@ -1168,7 +1171,7 @@ class acp_attachments
 					$location .= '/';
 				}
 
-				if (@is_readable($location . 'mogrify' . $exe) && @filesize($location . 'mogrify' . $exe) > 3000)
+				if (@file_exists($location) && @is_readable($location . 'mogrify' . $exe) && @filesize($location . 'mogrify' . $exe) > 3000)
 				{
 					$imagick = str_replace('\\', '/', $location);
 					continue;
@@ -1196,7 +1199,7 @@ class acp_attachments
 			if (!file_exists($phpbb_root_path . $upload_dir))
 			{
 				@mkdir($phpbb_root_path . $upload_dir, 0777);
-				@chmod($phpbb_root_path . $upload_dir, 0777);
+				phpbb_chmod($phpbb_root_path . $upload_dir, CHMOD_READ | CHMOD_WRITE);
 			}
 		}
 
@@ -1427,8 +1430,9 @@ class acp_attachments
 	function max_filesize($value, $key = '')
 	{
 		// Determine size var and adjust the value accordingly
-		$size_var = ($value >= 1048576) ? 'mb' : (($value >= 1024) ? 'kb' : 'b');
-		$value = get_formatted_filesize($value, false);
+		$filesize = get_formatted_filesize($value, false, array('mb', 'kb', 'b'));
+		$size_var = $filesize['si_identifier'];
+		$value = $filesize['value'];
 
 		return '<input type="text" id="' . $key . '" size="8" maxlength="15" name="config[' . $key . ']" value="' . $value . '" /> <select name="' . $key . '">' . size_select_options($size_var) . '</select>';
 	}
