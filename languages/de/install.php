@@ -4,13 +4,12 @@
 * install [Deutsch — Du]
 *
 * @package language
-* @version $Id: install.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: install.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -137,6 +136,7 @@ $lang = array_merge($lang, array(
 	'DB_PASSWORD'				=> 'Datenbank-Passwort',
 	'DB_PORT'					=> 'Datenbankserver-Port',
 	'DB_PORT_EXPLAIN'			=> 'Lass dieses Feld frei, es sei denn, du weißt, dass der Server nicht den Standard-Port verwendet.',
+	'DB_UPDATE_NOT_SUPPORTED'	=> 'Leider unterstützt diese Skript kein Update von phpBB-Versionen vor „%1$s“. Du hast derzeit Version „%2$s“ instlliert. Bitte aktualisiere auf eine frühere Version, bevor du dieses Script ausführst. Unterstützung dabei erhältst du in den Support-Foren von phpBB.com und phpBB.de.',
 	'DB_USERNAME'				=> 'Datenbank-Benutzername',
 	'DB_TEST'					=> 'Verbindung testen',
 	'DEFAULT_LANG'				=> 'Standardsprache',
@@ -170,6 +170,9 @@ $lang = array_merge($lang, array(
 	'FILES_REQUIRED_EXPLAIN'	=> '<strong>Voraussetzung</strong> — phpBB muss auf diverse Dateien und Verzeichnisse zugreifen oder diese beschreiben können, um reibungslos zu funktionieren. Wenn „Nicht gefunden“ angezeigt wird, musst du die entsprechende Datei oder das Verzeichnis erstellen. Wenn „Nicht beschreibbar“ angezeigt wird, musst du die Befugnisse für die Datei oder das Verzeichnis so ändern, dass phpBB darauf schreiben kann.',
 	'FILLING_TABLE'				=> 'Fülle Tabelle <strong>%s</strong>',
 	'FILLING_TABLES'			=> 'Fülle Tabellen',
+
+	'FIREBIRD_DBMS_UPDATE_REQUIRED'		=> 'phpBB unterstützt nicht mehr Firebird/Interbase vor Version 2.1. Bitte aktualisiere deine Firebird-Installation auf mindestens Version 2.1.0, bevor du mit dem Update fortfährst.',
+
 	'FINAL_STEP'				=> 'Abschließenden Schritt ausführen',
 	'FORUM_ADDRESS'				=> 'Board-Adresse',
 	'FORUM_ADDRESS_EXPLAIN'		=> 'Dies ist die URL deines alten Boards, zum Beispiel <samp>http://www.domain.tld/phpBB2/</samp>. Wenn hier eine Adresse angegeben wird und das Feld nicht leer gelassen wird, wird jedes Vorkommen dieser Adresse in Beiträgen, Privaten Nachrichten und Signaturen mit der neuen Adresse deines Forums aktualisiert.',
@@ -188,11 +191,11 @@ $lang = array_merge($lang, array(
 	'INITIAL_CONFIG_EXPLAIN'	=> 'Nachdem nun festgestellt wurde, dass phpBB auf deinem Server betrieben werden kann, musst du noch einige Informationen angeben. Wenn du nicht weißt, wie die Verbindungsdaten für deine Datenbank lauten, kontaktiere bitte als erstes deinen Webhosting-Provider oder wende dich an die phpBB Support-Foren. Wenn du Daten eingibst, prüfe diese bitte sorgfältig, bevor du fortfährst.',
 	'INSTALL_CONGRATS'			=> 'Herzlichen Glückwunsch!',
 	'INSTALL_CONGRATS_EXPLAIN'	=> '
-		<p>Du hast phpBB %1$s nun erfolgreich installiert. Du hast nun zwei Optionen, was du mit deinem frisch installierten phpBB3-Board machen kannst:</p>
+		<p>Du hast phpBB %1$s erfolgreich installiert. Bitte fahre mit einer der folgenden Optionen fort:</p>
 		<h2>Ein bestehendes Board auf phpBB3 konvertieren</h2>
 		<p>Das phpBB-Konvertierungs-System unterstützt die Konvertierung von phpBB 2.0.x und anderen Board-Systemen auf phpBB3. Wenn du ein bestehendes Board konvertieren willst, fahre bitte <a href="%2$s">mit dem Konverter fort</a>.</p>
 		<h2>Starte mit phpBB3 durch!</h2>
-		<p>Wenn du unten auf die Schaltfläche klickst, wirst du zum Administrations-Bereich weitergeleitet. Nimm dir etwas Zeit, um die verfügbaren Optionen kennen zu lernen. Hilfe zum Gebrauch von phpBB erhältst du online über die <a href="http://www.phpbb.com/support/documentation/3.0/">Dokumentation (englisch)</a> (<a href="http://www.phpbb.de/go/3/dokumentation">deutsche Übersetzung</a>) und das <a href="http://www.phpbb.com/community/viewforum.php?f=46">Support-Forum (englisch)</a> (<a href="http://www.phpbb.de/go/3/supportforum">deutschsprachiges Forum auf phpBB.de</a>). Für weitere Informationen lies die <a href="%3$s">README</a>-Datei.<br/><br/><strong>Bitte lösche oder verschiebe nun das Installations-Verzeichnis „install“ oder nenne es nun um, bevor du dein Board benutzt. Solange dieses Verzeichnis existiert, ist nur der Administrations-Bereich zugänglich.</strong></p>',
+		<p>Wenn du unten auf die Schaltfläche klickst, wirst du zu einem Formular im Administrations-Bereich weitergeleitet, mit dem du statistische Daten an phpBB.com übermitteln kannst. Wir würden uns freuen, wenn du unsere Arbeit mit deinen Angaben unterstützen würdest. Anschließend solltest du dir etwas Zeit nehmen, um die verfügbaren Optionen kennen zu lernen. Hilfe zum Gebrauch von phpBB erhältst du online über die <a href="http://www.phpbb.com/support/documentation/3.0/">Dokumentation (englisch)</a> (<a href="http://www.phpbb.de/go/3/dokumentation">deutsche Übersetzung</a>), die <a href="%3$s">README</a> und das <a href="http://www.phpbb.com/community/viewforum.php?f=46">Support-Forum (englisch)</a> (<a href="http://www.phpbb.de/go/3/supportforum">deutschsprachiges Forum auf phpBB.de</a>).<br/><br/><strong>Bitte lösche oder verschiebe das Installations-Verzeichnis „install“ oder nenne es um, bevor du dein Board benutzt. Solange dieses Verzeichnis existiert, ist nur der Administrations-Bereich zugänglich.</strong></p>',
 	'INSTALL_INTRO'				=> 'Willkommen bei der Installation',
 	'INSTALL_INTRO_BODY'		=> 'Dieser Assistent ermöglicht dir die Installation von phpBB3 auf deinem Server.</p><p>Bevor du fortsetzen kannst, benötigst du die Daten deiner Datenbank. Wenn du die Daten deiner Datenbank nicht kennst, kontaktiere bitte deinen Server-Betreiber und frage nach den Daten. Ohne die Datenbankdaten kannst du nicht fortfahren. Du benötigst:</p>
 	<ul>
@@ -210,7 +213,7 @@ $lang = array_merge($lang, array(
 		<li>MySQL 3.23 und höher (MySQLi wird unterstützt)</li>
 		<li>PostgreSQL 7.3+</li>
 		<li>SQLite 2.8.2+</li>
-		<li>Firebird 2.0+</li>
+		<li>Firebird 2.1+</li>
 		<li>MS SQL Server 2000 und höher (direkt oder über ODBC)</li>
 		<li>Oracle</li>
 	</ul>
@@ -232,7 +235,7 @@ $lang = array_merge($lang, array(
 	'INST_ERR_DB_NO_MYSQLI'		=> 'Die auf diesem System installierte MySQL-Version ist nicht kompatibel mit der „MySQL mit MySQLi-Erweiterung“-Option, die von dir gewählt wurde. Bitte versuche es stattdessen mit der „MySQL“-Option.',
 	'INST_ERR_DB_NO_SQLITE'		=> 'Die installierte Version der SQLite-Erweiterung ist zu alt, sie muss auf 2.8.2 oder höher aktualisiert werden.',
 	'INST_ERR_DB_NO_ORACLE'		=> 'Die installierte Oracle-Version erfordert, dass der Parameter <var>NLS_CHARACTERSET</var> auf <var>UTF8</var> gesetzt ist. Bitte aktualisiere die Oracle-Version oder ändere den genannten Parameter entsprechend.',
-	'INST_ERR_DB_NO_FIREBIRD'	=> 'Die installierte Firebird-Version ist älter als 2.0 und muss aktualisiert werden.',
+	'INST_ERR_DB_NO_FIREBIRD'	=> 'Die installierte Firebird-Version ist älter als 2.1 und muss aktualisiert werden.',
 	'INST_ERR_DB_NO_FIREBIRD_PS'=> 'Die Datenbank, die du für Firebird ausgewählt hast, hat eine Seitengröße kleiner als 8192. Die Seitengröße muss mindestens 8192 betragen.',
 	'INST_ERR_DB_NO_POSTGRES'	=> 'Die ausgewählte Datenbank wurde nicht mit der Codierung <var>UNICODE</var> oder <var>UTF8</var> erstellt. Bitte versuche die Installation erneut mit einer Datenbank, die mit dieser Codierung erstellt wurde.',
 	'INST_ERR_DB_NO_NAME'		=> 'Kein Datenbank-Name angegeben.',
@@ -271,6 +274,8 @@ $lang = array_merge($lang, array(
 	'MAKE_FOLDER_WRITABLE'		=> 'Bitte stelle sicher, dass dieser Ordner existiert und durch den Webserver beschreibbar ist. Versuche es dann erneut:<br />»<strong>%s</strong>.',
 	'MAKE_FOLDERS_WRITABLE'		=> 'Bitte stelle sicher, dass diese Ordner existieren und durch den Webserver beschreibbar sind. Versuche es dann erneut:<br />»<strong>%s</strong>.',
 
+	'MYSQL_SCHEMA_UPDATE_REQUIRED'	=> 'Dein MySQL-Datenbankschema ist veraltet. phpBB hat ein Schema für MySQL 3.x/4.x erkannt, der Server läuft aber mit MySQL %2$s.<br /><strong>Du musst das Schema aktualisieren, um mit dem Update fortfahren zu können.</strong><br /><br />Bitte verfahre dabei wie im <a href="http://www.phpbb.com/kb/article/doesnt-have-a-default-value-errors/">Knowledge-Base-Artikel zur Aktualisierung des MySQL-Schemas</a> beschrieben wird (<a href="http://www.phpbb.de/go/3/no_default">deutschsprachige Fassung</a>). Wenn Du dabei auf Probleme stößt, nutze bitte <a href="http://www.phpbb.com/community/viewforum.php?f=46">unsere Support-Foren</a> (<a href="http://www.phpbb.de/go/3/supportforum">deutschsprachige Foren</a>).',
+
 	'NAMING_CONFLICT'			=> 'Namens-Konflikt: %s und %s sind beides Aliasse<br /><br />%s',
 	'NEXT_STEP'					=> 'Mit dem nächsten Schritt fortfahren',
 	'NOT_FOUND'					=> 'Nicht gefunden',
@@ -280,7 +285,7 @@ $lang = array_merge($lang, array(
 	'NO_LOCATION'				=> 'Kann den Pfad nicht ermitteln. Wenn du weißt, dass Imagemagick installiert ist, kannst du den Pfad auch später noch im Administrations-Bereich angeben.',
 	'NO_TABLES_FOUND'			=> 'Keine Tabellen gefunden.',
 
-	'OVERVIEW_BODY'				=> 'Willkommen bei phpBB3!<br /><br />phpBB ist die am weitesten verbreitete Open-Source-Forensoftware. phpBB3 ist die jüngste Fortsetzung einer siebenjährigen Entwicklungsgeschichte. Wie seine Vorversionen ist phpBB3 funktionsreich, benutzerfreundlich und vollständig vom phpBB-Team unterstützt. phpBB3 verbessert deutlich, was phpBB2 beliebt gemacht hat und bringt neue Funktionen, die häufig gefragt und nicht in den Vorversionen enthalten waren. Wir hoffen, dass es deine Erwartungen übertrifft.<br /><br />Dieses Installations-System wird dich durch die Installation von phpBB3, das Update von einer älteren auf die aktuelle Version von phpBB3 als auch die Konvertierung von einem anderen Software-Paket (inklusive phpBB2) führen. Für weitere Informationen empfehlen wir dir, <a href="../docs/INSTALL.html">die Installationsanweisungen</a> zu lesen.<br /><br />Um die Lizenz von phpBB3 zu lesen oder Informationen über den Erhalt von Support und unsere Einstellung dazu zu erhalten, wähle bitte die entsprechende Option aus dem seitlichen Menü aus. Um fortzufahren, wähle bitte oben das entsprechende Register aus.',
+	'OVERVIEW_BODY'				=> 'Willkommen bei phpBB3!<br /><br />phpBB ist die am weitesten verbreitete Open-Source-Forensoftware. phpBB3 ist die jüngste Fortsetzung einer im Jahr 2000 begonnenen Entwicklungsgeschichte. Wie seine Vorversionen ist phpBB3 funktionsreich, benutzerfreundlich und vollständig vom phpBB-Team unterstützt. phpBB3 verbessert deutlich, was phpBB2 beliebt gemacht hat und bringt neue Funktionen, die häufig gefragt und nicht in den Vorversionen enthalten waren. Wir hoffen, dass es deine Erwartungen übertrifft.<br /><br />Dieses Installations-System wird dich durch die Installation von phpBB3, das Update von einer älteren auf die aktuelle Version von phpBB3 als auch die Konvertierung von einem anderen Software-Paket (inklusive phpBB2) führen. Für weitere Informationen empfehlen wir dir, <a href="../docs/INSTALL.html">die Installationsanweisungen</a> zu lesen.<br /><br />Um die Lizenz von phpBB3 zu lesen oder Informationen über den Erhalt von Support und unsere Einstellung dazu zu erhalten, wähle bitte die entsprechende Option aus dem seitlichen Menü aus. Um fortzufahren, wähle bitte oben das entsprechende Register aus.',
 
 	'PCRE_UTF_SUPPORT'				=> 'PCRE UTF-8-Unterstützung',
 	'PCRE_UTF_SUPPORT_EXPLAIN'		=> 'phpBB wird <strong>nicht</strong> funktionieren, wenn deine PHP-Installation ohne UTF-8-Unterstützung in der PCRE-Erweiterung kompiliert wurde.',
@@ -364,7 +369,7 @@ $lang = array_merge($lang, array(
 
 // Updater
 $lang = array_merge($lang, array(
-	'ALL_FILES_UP_TO_DATE'		=> 'Alle Dateien sind auf dem Stand der neuesten phpBB-Version. Du solltest dich nun <a href="../ucp.php?mode=login">auf deinem Board anmelden</a> und prüfen, ob alles einwandfrei funktioniert. Vergiss nicht, das Installations-Verzeichnis „install“ zu löschen, umzubenennen oder zu verschieben!',
+	'ALL_FILES_UP_TO_DATE'		=> 'Alle Dateien sind auf dem Stand der neuesten phpBB-Version. Du solltest dich nun <a href="../ucp.php?mode=login&amp;redirect=adm/index.php%3Fi=send_statistics%26mode=send_statistics">auf deinem Board anmelden</a> und prüfen, ob alles einwandfrei funktioniert. Vergess nicht, das Installations-Verzeichnis „install“ zu löschen, umzubenennen oder zu verschieben! Bitte sende uns aktualisierte Informationen über deinen Server und deine Board-Konfiguration über das <a href="../ucp.php?mode=login&amp;redirect=adm/index.php%3Fi=send_statistics%26mode=send_statistics">Statistik-Übermittlungs</a>-Modul in deinem Administrations-Bereich.',
 	'ARCHIVE_FILE'				=> 'Quelldatei im Archiv',
 
 	'BACK'				=> 'Zurück',
@@ -382,8 +387,9 @@ $lang = array_merge($lang, array(
 	'COLLECTED_INFORMATION_EXPLAIN'	=> 'Die folgende Liste zeigt dir die Dateien, die eine Aktualisierung benötigen. Bitte lies die Informationen vor jedem Abschnitt durch, um zu verstehen was passiert und was du möglicherweise tun musst, um ein erfolgreiches Update durchzuführen.',
 	'COLLECTING_FILE_DIFFS'			=> 'Ermittle Datei-Unterschiede',
 	'COMPLETE_LOGIN_TO_BOARD'		=> 'Du solltest dich jetzt <a href="../ucp.php?mode=login">in deinem Forum anmelden</a> und prüfen, ob alles funktioniert. Vergiss nicht, das Installations-Verzeichnis „install“ zu löschen, umzubenennen, oder zu verschieben!',
-	'CONTINUE_UPDATE_NOW'			=> 'Den Update-Prozess jetzt fortsetzen',
-	'CURRENT_FILE'					=> 'Anfang der derzeitigen Originaldatei',
+	'CONTINUE_UPDATE_NOW'			=> 'Den Update-Prozess jetzt fortsetzen',		// Shown within the database update script at the end if called from the updater
+	'CONTINUE_UPDATE'				=> 'Update jetzt fortsetzen',					// Shown after file upload to indicate the update process is not yet finished
+	'CURRENT_FILE'					=> 'Anfang des Konflikts — Inhalt der originalen Datei vor Aktualisierung',
 	'CURRENT_VERSION'				=> 'Derzeit installierte Version',
 
 	'DATABASE_TYPE'						=> 'Datenbanktyp',
@@ -393,13 +399,16 @@ $lang = array_merge($lang, array(
 	'DESTINATION'						=> 'Zieldatei',
 	'DIFF_INLINE'						=> 'Inline',
 	'DIFF_RAW'							=> 'Raw unified diff',
-	'DIFF_SEP_EXPLAIN'					=> 'Ende der derzeitigen Originaldatei / Anfang der neuen, aktualisierten Datei',
+	'DIFF_SEP_EXPLAIN'					=> 'Inhalt der neuen / aktualisierten Datei',
 	'DIFF_SIDE_BY_SIDE'					=> 'Side by Side',
 	'DIFF_UNIFIED'						=> 'Unified diff',
 	'DO_NOT_UPDATE'						=> 'Diese Datei nicht aktualisieren',
 	'DONE'								=> 'Erledigt',
 	'DOWNLOAD'							=> 'Herunterladen',
 	'DOWNLOAD_AS'						=> 'Herunterladen als',
+	'DOWNLOAD_UPDATE_METHOD_BUTTON'		=> 'Archiv mit veränderten Dateien herunterladen (empfohlen)',
+	'DOWNLOAD_CONFLICTS'				=> 'Konflikte für diese Datein herunterladen',
+	'DOWNLOAD_CONFLICTS_EXPLAIN'		=> 'Suche nach &lt;&lt;&lt;, um die Konflikte zu finden',
 	'DOWNLOAD_UPDATE_METHOD'			=> 'Archiv mit veränderten Dateien herunterladen',
 	'DOWNLOAD_UPDATE_METHOD_EXPLAIN'	=> 'Nach dem Download solltest du das Archiv entpacken. Darin sind die geänderten Dateien enthalten, die du in dein phpBB-Verzeichnis laden musst. Bitte lade die Dateien in die entsprechenden Verzeichnisse hoch. Anschließend überprüfe die Dateien bitte noch mal, indem du den Anweisungen weiter unten folgst.',
 
@@ -444,13 +453,13 @@ $lang = array_merge($lang, array(
 
 	'MERGE_NO_MERGE_NEW_OPTION'	=> 'Nicht zusammenführen — neue Datei verwenden',
 	'MERGE_NO_MERGE_MOD_OPTION'	=> 'Nicht zusammenführen — derzeit installierte Datei verwenden',
-	'MERGE_MOD_FILE_OPTION'		=> 'Unterschiede zusammenführen und modifizierten Code bei Konflikten nutzen',
-	'MERGE_NEW_FILE_OPTION'		=> 'Unterschiede zusammenführen und neuen Code bei Konflikten nutzen',
+	'MERGE_MOD_FILE_OPTION'		=> 'Unterschiede zusammenführen (Ignoriert bei Konflikt neuen phpBB-Code)',
+	'MERGE_NEW_FILE_OPTION'		=> 'Unterschiede zusammenführen (Ignoriert bei Konflikt geänderten Code)',
 	'MERGE_SELECT_ERROR'		=> 'Es wurde keine gültige Methode zum Lösen von Dateikonflikten gewählt.',
 	'MERGING_FILES'				=> 'Unterschiede zusammenführen',
 	'MERGING_FILES_EXPLAIN'		=> 'Die Dateiänderungen werden abschließend ermittelt.<br /><br />Bitte warte, bis phpBB alle Anpassungen an den geänderten Dateien vorgenommen hat.',
 
-	'NEW_FILE'						=> 'Ende der neuen, aktualisierten Datei',
+	'NEW_FILE'						=> 'Ende des Konflikts',
 	'NEW_USERNAME'					=> 'Neuer Benutzername',
 	'NO_AUTH_UPDATE'				=> 'Du hast keine Berechtigung, das Update durchzuführen',
 	'NO_ERRORS'						=> 'Keine Fehler',
@@ -500,12 +509,14 @@ $lang = array_merge($lang, array(
 	'STATUS_UP_TO_DATE'			=> 'Bereits aktualisierte Datei',
 
 	'TOGGLE_DISPLAY'			=> 'Datei-Liste ein-/ausblenden',
+	'TRY_DOWNLOAD_METHOD'		=> 'Vielleicht möchtest du versuchen, die veränderten Dateien herunterzuladen.<br />Diese Methode funktioniert immer und ist der empfohlene Weg für ein Update.',
+	'TRY_DOWNLOAD_METHOD_BUTTON'=> 'Diese Methode jetzt versuchen',
 
 	'UPDATE_COMPLETED'				=> 'Update abgeschlossen',
 	'UPDATE_DATABASE'				=> 'Datenbank jetzt aktualisieren',
 	'UPDATE_DATABASE_EXPLAIN'		=> 'Im nächsten Schritt wird die Datenbank aktualisiert.',
 	'UPDATE_DATABASE_SCHEMA'		=> 'Datenbankstruktur wird aktualisiert',
-	'UPDATE_FILES'					=> 'Dateien werden aktualisiert',
+	'UPDATE_FILES'					=> 'Dateien jetzt aktualisieren',
 	'UPDATE_FILES_NOTICE'			=> 'Bitte stelle sicher, dass du auch die Dateien des Boards aktualisiert hast. Diese Datei aktualisiert nur die Datenbank.',
 	'UPDATE_INSTALLATION'			=> 'Update der phpBB-Installation',
 	'UPDATE_INSTALLATION_EXPLAIN'	=> 'Mit dieser Option kannst du deine phpBB-Version auf den neuesten Stand bringen.<br />Während dieses Prozesses wird die Integrität aller deiner Dateien überprüft. Du hast die Möglichkeit, alle Dateiunterschiede vor dem Update zu überprüfen.<br /><br />Die Dateiaktualisierung an sich kann auf zwei Wegen erfolgen:</p><h2>Manuelle Aktualisierung</h2><p>Bei dieser Methode lädst du nur die von dir geänderten Dateien herunter, damit du sichergehen kannst, dass die erfolgten Dateiänderungen nicht verloren gehen. Nach dem Herunterladen dieses Archivs musst du die Dateien in die entsprechenden Verzeichnisse deiner phpBB-Installation hochladen. Nachdem du das getan hast, kannst du die Dateiüberprüfung erneut ausführen, um zu sehen, ob du alle Dateien korrekt hochgeladen hast.</p><h2>Automatische Aktualisierung über FTP</h2><p>Diese Methode ist der ersten sehr ähnlich, mit dem Unterschied, dass du die veränderten Dateien nicht herunter- und anschließend von Hand wieder hochladen musst. Dies wird automatisch erledigt. Um diese Methode nutzen zu können, musst du deine FTP-Anmeldedaten kennen und eingeben. Nach der Fertigstellung wird auch hier eine Integritätsprüfung der Dateien ausgeführt.',
@@ -554,14 +565,15 @@ $lang = array_merge($lang, array(
 	'USER_ACTIVE'					=> 'Aktiver Benutzer',
 	'USER_INACTIVE'					=> 'Inaktiver Benutzer',
 
-	'VERSION_CHECK'				=> 'Versionsprüfung',
-	'VERSION_CHECK_EXPLAIN'		=> 'Prüft, ob die phpBB-Version, die du einsetzt, auf dem neuesten Stand ist.',
-	'VERSION_NOT_UP_TO_DATE'	=> 'Deine phpBB-Version ist nicht auf dem neuesten Stand. Bitte fahre mit der Aktualisierung fort.',
-	'VERSION_NOT_UP_TO_DATE_ACP'=> 'Deine phpBB-Version ist nicht auf dem neuesten Stand<br />Im Folgenden findest du einen Link zu der Release-Ankündigung der neuesten Version sowie Informationen, wie du deine Version aktualisieren kannst.',
-	'VERSION_UP_TO_DATE'		=> 'Deine Installation ist auf dem neuesten Stand, für deine phpBB-Version sind keine Updates verfügbar. Du kannst trotzdem fortfahren und die Dateien auf Gültigkeit überprüfen.',
-	'VERSION_UP_TO_DATE_ACP'	=> 'Deine Installation ist auf dem neuesten Stand, für deine phpBB-Version sind keine Updates verfügbar. Es ist nicht nötig, die Installation zu aktualisieren.',
-	'VIEWING_FILE_CONTENTS'		=> 'Dateiinhalte anzeigen',
-	'VIEWING_FILE_DIFF'			=> 'Dateiunterschiede anzeigen',
+	'VERSION_CHECK'					=> 'Versionsprüfung',
+	'VERSION_CHECK_EXPLAIN'			=> 'Prüft, ob deine phpBB-Installation auf dem neuesten Stand ist.',
+	'VERSION_NOT_UP_TO_DATE'		=> 'Deine phpBB-Version ist nicht auf dem neuesten Stand. Bitte fahre mit der Aktualisierung fort.',
+	'VERSION_NOT_UP_TO_DATE_ACP'	=> 'Deine phpBB-Version ist nicht auf dem neuesten Stand<br />Im Folgenden findest du einen Link zur Release-Ankündigung der neuesten Version, die weitere Informationen sowie Hinweise, wie du deine Version aktualisieren kannst, enthält.',
+	'VERSION_NOT_UP_TO_DATE_TITLE'	=> 'Deine phpBB-Version ist nicht auf dem neuesten Stand.',
+	'VERSION_UP_TO_DATE'			=> 'Deine phpBB-Installation ist auf dem neuesten Stand. Obwohl derzeit keine Updates zur Verfügung stehen, kannst du fortfahren, um die Dateien auf Gültigkeit zu überprüfen.',
+	'VERSION_UP_TO_DATE_ACP'		=> 'Deine phpBB-Installation ist auf dem neuesten Stand. Es stehen derzeit keine Updates zur Verfügung.',
+	'VIEWING_FILE_CONTENTS'			=> 'Dateiinhalte anzeigen',
+	'VIEWING_FILE_DIFF'				=> 'Dateiunterschiede anzeigen',
 
 	'WRONG_INFO_FILE_FORMAT'	=> 'Ungültiges Dateiformat',
 ));

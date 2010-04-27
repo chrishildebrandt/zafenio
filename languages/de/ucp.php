@@ -4,13 +4,12 @@
 * ucp [Deutsch — Du]
 *
 * @package language
-* @version $Id: ucp.php 195 2007-05-18 13:32:26Z frank $
+* @version $Id: ucp.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -54,16 +53,16 @@ $lang = array_merge($lang, array(
 		<h3>3. Pflichten des Nutzers</h3>
 		<ol style="list-style-type: lower-alpha"><li>Du erklärst mit der Erstellung eines Beitrags, dass er keine Inhalte enthält, die gegen geltendes Recht oder die guten Sitten verstoßen. Du erklärst insbesondere, dass du das Recht besitzt, die in deinen Beiträgen verwendeten Links und Bilder zu setzen bzw. zu verwenden.</li>
 		<li>Der Betreiber des Boards übt das Hausrecht aus. Bei Verstößen gegen diese Nutzungsbedingungen oder anderer im Board veröffentlichten Regeln kann der Betreiber dich nach Abmahnung zeitweise oder dauerhaft von der Nutzung dieses Boards ausschließen und dir ein Hausverbot erteilen.</li>
-		<li>Du nimmst zur Kenntnis, dass der Betreiber keine Verantwortung für die Inhalte von Beiträgen übernimmt, die er nicht selbst erstellt hat oder die er zur Kenntnis genommen hat. Du gestattest dem Betreiber, dein Benutzerkonto, Beiträge und Funktionen jederzeit zu löschen oder zu sperren.</li>
+		<li>Du nimmst zur Kenntnis, dass der Betreiber keine Verantwortung für die Inhalte von Beiträgen übernimmt, die er nicht selbst erstellt hat oder die er nicht zur Kenntnis genommen hat. Du gestattest dem Betreiber, dein Benutzerkonto, Beiträge und Funktionen jederzeit zu löschen oder zu sperren.</li>
 		<li>Du gestattest dem Betreiber darüber hinaus, deine Beiträge abzuändern, sofern sie gegen o.&nbsp;g. Regeln verstoßen oder geeignet sind, dem Betreiber oder einem Dritten Schaden zuzufügen.</li></ol>
 
 		<h3>4. General Public License</h3>
 		<ol style="list-style-type: lower-alpha"><li>Du nimmst zur Kenntnis, dass es sich bei phpBB um eine unter der General Public License (GPL) bereitgestellten Foren-Software der phpBB Group (www.phpbb.com) handelt; deutschsprachige Informationen werden durch die deutschsprachige Community unter www.phpbb.de zur Verfügung gestellt. Beide haben keinen Einfluss auf die Art und Weise, wie die Software verwendet wird. Sie können insbesondere die Verwendung der Software für bestimmte Zwecke nicht untersagen oder auf Inhalte fremder Foren Einfluss nehmen.</li></ol>
 
 		<h3>5. Gewährleistung</h3>
-		<ol style="list-style-type: lower-alpha"><li>Der Betreiber haftet mit Ausnahme der Verletzung von Leben, Körper und Gesundheit und der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) nur für Schäden, die auf einem vorsätzlichen oder grob fahrlässigen Verhalten zurückzuführen sind. Dies gilt auch für mittelbare Folgeschäden wie insbesondere entgangenen Gewinn.</li>
-		<li>Die Haftung ist gegenüber Verbrauchern außer bei vorsätzlichen oder grob fahrlässigen Verhalten oder bei Schäden aus der Verletzung von Leben, Körper und Gesundheit und der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) auf die bei Vertragsschluss typischer Weise vorhersehbaren Schäden und im übrigen der Höhe nach auf die vertragstypischen Durchschnittsschäden begrenzt. Dies gilt auch für mittelbare Folgeschäden wie insbesondere entgangenen Gewinn.</li>
-		<li>Die Haftung ist gegenüber Unternehmern außer bei der Verletzung von Leben, Körper und Gesundheit oder vorsätzlichen oder grob fahrlässigen Verhalten des Boards auf die bei Vertragsschluss typischerweise vorhersehbaren Schäden und im Übrigen der Höhe nach auf die vertragstypischen Durchschnittsschäden begrenzt. Dies gilt auch für mittelbare Schäden, insbesondere entgangenen Gewinn.</li>
+		<ol style="list-style-type: lower-alpha"><li>Der Betreiber haftet mit Ausnahme der Verletzung von Leben, Körper und Gesundheit und der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) nur für Schäden, die auf ein vorsätzliches oder grob fahrlässiges Verhalten zurückzuführen sind. Dies gilt auch für mittelbare Folgeschäden wie insbesondere entgangenen Gewinn.</li>
+		<li>Die Haftung ist gegenüber Verbrauchern außer bei vorsätzlichem oder grob fahrlässigem Verhalten oder bei Schäden aus der Verletzung von Leben, Körper und Gesundheit und der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) auf die bei Vertragsschluss typischerweise vorhersehbaren Schäden und im übrigen der Höhe nach auf die vertragstypischen Durchschnittsschäden begrenzt. Dies gilt auch für mittelbare Folgeschäden wie insbesondere entgangenen Gewinn.</li>
+		<li>Die Haftung ist gegenüber Unternehmern außer bei der Verletzung von Leben, Körper und Gesundheit oder vorsätzlichem oder grob fahrlässigem Verhalten des Betreibers auf die bei Vertragsschluss typischerweise vorhersehbaren Schäden und im Übrigen der Höhe nach auf die vertragstypischen Durchschnittsschäden begrenzt. Dies gilt auch für mittelbare Schäden, insbesondere entgangenen Gewinn.</li>
 		<li>Die Haftungsbegrenzung der Absätze a bis c gilt sinngemäß auch zugunsten der Mitarbeiter und Erfüllungsgehilfen des Betreibers.</li>
 		<li>Ansprüche für eine Haftung aus zwingendem nationalem Recht bleiben unberührt.</li></ol>
 
@@ -76,8 +75,8 @@ $lang = array_merge($lang, array(
 	'PRIVACY_POLICY'		=> 'Diese Richtlinie beschreibt, wie „%1$s“ und ggf. verbundene Institutionen (im Folgenden „das Board“) und phpBB die Daten verwenden, die während deines Foren-Besuchs gesammelt werden.</p>
 		<h3>Umfang und Art der Datenspeicherung</h3>
 		<p>Deine Daten werden auf zwei verschiedene Arten gesammelt:</p>
-		<ol style="list-style-type: arabic-numbers"><li>phpBB erstellt bei deinem Besuch des Boards mehrere Cookies. Cookies sind kleine Textdateien, die dein Browser als temporäre Dateien ablegt. Zwei dieser Cookies enthalten eine eindeutige Benutzer-Nummer (Benutzer-ID) sowie eine anonyme Sitzungs-Nummer (Session-ID), die dir von phpBB automatisch zugewiesen wird. Ein drittes Cookie wird erstellt, sobald du Themen besucht hast und wird dazu verwendet, Informationen über die von dir gelesenen Beiträge zu speichern, um die ungelesenen Beiträge markieren zu können.</li>
-		<li>Weitere Daten werden durch Übermittlung dieser Daten an den Betreiber gesammelt. Dies betrifft — ohne Anspruch auf Vollständigkeit — zum Beispiel Beiträge, die als Gast erstellt werden, Daten, die im Rahmen der Registrierung erfasst werden und die von dir nach deiner Registrierung erstellten Nachrichten. Dein Benutzerkonto besteht mindestens aus einem eindeutigen Benutzernamen, einem Passwort zur Anmeldung mit diesem Konto und einer persönlichen und gültigen E-Mail-Adresse.</li></ol>
+		<ol style="list-style-type: decimal;"><li>phpBB erstellt bei deinem Besuch des Boards mehrere Cookies. Cookies sind kleine Textdateien, die dein Browser als temporäre Dateien ablegt. Zwei dieser Cookies enthalten eine eindeutige Benutzer-Nummer (Benutzer-ID) sowie eine anonyme Sitzungs-Nummer (Session-ID), die dir von phpBB automatisch zugewiesen wird. Ein drittes Cookie wird erstellt, sobald du Themen besucht hast und wird dazu verwendet, Informationen über die von dir gelesenen Beiträge zu speichern, um die ungelesenen Beiträge markieren zu können.</li>
+		<li>Weitere Daten werden gesammelt, wenn Informationen an den Betreiber übermittelt werden. Dies betrifft — ohne Anspruch auf Vollständigkeit — zum Beispiel Beiträge, die als Gast erstellt werden, Daten, die im Rahmen der Registrierung erfasst werden und die von dir nach deiner Registrierung erstellten Nachrichten. Dein Benutzerkonto besteht mindestens aus einem eindeutigen Benutzernamen, einem Passwort zur Anmeldung mit diesem Konto und einer persönlichen und gültigen E-Mail-Adresse.</li></ol>
 		<p>Dein Passwort wird mit einer Einwege-Verschlüsselung (Hash) gespeichert, so dass es sicher ist. Jedoch wird dir empfohlen, dieses Passwort nicht auf einer Vielzahl von Webseiten zu verwenden. Das Passwort ist dein Schlüssel zu deinem Benutzerkonto für das Board, also geh mit ihm sorgsam um. Insbesondere wird dich kein Vertreter des Betreibers, der phpBB Group oder ein Dritter berechtigterweise nach deinem Passwort fragen. Solltest du dein Passwort vergessen haben, so kannst du die Funktion „Ich habe mein Passwort vergessen“ benutzen. Die phpBB-Software fragt dich dann nach deinem Benutzername und deiner E-Mail-Adresse und sendet anschließend ein neu generiertes Passwort an diese Adresse, mit dem du dann auf das Board zugreifen kannst.</p>
 
 		<h3>Gestattung der Datenspeicherung</h3>
@@ -121,6 +120,7 @@ $lang = array_merge($lang, array(
 	'ADD_NEW_RULE'					=> 'Neue Regel erstellen',
 	'ADD_RULE'						=> 'Regel erstellen',
 	'ADD_TO'						=> '[ An ]',
+	'ADD_USERS_UCP_EXPLAIN'			=> 'Hier kannst du neue Benutzer der Gruppe hinzufügen. Du kannst festlegen, ob die Gruppe zur Standardgruppe der angegebenen Benutzer wird. Bitte gebe jeden Benutzernamen in einer neuen Zeile ein.',
 	'ADMIN_EMAIL'					=> 'Administratoren dürfen mir Informationen per E-Mail schicken',
 	'AGREE'							=> 'Ich bin mit diesen Bedingungen einverstanden',
 	'ALLOW_PM'						=> 'Andere Mitglieder dürfen mir Private Nachrichten schicken',
@@ -134,7 +134,9 @@ $lang = array_merge($lang, array(
 	'AVATAR_FEATURES_DISABLED'		=> 'Die Avatar-Funktion ist derzeit deaktiviert.',
 	'AVATAR_GALLERY'				=> 'Lokale Galerie',
 	'AVATAR_GENERAL_UPLOAD_ERROR'	=> 'Konnte Avatar nicht nach %s hochladen.',
+	'AVATAR_NOT_ALLOWED'			=> 'Dein Avatar kann nicht angezeigt werden, da Avatare deaktiviert wurden.',
 	'AVATAR_PAGE'					=> 'Seite',
+	'AVATAR_TYPE_NOT_ALLOWED'		=> 'Dein aktueller Avatar kann nicht angezeigt werden, da der verwendete Avatar-Typ deaktiviert wurde.',
 
 	'BACK_TO_DRAFTS'			=> 'Zurück zu den gespeicherten Entwürfen',
 	'BACK_TO_LOGIN'				=> 'Zurück zur Anmelde-Maske',
@@ -164,6 +166,9 @@ $lang = array_merge($lang, array(
 	'CONFIRM_EMAIL'				=> 'Bestätigung der E-Mail-Adresse',
 	'CONFIRM_EMAIL_EXPLAIN'		=> 'Du musst die Bestätigung nur angeben, wenn du deine E-Mail-Adresse ändern möchtest.',
 	'CONFIRM_EXPLAIN'			=> 'Um automatisierte Anmeldungen zu unterbinden, musst du einen Bestätigungscode angeben. Der Code ist in dem Bild unterhalb dieses Textes enthalten. Wenn du nur über ein eingeschränktes Sehvermögen verfügst oder aus einem anderen Grund den Code nicht lesen kannst, kontaktiere bitte die %sBoard-Administration%s.',
+	'VC_REFRESH'				=> 'Neuer Code',
+	'VC_REFRESH_EXPLAIN'		=> 'Wenn du den Bestätigungscode nicht lesen kannst, kannst du mit dieser Schaltfläche einen neuen anfordern.',
+
 	'CONFIRM_PASSWORD'			=> 'Bestätigung des Passworts',
 	'CONFIRM_PASSWORD_EXPLAIN'	=> 'Du musst dein Passwort nur bestätigen, wenn du es oben änderst.',
 	'COPPA_BIRTHDAY'			=> 'Um mit dem Registrierungs-Prozess fortzufahren, teile uns bitte mit, wann du geboren wurdest.',
@@ -210,7 +215,7 @@ $lang = array_merge($lang, array(
 	'EDIT_DRAFT_EXPLAIN'		=> 'Hier hast du die Möglichkeit, deine Entwürfe zu ändern. Entwürfe enthalten keine Informationen zu Dateianhängen und Umfragen.',
 	'EMAIL_BANNED_EMAIL'		=> 'Die von dir angegebene E-Mail-Adresse darf nicht benutzt werden.',
 	'EMAIL_INVALID_EMAIL'		=> 'Die von dir angegebene E-Mail-Adresse ist ungültig.',
-	'EMAIL_REMIND'				=> 'Du musst die E-Mail-Adresse angeben, die in deinem Profil hinterlegt ist. Wenn du sie nicht in deinem persönlichen Bereich geändert hast, ist es die Adresse, mit der du dich registriert hast.',
+	'EMAIL_REMIND'				=> 'Du musst die E-Mail-Adresse angeben, die in deinem Profil hinterlegt ist. Diese hast du bei der Registrierung angegeben oder nachträglich in deinem persönlichen Bereich geändert.',
 	'EMAIL_TAKEN_EMAIL'			=> 'Die angegebene E-Mail-Adresse wird bereits verwendet.',
 	'EMPTY_DRAFT'				=> 'Du musst eine Nachricht eingeben, um deine Änderungen zu speichern.',
 	'EMPTY_DRAFT_TITLE'			=> 'Du musst einen Titel für den Entwurf angeben.',
@@ -236,6 +241,7 @@ $lang = array_merge($lang, array(
 	'FOES_UPDATED'				=> 'Die Liste deiner ignorierten Mitglieder wurde erfolgreich aktualisiert.',
 	'FOLDER_ADDED'				=> 'Ordner erfolgreich angelegt.',
 	'FOLDER_MESSAGE_STATUS'		=> '%1$d von %2$d Nachrichten gespeichert',
+	'FOLDER_NAME_EMPTY'			=> 'Du musst einen Namen für den Ordner angeben.',
 	'FOLDER_NAME_EXIST'			=> 'Der Ordner <strong>%s</strong> existiert bereits.',
 	'FOLDER_OPTIONS'			=> 'Ordner-Einstellungen',
 	'FOLDER_RENAMED'			=> 'Ordner erfolgreich umbenannt.',
@@ -312,10 +318,12 @@ $lang = array_merge($lang, array(
 	'NOTIFY_METHOD_IM'			=> 'Nur per Jabber',
 	'NOTIFY_ON_PM'				=> 'Benachrichtige mich über neue Nachrichten',
 	'NOT_ADDED_FRIENDS_ANONYMOUS'	=> 'Du kannst das Gäste-Benutzerkonto nicht zu deinen Freunden hinzufügen.',
+	'NOT_ADDED_FRIENDS_BOTS'		=> 'Du kannst keine Bots zu deinen Freunden hinzufügen.',
 	'NOT_ADDED_FRIENDS_FOES'		=> 'Du kannst kein Mitglied zu deinen Freunden hinzufügen, das sich in der Liste der ignorierten Mitglieder befindet.',
 	'NOT_ADDED_FRIENDS_SELF'		=> 'Du kannst dich nicht selbst zu deinen Freunden hinzufügen.',
 	'NOT_ADDED_FOES_MOD_ADMIN'		=> 'Du kannst keine Moderatoren und Administratoren zur deinen ignorierten Mitgliedern hinzufügen.',
 	'NOT_ADDED_FOES_ANONYMOUS'		=> 'Du kannst das Gäste-Benutzerkonto nicht zu deinen ignorierten Mitgliedern hinzufügen.',
+	'NOT_ADDED_FOES_BOTS'			=> 'Du kannst Bots nicht zu deinen ignorierten Mitgliedern hinzufügen.',
 	'NOT_ADDED_FOES_FRIENDS'		=> 'Du kannst kein Mitglied zu deinen ignorierten Mitgliedern hinzufügen, das sich in der Liste deiner Freunde befindet.',
 	'NOT_ADDED_FOES_SELF'			=> 'Du kannst dich nicht selbst zu deinen ignorierten Mitgliedern hinzufügen.',
 	'NOT_AGREE'						=> 'Ich bin mit diesen Bedingungen nicht einverstanden',
@@ -330,6 +338,8 @@ $lang = array_merge($lang, array(
 	'NO_AUTH_EDIT_MESSAGE'			=> 'Du bist nicht berechtigt, Private Nachrichten zu ändern.',
 	'NO_AUTH_FORWARD_MESSAGE'		=> 'Du bist nicht berechtigt, Private Nachrichten weiterzuleiten.',
 	'NO_AUTH_GROUP_MESSAGE'			=> 'Du bist nicht berechtigt, Private Nachrichten an Gruppen zu senden.',
+	'NO_AUTH_PASSWORD_REMINDER'		=> 'Du bist nicht berechtigt, ein neues Passwort anzufordern.',
+	'NO_AUTH_READ_HOLD_MESSAGE'		=> 'Du bist nicht berechtigt, zurückgehaltene Private Nachrichten zu lesen.',
 	'NO_AUTH_READ_MESSAGE'			=> 'Du bist nicht berechtigt, Private Nachrichten zu lesen.',
 	'NO_AUTH_READ_REMOVED_MESSAGE'	=> 'Du kannst diese Nachricht nicht lesen, weil sie von ihrem Autor gelöscht wurde.',
 	'NO_AUTH_SEND_MESSAGE'			=> 'Du bist nicht berechtigt, Private Nachrichten zu senden.',
@@ -339,7 +349,7 @@ $lang = array_merge($lang, array(
 	'NO_BOOKMARKS'				=> 'Du hast keine Lesezeichen gesetzt.',
 	'NO_BOOKMARKS_SELECTED'		=> 'Du hast keine Lesezeichen ausgewählt.',
 	'NO_EDIT_READ_MESSAGE'		=> 'Diese Private Nachricht kann nicht geändert werden, da sie bereits gelesen wurde.',
-	'NO_EMAIL_USER'				=> 'Die E-Mail-/Benutzerdaten konnten nicht gefunden werden.',
+	'NO_EMAIL_USER'				=> 'Es existiert kein Benutzer mit dieser Kombination aus Benutzernamen und E-Mail-Adresse.',
 	'NO_FOES'					=> 'Derzeit sind keine ignorierten Mitglieder definiert',
 	'NO_FRIENDS'				=> 'Derzeit sind keine Freunde definiert',
 	'NO_FRIENDS_OFFLINE'		=> 'Keine Freunde offline',
@@ -356,6 +366,7 @@ $lang = array_merge($lang, array(
 	'NO_SAVED_DRAFTS'			=> 'Keine Entwürfe gespeichert.',
 	'NO_TO_RECIPIENT'			=> 'Keinen',
 	'NO_WATCHED_FORUMS'			=> 'Du beobachtest keine Foren.',
+	'NO_WATCHED_SELECTED'		=> 'Du hast keine beobachteten Themen oder Foren ausgewählt.',
 	'NO_WATCHED_TOPICS'			=> 'Du beobachtest keine Themen.',
 
 	'PASS_TYPE_ALPHA_EXPLAIN'	=> 'Das Passwort muss zwischen %1$d und %2$d Zeichen lang sein und aus Groß- und Kleinbuchstaben sowie Ziffern bestehen.',
@@ -364,7 +375,7 @@ $lang = array_merge($lang, array(
 	'PASS_TYPE_SYMBOL_EXPLAIN'	=> 'Das Passwort muss zwischen %1$d und %2$d Zeichen lang sein und muss aus Groß- und Kleinbuchstaben, Ziffern sowie Sonderzeichen bestehen.',
 	'PASSWORD'					=> 'Passwort',
 	'PASSWORD_ACTIVATED'		=> 'Dein neues Passwort wurde aktiviert.',
-	'PASSWORD_UPDATED'			=> 'Dein neues Passwort wurde erfolgreich an deine aktuelle E-Mail-Adresse gesendet.',
+	'PASSWORD_UPDATED'			=> 'Dein neues Passwort wurde an deine hinterlegte E-Mail-Adresse gesendet.',
 	'PERMISSIONS_RESTORED'		=> 'Ursprüngliche Berechtigungen wieder hergestellt.',
 	'PERMISSIONS_TRANSFERRED'	=> 'Berechtigungen von <strong>%s</strong> erfolgreich übernommen. Du kannst nun das Board mit den Rechten des Benutzers testen.<br />Bitte beachte, dass Administrationsrechte nicht übernommen wurden. Du kannst jederzeit zu deinen Berechtigungen zurückkehren.',
 	'PM_DISABLED'				=> 'Private Nachrichten sind auf diesem Board deaktiviert.',
@@ -404,6 +415,8 @@ $lang = array_merge($lang, array(
 	'RENAME'							=> 'Umbenennen',
 	'RENAME_FOLDER'						=> 'Ordner umbenennen',
 	'REPLIED_MESSAGE'					=> 'Beantwortete Nachricht',
+	'REPLY_TO_ALL'						=> 'Absender und allen Empfängern antworten.',
+	'REPORT_PM'							=> 'Private Nachricht melden',
 	'RESIGN_SELECTED'					=> 'Aus ausgewählter austreten',
 	'RETURN_FOLDER'						=> '%1$sZurück zum vorherigen Ordner%2$s',
 	'RETURN_UCP'						=> '%sZurück zum persönlichen Bereich%s',
@@ -417,7 +430,7 @@ $lang = array_merge($lang, array(
 	'SAME_PASSWORD_ERROR'		=> 'Das von dir eingegebene neue Passwort entspricht deinem aktuellen Passwort.',
 	'SEARCH_YOUR_POSTS'			=> 'Deine Beiträge anzeigen',
 	'SEND_PASSWORD'				=> 'Passwort senden',
-	'SENT_AT'					=> 'Gesendet am',
+	'SENT_AT'					=> 'Gesendet',			// Used before dates in private messages
 	'SHOW_EMAIL'				=> 'Mitglieder dürfen mich per E-Mail kontaktieren',
 	'SIGNATURE_EXPLAIN'			=> 'Eine Signatur ist ein Text, der an deine Nachrichten angefügt werden kann. Sie ist auf %d Zeichen begrenzt.',
 	'SIGNATURE_PREVIEW'			=> 'Deine Signatur wird folgendermaßen aussehen',
@@ -432,7 +445,7 @@ $lang = array_merge($lang, array(
 
 	'TIMEZONE'					=> 'Zeitzone',
 	'TO'						=> 'An',
-	'TOO_MANY_RECIPIENTS'		=> 'Zu viele Empfänger.',
+	'TOO_MANY_RECIPIENTS'		=> 'Du hast versucht, eine Private Nachricht an zu viele Empfänger zu senden.',
 	'TOO_MANY_REGISTERS'		=> 'Du hast die zulässige Zahl von Registrierungs-Versuchen in dieser Sitzung überschritten. Bitte versuche es später erneut.',
 
 	'UCP'						=> 'Persönlicher Bereich',
@@ -488,6 +501,7 @@ $lang = array_merge($lang, array(
 	'UCP_ZEBRA'						=> 'Freunde und ignorierte Mitglieder',
 	'UCP_ZEBRA_FOES'				=> 'Ignorierte Mitglieder verwalten',
 	'UCP_ZEBRA_FRIENDS'				=> 'Freunde verwalten',
+	'UNDISCLOSED_RECIPIENT'			=> 'Verborgene Empfänger',
 	'UNKNOWN_FOLDER'				=> 'Unbekannter Ordner',
 	'UNWATCH_MARKED'				=> 'Ausgewählte Benachrichtigungen deaktivieren',
 	'UPLOAD_AVATAR_FILE'			=> 'Von deinem Rechner hochladen',

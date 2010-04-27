@@ -4,13 +4,12 @@
 * acp_search [Deutsch — Du]
 *
 * @package language
-* @version $Id: search.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: search.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -44,7 +43,7 @@ $lang = array_merge($lang, array(
 	'ACP_SEARCH_SETTINGS_EXPLAIN'			=> 'Hier kannst du festlegen, welches Backend zur Indizierung von und zur Suche nach Beiträgen verwendet wird. Du kannst verschiedene Optionen festlegen, die die Verarbeitungszeit dieser Vorgänge beeinflussen können. Manche Einstellungen sind für alle Backends identisch.',
 
 	'COMMON_WORD_THRESHOLD'					=> 'Schwelle für häufig vorkommende Wörter',
-	'COMMON_WORD_THRESHOLD_EXPLAIN'			=> 'Wörter, die in einem größeren prozentualem Anteil von Beiträgen enthalten sind, werden als häufig vorkommende Wörter angesehen. Häufig vorkommende Wörter werden in Suchanfragen ignoriert. Um dieses Verhalten abzuschalten, stelle als Wert 0 ein. Die Funktion greift nur, wenn mehr als 100 Beiträge existieren.',
+	'COMMON_WORD_THRESHOLD_EXPLAIN'			=> 'Wörter, die in einem größeren prozentualem Anteil von Beiträgen enthalten sind, werden als häufig vorkommende Wörter angesehen. Häufig vorkommende Wörter werden in Suchanfragen ignoriert. Um dieses Verhalten abzuschalten, stelle als Wert 0 ein. Die Funktion greift nur, wenn mehr als 100 Beiträge existieren. Wenn Wörter, die derzeit als häufig gekennzeichnet sind, wieder in den Suchindex aufgenommen werden sollen, muss der Index neu aufgebaut werden.',
 	'CONFIRM_SEARCH_BACKEND'				=> 'Bist du sicher, dass du das Backend für die Suchen ändern möchtest? Nach dem Wechsel des Backends musst du einen neuen Index für das neue Backend aufbauen. Wenn du nicht planst, zum alten Backend zurückzukehren, kannst du auch den Index des alten Backends löschen, um Systemressourcen zu sparen.',
 	'CONTINUE_DELETING_INDEX'				=> 'Letzte Index-Löschung fortsetzen',
 	'CONTINUE_DELETING_INDEX_EXPLAIN'		=> 'Die Löschung eines Indexes wurde gestartet. Um auf die Such-Indizes-Seite zugreifen zu können, musst du diesen Vorgang erst abschließen oder abbrechen.',
@@ -76,6 +75,8 @@ $lang = array_merge($lang, array(
 
 	'MAX_SEARCH_CHARS'						=> 'Maximal indizierte Zeichen',
 	'MAX_SEARCH_CHARS_EXPLAIN'				=> 'Wörter mit nicht mehr als so vielen Zeichen werden für die Suche indiziert.',
+	'MAX_NUM_SEARCH_KEYWORDS'				=> 'Maximal zulässige Wörter',
+	'MAX_NUM_SEARCH_KEYWORDS_EXPLAIN'		=> 'Maximale Zahl von Wörtern, nach denen ein Benutzer suchen kann. Ein Wert von 0 erlaubt eine Suche nach einer unbegrenzten Zahl an Wörtern.',
 	'MIN_SEARCH_CHARS'						=> 'Minimal indizierte Zeichen',
 	'MIN_SEARCH_CHARS_EXPLAIN'				=> 'Wörter mit mindesten so vielen Zeichen werden für die Suche indiziert.',
 	'MIN_SEARCH_AUTHOR_CHARS'				=> 'Mindestlänge für Suche nach Benutzernamen',

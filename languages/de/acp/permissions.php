@@ -4,13 +4,12 @@
 * acp_permissions [Deutsch — Du]
 *
 * @package language
-* @version $Id: permissions.php 171 2007-03-20 22:43:11Z philipp $
+* @version $Id: permissions.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -84,13 +83,14 @@ $lang = array_merge($lang, array(
 	'ACP_ADMINISTRATORS_EXPLAIN'				=> 'Hier kannst du Benutzern oder Gruppen Administrations-Berechtigungen zuweisen. Alle Benutzer mit Administrationsrechten können auf den Administrations-Bereich zugreifen.',
 	'ACP_FORUM_MODERATORS_EXPLAIN'				=> 'Hier kannst du Benutzer und Gruppen zu Forums-Moderatoren ernennen. Um den Zugriff von Benutzern auf Foren zu regeln, Rechte für globale Moderatoren festzulegen oder um Administratoren zu ernennen, verwende bitte die entsprechenden Bereiche.',
 	'ACP_FORUM_PERMISSIONS_EXPLAIN'				=> 'Hier kannst du festlegen, welche Benutzer und Gruppen Zugriff auf welches Forum haben. Um Moderatoren oder Administratoren zu ernennen, verwende bitte die entsprechenden Bereiche.',
+	'ACP_FORUM_PERMISSIONS_COPY_EXPLAIN'		=> 'Hier kannst du die Berechtigungen von einem Forum zu einem oder mehreren anderen Foren kopieren.',
 	'ACP_GLOBAL_MODERATORS_EXPLAIN'				=> 'Hier kannst du Benutzern oder Gruppen globale Moderator-Berechtigungen zuweisen. Diese Moderatoren haben die gleichen Rechte wie gewöhnliche Moderatoren, können jedoch auf jedes Forum des Boards zugreifen.',
 	'ACP_GROUPS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Hier kannst du Gruppen Forums-Berechtigungen zuweisen.',
 	'ACP_GROUPS_PERMISSIONS_EXPLAIN'			=> 'Hier kannst du Gruppen globale Rechte (Benutzer-, globale Moderatoren- und Administrator-Berechtigungen) zuweisen. Benutzerrechte beinhalten Punkte wie Avatare, den Versand von Privaten Nachrichten usw.; Globale-Moderator-Berechtigungen beinhalten die Bestätigung von Beiträgen, die Verwaltung von Themen und Sperren etc. und Administrations-Berechtigungen beinhalten die Änderung von Berechtigungen, die Definition benutzerdefinierter BBCodes etc. Individuelle Benutzer-Berechtigungen sollten nur in seltenen Fällen verwendet werden; die vorzuziehende Methode ist, die Benutzer in Gruppen aufzunehmen und den Gruppen entsprechende Rechte zuzuweisen.',
-	'ACP_ADMIN_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Administrator-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, die diese Rolle zugewiesen haben.',
-	'ACP_FORUM_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Forum-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, die diese Rolle zugewiesen haben.',
-	'ACP_MOD_ROLES_EXPLAIN'						=> 'Hier kannst du Rollen für Moderator-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, die diese Rolle zugewiesen haben.',
-	'ACP_USER_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Benutzer-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, die diese Rolle zugewiesen haben.',
+	'ACP_ADMIN_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Administrator-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, denen diese Rolle zugewiesen wurde.',
+	'ACP_FORUM_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Forum-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, denen diese Rolle zugewiesen wurde.',
+	'ACP_MOD_ROLES_EXPLAIN'						=> 'Hier kannst du Rollen für Moderator-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, denen diese Rolle zugewiesen wurde.',
+	'ACP_USER_ROLES_EXPLAIN'					=> 'Hier kannst du Rollen für Benutzer-Berechtigungen verwalten. Rollen sind zugewiesene Berechtigungen; wenn du eine Rolle änderst, ändern sich die Rechte aller Elemente, denen diese Rolle zugewiesen wurde.',
 	'ACP_USERS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Hier kannst du Benutzern Foren-Berechtigungen zuweisen.',
 	'ACP_USERS_PERMISSIONS_EXPLAIN'				=> 'Hier kannst du Benutzern globale Rechte (Benutzer-, globale Moderatoren- und Administrator-Berechtigungen) zuweisen. Benutzerrechte beinhalten Punkte wie Avatare, den Versand von Privaten Nachrichten usw.; Globale-Moderator-Berechtigungen beinhalten die Bestätigung von Beiträgen, die Verwaltung von Themen und Sperren etc. und Administrations-Berechtigungen beinhalten die Änderung von Berechtigungen, die Definition benutzerdefinierter BBCodes etc. Um diese Rechte für eine größere Zahl von Benutzern zu ändern, sollte das Gruppen-Berechtigungssystem verwendet werden. Benutzer-Berechtigungen sollten nur in seltenen Fällen verwendet werden; die vorzuziehende Methode ist, die Benutzer in Gruppen aufzunehmen und den Gruppen entsprechende Rechte zuzuweisen.',
 	'ACP_VIEW_ADMIN_PERMISSIONS_EXPLAIN'		=> 'Hier kannst du die effektiven Administrator-Berechtigungen anzeigen, die den ausgewählten Benutzern/Gruppen zugewiesen sind.',
@@ -113,13 +113,19 @@ $lang = array_merge($lang, array(
 	'APPLY_PERMISSIONS_EXPLAIN'	=> 'Die definierten Berechtigungen und die definierte Rolle werden nur für dieses und alle markierten Objekte angewandt.',
 	'AUTH_UPDATED'				=> 'Die Berechtigungen wurden aktualisiert.',
 
+	'COPY_PERMISSIONS_CONFIRM'				=> 'Bist du sicher, dass du diesen Vorgang durchführen möchtest? Dieser Vorgang wird alle bestehenden Berechtigungen der ausgewählten Foren überschreiben.',
+	'COPY_PERMISSIONS_FORUM_FROM_EXPLAIN'	=> 'Das Forum, dessen Berechtigungen du kopieren möchtest.',
+	'COPY_PERMISSIONS_FORUM_TO_EXPLAIN'		=> 'Die Ziel-Foren, zu denen die Berechtigungen kopiert werden sollen.',
+	'COPY_PERMISSIONS_FROM'					=> 'Berechtigungen kopieren von',
+	'COPY_PERMISSIONS_TO'					=> 'Berechtigungen kopieren nach',
+
 	'CREATE_ROLE'				=> 'Rolle erstellen',
 	'CREATE_ROLE_FROM'			=> 'Verwende Einstellungen von …',
 	'CUSTOM'					=> 'Benutzerdefiniert …',
 
 	'DEFAULT'					=> 'Standard',
 	'DELETE_ROLE'				=> 'Rolle löschen',
-	'DELETE_ROLE_CONFIRM'		=> 'Bist du sicher, dass du diese Rolle löschen willst? Objekte, die diese Rolle zugewiesen haben, werden ihre Rechte <strong>nicht</strong> verlieren.',
+	'DELETE_ROLE_CONFIRM'		=> 'Bist du sicher, dass du diese Rolle löschen willst? Objekte, denen diese Rolle zugewiesen wurde, werden ihre Rechte <strong>nicht</strong> verlieren.',
 	'DISPLAY_ROLE_ITEMS'		=> 'Zeige Objekte an, die diese Rolle verwenden',
 
 	'EDIT_PERMISSIONS'			=> 'Berechtigungen ändern',
@@ -168,6 +174,7 @@ $lang = array_merge($lang, array(
 	'ROLE_FORUM_POLLS'			=> 'Standard-Zugang + Umfragen',
 	'ROLE_FORUM_READONLY'		=> 'Nur lesender Zugriff',
 	'ROLE_FORUM_STANDARD'		=> 'Standard-Zugang',
+	'ROLE_FORUM_NEW_MEMBER'		=> 'Neu registrierte Benutzer',
 	'ROLE_MOD_FULL'				=> 'Umfassender Moderator',
 	'ROLE_MOD_QUEUE'			=> 'Warteschlangen-Moderator',
 	'ROLE_MOD_SIMPLE'			=> 'Einfacher Moderator',
@@ -177,6 +184,7 @@ $lang = array_merge($lang, array(
 	'ROLE_USER_NOAVATAR'		=> 'Kein Avatar',
 	'ROLE_USER_NOPM'			=> 'Keine Privaten Nachrichten',
 	'ROLE_USER_STANDARD'		=> 'Standard-Funktionalität',
+	'ROLE_USER_NEW_MEMBER'		=> 'Neu registrierte Benutzer',
 
 	'ROLE_DESCRIPTION_ADMIN_FORUM'			=> 'Kann auf die Foren-Verwaltung und die Foren-Berechtigungen zugreifen.',
 	'ROLE_DESCRIPTION_ADMIN_FULL'			=> 'Hat Zugriff auf alle Administrator-Funktionen des Boards.<br />Verwendung wird nicht empfohlen.',
@@ -191,6 +199,7 @@ $lang = array_merge($lang, array(
 	'ROLE_DESCRIPTION_FORUM_POLLS'			=> 'Wie „Standard-Zugang“, kann aber auch Umfragen erstellen.',
 	'ROLE_DESCRIPTION_FORUM_READONLY'		=> 'Kann das Forum lesen, aber keine neuen Themen oder Antworten erstellen.',
 	'ROLE_DESCRIPTION_FORUM_STANDARD'		=> 'Kann die meisten Foren-Funktionen inkl. Dateianhänge nutzen und kann eigene Themen löschen, kann aber keine Umfragen erstellen.',
+	'ROLE_DESCRIPTION_FORUM_NEW_MEMBER'		=> 'Eine Rolle für Mitglieder der speziellen Gruppe neu registrierter Benutzer. Enthält <samp>NIE</samp>-Berechtigungen, um Funktionen für neue Benutzer zu sperren.',
 	'ROLE_DESCRIPTION_MOD_FULL'				=> 'Kann alle Moderations-Funktionen inkl. der Sperren nutzen.',
 	'ROLE_DESCRIPTION_MOD_QUEUE'			=> 'Kann die Moderations-Warteschlange benutzen, um Beiträge zu bestätigen und zu ändern — aber nichts anderes.',
 	'ROLE_DESCRIPTION_MOD_SIMPLE'			=> 'Kann nur die themenbezogenen Grundfunktionen nutzen. Kann keine Verwarnungen erteilen oder die Moderations-Warteschlange nutzen.',
@@ -200,6 +209,7 @@ $lang = array_merge($lang, array(
 	'ROLE_DESCRIPTION_USER_NOAVATAR'		=> 'Hat eingeschränkte Rechte und kann keinen Avatar benutzen.',
 	'ROLE_DESCRIPTION_USER_NOPM'			=> 'Hat eingeschränkte Rechte und kann keine Privaten Nachrichten benutzen.',
 	'ROLE_DESCRIPTION_USER_STANDARD'		=> 'Kann fast alle Benutzer-Funktionen verwenden. Ausgenommen sind z.&nbsp;B. die Änderung des Benutzernames oder das Übergehen der Wartezeit.',
+	'ROLE_DESCRIPTION_USER_NEW_MEMBER'		=> 'Eine Rolle für Mitglieder der speziellen Gruppe neu registrierter Benutzer. Enthält <samp>NIE</samp>-Berechtigungen, um Funktionen für neue Benutzer zu sperren.',
 
 	'ROLE_DESCRIPTION_EXPLAIN'		=> 'Du kannst eine kurze Beschreibung angeben, was diese Rolle macht oder für was sie gedacht ist. Der Text, den du hier angibst, wird auch in der Berechtigungs-Verwaltung angezeigt.',
 	'ROLE_DESCRIPTION_LONG'			=> 'Die Beschreibung der Rolle ist zu lang. Sie muss weniger als 4000 Zeichen umfassen.',
@@ -245,7 +255,7 @@ $lang = array_merge($lang, array(
 	'TRACE_USER_GLOBAL_YES_TOTAL_NEVER'		=> 'Die forenunabhängigen Benutzerrechte ergeben <strong>JA</strong>, was das lokale Ergebnis NIE überschreibt. %sVerfolge globale Berechtigung%s',
 	'TRACE_USER_GLOBAL_NEVER_TOTAL_KEPT'	=> 'Die forenunabhängigen Benutzerrechte ergeben <strong>NIE</strong>, was das lokale Ergebnis nicht beeinflusst. %sVerfolge globale Berechtigung%s',
 
-	'TRACE_USER_FOUNDER'					=> 'Der Benutzer hat Gründer-Status, so dass Administrationsrechte immer auf <strong>JA</strong> gesetzt sind.',
+	'TRACE_USER_FOUNDER'					=> 'Der Benutzer ist ein Gründer, so dass Administrationsrechte immer auf <strong>JA</strong> gesetzt sind.',
 	'TRACE_USER_KEPT'						=> 'Die Berechtigung dieses Benutzers ist <strong>NEIN</strong>, so dass das alte Ergebnis beibehalten wird.',
 	'TRACE_USER_KEPT_LOCAL'					=> 'Die Berechtigung dieses Benutzers für dieses Forum ist <strong>NEIN</strong>, so dass das alte Ergebnis beibehalten wird.',
 	'TRACE_USER_NEVER_TOTAL_NEVER'			=> 'Die Berechtigung dieses Benutzers ist <strong>NIE</strong> wie das Ergebnis, so dass das alte Ergebnis beibehalten wird.',

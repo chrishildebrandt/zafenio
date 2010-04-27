@@ -4,13 +4,12 @@
 * acp_common [Deutsch — Du]
 *
 * @package language
-* @version $Id: common.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: common.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -92,6 +91,7 @@ $lang = array_merge($lang, array(
 	'ACP_FORUM_MANAGEMENT'			=> 'Forums-Verwaltung',
 	'ACP_FORUM_MODERATORS'			=> 'Foren-Moderatoren',
 	'ACP_FORUM_PERMISSIONS'			=> 'Forenrechte',
+	'ACP_FORUM_PERMISSIONS_COPY'	=> 'Forenrechte kopieren',
 	'ACP_FORUM_ROLES'				=> 'Forums-Rollen',
 
 	'ACP_GENERAL_CONFIGURATION'		=> 'Allgemeine Konfiguration',
@@ -152,11 +152,15 @@ $lang = array_merge($lang, array(
 
 	'ACP_RESTORE'				=> 'Wiederherstellen',
 
+	'ACP_FEED'					=> 'Feed-Verwaltung',
+	'ACP_FEED_SETTINGS'			=> 'Feed-Einstellungen',
+
 	'ACP_SEARCH'				=> 'Such-Konfiguration',
 	'ACP_SEARCH_INDEX'			=> 'Such-Indizes',
 	'ACP_SEARCH_SETTINGS'		=> 'Suchfunktion',
 
 	'ACP_SECURITY_SETTINGS'		=> 'Sicherheit',
+	'ACP_SEND_STATISTICS'		=> 'Statistische Daten übermitteln',
 	'ACP_SERVER_CONFIGURATION'	=> 'Server-Konfiguration',
 	'ACP_SERVER_SETTINGS'		=> 'Server und Domain',
 	'ACP_SIGNATURE_SETTINGS'	=> 'Signaturen',
@@ -164,6 +168,8 @@ $lang = array_merge($lang, array(
 	'ACP_STYLE_COMPONENTS'		=> 'Style-Komponenten',
 	'ACP_STYLE_MANAGEMENT'		=> 'Style-Verwaltung',
 	'ACP_STYLES'				=> 'Styles',
+
+	'ACP_SUBMIT_CHANGES'		=> 'Änderungen übermitteln',
 
 	'ACP_TEMPLATES'				=> 'Templates',
 	'ACP_THEMES'				=> 'Themes',
@@ -185,8 +191,9 @@ $lang = array_merge($lang, array(
 	'ACP_USER_ROLES'				=> 'Benutzer-Rollen',
 	'ACP_USER_SECURITY'				=> 'Benutzer-Sicherheit',
 	'ACP_USER_SIG'					=> 'Signatur',
+	'ACP_USER_WARNINGS'				=> 'Verwarnungen',
 
-	'ACP_VC_SETTINGS'					=> 'Bestätigungscode',
+	'ACP_VC_SETTINGS'					=> 'CAPTCHA-Modul-Einstellungen',
 	'ACP_VC_CAPTCHA_DISPLAY'			=> 'CAPTCHA Bild-Vorschau',
 	'ACP_VERSION_CHECK'					=> 'Auf Update prüfen',
 	'ACP_VIEW_ADMIN_PERMISSIONS'		=> 'Administrator-Berechtigungen anzeigen',
@@ -205,7 +212,7 @@ $lang = array_merge($lang, array(
 	'ADMIN_INDEX'			=> 'Admin-Übersicht',
 	'ADMIN_PANEL'			=> 'Administrations-Bereich',
 
-	'ADM_LOGOUT'			=> 'Verlassen',
+	'ADM_LOGOUT'			=> 'Administration beenden',
 	'ADM_LOGGED_OUT'		=> 'Du wurdest erfolgreich vom Administrations-Bereich abgemeldet.',
 
 	'BACK'					=> 'Zurück',
@@ -245,6 +252,8 @@ $lang = array_merge($lang, array(
 
 	'MANAGE'				=> 'Verwalte',
 	'MENU_TOGGLE'			=> 'Seitenmenü aus- oder einblenden',
+	'MORE'					=> 'Mehr',			// Not used at the moment
+	'MORE_INFORMATION'		=> 'Mehr Informationen »',
 	'MOVE_DOWN'				=> 'Nach unten',
 	'MOVE_UP'				=> 'Nach oben',
 
@@ -261,7 +270,6 @@ $lang = array_merge($lang, array(
 	'PARSE_URLS'						=> 'Links erkennen',
 	'PERMISSIONS_TRANSFERRED'			=> 'Berechtigungen übernommen',
 	'PERMISSIONS_TRANSFERRED_EXPLAIN'	=> 'Du hast derzeit die Berechtigungen von %1$s übernommen. Du kannst das Board mit den Rechten dieses Benutzers testen; du kannst jedoch nicht den Administrations-Bereich benutzen, da Administrations-Rechte nicht übernommen werden. Du kannst jederzeit <a href="%2$s"><strong>zu deinen Berechtigungen zurückkehren</strong></a>.',
-	'PIXEL'								=> 'px',
 	'PROCEED_TO_ACP'					=> '%sZum Administrations-Bereich%s',
 
 	'REMIND'							=> 'Erinnern',
@@ -272,6 +280,8 @@ $lang = array_merge($lang, array(
 	'SETTING_TOO_BIG'		=> 'Der für die Einstellung „%1$s“ angegebene Wert ist zu hoch. Der Wert darf maximal %2$d betragen.',
 	'SETTING_TOO_LONG'		=> 'Der für die Einstellung „%1$s“ angegebene Wert ist zu lang. Die maximal zulässige Länge ist %2$d Zeichen.',
 	'SETTING_TOO_SHORT'		=> 'Der für die Einstellung „%1$s“ angegebene Wert ist zu kurz. Die minimal erforderliche Länge ist %2$d Zeichen.',
+
+	'SHOW_ALL_OPERATIONS'	=> 'Alle Vorgänge anzeigen',
 
 	'SELECT_ANONYMOUS'		=> 'Gäste-Benutzerkonto auswählen',
 	'SELECT_OPTION'			=> 'Option auswählen',
@@ -326,17 +336,23 @@ $lang = array_merge($lang, array(
 	'GZIP_COMPRESSION'	=> 'gzip-Komprimierung',
 
 	'NOT_AVAILABLE'		=> 'nicht verfügbar',
-	'NUMBER_FILES'		=> 'Anzahl von Dateianhängen',
-	'NUMBER_POSTS'		=> 'Anzahl von Beiträgen',
-	'NUMBER_TOPICS'		=> 'Anzahl von Themen',
-	'NUMBER_USERS'		=> 'Anzahl von Benutzern',
+	'NUMBER_FILES'		=> 'Anzahl Dateianhänge',
+	'NUMBER_POSTS'		=> 'Anzahl Beiträge',
+	'NUMBER_TOPICS'		=> 'Anzahl Themen',
+	'NUMBER_USERS'		=> 'Anzahl Benutzer',
 	'NUMBER_ORPHAN'		=> 'Verwaiste Dateianhänge',
+
+	'PHP_VERSION_OLD'	=> 'Die PHP-Version auf diesem Server wird von künftigen phpBB-Versionen nicht mehr unterstützt. %sWeitere Informationen%s',
 
 	'POSTS_PER_DAY'		=> 'Beiträge pro Tag',
 
 	'PURGE_CACHE'			=> 'Den Cache leeren',
 	'PURGE_CACHE_CONFIRM'	=> 'Bist du sicher, dass du den Cache leeren möchtest?',
 	'PURGE_CACHE_EXPLAIN'	=> 'Löscht alle Daten des Caches, darunter alle zwischengespeicherten Template-Dateien und Abfragen.',
+
+	'PURGE_SESSIONS'			=> 'Sitzungsdaten löschen',
+	'PURGE_SESSIONS_CONFIRM'	=> 'Sind Sie sicher, dass Sie alle Sitzungsdaten löschen möchten? Dies wird alle Benutzer abmelden.',
+	'PURGE_SESSIONS_EXPLAIN'	=> 'Alle Sitzungsdaten löschen. Dies wird alle Benutzer abmelden, indem die Sitzungstabelle geleert wird.',
 
 	'RESET_DATE'					=> 'Einrichtungsdatum des Boards zurücksetzen',
 	'RESET_DATE_CONFIRM'			=> 'Bist du sicher, dass du das Einrichtungsdatum des Boards zurücksetzen willst?',
@@ -361,11 +377,14 @@ $lang = array_merge($lang, array(
 	'UPLOAD_DIR_SIZE'	=> 'Größe der hochgeladenen Dateien',
 	'USERS_PER_DAY'		=> 'Benutzer pro Tag',
 
-	'VALUE'					=> 'Wert',
-	'VIEW_ADMIN_LOG'		=> 'Administrations-Protokoll anzeigen',
-	'VIEW_INACTIVE_USERS'	=> 'Inaktive Benutzer anzeigen',
+	'VALUE'						=> 'Wert',
+	'VERSIONCHECK_FAIL'			=> 'Die Informationen über die aktuelle Version konnten nicht abgerufen werden.',
+	'VERSIONCHECK_FORCE_UPDATE'	=> 'Version erneut prüfen',
+	'VIEW_ADMIN_LOG'			=> 'Administrations-Protokoll anzeigen',
+	'VIEW_INACTIVE_USERS'		=> 'Inaktive Benutzer anzeigen',
 
 	'WELCOME_PHPBB'			=> 'Willkommen bei phpBB',
+	'WRITABLE_CONFIG'		=> 'Deine Konfigurations-Datei (config.php) ist derzeit von jedermann beschreibbar. Es wird dringend empfohlen, die Berechtigungen auf 640 oder zumindest auf 644 (z. B.: <a href="http://de.wikipedia.org/wiki/Chmod" rel="external">chmod</a> 640 config.php) zu setzen.',
 ));
 
 // Inactive Users
@@ -387,8 +406,22 @@ $lang = array_merge($lang, array(
 	'SORT_LAST_VISIT'	=> 'Letzter Besuch',
 	'SORT_REASON'		=> 'Grund',
 	'SORT_REG_DATE'		=> 'Registrierungsdatum',
+	'SORT_LAST_REMINDER'=> 'Zuletzt erinnert',
+	'SORT_REMINDER'		=> 'Anzahl Erinnerungen',
 
 	'USER_IS_INACTIVE'		=> 'Benutzer ist inaktiv',
+));
+
+// Send statistics page
+$lang = array_merge($lang, array(
+	'EXPLAIN_SEND_STATISTICS'	=> 'Bitte übermittel Informationen über deinen Server und deine Board-Konfiguration für statistische Analysen an phpBB.com. Alle Daten, die dich selbst oder deine Website identifizieren könnten, wurden entfernt — die Daten sind vollkommen <strong>anonym</strong>. Entscheidungen über zukünftige phpBB-Versionen werden auf Basis dieser Daten getroffen. Die statistischen Daten werden öffentlich zur Verfügung gestellt. Die Daten werden auch mit dem PHP-Projekt ausgetauscht, der Programmiersprache, in der phpBB realisiert ist.',
+	'EXPLAIN_SHOW_STATISTICS'	=> 'Mit der folgenden Schaltfläche kannst du alle Informationen anzeigen, die übermittelt werden.',
+	'DONT_SEND_STATISTICS'		=> 'Kehre zum Administrations-Bereich zurück, wenn du keine statistischen Daten an phpBB.com senden möchtest.',
+	'GO_ACP_MAIN'				=> 'Zur Startseite des Administrations-Bereichs gehen',
+	'HIDE_STATISTICS'			=> 'Details verbergen',
+	'SEND_STATISTICS'			=> 'Statistische Informationen senden',
+	'SHOW_STATISTICS'			=> 'Details anzeigen',
+	'THANKS_SEND_STATISTICS'	=> 'Vielen Dank für die Übermittlung deiner Informationen.',
 ));
 
 // Log Entries
@@ -466,32 +499,35 @@ $lang = array_merge($lang, array(
 	'LOG_CONFIG_LOAD'			=> '<strong>Last-Einstellungen geändert</strong>',
 	'LOG_CONFIG_MESSAGE'		=> '<strong>Private Nachrichten-Einstellungen geändert</strong>',
 	'LOG_CONFIG_POST'			=> '<strong>Beitrags-Einstellungen geändert</strong>',
+	'LOG_CONFIG_FEED'			=> '<strong>Feed-Einstellungen geändert</strong>',
 	'LOG_CONFIG_REGISTRATION'	=> '<strong>Registrierungs-Einstellungen geändert</strong>',
 	'LOG_CONFIG_SEARCH'			=> '<strong>Such-Einstellungen geändert</strong>',
 	'LOG_CONFIG_SECURITY'		=> '<strong>Sicherheits-Einstellungen geändert</strong>',
 	'LOG_CONFIG_SERVER'			=> '<strong>Server-Einstellungen geändert</strong>',
 	'LOG_CONFIG_SETTINGS'		=> '<strong>Board-Einstellungen geändert</strong>',
 	'LOG_CONFIG_SIGNATURE'		=> '<strong>Signatur-Einstellungen geändert</strong>',
-	'LOG_CONFIG_VISUAL'			=> '<strong>Bestätigungscode-Einstellungen geändert</strong>',
+	'LOG_CONFIG_VISUAL'			=> '<strong>Anti-Bot-Einstellungen geändert</strong>',
 
 	'LOG_APPROVE_TOPIC'			=> '<strong>Thema freigegeben</strong><br />» %s',
 	'LOG_BUMP_TOPIC'			=> '<strong>Thema als neu markiert</strong><br />» %s',
-	'LOG_DELETE_POST'			=> '<strong>Beitrag gelöscht</strong><br />» %s',
-	'LOG_DELETE_TOPIC'			=> '<strong>Thema gelöscht</strong><br />» %s',
+	'LOG_DELETE_POST'			=> '<strong>Beitrag „%1$s“ gelöscht - geschrieben von</strong><br />» %2$s',
+	'LOG_DELETE_SHADOW_TOPIC'	=> '<strong>Link zum verschobenem Thema gelöscht</strong><br />» %s',
+	'LOG_DELETE_TOPIC'			=> '<strong>Thema „%1$s“ gelöscht - geschrieben von</strong><br />» %2$s',
 	'LOG_FORK'					=> '<strong>Thema dupliziert</strong><br />» von %s',
 	'LOG_LOCK'					=> '<strong>Thema gesperrt</strong><br />» %s',
 	'LOG_LOCK_POST'				=> '<strong>Beitrag gesperrt</strong><br />» %s',
 	'LOG_MERGE'					=> '<strong>Beiträge zusammengeführt</strong> in Thema<br />» %s',
-	'LOG_MOVE'					=> '<strong>Thema verschoben</strong><br />» von %s',
+	'LOG_MOVE'					=> '<strong>Thema verschoben</strong><br />» von %1$s nach %2$s',
+	'LOG_PM_REPORT_CLOSED'		=> '<strong>Meldung zu Privater Nachricht geschlossen</strong><br />» %s',
+	'LOG_PM_REPORT_DELETED'		=> '<strong>Meldung zu Privater Nachricht gelöscht</strong><br />» %s',
 	'LOG_POST_APPROVED'			=> '<strong>Beitrag freigegeben</strong><br />» %s',
-	'LOG_POST_DISAPPROVED'		=> '<strong>Freigabe von Beitrag „%1$“ verweigert aus folgendem Grund</strong><br />» %2$s',
+	'LOG_POST_DISAPPROVED'		=> '<strong>Freigabe von Beitrag „%1$s“ verweigert aus folgendem Grund</strong><br />» %2$s',
 	'LOG_POST_EDITED'			=> '<strong>Beitrag „%1$s“ geändert, erstellt von</strong><br />» %2$s',
 	'LOG_REPORT_CLOSED'			=> '<strong>Meldung geschlossen</strong><br />» %s',
 	'LOG_REPORT_DELETED'		=> '<strong>Meldung gelöscht</strong><br />» %s',
 	'LOG_SPLIT_DESTINATION'		=> '<strong>Abgetrennte Beiträge verschoben</strong><br />» nach %s',
 	'LOG_SPLIT_SOURCE'			=> '<strong>Beiträge abgetrennt</strong><br />» von %s',
 
-	'LOG_TOPIC_DELETED'			=> '<strong>Thema gelöscht</strong><br />» %s',
 	'LOG_TOPIC_APPROVED'		=> '<strong>Thema freigegeben</strong><br />» %s',
 	'LOG_TOPIC_DISAPPROVED'		=> '<strong>Freigabe von Thema „%1$s“ verweigert aus folgendem Grund</strong><br />» %2$s',
 	'LOG_TOPIC_RESYNC'			=> '<strong>Thema resynchronisiert</strong><br />» %s',
@@ -514,19 +550,22 @@ $lang = array_merge($lang, array(
 	'LOG_ERROR_EMAIL'		=> '<strong>E-Mail-Fehler</strong><br />» %s',
 
 	'LOG_FORUM_ADD'							=> '<strong>Forum erstellt</strong><br />» %s',
+	'LOG_FORUM_COPIED_PERMISSIONS'			=> '<strong>Foren-Berechtigungen kopiert</strong> von %1$s<br />» %2$s',
 	'LOG_FORUM_DEL_FORUM'					=> '<strong>Forum gelöscht</strong><br />» %s',
 	'LOG_FORUM_DEL_FORUMS'					=> '<strong>Forum mit Unterforen gelöscht</strong><br />» %s',
 	'LOG_FORUM_DEL_MOVE_FORUMS'				=> '<strong>Forum gelöscht und Unterforen verschoben</strong> nach %1$s<br />» %2$s',
-	'LOG_FORUM_DEL_MOVE_POSTS'				=> '<strong>Forum gelöscht und Nachrichten verschoben</strong> nach %1$s<br />» %2$s',
-	'LOG_FORUM_DEL_MOVE_POSTS_FORUMS'		=> '<strong>Forum mit Unterforen gelöscht und Nachrichten verschoben</strong> nach %1$s<br />» %2$s',
-	'LOG_FORUM_DEL_MOVE_POSTS_MOVE_FORUMS'	=> '<strong>Forum gelöscht, Nachrichten verschoben</strong> nach %1$s <strong>und Unterforen</strong> nach %s<br />» %2$s',
-	'LOG_FORUM_DEL_POSTS'					=> '<strong>Forum mit Nachrichten gelöscht</strong><br />» %s',
-	'LOG_FORUM_DEL_POSTS_FORUMS'			=> '<strong>Forum mit Nachrichten und Unterforen gelöscht</strong><br />» %s',
-	'LOG_FORUM_DEL_POSTS_MOVE_FORUMS'		=> '<strong>Forum mit Nachrichten gelöscht, Unterforen verschoben</strong> nach %1$s<br />» %2$s',
+	'LOG_FORUM_DEL_MOVE_POSTS'				=> '<strong>Forum gelöscht und Beiträge verschoben</strong> nach %1$s<br />» %2$s',
+	'LOG_FORUM_DEL_MOVE_POSTS_FORUMS'		=> '<strong>Forum mit Unterforen gelöscht und Beiträge verschoben</strong> nach %1$s<br />» %2$s',
+	'LOG_FORUM_DEL_MOVE_POSTS_MOVE_FORUMS'	=> '<strong>Forum gelöscht, Beiträge verschoben</strong> nach %1$s <strong>und Unterforen</strong> nach %s<br />» %2$s',
+	'LOG_FORUM_DEL_POSTS'					=> '<strong>Forum mit Beiträgen gelöscht</strong><br />» %s',
+	'LOG_FORUM_DEL_POSTS_FORUMS'			=> '<strong>Forum mit Beiträgen und Unterforen gelöscht</strong><br />» %s',
+	'LOG_FORUM_DEL_POSTS_MOVE_FORUMS'		=> '<strong>Forum mit Beiträgen gelöscht, Unterforen verschoben</strong> nach %1$s<br />» %2$s',
 	'LOG_FORUM_EDIT'						=> '<strong>Foren-Details geändert</strong><br />» %s',
 	'LOG_FORUM_MOVE_DOWN'					=> '<strong>Forum verschoben</strong> %1$s <strong>unter</strong> %2$s',
 	'LOG_FORUM_MOVE_UP'						=> '<strong>Forum verschoben</strong> %1$s <strong>über</strong> %2$s',
 	'LOG_FORUM_SYNC'						=> '<strong>Forum resynchronisiert</strong><br />» %s',
+
+	'LOG_GENERAL_ERROR'	=> '<strong>Ein allgemeiner Fehler ist aufgetreten</strong>: %1$s <br />» %2$s',
 
 	'LOG_GROUP_CREATED'		=> '<strong>Benutzergruppe erstellt</strong><br />» %s',
 	'LOG_GROUP_DEFAULTS'	=> '<strong>Gruppe „%1$s“ als Standardgruppe für Mitglieder gesetzt</strong><br />» %2$s',
@@ -536,8 +575,11 @@ $lang = array_merge($lang, array(
 	'LOG_GROUP_REMOVE'		=> '<strong>Mitglieder aus Benutzergruppe entfernt</strong> %1$s<br />» %2$s',
 	'LOG_GROUP_UPDATED'		=> '<strong>Benutzergruppen-Details geändert</strong><br />» %s',
 	'LOG_MODS_ADDED'		=> '<strong>Neue Gruppenleiter hinzugefügt zu Gruppe</strong> %1$s<br />» %2$s',
-	'LOG_USERS_APPROVED'	=> '<strong>Mitgliedschaft in Benutzergruppe bestätigt</strong> %1$s<br />» %2$s',
 	'LOG_USERS_ADDED'		=> '<strong>Neue Mitglieder zur Benutzergruppe hinzugefügt</strong> %1$s<br />» %2$s',
+	'LOG_USERS_APPROVED'	=> '<strong>Mitgliedschaft in Benutzergruppe bestätigt</strong> %1$s<br />» %2$s',
+	'LOG_USERS_PENDING'		=> '<strong>Mitgliedschaft der Benutzer in Gruppe „%1$s“ beantragt und muss bestätigt werden</strong><br />» %2$s',
+
+	'LOG_IMAGE_GENERATION_ERROR'	=> '<strong>Fehler bei der Bilderstellung</strong><br />» Fehler in %1$s in Zeile %2$s: %3$s',
 
 	'LOG_IMAGESET_ADD_DB'			=> '<strong>Neue Grafiksammlung in Datenbank hinzugefügt</strong><br />» %s',
 	'LOG_IMAGESET_ADD_FS'			=> '<strong>Neue Grafiksammlung im Dateisystem hinzugefügt</strong><br />» %s',
@@ -606,6 +648,8 @@ $lang = array_merge($lang, array(
 	'LOG_PRUNE_USER_DEL_ANON'	=> '<strong>Inaktive Benutzer gelöscht, Beiträge beibehalten</strong><br />» %s',
 
 	'LOG_PURGE_CACHE'			=> '<strong>Cache geleert</strong>',
+	'LOG_PURGE_SESSIONS'		=> '<strong>Sitzungsdaten gelöscht</strong>',
+
 
 	'LOG_RANK_ADDED'		=> '<strong>Neuen Rang hinzugefügt</strong><br />» %s',
 	'LOG_RANK_REMOVED'		=> '<strong>Rang entfernt</strong><br />» %s',
@@ -615,7 +659,7 @@ $lang = array_merge($lang, array(
 	'LOG_REASON_REMOVED'	=> '<strong>Meldungs-/Ablehnungs-Grund entfernt</strong><br />» %s',
 	'LOG_REASON_UPDATED'	=> '<strong>Meldungs-/Ablehnungs-Grund geändert</strong><br />» %s',
 
-	'LOG_REFERER_INVALID'		=> '<strong>Überprüfung des Referers gescheitert</strong><br />»Referer war „<em>%1$s</em>“. Anfrage wurde abgewiesen und Sitzung beendet.',
+	'LOG_REFERER_INVALID'		=> '<strong>Überprüfung des Referrers gescheitert</strong><br />»Referrer war „<em>%1$s</em>“. Anfrage wurde abgewiesen und Sitzung beendet.',
 	'LOG_RESET_DATE'			=> '<strong>Einrichtungsdatum zurückgesetzt</strong>',
 	'LOG_RESET_ONLINE'			=> '<strong>Besucherrekord zurückgesetzt</strong>',
 	'LOG_RESYNC_POSTCOUNTS'		=> '<strong>Beitragszähler resynchronisiert</strong>',
@@ -657,12 +701,15 @@ $lang = array_merge($lang, array(
 	'LOG_USER_DELETED'		=> '<strong>Benutzer gelöscht</strong><br />» %s',
 	'LOG_USER_DEL_ATTACH'	=> '<strong>Alle von einem Benutzer erstellte Dateianhänge gelöscht</strong><br />» %s',
 	'LOG_USER_DEL_AVATAR'	=> '<strong>Avatar eines Benutzers entfernt</strong><br />» %s',
+	'LOG_USER_DEL_OUTBOX'	=> '<strong>Postausgang des Benutzers geleert</strong><br />» %s',
 	'LOG_USER_DEL_POSTS'	=> '<strong>Alle von einem Benutzer erstellten Beiträge entfernt</strong><br />» %s',
 	'LOG_USER_DEL_SIG'		=> '<strong>Benutzer-Signatur entfernt</strong><br />» %s',
 	'LOG_USER_INACTIVE'		=> '<strong>Benutzer deaktiviert</strong><br />» %s',
 	'LOG_USER_MOVE_POSTS'	=> '<strong>Alle Beiträge eines Benutzers verschoben</strong><br />» Beiträge von „%1$s“ nach Forum „%2$s“',
 	'LOG_USER_NEW_PASSWORD'	=> '<strong>Benutzer-Passwort geändert</strong><br />» %s',
 	'LOG_USER_REACTIVATE'	=> '<strong>Erneute Aktivierung des Benutzerkontos erzwungen</strong><br />» %s',
+	'LOG_USER_REMOVED_NR'	=> '<strong>Kürzlich registriert-Flag von Benutzer entfernt</strong><br />» %s',
+
 	'LOG_USER_UPDATE_EMAIL'	=> '<strong>E-Mail-Adresse von Benutzer „%1$s“ geändert</strong><br />» von „%2$s“ nach „%3$s“',
 	'LOG_USER_UPDATE_NAME'	=> '<strong>Benutzernamen geändert</strong><br />» von „%1$s“ in „%2$s“',
 	'LOG_USER_USER_UPDATE'	=> '<strong>Details eines Benutzers geändert</strong><br />» %s',
@@ -685,6 +732,10 @@ $lang = array_merge($lang, array(
 	'LOG_USER_GROUP_JOIN'			=> '<strong>Gruppe beigetreten</strong><br />» %s',
 	'LOG_USER_GROUP_JOIN_PENDING'	=> '<strong>Gruppenmitgliedschaft beantragt, Freigabe erforderlich</strong><br />» %s',
 	'LOG_USER_GROUP_RESIGN'			=> '<strong>Aus Gruppe ausgetreten</strong><br />» %s',
+
+	'LOG_WARNING_DELETED'		=> '<strong>Verwarnung eines Benutzer gelöscht</strong><br />» %s',
+	'LOG_WARNINGS_DELETED'		=> '<strong>Verwarnungen von %2$s Benutzern gelöscht</strong><br />» %1$s', // Example: '<strong>Deleted 2 user warnings</strong><br />» username'
+	'LOG_WARNINGS_DELETED_ALL'	=> '<strong>Verwarnungen aller Benutzer gelöscht</strong><br />» %s',
 
 	'LOG_WORD_ADD'			=> '<strong>Zensiertes Wort hinzugefügt</strong><br />» %s',
 	'LOG_WORD_DELETE'		=> '<strong>Zensiertes Wort entfernt</strong><br />» %s',

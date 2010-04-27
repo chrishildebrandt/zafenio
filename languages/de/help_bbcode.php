@@ -4,13 +4,12 @@
 * help_bbcode [Deutsch — Du]
 *
 * @package language
-* @version $Id: help_bbcode.php 193 2007-05-17 20:28:57Z philipp $
+* @version $Id: help_bbcode.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -80,7 +79,12 @@ $help = array(
 	),
 	array(
 		0 => 'Eine sortierte Liste erstellen',
-		1 => 'Die zweite Listenart, die sortierte Liste, erlaubt dir, festzulegen, was den Punkten vorangestellt wird. Um eine sortierte Liste zu erstellen, verwende <strong>[list=1][/list]</strong> für eine nummerierte oder alternativ <strong>[list=a][/list]</strong> für eine alphabetische Liste. Wie bei der unsortierten Liste wird jeder Punkt durch <strong>[*]</strong> festgelegt. Zum Beispiel:<br /><br /><strong>[list=1]</strong><br /><strong>[*]</strong>Gehe einkaufen<br /><strong>[*]</strong>Kaufe einen neuen Computer<br /><strong>[*]</strong>Verfluche den Computer, wenn er abstürzt<br /><strong>[/list]</strong><br /><br />würde ergeben:<ol style="list-style-type: arabic-numbers"><li>Gehe einkaufen</li><li>Kaufe einen neuen Computer</li><li>Verfluche den Computer, wenn er abstürzt</li></ol>Eine alphabetische Liste würdest du hingegen wie folgt erstellen:<br /><br /><strong>[list=a]</strong><br /><strong>[*]</strong>Die erste mögliche Antwort<br /><strong>[*]</strong>Die zweite mögliche Antwort<br /><strong>[*]</strong>Die dritte mögliche Antwort<br /><strong>[/list]</strong><br /><br />ergibt<ol style="list-style-type: lower-alpha"><li>Die erste mögliche Antwort</li><li>Die zweite mögliche Antwort</li><li>Die dritte mögliche Antwort</li></ol>'
+		1 => 'Die zweite Listenart, die sortierte Liste, erlaubt dir, festzulegen, was den Punkten vorangestellt wird. Um eine sortierte Liste zu erstellen, verwende <strong>[list=1][/list]</strong> für eine nummerierte oder alternativ <strong>[list=a][/list]</strong> für eine alphabetische Liste. Wie bei der unsortierten Liste wird jeder Punkt durch <strong>[*]</strong> festgelegt. Zum Beispiel:<br /><br /><strong>[list=1]</strong><br /><strong>[*]</strong>Gehe einkaufen<br /><strong>[*]</strong>Kaufe einen neuen Computer<br /><strong>[*]</strong>Verfluche den Computer, wenn er abstürzt<br /><strong>[/list]</strong><br /><br />würde ergeben:<ol style="list-style-type: decimal;"><li>Gehe einkaufen</li><li>Kaufe einen neuen Computer</li><li>Verfluche den Computer, wenn er abstürzt</li></ol>Eine alphabetische Liste würdest du hingegen wie folgt erstellen:<br /><br /><strong>[list=a]</strong><br /><strong>[*]</strong>Die erste mögliche Antwort<br /><strong>[*]</strong>Die zweite mögliche Antwort<br /><strong>[*]</strong>Die dritte mögliche Antwort<br /><strong>[/list]</strong><br /><br />ergibt<ol style="list-style-type: lower-alpha"><li>Die erste mögliche Antwort</li><li>Die zweite mögliche Antwort</li><li>Die dritte mögliche Antwort</li></ol>'
+	),
+	// This block will switch the FAQ-Questions to the second template column
+	array(
+		0 => '--',
+		1 => '--'
 	),
 	array(
 		0 => '--',

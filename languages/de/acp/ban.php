@@ -4,13 +4,12 @@
 * acp_ban [Deutsch — Du]
 *
 * @package language
-* @version $Id: ban.php 193 2007-05-17 20:28:57Z philipp $
+* @version $Id: ban.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -52,13 +51,15 @@ $lang = array_merge($lang, array(
 	'BAN_REASON'			=> 'Grund für die Sperre',
 	'BAN_GIVE_REASON'		=> 'Dem Gesperrten angezeigter Grund',
 	'BAN_UPDATE_SUCCESSFUL'	=> 'Die Sperrliste wurde erfolgreich aktualisiert.',
+	'BANNED_UNTIL_DATE'		=> 'bis zum %s', // Example: "until Mon 13.Jul.2009, 14:44"
+	'BANNED_UNTIL_DURATION'	=> '%1$s (bis zum %2$s)', // Example: "7 days (until Tue 14.Jul.2009, 14:44)"
 
 	'EMAIL_BAN'					=> 'Eine oder mehrere E-Mail-Adressen sperren',
 	'EMAIL_BAN_EXCLUDE_EXPLAIN'	=> 'Aktiviere diese Option, um die Adresse von allen aktuellen Sperren auszunehmen.',
 	'EMAIL_BAN_EXPLAIN'			=> 'Um mehr als eine E-Mail-Adresse anzugeben, gib jede Adresse in einer neuen Zeile ein. Um Übereinstimmungen von Teilen einer Adresse anzugeben, verwende „*“ als Platzhalter; z.&nbsp;B. <samp>*@phpbb.com</samp>, <samp>*@*.domain.tld</samp>, usw.',
 	'EMAIL_NO_BANNED'			=> 'Keine gesperrten E-Mail-Adressen.',
 	'EMAIL_UNBAN'				=> 'E-Mail-Adressen entsperren oder Ausnahmen entfernen',
-	'EMAIL_UNBAN_EXPLAIN'		=> 'Du kannst mehrere E-Mail-Adressen zeitgleich entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. E-Mail-Adressen auf der Ausnahmeliste sind hervorgehoben.',
+	'EMAIL_UNBAN_EXPLAIN'		=> 'Du kannst mehrere E-Mail-Adressen gleichzeitig entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. E-Mail-Adressen auf der Ausnahmeliste sind hervorgehoben.',
 
 	'IP_BAN'					=> 'Eine oder mehrere IP-Adressen sperren',
 	'IP_BAN_EXCLUDE_EXPLAIN'	=> 'Aktiviere diese Option, um die Adresse von allen aktuellen Sperren auszunehmen.',
@@ -66,7 +67,7 @@ $lang = array_merge($lang, array(
 	'IP_HOSTNAME'				=> 'IP-Adressen oder Hostnamen',
 	'IP_NO_BANNED'				=> 'Keine gesperrten IP-Adressen.',
 	'IP_UNBAN'					=> 'IP-Adressen entsperren oder Ausnahmen entfernen',
-	'IP_UNBAN_EXPLAIN'			=> 'Du kannst mehrere IP-Adressen zeitgleich entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. IP-Adressen auf der Ausnahmeliste sind hervorgehoben.',
+	'IP_UNBAN_EXPLAIN'			=> 'Du kannst mehrere IP-Adressen gleichzeitig entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. IP-Adressen auf der Ausnahmeliste sind hervorgehoben.',
 
 	'LENGTH_BAN_INVALID'		=> 'Das Datum muss im Format <kbd>JJJJ-MM-TT</kbd> angegeben werden.',
 
@@ -78,7 +79,7 @@ $lang = array_merge($lang, array(
 	'USER_BAN_EXPLAIN'			=> 'Um mehrere Benutzer auf einmal zu sperren, gib jeden Namen in einer neuen Zeile ein. Benutze <span style="text-decoration: underline;">Nach einem Mitglied suchen</span>, um nach einem oder mehreren Benutzer(n) zu suchen und diese(n) der Liste hinzuzufügen.',
 	'USER_NO_BANNED'			=> 'Keine gesperrten Benutzernamen.',
 	'USER_UNBAN'				=> 'Benutzernamen entsperren oder Ausnahmen entfernen',
-	'USER_UNBAN_EXPLAIN'		=> 'Du kannst mehrere Benutzer zeitgleich entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. Benutzernamen auf der Ausnahmeliste sind hervorgehoben.'
+	'USER_UNBAN_EXPLAIN'		=> 'Du kannst mehrere Benutzer gleichzeitig entsperren (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. Benutzernamen auf der Ausnahmeliste sind hervorgehoben.'
 ));
 
 ?>

@@ -4,13 +4,12 @@
 * viewtopic [Deutsch — Du]
 *
 * @package language
-* @version $Id: viewtopic.php 191 2007-05-17 15:04:21Z philipp $
+* @version $Id: viewtopic.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -44,6 +43,7 @@ $lang = array_merge($lang, array(
 	'ATTACHMENT_FUNCTIONALITY_DISABLED'	=> 'Die Funktion für Dateianhänge wurde deaktiviert.',
 
 	'BOOKMARK_ADDED'		=> 'Lesezeichen für das Thema erfolgreich gesetzt.',
+	'BOOKMARK_ERR'			=> 'Das Setzen eines Lesezeichens für das Thema ist gescheitert. Bitte versuche es erneut.',
 	'BOOKMARK_REMOVED'		=> 'Lesezeichen für das Thema erfolgreich entfernt.',
 	'BOOKMARK_TOPIC'		=> 'Lesezeichen setzen',
 	'BOOKMARK_TOPIC_REMOVE'	=> 'Lesezeichen entfernen',
@@ -51,6 +51,7 @@ $lang = array_merge($lang, array(
 	'BUMP_TOPIC'			=> 'Thema als neu markieren',
 
 	'CODE'					=> 'Code',
+	'COLLAPSE_QR'			=> 'Schnellantwort ausblenden',
 
 	'DELETE_TOPIC'			=> 'Thema löschen',
 	'DOWNLOAD_NOTICE'		=> 'Du hast keine ausreichende Berechtigung, um die Dateianhänge dieses Beitrags anzusehen.',
@@ -62,6 +63,7 @@ $lang = array_merge($lang, array(
 
 	'FILE_NOT_FOUND_404'	=> 'Die Datei <strong>%s</strong> existiert nicht.',
 	'FORK_TOPIC'			=> 'Thema duplizieren',
+	'FULL_EDITOR'			=> 'Vollständiger Editor',
 
 	'LINKAGE_FORBIDDEN'		=> 'Du bist nicht berechtigt, diese Seite anzusehen, von ihr herunterzuladen oder auf sie zu linken.',
 	'LOGIN_NOTIFY_TOPIC'	=> 'Du wurdest über einen neuen Beitrag in diesem Thema informiert. Bitte melde dich an, um es anzusehen.',
@@ -89,11 +91,13 @@ $lang = array_merge($lang, array(
 	'PRINT_TOPIC'			=> 'Druckansicht',
 
 	'QUICK_MOD'				=> 'Schnellmoderation',
+	'QUICKREPLY'			=> 'Schnellantwort',
 	'QUOTE'					=> 'Zitat',
 
 	'REPLY_TO_TOPIC'		=> 'Auf das Thema antworten',
 	'RETURN_POST'			=> '%sZurück zum Beitrag%s',
 
+	'SHOW_QR'				=> 'Schnellantwort',
 	'SUBMIT_VOTE'			=> 'Abstimmen',
 
 	'TOTAL_VOTES'			=> 'Abstimmungen insgesamt',

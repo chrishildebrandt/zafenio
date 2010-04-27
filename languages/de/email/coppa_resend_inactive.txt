@@ -35,7 +35,7 @@ Datum: _______________
 
 Sobald der Administrator dieses Formular per Fax oder Post erhalten hat, wird er deinen Account aktivieren.
 
-Dein Passwort wurde verschlüsselt in der Datenbank gespeichert. Falls du dein Passwort vergessen haben solltest, kannst du ein neues anfordern, das dann auf die gleiche Weise wie dieses Benutzerkonto aktiviert wird.
+Dein Passwort wurde sicher in unserer Datenbank gespeichert und kann nicht wiederhergestellt werden. Falls es vergessen werden sollte, kannst du es über die E-Mail-Adresse, die deinem Account zugeordnet ist, zurücksetzen lassen.
 
 Vielen Dank für deine Registrierung.
 

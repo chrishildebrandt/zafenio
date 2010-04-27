@@ -4,13 +4,12 @@
 * acp_users [Deutsch — Du]
 *
 * @package language
-* @version $Id: users.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: users.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -81,6 +80,7 @@ $lang = array_merge($lang, array(
 	'MOVE_POSTS_EXPLAIN'	=> 'Bitte wähle ein Forum aus, in das alle Beiträge verschoben werden sollen, die der Benutzer erstellt hat.',
 
 	'NO_SPECIAL_RANK'		=> 'Kein spezieller Rang zugewiesen',
+	'NO_WARNINGS'			=> 'Keine Verwarnungen.',
 	'NOT_MANAGE_FOUNDER'	=> 'Du hast versucht, einen Benutzer mit Gründer-Status zu verwalten. Nur Benutzer mit Gründer-Status können andere Gründer verwalten.',
 
 	'QUICK_TOOLS'			=> 'Schnellauswahl',
@@ -106,21 +106,28 @@ $lang = array_merge($lang, array(
 	'USER_ADMIN_DEACTIVED'			=> 'Benutzer erfolgreich deaktiviert.',
 	'USER_ADMIN_DEL_ATTACH'			=> 'Alle Dateianhänge löschen',
 	'USER_ADMIN_DEL_AVATAR'			=> 'Avatar löschen',
+	'USER_ADMIN_DEL_OUTBOX'			=> 'Postausgang Privater Nachrichten leeren',
 	'USER_ADMIN_DEL_POSTS'			=> 'Alle Beiträge löschen',
 	'USER_ADMIN_DEL_SIG'			=> 'Signatur löschen',
 	'USER_ADMIN_EXPLAIN'			=> 'Hier kannst du die Daten deiner Benutzer einstellen und bestimmte Einstellungen ändern.',
 	'USER_ADMIN_FORCE'				=> 'Erneute Aktivierung erzwingen',
+	'USER_ADMIN_LEAVE_NR'			=> 'Aus neu registrierten Benutzern entfernen',
 	'USER_ADMIN_MOVE_POSTS'			=> 'Alle Beiträge verschieben',
 	'USER_ADMIN_SIG_REMOVED'		=> 'Signatur erfolgreich aus dem Benutzerkonto entfernt.',
 	'USER_ATTACHMENTS_REMOVED'		=> 'Alle Dateianhänge des Benutzers erfolgreich gelöscht.',
+	'USER_AVATAR_NOT_ALLOWED'		=> 'Der Avatar kann nicht angezeigt werden, da Avatare deaktiviert wurden.',
 	'USER_AVATAR_UPDATED'			=> 'Avatar-Daten des Benutzers erfolgreich geändert.',
+	'USER_AVATAR_TYPE_NOT_ALLOWED'	=> 'Der aktuelle Avatar kann nicht angezeigt werden, da der verwendete Avatar-Typ deaktiviert wurde.',
 	'USER_CUSTOM_PROFILE_FIELDS'	=> 'Benutzerdefinierte Profil-Felder',
 	'USER_DELETED'					=> 'Benutzer erfolgreich gelöscht.',
 	'USER_GROUP_ADD'				=> 'Benutzer einer Gruppe hinzufügen',
 	'USER_GROUP_NORMAL'				=> 'Benutzerdefinierte Gruppen, in denen der Benutzer Mitglied ist',
 	'USER_GROUP_PENDING'			=> 'Gruppen, bei denen der Benutzer auf Aufnahme wartet',
 	'USER_GROUP_SPECIAL'			=> 'Systemgruppen, in denen der Benutzer Mitglied ist',
+	'USER_LIFTED_NR'				=> 'Benutzer erfolgreich aus der Gruppe der kürzlich registrierten Benutzer entfernt.',
 	'USER_NO_ATTACHMENTS'			=> 'Es gibt keine angehängten Dateien, die angezeigt werden könnten.',
+	'USER_OUTBOX_EMPTIED'			=> 'Der Postausgang des Benutzers für Private Nachrichten wurde erfolgreich geleert.',
+	'USER_OUTBOX_EMPTY'				=> 'Der Postausgang des Benutzers für Private Nachrichten war bereits leer.',
 	'USER_OVERVIEW_UPDATED'			=> 'Benutzerdaten erfolgreich geändert.',
 	'USER_POSTS_DELETED'			=> 'Alle Beiträge des Benutzers erfolgreich gelöscht.',
 	'USER_POSTS_MOVED'				=> 'Beiträge des Benutzers erfolgreich in Zielform verschoben.',
@@ -130,6 +137,7 @@ $lang = array_merge($lang, array(
 	'USER_RANK'						=> 'Benutzerrang',
 	'USER_RANK_UPDATED'				=> 'Benutzerrang erfolgreich aktualisiert.',
 	'USER_SIG_UPDATED'				=> 'Signatur des Benutzers erfolgreich geändert.',
+	'USER_WARNING_LOG_DELETED'		=> 'Es sind keine Informationen verfügbar. Vermutlich wurde der Eintrag im Log gelöscht.',
 	'USER_TOOLS'					=> 'Standard-Funktionen',
 ));
 

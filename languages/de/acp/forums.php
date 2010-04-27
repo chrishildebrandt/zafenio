@@ -4,13 +4,12 @@
 * acp_forums [Deutsch — Du]
 *
 * @package language
-* @version $Id: forums.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: forums.php 434 2010-02-24 13:22:56Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -48,9 +47,12 @@ $lang = array_merge($lang, array(
 	'AUTO_PRUNE_VIEWED'			=> 'Seit dem letzten Zugriff vergangene Tage',
 	'AUTO_PRUNE_VIEWED_EXPLAIN'	=> 'Die Anzahl der Tage seit dem letzten Zugriff auf das Thema, nach denen es entfernt wird.',
 
+	'CONTINUE'						=> 'Fortsetzen',
 	'COPY_PERMISSIONS'				=> 'Kopiere Berechtigungen von',
+	'COPY_PERMISSIONS_EXPLAIN'		=> 'Um die Konfiguration deines neuen Forums zu erleichtern, kannst du die Berechtigungen eines bestehenden Forums kopieren.',
 	'COPY_PERMISSIONS_ADD_EXPLAIN'	=> 'Sobald das Forum erstellt ist, wird es dieselben Berechtigungen haben wie das hier ausgewählte Forum. Wenn hier kein Forum gewählt wird, wird das neue Forum unsichtbar bleiben, bis entsprechende Berechtigungen gesetzt wurden.',
 	'COPY_PERMISSIONS_EDIT_EXPLAIN'	=> 'Wenn du dich entscheidest, Berechtigungen zu kopieren, wird das Forum dieselben Berechtigungen haben wie das von dir hier ausgewählte. Dadurch werden alle Berechtigungen, die du vorher für dieses Forum gesetzt hast, durch die des ausgewählten Forums ersetzt. Wenn kein Forum gewählt wird, werden die derzeitigen Berechtigungen beibehalten.',
+	'COPY_TO_ACL'					=> 'Alternativ kannst du auch %sneue Berechtigungen%s für dieses Forum einrichten.',
 	'CREATE_FORUM'					=> 'Neues Forum erstellen',
 
 	'DECIDE_MOVE_DELETE_CONTENT'		=> 'Lösche die Inhalte oder verschieb sie in ein anderes Forum',
@@ -66,12 +68,14 @@ $lang = array_merge($lang, array(
 	'ENABLE_INDEXING_EXPLAIN'		=> 'Wenn diese Einstellung auf „Ja“ gesetzt wird, werden Beiträge in diesem Forum für die Suche indiziert.',
 	'ENABLE_POST_REVIEW'			=> 'Prüfung auf neue Beiträge aktivieren',
 	'ENABLE_POST_REVIEW_EXPLAIN'	=> 'Wenn diese Einstellung auf „Ja“ gesetzt wird, können die Benutzer ihren Beitrag überprüfen und ggf. anpassen, falls während des Schreibens ein neuer Beitrag zum Thema erstellt wurde. Dies sollte für Chat-Foren deaktiviert sein.',
+	'ENABLE_QUICK_REPLY'			=> 'Schnellantwort aktivieren',
+	'ENABLE_QUICK_REPLY_EXPLAIN'	=> 'Aktiviert die Schnellantwort in diesem Forum. Diese Einstellung wird nicht berücksichtigt, wenn die Schnellantwort im gesamten Board deaktiviert wurde. Die Schnellantwort wird nur Benutzern angezeigt, die in dem Forum Antworten erstellen dürfen.',
 	'ENABLE_RECENT'					=> 'In aktiven Themen anzeigen',
 	'ENABLE_RECENT_EXPLAIN'			=> 'Wenn diese Einstellung auf „Ja“ gesetzt wird, werden Themen aus diesem Forum in der Liste der aktiven Themen angezeigt.',
 	'ENABLE_TOPIC_ICONS'			=> 'Themen-Symbole aktivieren',
 
 	'FORUM_ADMIN'						=> 'Foren-Administration',
-	'FORUM_ADMIN_EXPLAIN'				=> 'Im phpBB3 gibt es keine Kategorien, alles ist forenbasiert. Jedes Forum kann eine unbegrenzte Anzahl an Unterforen haben und du kannst festlegen, ob in ihnen Beiträge geschrieben werden dürfen oder nicht (wenn es sich z.&nbsp;B. wie eine frühere Kategorie verhalten soll). Hier kannst du Foren hinzufügen, bearbeiten, löschen, schließen und wieder öffnen wie auch zusätzliche Kontrollfunktionen einstellen. Wenn deine Beitrags- und Themeninformationen nicht mehr synchron sind, kannst du das Forum auch resynchronisieren. <strong>Du musst passende Berechtigungen erstellen oder kopieren, damit ein neu erstelltes Forum auch angezeigt wird.</strong>',
+	'FORUM_ADMIN_EXPLAIN'				=> 'In phpBB3 gibt es keine Unterscheidung mehr zwischen Kategorien und Foren. Alles ist forenbasiert, wobei sich Foren wie eine Kategorie verhalten können. Jedes Forum kann eine unbegrenzte Anzahl an Unterforen haben und du kannst festlegen, ob in ihnen Beiträge geschrieben werden dürfen oder nicht (dann verhält es sich wie eine Kategorie). Hier kannst du Foren hinzufügen, bearbeiten, löschen, schließen und wieder öffnen wie auch zusätzliche Kontrollfunktionen einstellen. Wenn deine Beitrags- und Themeninformationen nicht mehr synchron sind, kannst du das Forum auch resynchronisieren. <strong>Du musst passende Berechtigungen erstellen oder kopieren, damit ein neu erstelltes Forum auch angezeigt wird.</strong>',
 	'FORUM_AUTO_PRUNE'					=> 'Automatisches Löschen inaktiver Themen aktivieren',
 	'FORUM_AUTO_PRUNE_EXPLAIN'			=> 'Löscht inaktive Themen des Forums automatisch, wenn sie den folgenden Kriterien entsprechen.',
 	'FORUM_CREATED'						=> 'Forum wurde erfolgreich erstellt.',
@@ -85,6 +89,7 @@ $lang = array_merge($lang, array(
 	'FORUM_EDIT_EXPLAIN'				=> 'Das unten stehende Formular erlaubt dir, dieses Forum individuell anzupassen. Beachte bitte, dass Moderations- und Beitragszähler-Einstellungen über die Foren-Berechtigungen für jeden Benutzer oder jede Benutzergruppe gesetzt werden.',
 	'FORUM_IMAGE'						=> 'Forum-Bild',
 	'FORUM_IMAGE_EXPLAIN'				=> 'Der Ort eines Bildes, relativ zum phpBB-Hauptverzeichnis, das diesem Forum zusätzlich zugeordnet werden soll.',
+	'FORUM_IMAGE_NO_EXIST'				=> 'Das angegebene Forum-Bild existiert nicht',
 	'FORUM_LINK_EXPLAIN'				=> 'Die vollständige URL (einschließlich des Protokolls, bspw. <samp>http://</samp>) der Seite, zu der die Benutzer gelangen sollen, wenn sie auf dieses Forum klicken. Beispielsweise: <samp>http://www.phpbb.com/</samp>',
 	'FORUM_LINK_TRACK'					=> 'Verfolge Link-Weiterleitungen',
 	'FORUM_LINK_TRACK_EXPLAIN'			=> 'Hält die Anzahl fest, wie oft ein Forum-Link aufgerufen wurde.',
@@ -97,7 +102,7 @@ $lang = array_merge($lang, array(
 	'FORUM_PASSWORD_EXPLAIN'			=> 'Definiert ein Passwort für dieses Forum. Es wird empfohlen, vorzugsweise das Berechtigungs-System zu nutzen.',
 	'FORUM_PASSWORD_UNSET'				=> 'Forum-Passwort entfernen',
 	'FORUM_PASSWORD_UNSET_EXPLAIN'		=> 'Aktiviere diese Option, wenn du das Forum-Passwort entfernen willst.',
-	'FORUM_PASSWORD_OLD'				=> 'Das Forum-Passwort nutzt eine veraltete Verschlüsselungsmethode und sollte geändert werden.',
+	'FORUM_PASSWORD_OLD'				=> 'Das Forum-Passwort nutzt eine veraltete Hash-Methode und sollte geändert werden.',
 	'FORUM_PASSWORD_MISMATCH'			=> 'Die angegebenen Passwörter stimmten nicht überein.',
 	'FORUM_PRUNE_SETTINGS'				=> 'Einstellungen zum automatischen Löschen',
 	'FORUM_RESYNCED'					=> 'Forum „%s“ wurde erfolgreich resynchronisiert',

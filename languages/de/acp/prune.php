@@ -4,13 +4,12 @@
 * acp_prune [Deutsch — Du]
 *
 * @package language
-* @version $Id: prune.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: prune.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -41,23 +40,23 @@ if (empty($lang) || !is_array($lang))
 
 // User pruning
 $lang = array_merge($lang, array(
-	'ACP_PRUNE_USERS_EXPLAIN'	=> 'Hier kannst du Benutzer deines Boards löschen (oder deaktivieren). Dies kann anhand verschiedener Kriterien erfolgen: der Beitragszahl, der letzten Aktivität usw. Die Kriterien können kombiniert werden, so dass du Benutzer löschen kannst, deren letzte Aktivität vor dem 2002-01-01 war und die weniger als 10 Beiträge haben. Alternativ kannst du auch eine Liste von Benutzernamen direkt in das Textfeld eingeben, die anderen Kriterien werden dann ignoriert. Gehe mit diesem Tool vorsichtig um! Wenn ein Benutzer gelöscht ist, gibt es keine Funktion, um diesen Vorgang rückgängig zu machen.',
+	'ACP_PRUNE_USERS_EXPLAIN'	=> 'Dieser Bereich erlaubt es dir, Benutzer deines Boards zu löschen oder zu deaktivieren. Benutzerkonten können anhand verschiedener Kriterien selektriert werden: der Beitragszahl, der letzten Aktivität usw. Die Kriterien können kombiniert werden, so dass du die betroffenen Benutzer weiter einschränken kannst. So kannst du z.&nbsp;B. Benutzer löschen, die weniger als 10 Beiträge haben und deren letzte Aktivität vor dem 2002-01-01 war. Alternativ kannst du die Kriterien auch überspringen, indem du eine Liste von Benutzernamen direkt in das Textfeld eingibst (jeden Benutzer in eine Zeile). Gehe mit diesem Tool vorsichtig um! Wenn ein Benutzer gelöscht ist, gibt es keine Funktion, um diesen Vorgang rückgängig zu machen.',
 
 	'DEACTIVATE_DELETE'			=> 'Deaktivieren oder löschen',
-	'DEACTIVATE_DELETE_EXPLAIN'	=> 'Wähle aus, ob der Benutzer deaktiviert oder gelöscht werden soll. Beachte, dass es keine Funktion gibt, um den Vorgang rückgängig zu machen!',
+	'DEACTIVATE_DELETE_EXPLAIN'	=> 'Wähle aus, ob der Benutzer deaktiviert oder gelöscht werden soll. Ein deaktivierter Benutzer kann in der Benutzerverwaltung wieder aktiviert werden, eine Löschung hingegen ist endgültig.',
 	'DELETE_USERS'				=> 'Löschen',
 	'DELETE_USER_POSTS'			=> 'Lösche Beiträge der gelöschten Benutzer',
 	'DELETE_USER_POSTS_EXPLAIN' => 'Entfernt zusätzlich die Beiträge der gelöschten Benutzer. Hat keine Auswirkung, wenn die Benutzer deaktiviert werden.',
 
 	'JOINED_EXPLAIN'			=> 'Gib ein Datum im Format <kbd>JJJJ-MM-TT</kbd> an.',
 
-	'LAST_ACTIVE_EXPLAIN'		=> 'Gib ein Datum im Format <kbd>JJJJ-MM-TT</kbd> an.',
+	'LAST_ACTIVE_EXPLAIN'		=> 'Gib ein Datum im Format <kbd>JJJJ-MM-TT</kbd> an. Verwende <kbd>0000-00-00</kbd>, um die Benutzer zu löschen, die sich nie angemeldet haben; die <em>Vor dem</em>- und <em>Nach dem</em>-Bedingungen werden dann ignoriert.',
 
 	'PRUNE_USERS_LIST'				=> 'Zu löschende Benutzer',
 	'PRUNE_USERS_LIST_DELETE'		=> 'Mit den angegebenen Kriterien werden folgende Benutzer gelöscht:',
 	'PRUNE_USERS_LIST_DEACTIVATE'	=> 'Mit den angegebenen Kriterien werden folgende Benutzer deaktiviert:',
 
-	'SELECT_USERS_EXPLAIN'		=> 'Gib hier spezifische Benutzernamen ein. Die oben angegebenen Kriterien werden dann ignoriert.',
+	'SELECT_USERS_EXPLAIN'		=> 'Gib hier spezifische Benutzernamen ein. Die oben angegebenen Kriterien werden dann ignoriert. Gründer können nicht gelöscht werden.',
 
 	'USER_DEACTIVATE_SUCCESS'	=> 'Die ausgewählten Benutzer wurden erfolgreich deaktiviert.',
 	'USER_DELETE_SUCCESS'		=> 'Die ausgewählten Benutzer wurden erfolgreich gelöscht.',

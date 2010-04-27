@@ -4,13 +4,12 @@
 * acp_profile [Deutsch — Du]
 *
 * @package language
-* @version $Id: profile.php 189 2007-05-08 11:51:46Z ingo $
+* @version $Id: profile.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -67,11 +66,13 @@ $lang = array_merge($lang, array(
 	'DEFAULT_VALUE'					=> 'Standardwert',
 	'DELETE_PROFILE_FIELD'			=> 'Profilfeld entfernen',
 	'DELETE_PROFILE_FIELD_CONFIRM'	=> 'Bist du sicher, dass du das Profilfeld entfernen möchtest?',
-	'DISPLAY_AT_PROFILE'			=> 'Im Profil des Benutzers anzeigen',
+	'DISPLAY_AT_PROFILE'			=> 'Im persönlichen Bereich des Benutzers anzeigen',
 	'DISPLAY_AT_PROFILE_EXPLAIN'	=> 'Der Benutzer kann das Profil in seinem persönlichen Bereich ändern.',
 	'DISPLAY_AT_REGISTER'			=> 'Bei der Registrierung anzeigen',
-	'DISPLAY_AT_REGISTER_EXPLAIN'	=> 'Wenn diese Option gesetzt ist, wird das Feld bei der Registrierung angezeigt und kann im persönlichen Bereich geändert werden.',
-	'DISPLAY_PROFILE_FIELD'			=> 'Profilfeld anzeigen',
+	'DISPLAY_AT_REGISTER_EXPLAIN'	=> 'Wenn diese Option gesetzt ist, wird das Feld bei der Registrierung angezeigt.',
+	'DISPLAY_ON_VT'					=> 'Bei der Themen-Ansicht anzeigen',
+	'DISPLAY_ON_VT_EXPLAIN'			=> 'Wenn diese Option gesetzt ist, wird das Feld im Kurzprofil neben den Beiträgen angezeigt.',
+	'DISPLAY_PROFILE_FIELD'			=> 'Profilfeld öffentlich anzeigen',
 	'DISPLAY_PROFILE_FIELD_EXPLAIN'	=> 'Das Profilfeld wird an allen Stellen angezeigt, die in den Einstellungen zur Serverlast aktiviert sind. Wird diese Option auf „Nein“ gestellt, so wird das Feld im Beitrag, im Profil und in der Mitgliederliste ausgeblendet.',
 	'DROPDOWN_ENTRIES_EXPLAIN'		=> 'Gebe hier die Optionen an; jede Option in einer neuen Zeile.',
 
@@ -100,7 +101,7 @@ $lang = array_merge($lang, array(
 	'FIRST_OPTION'				=> 'Erste Option',
 
 	'HIDE_PROFILE_FIELD'			=> 'Profilfeld verstecken',
-	'HIDE_PROFILE_FIELD_EXPLAIN'	=> 'Nur Administratoren und Moderatoren können dieses Feld sehen und es ändern. Wenn diese Option aktiviert ist, ist das Feld nur im Mitgliederprofil sichtbar.',
+	'HIDE_PROFILE_FIELD_EXPLAIN'	=> 'Versteckt das Feld vor allen Benutzern außer dem Benutzer selbst, Administratoren und Moderatoren, die dieses Feld weiterhin sehen können. Wenn die Anzeige des Felds im persönlichen Bereich deaktiviert ist, kann der Benutzer das Feld weder sehen noch ändern. Es kann dann nur von einem Administrator geändert werden.',
 
 	'INVALID_CHARS_FIELD_IDENT'	=> 'Der Feld-Kennung darf nur aus Kleinbuchstaben von a bis z und _ bestehen.',
 	'INVALID_FIELD_IDENT_LEN'	=> 'Die Feld-Kennung kann maximal 17 Zeichen lang sein.',
@@ -129,7 +130,7 @@ $lang = array_merge($lang, array(
 	'RADIO_BUTTONS'				=> 'Optionsfelder',
 	'REMOVED_PROFILE_FIELD'		=> 'Profilfeld erfolgreich gelöscht.',
 	'REQUIRED_FIELD'			=> 'Erforderliches Feld',
-	'REQUIRED_FIELD_EXPLAIN'	=> 'Zwingt die Benutzer, dieses Feld auszufüllen oder eine Option auszuwählen. Macht das Feld bei der Registrierung und im persönlichen Bereich sichtbar.',
+	'REQUIRED_FIELD_EXPLAIN'	=> 'Zwingt den Benutzer oder den Administrator, dieses Feld auszufüllen oder eine Option auszuwählen. Wenn das Feld bei der Registrierung nicht angezeigt wird, so muss es nur ausgefüllt werden, wenn der Benutzer sein Profil ändert.',
 	'ROWS'						=> 'Zeilen',
 
 	'SAVE'							=> 'Speichern',

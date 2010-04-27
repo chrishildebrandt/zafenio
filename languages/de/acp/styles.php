@@ -4,13 +4,12 @@
 * acp_styles [Deutsch — Du]
 *
 * @package language
-* @version $Id: styles.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: styles.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -90,6 +89,7 @@ $lang = array_merge($lang, array(
 	'DETAILS'					=> 'Details',
 	'DIMENSIONS_EXPLAIN'		=> 'Wird hier „ja“ ausgewählt, so wird die Höhe und die Breite der Bilder mit abgespeichert.',
 
+
 	'EDIT_DETAILS_IMAGESET'				=> 'Grafiksammlung-Details ändern',
 	'EDIT_DETAILS_IMAGESET_EXPLAIN'		=> 'Hier kannst du bestimmte Grafiksammlung-Details wie z.&nbsp;B. ihren Namen ändern.',
 	'EDIT_DETAILS_STYLE'				=> 'Style ändern',
@@ -107,6 +107,7 @@ $lang = array_merge($lang, array(
 	'EDIT_THEME_EXPLAIN'				=> 'Hier kannst du das ausgewählte Theme anpassen und Farben, Grafiken usw. ändern.',
 	'EDIT_THEME_STORED_DB'				=> 'Die Stylesheet-Datei war nicht beschreibbar, so dass die Stylesheet-Datei mit deinen Änderungen nun in der Datenbank gespeichert ist.',
 	'EDIT_THEME_STORE_PARSED'			=> 'Das Theme erfordert, dass seine Stylesheets auf Platzhalter analysiert werden können. Dies ist nur möglich, wenn es in der Datenbank gespeichert wird.',
+	'EDITOR_DISABLED'					=> 'Der Template-Editor ist deaktiviert.',
 	'EXPORT'							=> 'Exportieren',
 
 	'FOREGROUND'			=> 'Vordergrund',
@@ -273,6 +274,7 @@ $lang = array_merge($lang, array(
 	'INCLUDE_IMAGESET'			=> 'Grafiksammlung einbeziehen',
 	'INCLUDE_TEMPLATE'			=> 'Template einbeziehen',
 	'INCLUDE_THEME'				=> 'Theme einbeziehen',
+	'INHERITING_FROM'			=> 'Geerbt von',
 	'INSTALL_IMAGESET'			=> 'Grafiksammlung installieren',
 	'INSTALL_IMAGESET_EXPLAIN'	=> 'Hier kannst du die ausgewählte Grafiksammlung installieren. Wenn du möchtest, kannst du die Einstellungen ändern, oder die Vorgaben verwenden.',
 	'INSTALL_STYLE'				=> 'Style installieren',
@@ -288,6 +290,8 @@ $lang = array_merge($lang, array(
 
 	'LINE_SPACING'				=> 'Zeilenabstand',
 	'LOCALISED_IMAGES'			=> 'Übersetzt',
+	'LOCATION_DISABLED_EXPLAIN'	=> 'Diese Einstellung ist geerbt und kann nicht geändert werden.',
+
 
 	'NO_CLASS'					=> 'Kann Klasse in Stylesheet nicht finden.',
 	'NO_IMAGESET'				=> 'Kann Grafiksammlung nicht im Dateisystem finden.',
@@ -368,6 +372,7 @@ $lang = array_merge($lang, array(
 	'TEMPLATE_CACHE_CLEARED'	=> 'Template-Cache erfolgreich geleert.',
 	'TEMPLATE_CACHE_EMPTY'		=> 'Es sind keine gecachten Templates vorhanden.',
 	'TEMPLATE_DELETED'			=> 'Template-Sammlung erfolgreich gelöscht.',
+	'TEMPLATE_DELETE_DEPENDENT'	=> 'Die Template-Sammlung kann nicht gelöscht werden, da andere Template-Sammlungen Daten von ihr erben:',
 	'TEMPLATE_DELETED_FS'		=> 'Die Template-Sammlung wurde erfolgreich gelöscht, aber einige Dateien verbleiben im Dateisystem.',
 	'TEMPLATE_DETAILS_UPDATED'	=> 'Template-Details erfolgreich aktualisiert.',
 	'TEMPLATE_EDITOR'			=> 'HTML-Template-Editor',
@@ -379,15 +384,18 @@ $lang = array_merge($lang, array(
 	'TEMPLATE_ERR_NAME_EXIST'	=> 'Ein Template mit diesem Namen existiert bereits.',
 	'TEMPLATE_ERR_NAME_LONG'	=> 'Der Name des Templates darf nicht länger als 30 Zeichen sein.',
 	'TEMPLATE_ERR_NOT_TEMPLATE'	=> 'Das angegebene Archiv enthält kein gültiges Template.',
+	'TEMPLATE_ERR_REQUIRED_OR_INCOMPLETE' => 'Die neue Template-Sammlung erfordert, dass das Template %s installiert ist und keine Daten von anderen Templates erbt.',
 	'TEMPLATE_ERR_STYLE_NAME'	=> 'Du musst einen Namen für dieses Template angeben.',
 	'TEMPLATE_EXPORT'			=> 'Templates exportieren',
 	'TEMPLATE_EXPORT_EXPLAIN'	=> 'Hier kannst du eine Template-Sammlung in Form eines Archives exportieren. Dieses Archiv wird allen Dateien enthalten, die erforderlich sind, um das Template auf einem anderen Board zu installieren. Du kannst auswählen, ob du die Datei direkt herunterladen oder im store-Ordner ablegen möchtest, damit du sie später per FTP herunterladen kannst.',
 	'TEMPLATE_EXPORTED'			=> 'Template erfolgreich exportiert und als %s gespeichert.',
 	'TEMPLATE_FILE'				=> 'Template-Datei',
 	'TEMPLATE_FILE_UPDATED'		=> 'Template-Datei erfolgreich aktualisiert.',
+	'TEMPLATE_INHERITS'			=> 'Diese Template-Sammlung erbt Daten von %s und kann daher keinen vom vererbenden Template abweichenden Speicherort haben.',
 	'TEMPLATE_LOCATION'			=> 'Templates ablegen in',
 	'TEMPLATE_LOCATION_EXPLAIN'	=> 'Grafiken werden immer im Dateisystem abgelegt.',
 	'TEMPLATE_NAME'				=> 'Name des Templates',
+	'TEMPLATE_FILE_NOT_WRITABLE'=> 'Die Template-Datei %s konnte nicht beschrieben werden. Bitte prüfe die Berechtigungen des Verzeichnisses und der Dateien.',
 	'TEMPLATE_REFRESHED'		=> 'Template erfolgreich aktualisiert.',
 
 	'THEME_ADDED'				=> 'Neues Theme zum Dateisystem hinzugefügt.',

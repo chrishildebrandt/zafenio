@@ -4,13 +4,12 @@
 * acp_attachments [Deutsch — Du]
 *
 * @package language
-* @version $Id: attachments.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: attachments.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -63,7 +62,7 @@ $lang = array_merge($lang, array(
 	'ATTACH_MAX_FILESIZE'				=> 'Maximale Dateigröße',
 	'ATTACH_MAX_FILESIZE_EXPLAIN'		=> 'Maximale Größe pro Datei; 0 bedeutet unbegrenzt.',
 	'ATTACH_MAX_PM_FILESIZE'			=> 'Maximale Dateigröße in Privaten Nachrichten',
-	'ATTACH_MAX_PM_FILESIZE_EXPLAIN'	=> 'Maximal für Dateianhänge in Privaten Nachrichten verfügbarer Speicherplatz pro Benutzer; 0 bedeutet unbegrenzt.',
+	'ATTACH_MAX_PM_FILESIZE_EXPLAIN'	=> 'Maximale Größe pro Datei in Privaten Nachrichten; 0 bedeutet unbegrenzt.',
 	'ATTACH_ORPHAN_URL'					=> 'Verwaiste Dateianhänge',
 	'ATTACH_POST_ID'					=> 'Beitrags-ID',
 	'ATTACH_QUOTA'						=> 'Maximales Kontingent für Dateianhänge',
@@ -84,7 +83,7 @@ $lang = array_merge($lang, array(
 	'DEFINE_ALLOWED_IPS'			=> 'Erlaubte IPs/Hostnamen einstellen',
 	'DEFINE_DISALLOWED_IPS'			=> 'Verbotene IPs/Hostnamen einstellen',
 	'DOWNLOAD_ADD_IPS_EXPLAIN'		=> 'Gib jede IP-Adresse/jeden Hostnamen in einer separaten Zeile ein. Wenn du einen IP-Bereich angeben möchtest, musst du Anfang und Ende dieses Bereiches mit einem Bindestrich (-) trennen, verwende „*“ als Platzhalter.',
-	'DOWNLOAD_REMOVE_IPS_EXPLAIN'	=> 'Du kannst mehrere IP-Adressen zeitgleich entfernen (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. IP-Adressen auf der Ausnahmeliste sind hervorgehoben.',
+	'DOWNLOAD_REMOVE_IPS_EXPLAIN'	=> 'Du kannst mehrere IP-Adressen gleichzeitig entfernen (oder aus der Ausnahmeliste entfernen), indem du mit der entsprechenden Tasten- und Mauskombination mehrere Einträge markierst. IP-Adressen auf der Ausnahmeliste sind hervorgehoben.',
 	'DISPLAY_INLINED'				=> 'Bilder im Beitrag anzeigen',
 	'DISPLAY_INLINED_EXPLAIN'		=> 'Wenn diese Option auf „Nein“ gesetzt wird, werden Bildanhänge als Link dargestellt.',
 	'DISPLAY_ORDER'					=> 'Sortierung der Dateianhänge',
@@ -148,7 +147,7 @@ $lang = array_merge($lang, array(
 	'SECURE_DOWNLOAD_NOTICE'		=> 'Sichere Downloads sind nicht aktiviert. Die folgenden Einstellungen werden erst wirksam, wenn sichere Downloads aktiviert werden.',
 	'SECURE_DOWNLOAD_UPDATE_SUCCESS'=> 'Die IP-Liste wurde erfolgreich aktualisiert.',
 	'SECURE_EMPTY_REFERRER'			=> 'Unterdrückten Referrer erlauben',
-	'SECURE_EMPTY_REFERRER_EXPLAIN'	=> 'Sichere Downloads basieren auf Referrers. Sollen Downloads für unterdrückte Referrer erlaubt werden?',
+	'SECURE_EMPTY_REFERRER_EXPLAIN'	=> 'Sichere Downloads basieren auf Referrern. Sollen Downloads für unterdrückte Referrer erlaubt werden?',
 	'SETTINGS_CAT_IMAGES'			=> 'Bildkategorie-Einstellungen',
 	'SPECIAL_CATEGORY'				=> 'Spezialkategorie',
 	'SPECIAL_CATEGORY_EXPLAIN'		=> 'Spezialkategorien unterscheiden sich in der Art, wie sie in Beiträgen dargestellt werden.',

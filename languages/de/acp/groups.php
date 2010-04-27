@@ -4,13 +4,12 @@
 * acp_groups [Deutsch — Du]
 *
 * @package language
-* @version $Id: groups.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: groups.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -90,12 +89,17 @@ $lang = array_merge($lang, array(
 	'GROUP_NAME_TAKEN'				=> 'Der angegebene Gruppenname wird bereits benutzt. Bitte wähle einen anderen aus.',
 	'GROUP_OPEN'					=> 'Offen',
 	'GROUP_PENDING'					=> 'auf Aufnahme wartende Benutzer',
+	'GROUP_MAX_RECIPIENTS'			=> 'Maximale Anzahl zulässiger Empfänger pro Privater Nachricht',
+	'GROUP_MAX_RECIPIENTS_EXPLAIN'	=> 'Die maximale Anzahl zulässiger Empfänger für eine Private Nachricht. Bei einem Wert von 0 wird die Board-Einstellung verwendet.',
+	'GROUP_OPTIONS_SAVE'			=> 'Optionen für die Gruppe',
 	'GROUP_PROMOTE'					=> 'Zum Gruppenleiter ernennen',
 	'GROUP_RANK'					=> 'Gruppenrang',
 	'GROUP_RECEIVE_PM'				=> 'Gruppe kann Private Nachrichten empfangen',
 	'GROUP_RECEIVE_PM_EXPLAIN'		=> 'Beachte, dass versteckte Gruppen – unabhängig dieser Einstellung – nicht angeschrieben werden können.',
 	'GROUP_REQUEST'					=> 'Anfragen',
 	'GROUP_SETTINGS_SAVE'			=> 'Gruppenweite Einstellungen',
+	'GROUP_SKIP_AUTH'				=> 'Gruppenleiter von Berechtigungen ausnehmen',
+	'GROUP_SKIP_AUTH_EXPLAIN'		=> 'Wenn gesetzt, gelten die Berechtigungen der Gruppe nicht für die Gruppenleiter.',
 	'GROUP_TYPE'					=> 'Gruppentyp',
 	'GROUP_TYPE_EXPLAIN'			=> 'Hier kannst du einstellen, wer die Gruppe sehen oder ihr beitreten darf.',
 	'GROUP_UPDATED'					=> 'Gruppeneinstellungen erfolgreich aktualisiert.',

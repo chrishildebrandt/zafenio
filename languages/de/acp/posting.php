@@ -4,13 +4,12 @@
 * acp_posting [Deutsch — Du]
 *
 * @package language
-* @version $Id: posting.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: posting.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -45,12 +44,17 @@ $lang = array_merge($lang, array(
 	'ACP_BBCODES_EXPLAIN'		=> 'BBCode ist eine spezielle HTML-Implementierung, die eine größere Kontrolle über das, was angezeigt wird, bietet. Hier kannst du benutzerdefinierte BBCodes hinzufügen, ändern oder entfernen.',
 	'ADD_BBCODE'				=> 'BBCode hinzufügen',
 
+	'BBCODE_DANGER'				=> 'Der BBCode, den du anlegen möchtest, scheint ein {TEXT}-Token innerhalb eines HTML-Attributs zu nutzen. Dies ist ein möglicher Angriffspunkt für Cross-Site Scripting (XSS). Verwende stattdessen, wenn möglich, die restriktiveren {SIMPLETEXT}- oder {INTTEXT}-Typen. Fahre nur fort, wenn du dich dem Risiko bewusst bist und die Verwendung von {TEXT} unvermeidbar ist.',
+	'BBCODE_DANGER_PROCEED'		=> 'Fortfahren', //'I understand the risk',
+
 	'BBCODE_ADDED'				=> 'BBCode erfolgreich hinzugefügt.',
 	'BBCODE_EDITED'				=> 'BBCode erfolgreich bearbeitet.',
 	'BBCODE_NOT_EXIST'			=> 'Der gewählte BBCode existiert nicht.',
 	'BBCODE_HELPLINE'			=> 'Tipp-Anzeige',
 	'BBCODE_HELPLINE_EXPLAIN'	=> 'Gib hier den Text ein, der in der Tipp-Zeile erscheinen soll, wenn sich der Mauszeiger auf der Schaltfläche befindet.',
 	'BBCODE_HELPLINE_TEXT'		=> 'Text für Tipp-Anzeige',
+	'BBCODE_HELPLINE_TOO_LONG'	=> 'Der eingegebene Text für die Tipp-Anzeige ist zu lang.',
+
 	'BBCODE_INVALID_TAG_NAME'	=> 'Der eingegebene BBCode-Tag ist ungültig.',
 	'BBCODE_INVALID'			=> 'Dein BBCode ist in einer unzulässigen Weise aufgebaut.',
 	'BBCODE_OPEN_ENDED_TAG'		=> 'Dein benutzerdefinierter BBCode-Tag muss sowohl einen öffnenden als auch einen schließenden Tag enthalten.',
@@ -75,8 +79,9 @@ $lang = array_merge($lang, array(
 	'TOO_MANY_BBCODES'		=> 'Du kannst keine weiteren BBCodes mehr erstellen. Bitte lösche einige BBCodes und versuche es erneut.',
 
 	'tokens'	=>	array(
-		'TEXT'			=> 'Jeder Text, einschließlich fremder Zeichen, Ziffern usw. Du solltest dieses Token nicht innerhalb von HTML-Tags verwenden, sondern IDENTIFIER oder SIMPLETEXT vorziehen.',
+		'TEXT'			=> 'Jeder Text, einschließlich fremder Zeichen, Ziffern usw. Du solltest dieses Token nicht innerhalb von HTML-Tags verwenden, sondern IDENTIFIER, INTTEXT oder SIMPLETEXT vorziehen.',
 		'SIMPLETEXT'	=> 'Zeichen des lateinischen Alphabets (A-Z), Ziffern, Leerzeichen, Komma, Punkt, Minus, Plus und Unterstrich',
+		'INTTEXT'		=> 'Unicode-Buchstaben, Ziffern, Leerzeichen, Komma, Punkt, Minus, Plus, Bindestrich, Unterstrich und Leerräume.',
 		'IDENTIFIER'	=> 'Zeichen des lateinischen Alphabets (A-Z), Ziffern, Bindestrich und Unterstrich',
 		'NUMBER'		=> 'Ziffernfolgen',
 		'EMAIL'			=> 'Eine gültige E-Mail-Adresse',
@@ -180,12 +185,14 @@ $lang = array_merge($lang, array(
 	'SMILIES_URL'				=> 'Smilie',
 	'SMILIES_WIDTH'				=> 'Breite',
 
+	'TOO_MANY_SMILIES'			=> 'Das Limit von %d Smilies wurde erreicht.',
+
 	'WRONG_PAK_TYPE'	=> 'Das angegebene Paket enthielt ungültige Daten.',
 ));
 
 // Word censors
 $lang = array_merge($lang, array(
-	'ACP_WORDS_EXPLAIN'		=> 'Hier kannst du Begriffe einstellen, die automatisch zensiert werden sollen. Außerdem kann man sich nicht mit diesen Begriffen als Benutzernamen registrieren. Platzhalter (*) sind im Begriffs-Feld erlaubt. *test* wird austesten finden, test* testweise und *test wird Sehtest finden.',
+	'ACP_WORDS_EXPLAIN'		=> 'Hier kannst du Begriffe einstellen, die automatisch zensiert werden sollen. Benutzer können sich weiterhin mit Benutzernamen registrieren, die diese Begriffe enthalten. Platzhalter (*) sind im Begriffs-Feld erlaubt. *test* wird austesten finden, test* testweise und *test wird Sehtest finden.',
 	'ADD_WORD'				=> 'Neuen Begriff hinzufügen',
 
 	'EDIT_WORD'		=> 'Wortzensur bearbeiten',
@@ -217,6 +224,7 @@ $lang = array_merge($lang, array(
 	'RANK_ADDED'			=> 'Rang erfolgreich hinzugefügt.',
 	'RANK_IMAGE'			=> 'Rang-Bild',
 	'RANK_IMAGE_EXPLAIN'	=> 'Hier kannst du ein kleines Rang-Bild einstellen. Der Pfad kann absolut oder relativ zum phpBB-Verzeichnis angegeben werden.',
+	'RANK_IMAGE_IN_USE'		=> '(benutzt)',
 	'RANK_MINIMUM'			=> 'Minimale Anzahl an Beiträgen',
 	'RANK_REMOVED'			=> 'Der Rang wurde erfolgreich gelöscht.',
 	'RANK_SPECIAL'			=> 'Spezialrang',

@@ -4,13 +4,12 @@
 * common [Deutsch — Du]
 *
 * @package language
-* @version $Id: common.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: common.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -91,7 +90,7 @@ $lang = array_merge($lang, array(
 	'AVATAR_NO_SIZE'				=> 'Die Breite oder die Höhe des verlinkten Avatars konnte nicht ermittelt werden. Bitte gib sie manuell an.',
 	'AVATAR_PARTIAL_UPLOAD'			=> 'Die ausgewählte Datei wurde nur unvollständig hochgeladen.',
 	'AVATAR_PHP_SIZE_NA'			=> 'Die Avatar-Datei ist zu groß.<br />Die durch PHP in der php.ini festgelegte maximale Größe konnte nicht ermittelt werden.',
-	'AVATAR_PHP_SIZE_OVERRUN'		=> 'Die Avatar-Datei ist zu groß, sie darf maximal %d MiB groß sein.<br />Dieser Wert ist in der php.ini festgelegt und kann nicht überschrieben werden.',
+	'AVATAR_PHP_SIZE_OVERRUN'		=> 'Die Avatar-Datei ist zu groß, sie darf maximal %1$d %2$s groß sein.<br />Dieser Wert ist in der php.ini festgelegt und kann nicht überschrieben werden.',
 	'AVATAR_URL_INVALID'			=> 'Die angegebene URL ist ungültig.',
 	'AVATAR_URL_NOT_FOUND'			=> 'Die angegebene Datei konnte nicht gefunden werden.',
 	'AVATAR_WRONG_FILESIZE'			=> 'Der Avatar muss zwischen 0 und %1d %2s groß sein.',
@@ -162,7 +161,7 @@ $lang = array_merge($lang, array(
 	'VIEWED_COUNT_NONE'		=> 'Noch nie betrachtet',
 
 	'EDIT_POST'							=> 'Ändere Beitrag',
-	'EMAIL'								=> 'E-Mail',
+	'EMAIL'								=> 'E-Mail', // Short form for EMAIL_ADDRESS
 	'EMAIL_ADDRESS'						=> 'E-Mail-Adresse',
 	'EMAIL_SMTP_ERROR_RESPONSE'			=> 'Probleme beim Mailversand in <strong>Zeile %1$s</strong>. Antwort: %2$s.',
 	'EMPTY_SUBJECT'						=> 'Du musst einen Betreff angeben, wenn du ein neues Thema erstellen möchtest.',
@@ -174,6 +173,8 @@ $lang = array_merge($lang, array(
 	'ERR_JAB_AUTH'						=> 'Die Anmeldung am Jabber-Server war nicht erfolgreich.',
 	'ERR_JAB_CONNECT'					=> 'Es konnte keine Verbindung zum Jabber-Server aufgebaut werden.',
 	'ERR_UNABLE_TO_LOGIN'				=> 'Der angegebene Benutzername oder das angegebene Passwort ist falsch.',
+	'ERR_UNWATCHING'					=> 'Beim Versuch, das Thema nicht mehr zu beobachten, ist ein Fehler aufgetreten.',
+	'ERR_WATCHING'						=> 'Beim Versuch, das Thema zu beobachten, ist ein Fehler aufgetreten.',
 	'ERR_WRONG_PATH_TO_PHPBB'			=> 'Der angegebene phpBB-Pfad scheint ungültig zu sein.',
 	'EXPAND_VIEW'						=> 'Ansicht erweitern',
 	'EXTENSION'							=> 'Dateierweiterung',
@@ -230,6 +231,8 @@ $lang = array_merge($lang, array(
 	'FTP_USERNAME_EXPLAIN'		=> 'Benutzername, der für die Anmeldung an deinem Server verwendet wird.',
 
 	'GENERAL_ERROR'				=> 'Allgemeiner Fehler',
+	'GB'						=> 'GB',
+	'GIB'						=> 'GiB',
 	'GO'						=> 'Los',
 	'GOTO_PAGE'					=> 'Gehe zu Seite',
 	'GROUP'						=> 'Gruppe',
@@ -250,6 +253,7 @@ $lang = array_merge($lang, array(
 	'G_REGISTERED'				=> 'Registrierte Benutzer',
 	'G_REGISTERED_COPPA'		=> 'Registrierte COPPA-Benutzer',
 	'G_GLOBAL_MODERATORS'		=> 'Globale Moderatoren',
+	'G_NEWLY_REGISTERED'		=> 'Kürzlich registrierte Benutzer',
 
 	'HIDDEN_USERS_ONLINE'			=> '%d unsichtbare Mitglieder online',
 	'HIDDEN_USERS_TOTAL'			=> '%d unsichtbare',
@@ -307,9 +311,9 @@ $lang = array_merge($lang, array(
 	'LOGIN_ERROR_EXTERNAL_AUTH_APACHE'	=> 'Du wurdest nicht durch Apache authentifiziert.',
 	'LOGIN_ERROR_PASSWORD'			=> 'Du hast ein fehlerhaftes Passwort angegeben. Bitte prüfe dein Passwort und versuche es erneut. Wenn du weiterhin auf Probleme stößt, wende dich bitte an die %sBoard-Administration%s.',
 	'LOGIN_ERROR_PASSWORD_CONVERT'		=> 'Als dieses Board aktualisiert wurde, konnte dein Passwort nicht konvertiert werden. Bitte %sfordere ein neues Passwort an%s. Wenn du weiterhin Probleme beim Zugriff auf dieses Board hast, wende dich bitte an die %sBoard-Administration%s.',
-	'LOGIN_ERROR_USERNAME'			=> 'Du hast einen fehlerhaften Benutzername angegeben. Bitte prüfe deinen Benutzernamen und versuche es erneut. Wenn du weiterhin auf Probleme stößt, wende dich bitte an die %sBoard-Administration%s.',
+	'LOGIN_ERROR_USERNAME'			=> 'Du hast einen fehlerhaften Benutzernamen angegeben. Bitte prüfe deinen Benutzernamen und versuche es erneut. Wenn du weiterhin auf Probleme stößt, wende dich bitte an die %sBoard-Administration%s.',
 	'LOGIN_FORUM'					=> 'Um in diesem Forum einen Beitrag anzusehen oder zu erstellen, musst du das Foren-Passwort eingeben.',
-	'LOGIN_INFO'					=> 'Du musst in diesem Forum registriert sein, um dich anmelden zu können. Eine Anmeldung ist in wenigen Augenblicken erledigt und ermöglicht dir, auf weitere Funktionen zuzugreifen. Die Board-Administration kann registrierten Benutzern auch zusätzliche Berechtigungen zuweisen. Beachte bitte unsere Nutzungsbedingungen und die verwandten Regelungen, bevor du dich registrierst. Bitte beachte auch die jeweiligen Forenregeln, wenn du dich in diesem Board bewegst.',
+	'LOGIN_INFO'					=> 'Du musst in diesem Forum registriert sein, um dich anmelden zu können. Die Registrierung ist in wenigen Augenblicken erledigt und ermöglicht dir, auf weitere Funktionen zuzugreifen. Die Board-Administration kann registrierten Benutzern auch zusätzliche Berechtigungen zuweisen. Beachte bitte unsere Nutzungsbedingungen und die verwandten Regelungen, bevor du dich registrierst. Bitte beachte auch die jeweiligen Forenregeln, wenn du dich in diesem Board bewegst.',
 	'LOGIN_VIEWFORUM'				=> 'Um Beiträge in diesem Forum anzusehen, musst du auf diesem Board registriert und angemeldet sein.',
 	'LOGIN_EXPLAIN_EDIT'			=> 'Um Beiträge in diesem Forum zu ändern, musst du registriert und angemeldet sein.',
 	'LOGIN_EXPLAIN_VIEWONLINE'		=> 'Um die Wer-ist-online-Liste anzusehen, musst du auf diesem Board registriert und angemeldet sein.',
@@ -326,7 +330,7 @@ $lang = array_merge($lang, array(
 	'MEMBERLIST'			=> 'Mitglieder',
 	'MEMBERLIST_EXPLAIN'	=> 'Zeigt eine vollständige Liste aller Mitglieder an',
 	'MERGE'					=> 'Zusammenführen',
-	'MERGE_POSTS'			=> 'Beiträge zusammenführen',
+	'MERGE_POSTS'			=> 'Beiträge verschieben',
 	'MERGE_TOPIC'			=> 'Thema zusammenführen',
 	'MESSAGE'				=> 'Nachricht',
 	'MESSAGES'				=> 'Nachrichten',
@@ -359,7 +363,7 @@ $lang = array_merge($lang, array(
 	'NOTIFY_ADMIN_EMAIL'		=> 'Bitte informiere die Board-Administration oder den Webmaster: <a href="mailto:%1$s">%1$s</a>',
 	'NO_ACCESS_ATTACHMENT'		=> 'Du hast keine Berechtigung, auf diese Datei zuzugreifen.',
 	'NO_ACTION'					=> 'Keine Aktion angegeben.',
-	'NO_ADMINISTRATORS'			=> 'Es existieren keine Administratoren auf diesem Board.',
+	'NO_ADMINISTRATORS'			=> 'Es existieren keine Administratoren.',
 	'NO_AUTH_ADMIN'				=> 'Ein Zugriff auf den Administrations-Bereich ist nicht möglich, da du keine administrativen Berechtigungen hast.',
 	'NO_AUTH_ADMIN_USER_DIFFER'	=> 'Du kannst deine Anmeldung nicht mit einem anderen Benutzerkonto bestätigen.',
 	'NO_AUTH_OPERATION'			=> 'Du hast keine ausreichende Berechtigung, um diesen Vorgang durchzuführen.',
@@ -376,13 +380,15 @@ $lang = array_merge($lang, array(
 	'NO_MEMBERS'				=> 'Es wurden keine Mitglieder gefunden, die den Suchkriterien entsprechen.',
 	'NO_MESSAGES'				=> 'Keine Nachrichten',
 	'NO_MODE'					=> 'Kein Mode angegeben.',
-	'NO_MODERATORS'				=> 'Es existieren keine Moderatoren auf diesem Board.',
+	'NO_MODERATORS'				=> 'Es existieren keine Moderatoren.',
 	'NO_NEW_MESSAGES'			=> 'Keine neuen Nachrichten',
 	'NO_NEW_PM'					=> '<strong>0</strong> neue Nachrichten',
 	'NO_NEW_POSTS'				=> 'Keine neuen Beiträge',
 	'NO_ONLINE_USERS'			=> '0 Mitglieder',
 	'NO_POSTS'					=> 'Keine Beiträge',
 	'NO_POSTS_TIME_FRAME'		=> 'Für den ausgewählten Zeitraum existieren keine Beiträge in diesem Thema.',
+	'NO_FEED_ENABLED'			=> 'Auf diesem Board sind keine Feeds verfügbar.',
+	'NO_FEED'					=> 'Der angeforderte Feed ist nicht verfügbar.',
 	'NO_SUBJECT'				=> 'Kein Betreff vorhanden',								// Used for posts having no subject defined but displayed within management pages.
 	'NO_SUCH_SEARCH_MODULE'		=> 'Das angegebene Such-Backend existiert nicht.',
 	'NO_SUPPORTED_AUTH_METHODS'	=> 'Keine unterstützte Authentifizierungs-Methode vorhanden.',
@@ -396,6 +402,13 @@ $lang = array_merge($lang, array(
 	'NO_USERS'					=> 'Die von dir ausgewählten Benutzer existieren nicht.',
 	'NO_USER_SPECIFIED'			=> 'Es wurde kein Benutzername angegeben.',
 
+	// Nullar/Singular/Plural language entry. The key numbers define the number range in which a certain grammatical expression is valid.
+	'NUM_POSTS_IN_QUEUE'		=> array(
+		0			=> 'Kein Beitrag in der Warteschlange',		// 0
+		1			=> '1 Beitrag in der Warteschlange',		// 1
+		2			=> '%d Beiträge in der Warteschlange',		// 2+
+	),
+
 	'OCCUPATION'				=> 'Tätigkeit',
 	'OFFLINE'					=> 'Offline',
 	'ONLINE'					=> 'Online',
@@ -407,6 +420,7 @@ $lang = array_merge($lang, array(
 
 	'PAGE_OF'					=> 'Seite <strong>%1$d</strong> von <strong>%2$d</strong>',
 	'PASSWORD'					=> 'Passwort',
+	'PIXEL'						=> 'px',
 	'PLAY_QUICKTIME_FILE'		=> 'Gebe QuickTime-Datei wieder',
 	'PM'						=> 'PN',
 	'POSTING_MESSAGE'			=> 'Erstellt eine Nachricht in %s',
@@ -448,7 +462,7 @@ $lang = array_merge($lang, array(
 	'READING_TOPIC'				=> 'Liest Thema in %s',
 	'READ_PROFILE'				=> 'Profil',
 	'REASON'					=> 'Grund',
-	'RECORD_ONLINE_USERS'		=> 'Der Besucherrekord liegt bei <strong>%1$s</strong> Besuchern, die am %2$s zeitgleich online waren.',
+	'RECORD_ONLINE_USERS'		=> 'Der Besucherrekord liegt bei <strong>%1$s</strong> Besuchern, die am %2$s gleichzeitig online waren.',
 	'REDIRECT'					=> 'Weiterleiten',
 	'REDIRECTS'					=> 'Aufrufe insgesamt',
 	'REGISTER'					=> 'Registrieren',
@@ -479,6 +493,10 @@ $lang = array_merge($lang, array(
 	'RETURN_PAGE'				=> '%sZurück zur vorherigen Seite%s',
 	'RETURN_TOPIC'				=> '%sZurück zum zuletzt besuchten Thema%s',
 	'RETURN_TO'					=> 'Zurück zu',
+	'FEED'						=> 'Feed',
+	'FEED_NEWS'					=> 'Neuigkeiten',
+	'FEED_TOPICS_ACTIVE'		=> 'Aktive Themen',
+	'FEED_TOPICS_NEW'			=> 'Neue Themen',
 	'RULES_ATTACH_CAN'			=> 'Du <strong>darfst</strong> Dateianhänge in diesem Forum erstellen.',
 	'RULES_ATTACH_CANNOT'		=> 'Du darfst <strong>keine</strong> Dateianhänge in diesem Forum erstellen.',
 	'RULES_DELETE_CAN'			=> 'Du <strong>darfst</strong> deine Beiträge in diesem Forum löschen.',
@@ -500,7 +518,7 @@ $lang = array_merge($lang, array(
 	'SEARCH_MINI'				=> 'Suche…',
 	'SEARCH_ADV'				=> 'Erweiterte Suche',
 	'SEARCH_ADV_EXPLAIN'		=> 'Zeigt die erweiterten Suchoptionen an',
-	'SEARCH_KEYWORDS'			=> 'Suche nach Begriffen',
+	'SEARCH_KEYWORDS'			=> 'Suche nach Wörtern',
 	'SEARCHING_FORUMS'			=> 'Durchsucht das Forum',
 	'SEARCH_ACTIVE_TOPICS'		=> 'Aktive Themen',
 	'SEARCH_FOR'				=> 'Suche nach',
@@ -510,12 +528,13 @@ $lang = array_merge($lang, array(
 	'SEARCH_SELF'				=> 'Eigene Beiträge',
 	'SEARCH_TOPIC'				=> 'Thema durchsuchen…',
 	'SEARCH_UNANSWERED'			=> 'Unbeantwortete Themen',
+	'SEARCH_UNREAD'				=> 'Ungelesene Beiträge',
 	'SECONDS'					=> 'Sekunden',
 	'SELECT'					=> 'Auswählen',
 	'SELECT_ALL_CODE'			=> 'Alles auswählen',
 	'SELECT_DESTINATION_FORUM'	=> 'Wähle bitte ein Zielforum aus',
 	'SELECT_FORUM'				=> 'Wähle ein Forum aus',
-	'SEND_EMAIL'				=> 'E-Mail senden',
+	'SEND_EMAIL'				=> 'E-Mail senden',					// Used for submit buttons
 	'SEND_EMAIL_USER'			=> 'E-Mail senden an',				// Used as: {L_SEND_EMAIL_USER} {USERNAME} -> E-mail UserX
 	'SEND_PRIVATE_MESSAGE'		=> 'Private Nachricht senden',
 	'SETTINGS'					=> 'Einstellungen',
@@ -528,6 +547,7 @@ $lang = array_merge($lang, array(
 	'SORT_JOINED'				=> 'Registrierungsdatum',
 	'SORT_LOCATION'				=> 'Wohnort',
 	'SORT_RANK'					=> 'Rang',
+	'SORT_POSTS'				=> 'Beiträge',
 	'SORT_TOPIC_TITLE'			=> 'Betreff des Themas',
 	'SORT_USERNAME'				=> 'Benutzername',
 	'SPLIT_TOPIC'				=> 'Thema teilen',
@@ -543,9 +563,11 @@ $lang = array_merge($lang, array(
 	'SUBMIT'					=> 'Absenden',
 
 	'TERMS_USE'			=> 'Nutzungsbedingungen',
-	'TEST_CONNECTION'	=> 'Teste die Verbindung',
+	'TEST_CONNECTION'	=> 'Verbindung testen',
 	'THE_TEAM'			=> 'Das Team',
 	'TIME'				=> 'Zeit',
+
+	'TOO_LONG'						=> 'Der angegebene Wert ist zu lang.',
 
 	'TOO_LONG_AIM'					=> 'Der angegebene AIM-Webname ist zu lang.',
 	'TOO_LONG_CONFIRM_CODE'			=> 'Der angegebene Bestätigungscode ist zu lang.',
@@ -567,6 +589,8 @@ $lang = array_merge($lang, array(
 
 	'TOO_MANY_VOTE_OPTIONS'			=> 'Du hast versucht, für zu viele Optionen zu stimmen.',
 
+	'TOO_SHORT'						=> 'Der angegebene Wert ist zu kurz.',
+
 	'TOO_SHORT_AIM'					=> 'Der angegebene AIM-Webname ist zu kurz.',
 	'TOO_SHORT_CONFIRM_CODE'		=> 'Der angegebene Bestätigungscode ist zu kurz.',
 	'TOO_SHORT_DATEFORMAT'			=> 'Das angegebene Datums-Format ist zu kurz.',
@@ -587,6 +611,7 @@ $lang = array_merge($lang, array(
 
 	'TOPIC'				=> 'Thema',
 	'TOPICS'			=> 'Themen',
+	'TOPICS_UNAPPROVED'	=> 'Mindestens ein Thema in diesem Forum wurde noch nicht freigegeben.',
 	'TOPIC_ICON'		=> 'Themen-Symbol',
 	'TOPIC_LOCKED'		=> 'Dieses Thema ist gesperrt. Du kannst keine Beiträge editieren oder weitere Antworten erstellen.',
 	'TOPIC_LOCKED_SHORT'=> 'Thema gesperrt',
@@ -632,6 +657,8 @@ $lang = array_merge($lang, array(
 	'USER_POSTS'			=> '%d Beiträge',
 	'USERS'					=> 'Benutzer',
 	'USE_PERMISSIONS'		=> 'Berechtigungen des Benutzers testen',
+
+	'USER_NEW_PERMISSION_DISALLOWED'	=> 'Leider bist du nicht berechtigt, diese Funktion zu nutzen. Du hast dich vermutlich erst vor kurzem registriert und musst dich noch mehr im Board beteiligen, damit du diese Funktion nutzen kannst.',
 
 	'VARIANT_DATE_SEPARATOR'	=> ' / ',	// Used in date format dropdown, eg: "Today, 13:37 / 01 Jan 2007, 13:37" ... to join a relative date with calendar date
 	'VIEWED'					=> 'Zugriffe',
@@ -688,6 +715,12 @@ $lang = array_merge($lang, array(
 		'TODAY'		=> 'Heute',
 		'TOMORROW'	=> 'Morgen',
 		'YESTERDAY'	=> 'Gestern',
+		'AGO'		=> array(
+			0		=> 'vor weniger als einer Minute',
+			1		=> 'vor %d Minute',
+			2		=> 'vor %d Minuten',
+			60		=> 'vor 1 Stunde',
+		),
 
 		'Sunday'	=> 'Sonntag',
 		'Monday'	=> 'Montag',
@@ -742,6 +775,7 @@ $lang = array_merge($lang, array(
 		'-7'	=> 'UTC - 7 Stunden',
 		'-6'	=> 'UTC - 6 Stunden',
 		'-5'	=> 'UTC - 5 Stunden',
+		'-4.5'	=> 'UTC - 4:30 Stunden',
 		'-4'	=> 'UTC - 4 Stunden',
 		'-3.5'	=> 'UTC - 3:30 Stunden',
 		'-3'	=> 'UTC - 3 Stunden',
@@ -756,7 +790,7 @@ $lang = array_merge($lang, array(
 		'4.5'	=> 'UTC + 4:30 Stunden',
 		'5'		=> 'UTC + 5 Stunden',
 		'5.5'	=> 'UTC + 5:30 Stunden',
-		'5.75'	=> 'UTC + 5:45 hours',
+		'5.75'	=> 'UTC + 5:45 Stunden',
 		'6'		=> 'UTC + 6 Stunden',
 		'6.5'	=> 'UTC + 6:30 Stunden',
 		'7'		=> 'UTC + 7 Stunden',
@@ -785,6 +819,7 @@ $lang = array_merge($lang, array(
 		'-7'	=> '[UTC - 7] Mountain Standard Time',
 		'-6'	=> '[UTC - 6] Central Standard Time',
 		'-5'	=> '[UTC - 5] Eastern Standard Time',
+		'-4.5'	=> '[UTC - 4:30] Venezuelan Standard Time',
 		'-4'	=> '[UTC - 4] Atlantic Standard Time',
 		'-3.5'	=> '[UTC - 3:30] Newfoundland Standard Time',
 		'-3'	=> '[UTC - 3] Amazon Standard Time, Central Greenland Time',

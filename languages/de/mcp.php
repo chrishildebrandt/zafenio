@@ -4,13 +4,12 @@
 * mcp [Deutsch — Du]
 *
 * @package language
-* @version $Id: mcp.php 191 2007-05-17 15:04:21Z philipp $
+* @version $Id: mcp.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -50,6 +49,7 @@ $lang = array_merge($lang, array(
 	'ALL_NOTES_DELETED'		=> 'Alle Notizen wurden erfolgreich gelöscht.',
 	'ALL_REPORTS'			=> 'Alle Meldungen',
 	'ALREADY_REPORTED'		=> 'Dieser Beitrag wurde schon gemeldet.',
+	'ALREADY_REPORTED_PM'	=> 'Diese Private Nachricht wurde schon gemeldet.',
 	'ALREADY_WARNED'		=> 'Für diesen Beitrag wurde schon eine Verwarnung erteilt.',
 	'APPROVE'				=> 'Freigeben',
 	'APPROVE_POST'			=> 'Beitrag freigeben',
@@ -62,11 +62,19 @@ $lang = array_merge($lang, array(
 	'CANNOT_WARN_SELF'		=> 'Du kannst dich nicht selbst verwarnen.',
 	'CAN_LEAVE_BLANK'		=> 'Dieses Feld muss nicht ausgefüllt werden.',
 	'CHANGE_POSTER'			=> 'Ändere Autor',
+	'CLOSE_PM_REPORT'		=> 'PM-Meldung schließen',
+	'CLOSE_PM_REPORT_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählte Meldung zu einer Privaten Nachricht schließen möchtest?',
+	'CLOSE_PM_REPORTS'		=> 'PM-Meldung schließen',
+	'CLOSE_PM_REPORTS_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählten Meldungen zu Privaten Nachrichten schließen möchtest?',
 	'CLOSE_REPORT'			=> 'Meldung schließen',
 	'CLOSE_REPORT_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählte Meldung schließen möchtest?',
 	'CLOSE_REPORTS'			=> 'Meldungen schließen',
 	'CLOSE_REPORTS_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählten Meldungen schließen möchtest?',
 
+	'DELETE_PM_REPORT'			=> 'PM-Meldung löschen',
+	'DELETE_PM_REPORT_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählte Meldung zu einer Privaten Nachricht löschen möchtest?',
+	'DELETE_PM_REPORTS'			=> 'PM-Meldungen löschen',
+	'DELETE_PM_REPORTS_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählten Meldungen zu Privaten Nachrichten löschen möchtest?',
 	'DELETE_POSTS'				=> 'Beiträge löschen',
 	'DELETE_POSTS_CONFIRM'		=> 'Bist du sicher, dass du diese Beiträge löschen möchtest?',
 	'DELETE_POST_CONFIRM'		=> 'Bist du sicher, dass du diesen Beitrag löschen möchtest?',
@@ -110,6 +118,7 @@ $lang = array_merge($lang, array(
 
 	'LATEST_LOGS'				=> 'Die letzten 5 protokollierten Aktionen',
 	'LATEST_REPORTED'			=> 'Die letzten 5 gemeldeten Beiträge',
+	'LATEST_REPORTED_PMS'		=> 'Die letzten 5 gemeldeten Privaten Nachrichten',
 	'LATEST_UNAPPROVED'			=> 'Die letzten 5 Beiträge, die auf Freigabe warten',
 	'LATEST_WARNING_TIME'		=> 'Letzte Verwarnung',
 	'LATEST_WARNINGS'			=> 'Die letzten 5 Verwarnungen',
@@ -174,7 +183,14 @@ $lang = array_merge($lang, array(
 
 	'MCP_POST_REPORTS'				=> 'Es gibt Meldungen zu diesem Beitrag',
 
-	'MCP_REPORTS'					=> 'Gemeldete Beiträge',
+	'MCP_PM_REPORTS'				=> 'Gemeldete Private Nachrichten',
+	'MCP_PM_REPORT_DETAILS'			=> 'Details der Meldung zu einer Privaten Nachricht',
+	'MCP_PM_REPORTS_CLOSED'			=> 'Geschlossene Meldungen zu Privaten Nachrichten',
+	'MCP_PM_REPORTS_CLOSED_EXPLAIN'	=> 'Dies ist eine Liste aller Meldungen zu Privaten Nachrichten, die abgeschlossen wurden.',
+	'MCP_PM_REPORTS_OPEN'			=> 'Offene Meldungen zu Privaten Nachrichten',
+	'MCP_PM_REPORTS_OPEN_EXPLAIN'	=> 'Dies ist eine Liste aller Meldungen zu Privaten Nachrichten, die noch bearbeitet werden müssen.',
+
+	'MCP_REPORTS'					=> 'Gemeldete Nachrichten',
 	'MCP_REPORT_DETAILS'			=> 'Details der Meldung',
 	'MCP_REPORTS_CLOSED'			=> 'Geschlossene Meldungen',
 	'MCP_REPORTS_CLOSED_EXPLAIN'	=> 'Dies ist eine Liste aller Meldungen zu Beiträgen, die abgeschlossen wurden.',
@@ -198,7 +214,7 @@ $lang = array_merge($lang, array(
 
 	'MERGE_POSTS'			=> 'Beiträge zusammenführen',
 	'MERGE_POSTS_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählten Beiträge zusammenführen möchtest?',
-	'MERGE_TOPIC_EXPLAIN'	=> 'Mit dem folgenden Formular kannst du Beiträge mit einem anderen Thema zusammenführen. Die Beiträge werden nicht umsortiert, sondern erscheinen so, als ob die Benutzer sie in dem anderen Thema erstellt hätten.<br />Bitte gib die ID des Ziel-Themas an oder wähle mit „Thema auswählen“ ein Thema aus.',
+	'MERGE_TOPIC_EXPLAIN'	=> 'Mit dem folgenden Formular kannst du Beiträge mit einem anderen Thema zusammenführen. Die Beiträge werden in das Thema integriert und erscheinen dort in ihrer zeitlichen Abfolge.<br />Bitte gib die ID des Ziel-Themas an oder wähle mit „Thema auswählen“ ein Thema aus.',
 	'MERGE_TOPIC_ID'		=> 'Primärschlüssel (ID) des Ziel-Themas',
 	'MERGE_TOPICS'			=> 'Themen zusammenführen',
 	'MERGE_TOPICS_CONFIRM'	=> 'Bist du sicher, dass du die ausgewählten Themen zusammenführen möchtest?',
@@ -236,6 +252,15 @@ $lang = array_merge($lang, array(
 	'ONLY_TOPIC'			=> 'Nur Thema „%s“',
 	'OTHER_USERS'			=> 'Andere Benutzer, die von dieser IP Beiträge erstellt haben',
 
+	'PM_REPORT_CLOSED_SUCCESS'	=> 'Die ausgewählte Meldung einer Privaten Nachricht wurde erfolgreich geschlossen.',
+	'PM_REPORT_DELETED_SUCCESS'	=> 'Die ausgewählte Meldung einer Privaten Nachricht wurde erfolgreich gelöscht.',
+	'PM_REPORTED_SUCCESS'		=> 'Diese Private Nachricht wurde erfolgreich gemeldet.',
+	'PM_REPORT_TOTAL'			=> 'Insgesamt wartet <strong>1</strong> Meldung zu einer Privaten Nachricht auf Überprüfung.',
+	'PM_REPORTS_CLOSED_SUCCESS'	=> 'Die ausgewählten Meldungen zu Privaten Nachrichten wurden erfolgreich geschlossen.',
+	'PM_REPORTS_DELETED_SUCCESS'=> 'Die ausgewählten Meldungen zu Privaten Nachrichten wurden erfolgreich gelöscht.',
+	'PM_REPORTS_TOTAL'			=> 'Insgesamt warten <strong>%d</strong> Meldungen zu Privaten Nachrichten auf Überprüfung.',
+	'PM_REPORTS_ZERO_TOTAL'		=> 'Es warten keine Meldungen zu Privaten Nachrichten auf Überprüfung.',
+	'PM_REPORT_DETAILS'			=> 'Details der Meldung zu einer Privaten Nachricht',
 	'POSTER'					=> 'Autor',
 	'POSTS_APPROVED_SUCCESS'	=> 'Die ausgewählten Beiträge wurden freigegeben.',
 	'POSTS_DELETED_SUCCESS'		=> 'Die ausgewählten Beiträge wurden erfolgreich aus der Datenbank gelöscht.',
@@ -268,7 +293,7 @@ $lang = array_merge($lang, array(
 	'REPORT_DELETED_SUCCESS'	=> 'Die ausgewählte Meldung wurde erfolgreich gelöscht.',
 	'REPORT_DETAILS'			=> 'Details der Meldung',
 	'REPORT_MESSAGE'			=> 'Diese Nachricht melden',
-	'REPORT_MESSAGE_EXPLAIN'	=> 'Benutze dieses Formular, um die ausgewählte Nachricht zu melden. Meldungen sollten nur erfolgen, wenn die Nachricht den Foren-Regeln widerspricht.',
+	'REPORT_MESSAGE_EXPLAIN'	=> 'Benutze dieses Formular, um die ausgewählte Private Nachricht zu melden. Meldungen sollten nur erfolgen, wenn die Nachricht den Foren-Regeln widerspricht. <strong>Die Meldung einer Privaten Nachricht macht diese für alle Moderatoren sichtbar.</strong>',
 	'REPORT_NOTIFY'				=> 'Benachrichtigung',
 	'REPORT_NOTIFY_EXPLAIN'		=> 'Informiert dich, wenn deine Meldung bearbeitet wurde.',
 	'REPORT_POST_EXPLAIN'		=> 'Benutze dieses Formular, um den ausgewählten Beitrag zu melden. Meldungen sollten nur erfolgen, wenn der Beitrag den Foren-Regeln widerspricht.',
@@ -279,6 +304,7 @@ $lang = array_merge($lang, array(
 	'RETURN_MESSAGE'			=> '%sZurück zur Nachricht%s',
 	'RETURN_NEW_FORUM'			=> '%sGehe in das neue Forum%s',
 	'RETURN_NEW_TOPIC'			=> '%sGehe zum neuen Thema%s',
+	'RETURN_PM'					=> '%sZurück zur Privaten Nachricht%s',
 	'RETURN_POST'				=> '%sZurück zum Beitrag%s',
 	'RETURN_QUEUE'				=> '%sZurück zur Warteschlange%s',
 	'RETURN_REPORTS'			=> '%sZurück zu den Meldungen%s',
@@ -296,7 +322,7 @@ $lang = array_merge($lang, array(
 	'SORT_DATE'							=> 'Datum',
 	'SORT_IP'							=> 'IP-Adresse',
 	'SORT_WARNINGS'						=> 'Verwarnungen',
-	'SPLIT_AFTER'						=> 'Ab dem gewählten Beitrag teilen',
+	'SPLIT_AFTER'						=> 'Thema ab dem gewählten Beitrag teilen',
 	'SPLIT_FORUM'						=> 'Forum für das neue Thema',
 	'SPLIT_POSTS'						=> 'Gewählte Beiträge abtrennen',
 	'SPLIT_SUBJECT'						=> 'Betreff des neuen Themas',
@@ -306,6 +332,7 @@ $lang = array_merge($lang, array(
 	'SPLIT_TOPIC_BEYOND_CONFIRM'		=> 'Bist du sicher, dass du dieses Thema ab dem ausgewählten Beitrag teilen möchtest?',
 	'SPLIT_TOPIC_EXPLAIN'				=> 'Mit dem folgenden Formular kannst du ein Thema in zwei aufteilen, indem du entweder die Beiträge einzeln auswählst oder ab einem bestimmten Beitrag teilst.',
 
+	'THIS_PM_IP'				=> 'IP dieser Privaten Nachricht',
 	'THIS_POST_IP'				=> 'IP dieses Beitrags',
 	'TOPICS_APPROVED_SUCCESS'	=> 'Die ausgewählten Themen wurden freigegeben.',
 	'TOPICS_DELETED_SUCCESS'	=> 'Die ausgewählten Themen wurden erfolgreich aus der Datenbank gelöscht.',
@@ -350,6 +377,8 @@ $lang = array_merge($lang, array(
 	'USER_WARNING_ADDED'			=> 'Benutzer erfolgreich verwarnt.',
 
 	'VIEW_DETAILS'			=> 'Details anzeigen',
+	'VIEW_PM'				=> 'Private Nachricht anzeigen',
+	'VIEW_POST'				=> 'Beitrag anzeigen',
 
 	'WARNED_USERS'			=> 'Verwarnte Benutzer',
 	'WARNED_USERS_EXPLAIN'	=> 'Dies ist eine Liste von Benutzern, die noch nicht abgelaufene Verwarnungen erhalten haben.',
@@ -368,9 +397,9 @@ $lang = array_merge($lang, array(
 			'OTHER'		=> 'Anderer',
 		),
 		'DESCRIPTION' => array(
-			'WAREZ'		=> 'Der gemeldete Beitrag enthält Links zu illegaler Software oder Raubkopien.',
-			'SPAM'		=> 'Der gemeldete Beitrag hat nur zum Ziel, für eine Website oder ein anderes Produkt zu werben.',
-			'OFF_TOPIC'	=> 'Der gemeldete Beitrag betrifft ein anderes Thema.',
+			'WAREZ'		=> 'Die gemeldete Nachricht enthält Links zu illegaler Software oder Raubkopien.',
+			'SPAM'		=> 'Die gemeldete Nachricht hat nur zum Ziel, für eine Website oder ein anderes Produkt zu werben.',
+			'OFF_TOPIC'	=> 'Die gemeldete Nachricht betrifft ein anderes Thema.',
 			'OTHER'		=> 'Keine der genannten Kategorien. Bitte benutze „Weitere Informationen“ für deine Meldung.',
 		)
 	),

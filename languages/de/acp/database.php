@@ -4,13 +4,12 @@
 * acp_database [Deutsch — Du]
 *
 * @package language
-* @version $Id: database.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: database.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -58,6 +57,7 @@ $lang = array_merge($lang, array(
 	'DOWNLOAD_BACKUP'	=> 'Backup herunterladen',
 
 	'FILE_TYPE'			=> 'Dateityp',
+	'FILE_WRITE_FAIL'	=> 'Der Speicherordner konnte nicht beschrieben werden.',
 	'FULL_BACKUP'		=> 'Komplett',
 
 	'RESTORE_FAILURE'		=> 'Die Backup-Datei könnte beschädigt sein.',

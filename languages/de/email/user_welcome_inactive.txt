@@ -6,17 +6,15 @@ Bitte bewahre diese E-Mail in deinen Unterlagen auf. Die Daten deines Benutzerko
 
 ----------------------------
 Benutzername: {USERNAME}
-Passwort:     {PASSWORD}
 
 Board-URL:    {U_BOARD}
 ----------------------------
 
-Dein Account ist derzeit inaktiv. Du kannst ihn erst benutzen, wenn du folgenden Link besucht hast:
+Bitte besuche folgenden Link, um dein Benutzerkonto zu aktivieren:
 
 {U_ACTIVATE}
 
-Bitte vergiss dein Passwort nicht, da es verschlüsselt in der Datenbank gespeichert wurde und wir es für dich nicht wiederherstellen können. Falls du dein Passwort dennoch vergessen solltest, kannst du ein neues anfordern, das dann auf die gleiche Weise wie dieses Benutzerkonto aktiviert wird.
-
+Dein Passwort wurde sicher in unserer Datenbank gespeichert und kann nicht wiederhergestellt werden. Falls es vergessen werden sollte, kannst du es über die E-Mail-Adresse, die deinem Account zugeordnet ist, zurücksetzen lassen.
 
 Vielen Dank für deine Registrierung.
 

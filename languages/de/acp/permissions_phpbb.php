@@ -4,13 +4,12 @@
 * acp_permissions_phpbb (phpBB Permission Set) [Deutsch — Du]
 *
 * @package language
-* @version $Id: permissions_phpbb.php 185 2007-04-24 20:37:40Z philipp $
+* @version $Id: permissions_phpbb.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -117,7 +116,8 @@ $lang = array_merge($lang, array(
 	'acl_u_sig'			=> array('lang' => 'Kann Signatur verwenden', 'cat' => 'post'),
 
 	'acl_u_sendpm'		=> array('lang' => 'Kann Private Nachrichten verschicken', 'cat' => 'pm'),
-	'acl_u_masspm'		=> array('lang' => 'Kann PNs an mehrere Benutzer und Gruppen verschicken', 'cat' => 'pm'),
+	'acl_u_masspm'		=> array('lang' => 'Kann PNs an mehrere Benutzer verschicken', 'cat' => 'pm'),
+	'acl_u_masspm_group'=> array('lang' => 'Kann PNs an Gruppen verschicken', 'cat' => 'pm'),
 	'acl_u_readpm'		=> array('lang' => 'Kann Private Nachrichten lesen', 'cat' => 'pm'),
 	'acl_u_pm_edit'		=> array('lang' => 'Kann eigene Private Nachrichten ändern', 'cat' => 'pm'),
 	'acl_u_pm_delete'	=> array('lang' => 'Kann Private Nachrichten aus eigenem Ordner entfernen', 'cat' => 'pm'),
@@ -128,8 +128,8 @@ $lang = array_merge($lang, array(
 	'acl_u_pm_download'	=> array('lang' => 'Kann Dateianhänge in Privaten Nachrichten herunterladen', 'cat' => 'pm'),
 	'acl_u_pm_bbcode'	=> array('lang' => 'Kann BBCode in Privaten Nachrichten verwenden', 'cat' => 'pm'),
 	'acl_u_pm_smilies'	=> array('lang' => 'Kann Smilies in Privaten Nachrichten verwenden', 'cat' => 'pm'),
-	'acl_u_pm_img'		=> array('lang' => 'Kann Bilder in Privaten Nachrichten verwenden', 'cat' => 'pm'),
-	'acl_u_pm_flash'	=> array('lang' => 'Kann Flash in Privaten Nachrichten verwenden', 'cat' => 'pm'),
+	'acl_u_pm_img'		=> array('lang' => 'Kann den [img]-BBCode-Tag in Privaten Nachrichten verwenden', 'cat' => 'pm'),
+	'acl_u_pm_flash'	=> array('lang' => 'Kann den [flash]-BBCode-Tag in Privaten Nachrichten verwenden', 'cat' => 'pm'),
 
 	'acl_u_sendemail'	=> array('lang' => 'Kann E-Mails versenden', 'cat' => 'misc'),
 	'acl_u_sendim'		=> array('lang' => 'Kann Instant Messages versenden', 'cat' => 'misc'),
@@ -158,8 +158,8 @@ $lang = array_merge($lang, array(
 	'acl_f_sigs'		=> array('lang' => 'Kann Signatur verwenden', 'cat' => 'content'),
 	'acl_f_bbcode'		=> array('lang' => 'Kann BBCode verwenden', 'cat' => 'content'),
 	'acl_f_smilies'		=> array('lang' => 'Kann Smilies verwenden', 'cat' => 'content'),
-	'acl_f_img'			=> array('lang' => 'Kann Bilder verwenden', 'cat' => 'content'),
-	'acl_f_flash'		=> array('lang' => 'Kann Flash verwenden', 'cat' => 'content'),
+	'acl_f_img'			=> array('lang' => 'Kann den [img]-BBCode-Tag verwenden', 'cat' => 'content'),
+	'acl_f_flash'		=> array('lang' => 'Kann den [flash]-BBCode-Tag verwenden', 'cat' => 'content'),
 
 	'acl_f_edit'		=> array('lang' => 'Kann eigene Beiträge ändern', 'cat' => 'actions'),
 	'acl_f_delete'		=> array('lang' => 'Kann eigene Beiträge löschen', 'cat' => 'actions'),

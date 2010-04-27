@@ -4,13 +4,12 @@
 * acp_board [Deutsch — Du]
 *
 * @package language
-* @version $Id: board.php 192 2007-05-17 19:54:57Z philipp $
+* @version $Id: board.php 434 2010-02-24 13:22:56Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -74,6 +73,11 @@ $lang = array_merge($lang, array(
 	'ALLOW_NO_CENSORS'			=> 'Deaktivieren der Wortzensur erlauben',
 	'ALLOW_NO_CENSORS_EXPLAIN'	=> 'Benutzer können die automatische Wortzensur in Beiträgen und Privaten Nachrichten deaktivieren.',
 	'ALLOW_PM_ATTACHMENTS'		=> 'Dateianhänge in Privaten Nachrichten erlauben',
+	'ALLOW_PM_REPORT'			=> 'Benutzern die Meldung Privater Nachrichten erlauben',
+	'ALLOW_PM_REPORT_EXPLAIN'	=> 'Wenn diese Option aktiviert ist, können Benutzer eine Private Nachricht, die sie empfangen oder gesendet haben, an die Moderatoren des Boards melden Diese Privaten Nachrichten können dann im Moderations-Bereich eingesehen werden.',
+	'ALLOW_QUICK_REPLY'			=> 'Schnellantwort erlauben',
+	'ALLOW_QUICK_REPLY_EXPLAIN'	=> 'Diese Einstellung ermöglicht es, die Schnellantwort im gesamten Board zu deaktivieren. Wenn die Einstellung aktiviert ist, regeln die spezifischen Einstellungen der Foren, ob die Schnellantwort verfügbar ist.',
+	'ALLOW_QUICK_REPLY_BUTTON'	=> 'Absenden und Schnellantwort in allen Foren aktivieren',
 	'ALLOW_SIG'					=> 'Signaturen erlauben',
 	'ALLOW_SIG_BBCODE'			=> 'BBCode in Signaturen erlauben',
 	'ALLOW_SIG_FLASH'			=> 'BBCode-Tag <code>flash</code> in Signaturen erlauben',
@@ -91,9 +95,13 @@ $lang = array_merge($lang, array(
 $lang = array_merge($lang, array(
 	'ACP_AVATAR_SETTINGS_EXPLAIN'	=> 'Avatare sind im Allgemeinen kleine, einzigartige Bilder, mit denen sich die Mitglieder identifizieren können. Abhängig vom Style werden diese Bilder normalerweise unter dem Benutzernamen angezeigt, wenn Themen betrachtet werden. Hier kannst du die Art der Avatar-Nutzung festlegen. Bitte denke daran, dass du das von dir angegebene Verzeichnis erstellen und sicherstellen musst, dass es vom Webserver beschreibbar ist, damit Avatare hochgeladen werden können. Bedenke außerdem, dass Dateigrößen-Beschränkungen nur bei hochgeladenen Avataren greifen, nicht jedoch bei von anderen Seiten verlinkten Bildern.',
 
+	'ALLOW_AVATARS'					=> 'Avatare erlauben',
+	'ALLOW_AVATARS_EXPLAIN'			=> 'Erlaubt die generelle Nutzung von Avataren.<br />Wenn du Avatare generell oder die eines bestimmten Typs deaktivierst, werden die deaktivierten Avatare nicht mehr im Board angezeigt, Benutzer können ihren Avatar aber weiterhin im persönlichen Bereich herunterladen.',
 	'ALLOW_LOCAL'					=> 'Galerie-Avatare erlauben',
 	'ALLOW_REMOTE'					=> 'Remote-Avatare erlauben',
 	'ALLOW_REMOTE_EXPLAIN'			=> 'Avatare, die von einer anderen Website verlinkt werden.',
+	'ALLOW_REMOTE_UPLOAD'			=> 'Avatar-Upload von URL aktivieren',
+	'ALLOW_REMOTE_UPLOAD_EXPLAIN'	=> 'Erlaubt das Hochladen eines Avatars von einer anderen Website.',
 	'ALLOW_UPLOAD'					=> 'Hochladen von Avataren erlauben',
 	'AVATAR_GALLERY_PATH'			=> 'Avatar-Galeriepfad',
 	'AVATAR_GALLERY_PATH_EXPLAIN'	=> 'Der Pfad von deinem phpBB-Hauptverzeichnis aus, in dem die Galerie-Avatare liegen (z.&nbsp;B. <samp>images/avatars/gallery</samp>).',
@@ -117,6 +125,7 @@ $lang = array_merge($lang, array(
 	'ALLOW_FORWARD_PM'			=> 'Weiterleiten von Privaten Nachrichten erlauben',
 	'ALLOW_IMG_PM'				=> 'BBCode-Tag <code>[IMG]</code> in Privaten Nachrichten erlauben',
 	'ALLOW_MASS_PM'				=> 'Versand von Privaten Nachrichten an mehrere Mitglieder oder Gruppen erlauben',
+	'ALLOW_MASS_PM_EXPLAIN'		=> 'Der Versand an Gruppen kann für jede Gruppe in den Gruppeneinstellungen angepasst werden.',
 	'ALLOW_PRINT_PM'			=> 'Druckansicht in Privaten Nachrichten erlauben',
 	'ALLOW_QUOTE_PM'			=> 'Zitate in Privaten Nachrichten erlauben',
 	'ALLOW_SIG_PM'				=> 'Signatur in Privaten Nachrichten erlauben',
@@ -131,6 +140,8 @@ $lang = array_merge($lang, array(
 	'HOLD_NEW_MESSAGES'			=> 'Neue Nachrichten zurückhalten',
 	'PM_EDIT_TIME'				=> 'Nachträgliche Bearbeitung einschränken',
 	'PM_EDIT_TIME_EXPLAIN'		=> 'Limitiert die Zeit zur Bearbeitung einer gesendeten, aber noch ungelesenen Privaten Nachricht. Um dieses Verhalten abzuschalten, stelle als Wert 0 ein.',
+	'PM_MAX_RECIPIENTS'			=> 'Maximale Anzahl zulässiger Empfänger',
+	'PM_MAX_RECIPIENTS_EXPLAIN'	=> 'Die maximale Anzahl zulässiger Empfänger für eine Private Nachricht. Bei einem Wert von 0 sind unbegrenzt viele Empfänger zulässig. Diese Einstellung kann gruppenbezogen in den Gruppeneinstellungen angepasst werden.',
 ));
 
 // Post Settings
@@ -142,9 +153,11 @@ $lang = array_merge($lang, array(
 	'ALLOW_POST_FLASH_EXPLAIN'			=> 'Wenn deaktiviert, ist der <code>[FLASH]</code> BBCode-Tag in Beiträgen deaktiviert. Andernfalls wird durch das Berechtigungssystem festgelegt, welche Benutzer den <code>[FLASH]</code> BBCode-Tag benutzen können.',
 
 	'BUMP_INTERVAL'					=> 'Neu-Markierung möglich nach',
-	'BUMP_INTERVAL_EXPLAIN'			=> 'Die Zahl der Minuten, Stunden oder Tage, die seit dem letzten Beitrag zu einem Thema vergangen sein müssen, damit das Thema als „Neu“ markiert werden kann.',
-	'CHAR_LIMIT'					=> 'Maximale Anzahl der Zeichen pro Beitrag',
-	'CHAR_LIMIT_EXPLAIN'			=> 'Die maximale Zahl von Zeichen, die in einem Beitrag zulässig sind; 0 bedeutet unbegrenzt.',
+	'BUMP_INTERVAL_EXPLAIN'			=> 'Die Zahl der Minuten, Stunden oder Tage, die seit dem letzten Beitrag zu einem Thema vergangen sein müssen, damit das Thema als „Neu“ markiert werden kann. Um die Funktion zu deaktivieren, stelle als Wert 0 ein.',
+	'CHAR_LIMIT'					=> 'Maximale Anzahl der Zeichen pro Beitrag/Nachricht',
+	'CHAR_LIMIT_EXPLAIN'			=> 'Die maximale Zahl von Zeichen, die in einem Beitrag/einer Privaten Nachricht zulässig sind; 0 bedeutet unbegrenzt.',
+	'DELETE_TIME'					=> 'Begrenze Löschzeit',
+	'DELETE_TIME_EXPLAIN'			=> 'Begrenzt die Zeit, die zur Löschung eines neuen Beitrags zur Verfügung steht. Um keine Begrenzung festzulegen, stelle als Wert 0 ein.',
 	'DISPLAY_LAST_EDITED'			=> 'Bearbeitungen anzeigen',
 	'DISPLAY_LAST_EDITED_EXPLAIN'	=> 'Wähle aus, ob die Information „Zuletzt bearbeitet von“ in Beiträgen angezeigt werden soll.',
 	'EDIT_TIME'						=> 'Nachträgliche Bearbeitung einschränken',
@@ -162,12 +175,15 @@ $lang = array_merge($lang, array(
 	'MAX_POST_IMG_WIDTH_EXPLAIN'	=> 'Die maximale Breite eines Bildes/einer Flash-Datei in Beiträgen. Um keine Begrenzung festzulegen, stelle als Wert 0 ein.',
 	'MAX_POST_URLS'					=> 'Maximale Anzahl an Links pro Beitrag',
 	'MAX_POST_URLS_EXPLAIN'			=> 'Maximale Anzahl von Links in einem Beitrag. Um keine Begrenzung festzulegen, stelle als Wert 0 ein.',
+	'MIN_CHAR_LIMIT'				=> 'Minimale Anzahl von Zeichen pro Beitrag/Nachricht',
+	'MIN_CHAR_LIMIT_EXPLAIN'		=> 'Die minimale Anzahl von Zeichen, die ein Benutzer in einem Beitrag/einer Nachricht mindestens eigeben muss.',
 	'POSTING'						=> 'Beiträge schreiben',
 	'POSTS_PER_PAGE'				=> 'Beiträge pro Seite',
 	'QUOTE_DEPTH_LIMIT'				=> 'Maximale Anzahl verschachtelter Zitate',
 	'QUOTE_DEPTH_LIMIT_EXPLAIN'		=> 'Die maximale Zahl an ineinander verschachtelten Zitaten in einem Beitrag. Um keine Begrenzung festzulegen, stelle als Wert 0 ein.',
 	'SMILIES_LIMIT'					=> 'Maximale Smilies pro Beitrag',
 	'SMILIES_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl an Smilies in einem Beitrag. Um keine Begrenzung festzulegen, stelle als Wert 0 ein.',
+	'SMILIES_PER_PAGE'				=> 'Smilies pro Seite',
 	'TOPICS_PER_PAGE'				=> 'Themen pro Seite',
 ));
 
@@ -193,8 +209,13 @@ $lang = array_merge($lang, array(
 $lang = array_merge($lang, array(
 	'ACP_REGISTER_SETTINGS_EXPLAIN'		=> 'Hier kannst du Einstellungen bezüglich der Registrierung und der Mitgliederprofile vornehmen.',
 
-	'ACC_ACTIVATION'			=> 'Benutzerkonto-Aktivierung',
-	'ACC_ACTIVATION_EXPLAIN'	=> 'Diese Einstellung legt fest, ob Benutzer sofortigen Zugang zum Board haben, oder ob eine Bestätigung erforderlich ist. Du kannst neue Registrierungen auch komplett deaktivieren.',
+	'ACC_ACTIVATION'				=> 'Benutzerkonto-Aktivierung',
+	'ACC_ACTIVATION_EXPLAIN'		=> 'Diese Einstellung legt fest, ob Benutzer sofortigen Zugang zum Board haben, oder ob eine Bestätigung erforderlich ist. Du kannst neue Registrierungen auch komplett deaktivieren.',
+	'NEW_MEMBER_POST_LIMIT'			=> 'Grenze für kürzlich registrierte Benutzer',
+	'NEW_MEMBER_POST_LIMIT_EXPLAIN'	=> 'Neu registrierte Benutzer sind Mitglied der <em>Kürzlich registrierte Benutzer</em>-Gruppe, bis sie diese Zahl von Beiträgen erreicht haben. Du kannst diese Gruppe nutzen, um für sie die Nutzung von Privaten Nachrichten zu unterbinden oder um eine Freigabe ihrer Beiträge erforderlich zu machen. <strong>Ein Wert von 0 deaktiviert diese Funktion.</strong>',
+	'NEW_MEMBER_GROUP_DEFAULT'		=> 'Kürzlich registrierte Benutzer-Gruppe als Standard setzen',
+	'NEW_MEMBER_GROUP_DEFAULT_EXPLAIN'	=> 'Wenn diese Funktion aktiviert und eine Grenze für kürzlich registrierte Benutzer gesetzt ist, werden neue Benutzer nicht nur in die <em>Kürzlich registrierte Benutzer</em>-Gruppe aufgenommen, sondern diese ist zugleich ihre Standardgruppe. Diese Funktion ist hilfreich, wenn Du einen Rang oder einen Avatar für die Gruppe festlegen willst, die dann für den Benutzer übernommen werden.',
+
 	'ACC_ADMIN'					=> 'durch Administrator',
 	'ACC_DISABLE'				=> 'Deaktiviert',
 	'ACC_NONE'					=> 'Keine',
@@ -227,11 +248,53 @@ $lang = array_merge($lang, array(
 	'USERNAME_LENGTH_EXPLAIN'	=> 'Die minimale und maximale Anzahl an Zeichen in Benutzernamen.',
 ));
 
+// Feeds
+$lang = array_merge($lang, array(
+	'ACP_FEED_MANAGEMENT'				=> 'Allgemeine Feed-Einstellungen',
+	'ACP_FEED_MANAGEMENT_EXPLAIN'		=> 'Dieses Modul stellt verschiedene ATOM-Feeds zur Verfügung. Es wandelt BBCode um, so dass er in externen Feeds dargestellt werden kann.',
+
+	'ACP_FEED_GENERAL'					=> 'Allgemeine Feed-Einstellungen',
+	'ACP_FEED_POST_BASED'				=> 'Beitragsbezogene Feed-Einstellungen',
+	'ACP_FEED_TOPIC_BASED'				=> 'Themenbezogene Feed-Einstellungen',
+	'ACP_FEED_SETTINGS_OTHER'			=> 'Weitere Feed-Einstellungen',
+
+	'ACP_FEED_ENABLE'					=> 'Feeds aktivieren',
+	'ACP_FEED_ENABLE_EXPLAIN'			=> 'Aktiviert oder deaktiviert ATOM-Feeds für das ganze Board.<br />Eine Deaktivierung schaltet alle Feeds unabhängig der folgenden Einstellungen ab.',
+	'ACP_FEED_LIMIT'					=> 'Anzahl von Elementen',
+	'ACP_FEED_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl von Elementen eines Feeds, die angezeigt werden.',
+
+	'ACP_FEED_OVERALL'					=> 'Board-Feed',
+	'ACP_FEED_OVERALL_EXPLAIN'			=> 'Neue Beiträge des gesamten Boards.',
+	'ACP_FEED_FORUM'					=> 'Forenspezifische Feeds aktivieren',
+	'ACP_FEED_FORUM_EXPLAIN'			=> 'Neue Beiträge eines einzelnen Forums und Unterforen.',
+	'ACP_FEED_TOPIC'					=> 'Themenspezifische Feeds aktivieren',
+	'ACP_FEED_TOPIC_EXPLAIN'			=> 'Neue Beiträge eines Themas.',
+
+	'ACP_FEED_TOPICS_NEW'				=> 'Neue Themen-Feed',
+	'ACP_FEED_TOPICS_NEW_EXPLAIN'		=> 'Aktiviert den „Neue Themen“-Feed, der die zuletzt erstellten Themen und deren ersten Beitrag anzeigt.',
+	'ACP_FEED_TOPICS_ACTIVE'			=> 'Aktive Themen-Feed',
+	'ACP_FEED_TOPICS_ACTIVE_EXPLAIN'	=> 'Aktiviert den „Aktive Themen“-Feed, der die zuletzt aktiven Themen und deren letzten Beitrag anzeigt.',
+	'ACP_FEED_NEWS'						=> 'News-Feed',
+	'ACP_FEED_NEWS_EXPLAIN'				=> 'Gibt den ersten Beitrag aus diesen Foren aus. Wähle keine Foren aus, um den News-Feed zu deaktivieren.<br />Wähle mehrere Foren aus/ab, indem du beim Klicken die <samp>Strg</samp>-Taste drückst.',
+
+	'ACP_FEED_OVERALL_FORUMS'			=> 'Foren-Feed aktivieren',
+	'ACP_FEED_OVERALL_FORUMS_EXPLAIN'	=> 'Dieser Feed zeigt eine Liste aller Foren des Boards an.',
+
+	'ACP_FEED_HTTP_AUTH'				=> 'HTTP-Authentifizierung erlauben',
+	'ACP_FEED_HTTP_AUTH_EXPLAIN'		=> 'Aktiviert die HTTP-Authentifizierung. Dadurch können Benutzer Inhalte empfangen, die für Gäste nicht sichtbar sind. Um die Funktion zu nutzen, muss der Parameter <samp>auth=http</samp> der URL des Feeds hinzugefügt werden. Beachte bitte, dass bei manchen PHP-Konfigurationen eine Anpassung der .htaccess-Datei notwendig ist. Entsprechende Hinweise sind in der Datei enthalten.',
+	'ACP_FEED_ITEM_STATISTICS'			=> 'Element-Statistiken',
+	'ACP_FEED_ITEM_STATISTICS_EXPLAIN'	=> 'Zeigt individuelle Statistiken unterhalb der Feed-Elemente an<br />(Ersteller, Datum und Uhrzeit, Antworten, Zugriffe)',
+	'ACP_FEED_EXCLUDE_ID'				=> 'Foren ausschließen',
+	'ACP_FEED_EXCLUDE_ID_EXPLAIN'		=> 'Inhalte dieser Foren werden <strong>nicht in den Feeds berücksichtigt</strong>. Wähle keine Foren aus, um die Daten aller Foren auszugeben.<br />Wähle mehrere Foren aus/ab, indem du beim Klicken die <samp>Strg</samp>-Taste drückst.',
+));
+
 // Visual Confirmation Settings
 $lang = array_merge($lang, array(
-	'ACP_VC_SETTINGS_EXPLAIN'		=> 'Hier kannst du die Einstellungen zu CAPTCHA und dem visuellem Bestätigungscode vornehmen.',
-
+	'ACP_VC_SETTINGS_EXPLAIN'				=> 'Hier kannst du CAPTCHA-Plugins auswählen und konfigurieren, die verschiedene Möglichkeiten zur Unterbindung von Anmeldungen sogenannter Spam-Bots bieten.',
+	'AVAILABLE_CAPTCHAS'					=> 'Verfügbare Plugins',
+	'CAPTCHA_UNAVAILABLE'					=> 'Das CAPTCHA kann nicht ausgewählt werden, da seine Voraussetzungen nicht erfüllt werden.',
 	'CAPTCHA_GD'							=> 'GD CAPTCHA',
+	'CAPTCHA_GD_3D'							=> 'GD 3D-CAPTCHA',
 	'CAPTCHA_GD_FOREGROUND_NOISE'			=> 'GD CAPTCHA Vordergrund-Rauschen',
 	'CAPTCHA_GD_EXPLAIN'					=> 'Verwendet die GD-Library, um erweiterte CAPTCHA-Codes zu erstellen.',
 	'CAPTCHA_GD_FOREGROUND_NOISE_EXPLAIN'	=> 'Fügt den auf der GD-Library basierenden CAPTCHA-Codes ein Vordergrund-Rauschen hinzu, um eine automatische Erkennung zu erschweren.',
@@ -239,13 +302,32 @@ $lang = array_merge($lang, array(
 	'CAPTCHA_GD_X_GRID_EXPLAIN'				=> 'Verwende einen niedrigeren Wert, um das GD-basierte CAPTCHA schwerer zu machen. 0 deaktiviert das Hintergrund-Rauschen auf der x-Achse.',
 	'CAPTCHA_GD_Y_GRID'						=> 'GD CAPTCHA Hintergrund-Rauschen Y-Achse',
 	'CAPTCHA_GD_Y_GRID_EXPLAIN'				=> 'Verwende einen niedrigeren Wert, um das GD-basierte CAPTCHA schwerer zu machen. 0 deaktiviert das Hintergrund-Rauschen auf der y-Achse.',
-
+	'CAPTCHA_GD_WAVE'						=> 'GD CAPTCHA Wellen-Verzerrung',
+	'CAPTCHA_GD_WAVE_EXPLAIN'				=> 'Fügt den CAPTCHA-Codes eine Wellen-Verzerrung hinzu.',
+	'CAPTCHA_GD_3D_NOISE'					=> '3D-Rauschen hinzufügen',
+	'CAPTCHA_GD_3D_NOISE_EXPLAIN'			=> 'Fügt zusätzliche Objekte über den CAPTCHA-Codes hinzu.',
+	'CAPTCHA_GD_FONTS'						=> 'Unterschiedliche Schriften nutzen',
+	'CAPTCHA_GD_FONTS_EXPLAIN'				=> 'Diese Einstellung legt fest, wie viele verschiedene Schriftformen genutzt werden. Du kannst nur die Standard-Formen nutzen oder neue Formen aktivieren. Es können auch Kleinbuchstaben hinzugefügt werden.',
+	'CAPTCHA_FONT_DEFAULT'					=> 'Standard',
+	'CAPTCHA_FONT_NEW'						=> 'Neue Formen',
+	'CAPTCHA_FONT_LOWER'					=> 'Auch Kleinbuchstaben',
+	'CAPTCHA_NO_GD'							=> 'CAPTCHA ohne GD',
 	'CAPTCHA_PREVIEW_MSG'					=> 'Deine Änderungen an den Einstellungen des Bestätigungscodes wurden nicht gespeichert. Dies ist nur eine Vorschau.',
-	'CAPTCHA_PREVIEW_EXPLAIN'				=> 'So wird der Bestätigungscode mit den aktuellen Einstellungen aussehen. Du kannst ihn mit „Vorschau“ aktualisieren. Beachte, dass der Bestätigungscode zufällig erstellt wird und von dem hier angezeigten abweichen wird.',
+	'CAPTCHA_PREVIEW_EXPLAIN'				=> 'So würde der Bestätigungscode mit den aktuellen Einstellungen aussehen.',
+
+	'CAPTCHA_SELECT'						=> 'Installierte CAPTCHA-Plugins',
+	'CAPTCHA_SELECT_EXPLAIN'				=> 'Die Liste enthält die CAPTCHA-Plugins, die vom Board gefunden wurden. Ausgegraute Elemente stehen derzeit nicht zur Verfügung und müssen ggf. erst konfiguriert werden, bevor sie genutzt werden können.',
+	'CAPTCHA_CONFIGURE'						=> 'CAPTCHAs konfigurieren',
+	'CAPTCHA_CONFIGURE_EXPLAIN'				=> 'Ändert die Einstellungen für das ausgewählte CAPTCHA.',
+	'CONFIGURE'								=> 'Konfigurieren',
+	'CAPTCHA_NO_OPTIONS'					=> 'Dieses CAPTCHA hat keine Konfigurations-Optionen.',
+
 	'VISUAL_CONFIRM_POST'					=> 'Visuellen Bestätigungscode für Beiträge von Gästen aktivieren',
 	'VISUAL_CONFIRM_POST_EXPLAIN'			=> 'Gäste müssen einen durch ein Bild vorgegebenen zufälligen Schlüssel beim Schreiben von Beiträgen eingeben. Dies soll helfen, Massenbeiträge (Spam) zu vermeiden.',
 	'VISUAL_CONFIRM_REG'					=> 'Visuellen Bestätigungscode für Registrierungen aktivieren',
 	'VISUAL_CONFIRM_REG_EXPLAIN'			=> 'Neue Benutzer müssen einen durch ein Bild vorgegebenen Schlüssel bei der Registrierung eingeben. Dies soll helfen, Massenregistrierungen zu vermeiden.',
+	'VISUAL_CONFIRM_REFRESH'				=> 'Benutzer Austausch des Bestätigungscodes erlauben',
+	'VISUAL_CONFIRM_REFRESH_EXPLAIN'		=> 'Erlaubt den Benutzern, einen neuen Bestätigungscode anzufordern, wenn sie ihn bei der Registrierung nicht lesen können. Nicht alle Plugins unterstützen diese Option.',
 ));
 
 // Cookie Settings
@@ -313,7 +395,7 @@ $lang = array_merge($lang, array(
 	'LDAP_NO_EMAIL'					=> 'Das angegebene E-Mail-Attribut existiert nicht.',
 	'LDAP_NO_IDENTITY'				=> 'Kann keine Anmeldekennung für %s finden.',
 	'LDAP_PASSWORD'					=> 'LDAP-Passwort',
-	'LDAP_PASSWORD_EXPLAIN'			=> 'Lasse das Feld für eine anonyme Verbindung frei; ansonsten gebe das Passwort für obigen Benutzer an. Erforderlich bei Active Directory-Servern. <strong>WARNUNG:</strong> Dieses Passwort wird im Klartext in der Datenbank gespeichert und ist daher für jeden einsehbar, der Zugriff auf die Datenbank oder diese Konfigurationsseite hat.',
+	'LDAP_PASSWORD_EXPLAIN'			=> 'Lasse das Feld für eine anonyme Verbindung frei; ansonsten gebe das Passwort für obigen Benutzer an. Erforderlich bei Active Directory-Servern. <em><strong>WARNUNG:</strong> Dieses Passwort wird im Klartext in der Datenbank gespeichert und ist daher für jeden einsehbar, der Zugriff auf die Datenbank oder diese Konfigurationsseite hat.</em>',
 	'LDAP_PORT'						=> 'Port des LDAP-Servers',
 	'LDAP_PORT_EXPLAIN'				=> 'Du kannst optional einen Port angeben, der statt dem Standardport 389 für die Verbindung zum LDAP-Server verwendet werden soll.',
 	'LDAP_SERVER'					=> 'LDAP-Server-Name',
@@ -331,7 +413,7 @@ $lang = array_merge($lang, array(
 	'ACP_SERVER_SETTINGS_EXPLAIN'	=> 'Hier kannst du einige Einstellungen bezüglich Server und Domain vornehmen. Bitte stelle sicher, dass die Daten, die du eingibst, auch wirklich stimmen, denn fehlerhafte Angaben könnten zu E-Mails führen, die falsche Informationen enthalten. Wenn du den Domain-Namen eingibst, denk daran, dass http:// oder eine andere Protokoll-Bezeichnung darin enthalten ist. Ändere den Port nur, wenn du weißt, dass dein Server einen anderen Port nutzt; Port 80 ist in den allermeisten Fällen richtig.',
 
 	'ENABLE_GZIP'				=> 'gzip-Komprimierung aktivieren',
-	'ENABLE_GZIP_EXPLAIN'		=> 'Der Seiteninhalt wird vor dem Senden an den Benutzer komprimiert. Dies kann den Netzverkehr reduzieren, wird aber auch zu einer Erhöhung der CPU-Last sowohl auf Server- als auch auf Benutzerseite führen.',
+	'ENABLE_GZIP_EXPLAIN'		=> 'Der Seiteninhalt wird vor dem Senden an den Benutzer komprimiert. Dies kann den Netzverkehr reduzieren, wird aber auch zu einer Erhöhung der CPU-Last sowohl auf Server- als auch auf Benutzerseite führen. Erfordert, dass die zlib-Erweiterung von PHP geladen ist.',
 	'FORCE_SERVER_VARS'			=> 'Erzwinge Server-URL-Einstellungen',
 	'FORCE_SERVER_VARS_EXPLAIN'	=> 'Wenn dies auf „Ja“ gestellt wird, werden die hier vorgenommenen Server-Einstellungen anstelle der automatisch ermittelten Werte genommen.',
 	'ICONS_PATH'				=> 'Speicherpfad für Themen-Symbole',
@@ -366,7 +448,7 @@ $lang = array_merge($lang, array(
 	'BROWSER_VALID'					=> 'Browser prüfen',
 	'BROWSER_VALID_EXPLAIN'			=> 'Aktiviert die Prüfung des Browsers für die jeweilige Sitzung, um die Sicherheit zu erhöhen.',
 	'CHECK_DNSBL'					=> 'IP gegen Schwarze DNS-Liste prüfen',
-	'CHECK_DNSBL_EXPLAIN'			=> 'Wenn aktiviert, wird die IP-Adresse des Benutzers bei der Registrierung und bei der Beitragserstellung gegen folgende DNSBL-Dienste geprüft: <a href="http://spamcop.net">spamcop.net</a>, <a href="http://dsbl.org">dsbl.org</a> und <a href="http://www.spamhaus.org">www.spamhaus.org</a>. Diese Prüfung kann, abhängig von der Serverkonfiguration, etwas Zeit in Anspruch nehmen. Wenn Verzögerungen oder zu viele falsche Ablehnungen beobachtet werden, sollte diese Prüfung deaktiviert werden.',
+	'CHECK_DNSBL_EXPLAIN'			=> 'Wenn aktiviert, wird die IP-Adresse des Benutzers bei der Registrierung und bei der Beitragserstellung gegen folgende DNSBL-Dienste geprüft: <a href="http://spamcop.net">spamcop.net</a> und <a href="http://www.spamhaus.org">www.spamhaus.org</a>. Diese Prüfung kann, abhängig von der Serverkonfiguration, etwas Zeit in Anspruch nehmen. Wenn Verzögerungen oder zu viele falsche Ablehnungen beobachtet werden, sollte diese Prüfung deaktiviert werden.',
 	'CLASS_B'						=> 'A.B',
 	'CLASS_C'						=> 'A.B.C',
 	'EMAIL_CHECK_MX'				=> 'E-Mail-Domain auf gültigen MX-Eintrag prüfen',
@@ -393,8 +475,8 @@ $lang = array_merge($lang, array(
 	'PASS_TYPE_SYMBOL'				=> 'Muss Sonderzeichen enthalten',
 	'REF_HOST'						=> 'Prüfe nur den Hostnamen',
 	'REF_PATH'						=> 'Prüfe auch den Skript-Pfad',
-	'REFERER_VALID'					=> 'Referer pürfen',
-	'REFERER_VALID_EXPLAIN'			=> 'Wenn aktiviert, wird der Referer von POST-Anfragen gegen die Einstellungen des Hostnamen/Skript-Pfads geprüft. Dies kann bei Boards zu Problemen führen, die mehrere Domains oder eine externe Anmeldung nutzen.',
+	'REFERER_VALID'					=> 'Referrer prüfen',
+	'REFERER_VALID_EXPLAIN'			=> 'Wenn aktiviert, wird der Referrer von POST-Anfragen gegen die Einstellungen des Hostnamen/Skript-Pfads geprüft. Dies kann bei Boards zu Problemen führen, die mehrere Domains oder eine externe Anmeldung nutzen.',
 	'TPL_ALLOW_PHP'					=> 'Erlaube PHP in Templates',
 	'TPL_ALLOW_PHP_EXPLAIN'			=> 'Wenn diese Option eingeschaltet ist, werden <code>PHP</code>- und <code>INCLUDEPHP</code>-Anweisungen in Templates erkannt und ausgeführt.',
 ));
@@ -418,14 +500,14 @@ $lang = array_merge($lang, array(
 	'EMAIL_SIG'						=> 'E-Mail-Signatur',
 	'EMAIL_SIG_EXPLAIN'				=> 'Dieser Text wird an alle E-Mails angehängt, die das Board versendet.',
 	'ENABLE_EMAIL'					=> 'Aktiviere E-Mail-Funktionalität',
-	'ENABLE_EMAIL_EXPLAIN'			=> 'Wenn dies deaktiviert ist, werden keinerlei E-Mails vom Board versendet.',
+	'ENABLE_EMAIL_EXPLAIN'			=> 'Wenn dies deaktiviert ist, werden keinerlei E-Mails vom Board versendet. <em>Die Aktivierung von Benutzerkonten durch den Benutzer oder einen Administrator erfordert, dass diese Option aktiviert ist. Wenn derzeit die Aktivierung durch den Benutzer oder einen Administrator aktiviert ist, ist bei einer Deaktivierung dieser Option keine Aktivierung mehr erforderlich.</em>',
 	'SMTP_AUTH_METHOD'				=> 'Authentifizierungsmethode für SMTP',
 	'SMTP_AUTH_METHOD_EXPLAIN'		=> 'Nur benötigt, wenn ein Benutzername/Passwort eingegeben ist. Frage deinen Webhosting-Provider, falls du nicht sicher bist, welche Methode du wählen sollst.',
 	'SMTP_CRAM_MD5'					=> 'CRAM-MD5',
 	'SMTP_DIGEST_MD5'				=> 'DIGEST-MD5',
 	'SMTP_LOGIN'					=> 'LOGIN',
 	'SMTP_PASSWORD'					=> 'SMTP-Passwort',
-	'SMTP_PASSWORD_EXPLAIN'			=> 'Gib nur ein Passwort ein, wenn dein SMTP-Server dies erfordert.',
+	'SMTP_PASSWORD_EXPLAIN'			=> 'Gib nur ein Passwort ein, wenn dein SMTP-Server dies erfordert. <em><strong>WARNUNG:</strong> Dieses Passwort wird im Klartext in der Datenbank gespeichert und ist daher für jeden einsehbar, der Zugriff auf die Datenbank oder diese Konfigurationsseite hat.</em>',
 	'SMTP_PLAIN'					=> 'PLAIN',
 	'SMTP_POP_BEFORE_SMTP'			=> 'POP-BEFORE-SMTP',
 	'SMTP_PORT'						=> 'SMTP-Server-Port',
@@ -448,6 +530,7 @@ $lang = array_merge($lang, array(
 	'JAB_PACKAGE_SIZE'			=> 'Jabber-Paketgröße',
 	'JAB_PACKAGE_SIZE_EXPLAIN'	=> 'Dies ist die Anzahl der Nachrichten, die in einem Paket gesendet werden. Um die Nachrichten sofort zu senden, stelle als Wert 0 ein.',
 	'JAB_PASSWORD'				=> 'Jabber-Passwort',
+	'JAB_PASSWORD_EXPLAIN'		=> '<em><strong>WARNUNG:</strong> Dieses Passwort wird im Klartext in der Datenbank gespeichert und ist daher für jeden einsehbar, der Zugriff auf die Datenbank oder diese Konfigurationsseite hat.</em>',
 	'JAB_PORT'					=> 'Jabber-Port',
 	'JAB_PORT_EXPLAIN'			=> 'Lass dieses Feld frei, es sei denn, du weißt, dass es nicht Port 5222 ist.',
 	'JAB_SERVER'				=> 'Jabber-Server',
@@ -455,8 +538,8 @@ $lang = array_merge($lang, array(
 	'JAB_SETTINGS_CHANGED'		=> 'Jabber-Einstellungen erfolgreich geändert.',
 	'JAB_USE_SSL'				=> 'Mit SSL verbinden',
 	'JAB_USE_SSL_EXPLAIN'		=> 'Wenn aktiviert, wird versucht, eine sichere Verbindung zu verwenden. Der Jabber-Port wird auf 5223 geändert, sofern Port 5222 angegeben ist.',
-	'JAB_USERNAME'				=> 'Jabber-Benutzername',
-	'JAB_USERNAME_EXPLAIN'		=> 'Gebe einen bereits registrierten Benutzernamen an. Der Benutzername wird nicht auf Gültigkeit geprüft.',
+	'JAB_USERNAME'				=> 'Jabber-Benutzername oder JID',
+	'JAB_USERNAME_EXPLAIN'		=> 'Gebe einen bereits registrierten Benutzernamen oder eine gültige JID an. Der Benutzername wird nicht auf Gültigkeit geprüft. Wenn du nur einen Benutzernamen angibst, wird die JID aus dem Benutzernamen und dem oben festgelegten Server ermittelt. Gebe ansonsten eine gültige JID wie <samp>user@jabber.org</samp> ein.',
 ));
 
 ?>

@@ -4,13 +4,12 @@
 * posting [Deutsch — Du]
 *
 * @package language
-* @version $Id: posting.php 196 2007-05-18 17:37:40Z philipp $
+* @version $Id: posting.php 433 2010-02-24 13:15:18Z philippk $
 * @copyright (c) 2005 phpBB Group; 2006 phpBB.de
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * Deutsche Übersetzung durch die Übersetzer-Gruppe von phpBB.de:
-* (http://www.phpbb.de/go/3/uebersetzer)
-* Frank Doerr, Dirk Gaffke, Christopher Gerharz, Ingo Köhler, Philipp Kordowich, Ingo Migliarina, Paul Rauch
+* siehe docs/AUTHORS und http://www.phpbb.de/go/ubersetzerteam
 *
 */
 
@@ -145,7 +144,7 @@ $lang = array_merge($lang, array(
 
 	'PARTIAL_UPLOAD'			=> 'Die Datei wurde nur teilweise hochgeladen.',
 	'PHP_SIZE_NA'				=> 'Der Dateianhang ist zu groß.<br />Die durch PHP in der php.ini festgelegte maximale Größe konnte nicht ermittelt werden.',
-	'PHP_SIZE_OVERRUN'			=> 'Der Dateianhang ist zu groß, er darf maximal %d MiB groß sein.<br />Dieser Wert ist in der php.ini festgelegt und kann nicht überschrieben werden.',
+	'PHP_SIZE_OVERRUN'			=> 'Der Dateianhang ist zu groß, er darf maximal %1$d %2$s groß sein.<br />Dieser Wert ist in der php.ini festgelegt und kann nicht überschrieben werden.',
 	'PLACE_INLINE'				=> 'Im Beitrag anzeigen',
 	'POLL_DELETE'				=> 'Umfrage löschen',
 	'POLL_FOR'					=> 'Umfrage durchführen für',
@@ -171,6 +170,8 @@ $lang = array_merge($lang, array(
 	'POST_ICON'					=> 'Beitrags-Symbol',
 	'POST_NORMAL'				=> 'Normal',
 	'POST_REVIEW'				=> 'Neue Beiträge im Thema',
+	'POST_REVIEW_EDIT'			=> 'Geänderter Beitrag',
+	'POST_REVIEW_EDIT_EXPLAIN'	=> 'Dieser Beitrag wurde von einem anderen Benutzer geändert, während du ihn bearbeitet hast. Du kannst deine Änderungen überprüfen und sie gegebenenfalls anpassen.',
 	'POST_REVIEW_EXPLAIN'		=> 'In dem Thema wurde in der Zwischenzeit mindestens ein neuer Beitrag erstellt. Du kannst deinen Beitrag überprüfen und ihn gegebenenfalls anpassen.',
 	'POST_STORED'				=> 'Der Beitrag wurde erfolgreich gespeichert.',
 	'POST_STORED_MOD'			=> 'Der Beitrag wurde erfolgreich gespeichert. Er muss jedoch erst von einem Moderator freigegeben werden, bevor er öffentlich einsehbar ist.',
@@ -179,7 +180,7 @@ $lang = array_merge($lang, array(
 
 	'QUOTE_DEPTH_EXCEEDED'		=> 'Es können maximal %1$d Zitate ineinander verschachtelt werden.',
 
-	'SAVE'						=> 'Speichern',
+	'SAVE'						=> 'Entwurf speichern',
 	'SAVE_DATE'					=> 'Gespeichert am',
 	'SAVE_DRAFT'				=> 'Entwurf speichern',
 	'SAVE_DRAFT_CONFIRM'		=> 'Bitte beachte, dass gespeicherte Entwürfe nur den Betreff und den Nachrichtentext enthalten. Alle anderen Elemente werden entfernt. Möchtest du den Entwurf jetzt speichern?',
@@ -188,10 +189,11 @@ $lang = array_merge($lang, array(
 	'SMILIES_ARE_ON'			=> 'Smilies sind <em>eingeschaltet</em>',
 	'STICKY_ANNOUNCE_TIME_LIMIT'=> 'Zeitlimit für wichtige Themen/Bekanntmachungen',
 	'STICK_TOPIC_FOR'			=> 'Thema anpinnen für',
-	'STICK_TOPIC_FOR_EXPLAIN'	=> 'Damit dieses Thema für immer als wichtig/Bekanntmachung erscheint, stelle als Wert 0 ein oder lasse ihn leer.',
+	'STICK_TOPIC_FOR_EXPLAIN'	=> 'Damit dieses Thema für immer als wichtig/Bekanntmachung erscheint, stelle als Wert 0 ein oder lasse ihn leer. Beachte, dass sich diese Angabe auf den Erstellungszeitpunkt des Themas bezieht.',
 	'STYLES_TIP'				=> 'Tipp: Formatierungen können schnell auf den markierten Text angewandt werden.',
 
 	'TOO_FEW_CHARS'				=> 'Die eingegebene Nachricht ist zu kurz.',
+	'TOO_FEW_CHARS_LIMIT'		=> 'Deine Nachricht enthält %1$d Zeichen. Es müssen jedoch mindestens %2$d Zeichen verwendet werden.',
 	'TOO_FEW_POLL_OPTIONS'		=> 'Du musst mindestens zwei Antwortmöglichkeiten für die Umfrage eingeben.',
 	'TOO_MANY_ATTACHMENTS'		=> 'Du kannst keinen weiteren Dateianhang hinzufügen. Die maximale Anzahl liegt bei %d.',
 	'TOO_MANY_CHARS'			=> 'Dein Beitrag enthält zu viele Zeichen.',
@@ -216,7 +218,7 @@ $lang = array_merge($lang, array(
 	'USER_CANNOT_REPLY'			=> 'Du darfst keine Antworten zu Themen in diesem Forum erstellen.',
 	'USER_CANNOT_FORUM_POST'	=> 'Du kannst in diesem Forum keine Beiträge schreiben, weil der Forentyp dies nicht unterstützt.',
 
-	'VIEW_MESSAGE'				=> '%sDeinen Beitrag anzeigen%s',
+	'VIEW_MESSAGE'				=> '%sDen Beitrag anzeigen%s',
 	'VIEW_PRIVATE_MESSAGE'		=> '%sDeine Private Nachricht anzeigen%s',
 
 	'WRONG_FILESIZE'			=> 'Die Datei ist zu groß. Die maximal erlaubte Dateigröße ist %1d %2s.',
